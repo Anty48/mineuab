@@ -1,0 +1,74 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-neutral-950 text-neutral-100 antialiased;
+  background-image:
+    radial-gradient(60rem 60rem at 80% -10%, rgba(10, 138, 63, 0.18), transparent 60%),
+    radial-gradient(50rem 50rem at -10% 20%, rgba(10, 138, 63, 0.1), transparent 55%);
+  background-attachment: fixed;
+}
+
+/* Thin brand-tinted scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+::-webkit-scrollbar-thumb {
+  background: #087334;
+  border-radius: 9999px;
+}
+
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-6xl px-5 sm:px-8;
+  }
+
+  .section-title {
+    @apply font-pixel text-2xl leading-tight sm:text-3xl md:text-4xl;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-5 py-3 text-sm font-semibold transition-transform duration-150 active:scale-95;
+  }
+  .btn-primary {
+    @apply btn bg-brand text-white shadow-pixel hover:bg-brand-600;
+  }
+  .btn-ghost {
+    @apply btn border border-white/15 bg-white/5 text-neutral-100 hover:bg-white/10;
+  }
+
+  .card {
+    @apply rounded-2xl border border-white/10 bg-white/[0.03] p-6 backdrop-blur-sm;
+  }
+
+  /* Minecraft-style beveled crafting slot */
+  .mc-slot {
+    @apply relative flex items-center justify-center text-center;
+    background: #8b8b8b;
+    border-top: 4px solid #373737;
+    border-left: 4px solid #373737;
+    border-right: 4px solid #ffffff;
+    border-bottom: 4px solid #ffffff;
+  }
+
+  .mc-panel {
+    background: #c6c6c6;
+    border-top: 6px solid #ffffff;
+    border-left: 6px solid #ffffff;
+    border-right: 6px solid #555555;
+    border-bottom: 6px solid #555555;
+  }
+}
