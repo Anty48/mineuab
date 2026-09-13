@@ -21,8 +21,11 @@ interface LanguageContextValue {
   locale: Locale;
   setLocale: (l: Locale) => void;
   toggle: () => void;
-  /** Translate by dot-path, e.g. t("nav.about"). Returns the key if missing. */
-  t: (path: string) => string;
+  /**
+   * Translate by dot-path, e.g. t("nav.about"). Returns the key if missing.
+   * `{name}` placeholders are filled from `vars`: t("x", { count: 3 }).
+   */
+  t: (path: string, vars?: Record<string, string | number>) => string;
   /** Return a raw (possibly non-string) node from the dictionary, e.g. arrays. */
   raw: <T = unknown>(path: string) => T;
 }
@@ -45,16 +48,23 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
 
   // Hydrate from localStorage (Catalan stays the default if nothing stored).
   useEffect(() => {
-    const stored = window.localStorage.getItem(STORAGE_KEY) as Locale | null;
-    if (stored && LOCALES.includes(stored)) {
-      setLocaleState(stored);
+    try {
+      const stored = window.localStorage.getItem(STORAGE_KEY) as Locale | null;
+      if (stored && LOCALES.includes(stored)) {
+        setLocaleState(stored);
+      }
+    } catch {
+      /* storage blocked (private mode, strict cookie settings) */
     }
   }, []);
 
   const setLocale = useCallback((l: Locale) => {
     setLocaleState(l);
-    window.localStorage.setItem(STORAGE_KEY, l);
-    document.documentElement.lang = l;
+    try {
+      window.localStorage.setItem(STORAGE_KEY, l);
+    } catch {
+      /* not persisted, but still switches for this visit */
+    }
   }, []);
 
   const toggle = useCallback(() => {
@@ -66,9 +76,13 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
   }, [locale]);
 
   const t = useCallback(
-    (path: string) => {
+    (path: string, vars?: Record<string, string | number>) => {
       const value = resolvePath(translations[locale] as Dict, path);
-      return typeof value === "string" ? value : path;
+      if (typeof value !== "string") return path;
+      if (!vars) return value;
+      return value.replace(/\{(\w+)\}/g, (match, name: string) =>
+        name in vars ? String(vars[name]) : match,
+      );
     },
     [locale],
   );

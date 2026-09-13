@@ -1,5 +1,39 @@
-// Central place for the community's external links.
+// Central place for the server address and the community's links.
+
+/** What players type in Minecraft. It's also the website's future domain. */
+export const SERVER_ADDRESS = "www.mineuab.org";
+export const SITE_URL = "https://www.mineuab.org";
+
+export const DISCORD_URL = "https://discord.gg/CfXau5xy3U";
 // Update these with the real handles when available.
 export const INSTAGRAM_URL = "https://instagram.com/mineuab";
-export const DISCORD_URL = "https://discord.gg/mineuab";
 export const TWITCH_URL = "https://twitch.tv/mineuab";
+
+export const SOCIAL_LINKS = [
+  { name: "Discord", href: DISCORD_URL },
+  { name: "Instagram", href: INSTAGRAM_URL },
+  { name: "Twitch", href: TWITCH_URL },
+] as const;
+
+// Link keys point into translations.
+
+/** Top navigation. */
+export const NAV_LINKS = [
+  { href: "/#com-entrar", key: "nav.howToJoin" },
+  { href: "/galeria", key: "nav.gallery" },
+  { href: "/normes", key: "nav.rules" },
+  { href: "/faq", key: "nav.faq" },
+  { href: "/historia", key: "nav.history" },
+] as const;
+
+/** Every page and home section, listed in the footer. */
+export const SITE_LINKS = [
+  { href: "/", key: "nav.home" },
+  { href: "/#com-entrar", key: "nav.howToJoin" },
+  { href: "/#sobre-nosaltres", key: "nav.about" },
+  { href: "/galeria", key: "nav.gallery" },
+  { href: "/normes", key: "nav.rules" },
+  { href: "/faq", key: "faq.title" },
+  { href: "/historia", key: "nav.history" },
+  { href: "/#xarxes", key: "nav.socials" },
+] as const;

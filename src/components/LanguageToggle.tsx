@@ -15,7 +15,7 @@ export default function LanguageToggle() {
     <div
       role="group"
       aria-label={t("nav.langLabel")}
-      className="inline-flex items-center rounded-full border border-white/15 bg-white/5 p-1 text-xs font-bold"
+      className="inline-flex items-center rounded-full border border-zinc-700 bg-zinc-900/80 p-1 text-xs font-bold"
     >
       {OPTIONS.map((opt) => {
         const active = locale === opt.code;
@@ -27,8 +27,8 @@ export default function LanguageToggle() {
             aria-pressed={active}
             className={`rounded-full px-3 py-1 transition-colors ${
               active
-                ? "bg-brand text-white"
-                : "text-neutral-300 hover:text-white"
+                ? "bg-brand-500 text-white"
+                : "text-zinc-400 hover:text-white"
             }`}
           >
             {opt.label}

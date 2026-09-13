@@ -3,330 +3,553 @@ export type Locale = "ca" | "es";
 export const LOCALES: Locale[] = ["ca", "es"];
 export const DEFAULT_LOCALE: Locale = "ca";
 
-// Deeply-nested dictionary. Access with the `t()` helper from useLanguage().
-export const translations = {
-  ca: {
-    nav: {
-      about: "Sobre nosaltres",
-      history: "La nostra història",
-      recipes: "Receptes Custom",
-      events: "Esdeveniments",
-      socials: "Xarxes",
-      join: "Uneix-te",
-      langLabel: "Idioma",
-    },
-    hero: {
-      badge: "Servidor de Minecraft de la comunitat UAB",
-      title: "mineuab",
-      subtitle:
-        "La comunitat de Minecraft feta per i per a estudiants de la UAB. Construeix, explora i fes comunitat amb nosaltres.",
-      cta: "Uneix-te al servidor",
-      ctaSecondary: "Descobreix les receptes",
-    },
-    about: {
-      title: "Sobre nosaltres",
-      subtitle: "Qui som i què ens mou.",
-      what: {
-        title: "Què fem",
-        body: "Gestionem un servidor de Minecraft pensat per a la comunitat universitària: món survival, projectes col·laboratius, minijocs i esdeveniments periòdics. Un espai per jugar, crear i desconnectar entre classe i classe.",
+/** The Catalan dictionary's shape with every string literal widened to `string`. */
+type Widen<T> = T extends string
+  ? string
+  : T extends readonly (infer U)[]
+    ? readonly Widen<U>[]
+    : { readonly [K in keyof T]: Widen<T[K]> };
+
+// Deeply-nested dictionary. Access with the `t()` helper from useLanguage();
+// `{name}` placeholders are filled from t()'s second argument.
+// Catalan is the source of truth: TypeScript flags any key missing in Spanish.
+const ca = {
+  nav: {
+    home: "Inici",
+    howToJoin: "Com entrar",
+    about: "Sobre nosaltres",
+    history: "La nostra història",
+    socials: "Xarxes",
+    gallery: "Galeria",
+    rules: "Normes",
+    faq: "FAQ",
+    langLabel: "Idioma",
+    menu: "Menú",
+    skip: "Salta al contingut",
+  },
+  server: {
+    ipLabel: "Adreça IP",
+    cardTitle: "Entra al servidor",
+    copy: "Copiar adreça IP",
+    copied: "Adreça copiada!",
+    online: "En línia",
+    offline: "Fora de línia",
+    playersOne: "{count} jugador en línia",
+    playersMany: "{count} jugadors en línia",
+    joinOne: "Ara mateix hi ha {count} jugador connectat. Uneix-t'hi!",
+    joinMany: "Ara mateix hi ha {count} jugadors connectats. Uneix-t'hi!",
+    joinEmpty: "El servidor està en línia. Sigues el primer a entrar!",
+    statusOffline:
+      "Ara mateix el servidor està fora de línia. Torna-ho a provar d'aquí a una estona.",
+    version: "Versió",
+    access: "Accés",
+    openToAll: "Obert a tothom",
+  },
+  hero: {
+    title: "El servidor de l'Autònoma",
+    subtitle:
+      "Un servidor fet per estudiants i obert a tothom, siguis o no de la UAB.",
+    copyIp: "Copia la IP: {address}",
+    ctaDiscord: "Uneix-te al Discord",
+  },
+  disclaimer: {
+    tag: "Avís important",
+    body: "mineuab encara no és un projecte oficial de la UAB (Universitat Autònoma de Barcelona), però hi estem treballant perquè ho sigui.",
+  },
+  howToJoin: {
+    title: "Com entrar al servidor",
+    subtitle:
+      "Copia l'adreça, obre Minecraft i segueix aquests passos. En un parell de minuts ja hi ets.",
+    steps: [
+      {
+        title: "Obre Minecraft",
+        body: "Necessites Minecraft Java Edition. Des del menú principal, ves a Multijugador.",
       },
-      why: {
-        title: "Per què ho fem",
-        body: "Perquè creiem que els videojocs són una eina brutal per crear comunitat. Volem que qualsevol estudiant de la UAB trobi un lloc on fer amics, col·laborar i sentir-se part d'alguna cosa més gran.",
+      {
+        title: "Afegeix el servidor",
+        body: "Clica «Afegeix un servidor» i posa aquesta adreça:",
+        code: ["{address}"],
       },
-      how: {
-        title: "Com ho fem",
-        body: "Amb un servidor estable, moderació activa i respectuosa, contingut personalitzat (com les nostres receptes custom!) i escoltant sempre la comunitat per decidir cap on anem.",
+      {
+        title: "Registra't",
+        body: "El primer cop que entris, crea el teu compte. Les altres vegades, només cal iniciar sessió.",
+        code: ["/register <contrasenya> <contrasenya>", "/login <contrasenya>"],
       },
-    },
-    history: {
-      title: "La nostra història",
-      subtitle: "D'una idea entre amics a una comunitat en creixement.",
-      milestones: [
-        {
-          date: "Els inicis",
-          title: "Una idea a la cafeteria",
-          body: "Un grup d'estudiants de la UAB fans de Minecraft es pregunta: i si muntéssim un servidor per a tota la universitat?",
-        },
-        {
-          date: "Primer món",
-          title: "S'obre el servidor",
-          body: "Neix el primer món survival de mineuab. Les primeres construccions i els primers membres comencen a donar-li vida.",
-        },
-        {
-          date: "Creixement",
-          title: "Contingut custom i esdeveniments",
-          body: "Afegim receptes personalitzades, minijocs i comencem a organitzar esdeveniments regulars per a la comunitat.",
-        },
-        {
-          date: "Avui",
-          title: "Cap a l'oficialitat",
-          body: "Treballem per convertir mineuab en un projecte reconegut dins la UAB, amb més membres, més contingut i molts plans de futur.",
-        },
-      ],
-    },
-    disclaimer: {
-      tag: "Avís important",
-      title: "Estat oficial",
-      body: "Actualment mineuab encara no és un projecte oficial de la UAB (Universitat Autònoma de Barcelona), però tenim tota la intenció i estem treballant per fer-ho oficial en el futur.",
-    },
-    events: {
-      title: "Esdeveniments",
-      subtitle: "El que hem fet i el que està per venir.",
-      upcoming: "Propers",
-      past: "Passats",
-      statusUpcoming: "Proper",
-      statusPast: "Finalitzat",
-      items: [
-        {
-          status: "upcoming",
-          date: "Pròximament",
-          title: "Gran obertura de temporada",
-          body: "Estrenem món nou amb reptes de construcció i premis per als participants.",
-        },
-        {
-          status: "upcoming",
-          date: "Pròximament",
-          title: "Nit de minijocs",
-          body: "Una vetllada de spleef, parkour i build battles per a tota la comunitat.",
-        },
-        {
-          status: "past",
-          date: "Temporada anterior",
-          title: "Concurs de construcció UAB",
-          body: "Els membres van recrear edificis emblemàtics del campus de la UAB dins del joc.",
-        },
-      ],
-    },
-    socials: {
-      title: "Segueix-nos",
-      subtitle: "Uneix-te a la conversa i no et perdis res.",
-      instagram: "Segueix el nostre dia a dia",
-      discord: "El cor de la comunitat",
-      twitch: "Directes i esdeveniments",
-      cta: "Obrir",
-    },
-    recipes: {
-      title: "Receptes Custom",
-      subtitle:
-        "Els objectes exclusius del servidor mineuab. Fes clic en qualsevol per veure com es crafteja.",
-      clickHint: "Fes clic per veure la recepta",
-      modal: {
-        recipeTitle: "Recepta de crafting",
-        description: "Descripció",
-        howToObtain: "Com aconseguir els ingredients",
-        ingredients: "Ingredients",
-        close: "Tancar",
-        emptyHint: "Les caselles buides han d'estar buides al crafting.",
+      {
+        title: "Uneix-te al Discord",
+        body: "Allà anunciem els esdeveniments i les novetats, i és on trobaràs la comunitat.",
+        cta: "Obrir Discord",
       },
-      empty: "Encara no hi ha receptes. Torna aviat!",
+    ],
+    passwordTip:
+      "Consell: fes servir una contrasenya que no utilitzis a cap altre lloc.",
+  },
+  about: {
+    title: "Sobre nosaltres",
+    subtitle: "Qui som i què ens mou.",
+    what: {
+      title: "Què fem",
+      body: "Gestionem un servidor de Minecraft nascut a la comunitat universitària: món survival, construccions com la plaça cívica, minijocs i esdeveniments. Un espai per jugar, crear i desconnectar.",
     },
-    admin: {
-      title: "Constructor de receptes",
-      subtitle:
-        "Crea receptes custom sense tocar el codi. Omple el formulari i genera el JSON.",
-      grid: "Graella de crafting 3x3",
-      gridHint:
-        "Escriu el nom o l'ID de cada ingredient. Deixa buides les caselles que no s'utilitzen.",
-      resultLabel: "Objecte resultant",
-      fields: {
-        id: "ID de l'objecte (sense espais, ex: espasa_uab)",
-        icon: "Emoji o icona (ex: ⚔️)",
-        nameCa: "Nom (Català)",
-        nameEs: "Nom (Espanyol)",
-        descCa: "Descripció (Català)",
-        descEs: "Descripció (Espanyol)",
-        obtainCa: "Com aconseguir (Català)",
-        obtainEs: "Com aconseguir (Espanyol)",
+    why: {
+      title: "Per què ho fem",
+      body: "Perquè creiem que els videojocs són una eina brutal per crear comunitat. Volem que qualsevol persona trobi un lloc on fer amics, col·laborar i sentir-se part d'alguna cosa més gran.",
+    },
+    open: {
+      title: "Obert a tothom",
+      body: "No cal ser de la UAB per jugar. Vam néixer a l'Autònoma, però les portes estan obertes a tothom qui tingui ganes de construir i fer comunitat.",
+    },
+    historyCta: "Llegeix la nostra història",
+  },
+  history: {
+    title: "La nostra història",
+    subtitle: "D'un servidor entre amics a una comunitat oberta a tothom.",
+    chapters: [
+      {
+        title: "Tot va començar entre amics",
+        body: "Volíem un servidor per jugar uns quants amics i trobàvem a faltar que a l'Autònoma no hi hagués res oficial.",
       },
-      save: "Desar i generar",
-      saved: "Recepta desada correctament al fitxer de dades!",
-      saveError:
-        "No s'ha pogut escriure al fitxer (segurament estàs en producció). Copia el JSON manualment.",
-      copy: "Copiar JSON",
-      copied: "Copiat!",
-      jsonTitle: "JSON generat",
-      instructionsTitle: "Instruccions manuals",
-      instructions:
-        "Si el desat automàtic no funciona (per exemple en producció), copia el JSON de dalt i afegeix-lo dins de l'array del fitxer:",
-      previewTitle: "Vista prèvia",
-      reset: "Netejar formulari",
-      requiredError: "Cal com a mínim un ID i el nom en tots dos idiomes.",
-    },
-    footer: {
-      tagline: "La comunitat de Minecraft de la UAB.",
-      madeWith: "Fet amb ☕ per la comunitat mineuab.",
-      disclaimerShort:
-        "Projecte no oficial de la UAB (de moment!).",
-      sections: "Seccions",
-      social: "Xarxes",
-    },
-    common: {
-      backHome: "Tornar a l'inici",
-      notFound: "Pàgina no trobada",
+      {
+        title: "Un servidor privat",
+        body: "Així que vam decidir muntar-ne un pel nostre compte, de moment només per a nosaltres.",
+      },
+      {
+        title: "Obrim les portes",
+        body: "Aviat ens va semblar divertit obrir-lo a més gent de l'Autònoma, per conèixer-nos i jugar plegats.",
+      },
+      {
+        title: "Una pausa",
+        body: "No ens hi vam acabar d'engrescar i, durant un temps, el projecte va quedar de banda.",
+      },
+      {
+        title: "La tornada",
+        body: "L'any següent hi vam tornar amb ganes de donar-li més bombo: ens vam motivar i vam començar a fer propaganda.",
+      },
+      {
+        title: "I aquí estem!",
+        body: "Avui mineuab és un servidor obert a tothom, siguis o no de la UAB, i treballem perquè algun dia sigui un projecte oficial de la universitat.",
+      },
+    ],
+    ctaTitle: "Vols escriure el proper capítol amb nosaltres?",
+    ctaBody: "Entra al servidor i uneix-te a la comunitat.",
+  },
+  gallery: {
+    title: "Galeria de construccions",
+    subtitle: "Racons de l'Autònoma que hem aixecat bloc a bloc al servidor.",
+    close: "Tancar",
+    prev: "Imatge anterior",
+    next: "Imatge següent",
+    ctaTitle: "Has construït alguna cosa que vulguis ensenyar?",
+    ctaBody: "Comparteix-la al Discord amb la resta de la comunitat.",
+    items: {
+      civicSquare: "La plaça cívica",
+      ferrosPlatform: "L'andana de Ferros",
+      ferrosEntrance: "L'entrada a Ferros",
+      rain: "La plaça cívica, un dia de pluja",
+      trinxera: "La Trinxera",
     },
   },
-
-  es: {
-    nav: {
-      about: "Sobre nosotros",
-      history: "Nuestra historia",
-      recipes: "Recetas Custom",
-      events: "Eventos",
-      socials: "Redes",
-      join: "Únete",
-      langLabel: "Idioma",
-    },
-    hero: {
-      badge: "Servidor de Minecraft de la comunidad UAB",
-      title: "mineuab",
-      subtitle:
-        "La comunidad de Minecraft hecha por y para estudiantes de la UAB. Construye, explora y crea comunidad con nosotros.",
-      cta: "Únete al servidor",
-      ctaSecondary: "Descubre las recetas",
-    },
-    about: {
-      title: "Sobre nosotros",
-      subtitle: "Quiénes somos y qué nos mueve.",
-      what: {
-        title: "Qué hacemos",
-        body: "Gestionamos un servidor de Minecraft pensado para la comunidad universitaria: mundo survival, proyectos colaborativos, minijuegos y eventos periódicos. Un espacio para jugar, crear y desconectar entre clase y clase.",
+  // Provisional rules, to be replaced with the final ones.
+  rules: {
+    title: "Normes del servidor",
+    subtitle: "Unes quantes normes perquè tothom s'hi senti a gust.",
+    draftNote:
+      "Aquestes són les normes bàsiques mentre acabem la versió definitiva. Si tens qualsevol dubte, pregunta a l'staff al Discord.",
+    sections: [
+      {
+        icon: "🤝",
+        title: "Respecte i convivència",
+        rules: [
+          "Tracta tothom amb respecte. No hi ha lloc per als insults, l'assetjament ni cap mena de discriminació.",
+          "Res de spam, flood al xat ni publicitat d'altres servidors.",
+          "Mantén el contingut apropiat: noms, skins, cartells i construccions sense res ofensiu ni explícit.",
+        ],
       },
-      why: {
-        title: "Por qué lo hacemos",
-        body: "Porque creemos que los videojuegos son una herramienta brutal para crear comunidad. Queremos que cualquier estudiante de la UAB encuentre un lugar donde hacer amigos, colaborar y sentirse parte de algo más grande.",
+      {
+        icon: "⚔️",
+        title: "Joc net",
+        rules: [
+          "No es permeten hacks, clients modificats que donin avantatge (X-ray, fly, kill aura…) ni aprofitar errors del joc. Si en trobes un, avisa l'staff.",
+          "No destrueixis, modifiquis ni robis construccions o cofres que no són teus.",
+          "Evita granges o màquines que sobrecarreguin el servidor.",
+        ],
       },
-      how: {
-        title: "Cómo lo hacemos",
-        body: "Con un servidor estable, moderación activa y respetuosa, contenido personalizado (¡como nuestras recetas custom!) y escuchando siempre a la comunidad para decidir hacia dónde vamos.",
+      {
+        icon: "🔐",
+        title: "El teu compte",
+        rules: [
+          "El compte és personal: no el comparteixis ni entris amb el d'una altra persona.",
+          "Fes servir una contrasenya pròpia per al servidor i no la diguis a ningú. L'staff no te la demanarà mai.",
+        ],
       },
-    },
-    history: {
-      title: "Nuestra historia",
-      subtitle: "De una idea entre amigos a una comunidad en crecimiento.",
-      milestones: [
-        {
-          date: "Los inicios",
-          title: "Una idea en la cafetería",
-          body: "Un grupo de estudiantes de la UAB fans de Minecraft se pregunta: ¿y si montáramos un servidor para toda la universidad?",
-        },
-        {
-          date: "Primer mundo",
-          title: "Se abre el servidor",
-          body: "Nace el primer mundo survival de mineuab. Las primeras construcciones y los primeros miembros empiezan a darle vida.",
-        },
-        {
-          date: "Crecimiento",
-          title: "Contenido custom y eventos",
-          body: "Añadimos recetas personalizadas, minijuegos y empezamos a organizar eventos regulares para la comunidad.",
-        },
-        {
-          date: "Hoy",
-          title: "Hacia la oficialidad",
-          body: "Trabajamos para convertir mineuab en un proyecto reconocido dentro de la UAB, con más miembros, más contenido y muchos planes de futuro.",
-        },
-      ],
-    },
-    disclaimer: {
-      tag: "Aviso importante",
-      title: "Estado oficial",
-      body: "Actualmente mineuab todavía no es un proyecto oficial de la UAB (Universitat Autònoma de Barcelona), pero tenemos toda la intención y estamos trabajando para hacerlo oficial en el futuro.",
-    },
-    events: {
-      title: "Eventos",
-      subtitle: "Lo que hemos hecho y lo que está por venir.",
-      upcoming: "Próximos",
-      past: "Pasados",
-      statusUpcoming: "Próximo",
-      statusPast: "Finalizado",
-      items: [
-        {
-          status: "upcoming",
-          date: "Próximamente",
-          title: "Gran apertura de temporada",
-          body: "Estrenamos mundo nuevo con retos de construcción y premios para los participantes.",
-        },
-        {
-          status: "upcoming",
-          date: "Próximamente",
-          title: "Noche de minijuegos",
-          body: "Una velada de spleef, parkour y build battles para toda la comunidad.",
-        },
-        {
-          status: "past",
-          date: "Temporada anterior",
-          title: "Concurso de construcción UAB",
-          body: "Los miembros recrearon edificios emblemáticos del campus de la UAB dentro del juego.",
-        },
-      ],
-    },
-    socials: {
-      title: "Síguenos",
-      subtitle: "Únete a la conversación y no te pierdas nada.",
-      instagram: "Sigue nuestro día a día",
-      discord: "El corazón de la comunidad",
-      twitch: "Directos y eventos",
-      cta: "Abrir",
-    },
-    recipes: {
-      title: "Recetas Custom",
-      subtitle:
-        "Los objetos exclusivos del servidor mineuab. Haz clic en cualquiera para ver cómo se craftea.",
-      clickHint: "Haz clic para ver la receta",
-      modal: {
-        recipeTitle: "Receta de crafteo",
-        description: "Descripción",
-        howToObtain: "Cómo conseguir los ingredientes",
-        ingredients: "Ingredientes",
-        close: "Cerrar",
-        emptyHint: "Las casillas vacías deben estar vacías en el crafteo.",
+      {
+        icon: "🛡️",
+        title: "Staff",
+        rules: [
+          "Segueix les indicacions de l'staff. Si no hi estàs d'acord, parla-ho amb calma pel Discord.",
+          "Si veus algú saltant-se les normes, avisa l'staff en lloc de respondre pel teu compte.",
+        ],
       },
-      empty: "Todavía no hay recetas. ¡Vuelve pronto!",
-    },
-    admin: {
-      title: "Constructor de recetas",
-      subtitle:
-        "Crea recetas custom sin tocar el código. Rellena el formulario y genera el JSON.",
-      grid: "Rejilla de crafteo 3x3",
-      gridHint:
-        "Escribe el nombre o el ID de cada ingrediente. Deja vacías las casillas que no se usan.",
-      resultLabel: "Objeto resultante",
-      fields: {
-        id: "ID del objeto (sin espacios, ej: espada_uab)",
-        icon: "Emoji o icono (ej: ⚔️)",
-        nameCa: "Nombre (Catalán)",
-        nameEs: "Nombre (Español)",
-        descCa: "Descripción (Catalán)",
-        descEs: "Descripción (Español)",
-        obtainCa: "Cómo conseguir (Catalán)",
-        obtainEs: "Cómo conseguir (Español)",
+    ],
+    sanctions:
+      "Saltar-se les normes pot comportar un avís, una expulsió temporal o una expulsió permanent, segons la gravetat.",
+    ctaTitle: "Tens dubtes o vols informar d'alguna cosa?",
+    ctaBody: "Parla amb l'staff al Discord. T'ajudarem tan aviat com puguem.",
+  },
+  faq: {
+    title: "Preguntes freqüents",
+    subtitle: "Tot el que necessites saber per començar a jugar.",
+    items: [
+      {
+        q: "Cal ser de la UAB per jugar?",
+        a: "No. mineuab va néixer a l'Autònoma, però el servidor és obert a tothom, siguis o no de la UAB.",
       },
-      save: "Guardar y generar",
-      saved: "¡Receta guardada correctamente en el archivo de datos!",
-      saveError:
-        "No se ha podido escribir en el archivo (seguramente estás en producción). Copia el JSON manualmente.",
-      copy: "Copiar JSON",
-      copied: "¡Copiado!",
-      jsonTitle: "JSON generado",
-      instructionsTitle: "Instrucciones manuales",
-      instructions:
-        "Si el guardado automático no funciona (por ejemplo en producción), copia el JSON de arriba y añádelo dentro del array del archivo:",
-      previewTitle: "Vista previa",
-      reset: "Limpiar formulario",
-      requiredError: "Se necesita como mínimo un ID y el nombre en ambos idiomas.",
-    },
-    footer: {
-      tagline: "La comunidad de Minecraft de la UAB.",
-      madeWith: "Hecho con ☕ por la comunidad mineuab.",
-      disclaimerShort: "Proyecto no oficial de la UAB (¡de momento!).",
-      sections: "Secciones",
-      social: "Redes",
-    },
-    common: {
-      backHome: "Volver al inicio",
-      notFound: "Página no encontrada",
-    },
+      {
+        q: "Com entro al servidor?",
+        a: "Obre Minecraft Java Edition, ves a Multijugador i afegeix un servidor amb aquesta adreça:",
+        extra: "address",
+        link: { href: "/#com-entrar", label: "Veure tots els passos" },
+      },
+      {
+        q: "Quina versió de Minecraft necessito?",
+        a: "Minecraft Java Edition, a la mateixa versió que el servidor:",
+        extra: "version",
+      },
+      {
+        q: "Puc jugar des de Bedrock (mòbil, consola o Minecraft per a Windows)?",
+        a: "De moment no: el servidor només accepta Minecraft Java Edition. Si això canvia, ho anunciarem al Discord.",
+      },
+      {
+        q: "És gratuït?",
+        a: "Sí. Entrar i jugar al servidor no costa res.",
+      },
+      {
+        q: "Com em registro?",
+        a: "El primer cop que entris, crea el teu compte amb la primera ordre. Les altres vegades, inicia sessió amb la segona.",
+        code: ["/register <contrasenya> <contrasenya>", "/login <contrasenya>"],
+      },
+      {
+        q: "He oblidat la contrasenya. Què faig?",
+        a: "Escriu a l'staff pel Discord i t'ajudaran a recuperar el compte.",
+      },
+      {
+        q: "Puc fer servir mods, shaders o paquets de textures?",
+        a: "Sí als que només canvien l'aspecte o milloren el rendiment, com shaders, paquets de textures o Sodium. No als que donen avantatge sobre la resta, com X-ray o hacks. En cas de dubte, pregunta a l'staff.",
+        link: { href: "/normes", label: "Llegir les normes" },
+      },
+      {
+        q: "On m'assabento dels esdeveniments?",
+        a: "Els anunciem al Discord i a l'Instagram. El Discord és també on trobaràs la resta de la comunitat.",
+        link: { href: "/#xarxes", label: "Veure les xarxes" },
+      },
+      {
+        q: "És un projecte oficial de la UAB?",
+        a: "Encara no. És un projecte fet per estudiants i estem treballant perquè algun dia sigui oficial.",
+      },
+      {
+        q: "He vist algú fent trampes. Com ho denuncio?",
+        a: "Avisa l'staff pel Discord i, si pots, adjunta-hi captures o un vídeo. No responguis pel teu compte.",
+        link: { href: "/normes", label: "Llegir les normes" },
+      },
+    ],
+    ctaTitle: "No hi trobes la teva pregunta?",
+    ctaBody: "Pregunta-ho al Discord i t'hi ajudarem.",
+  },
+  socials: {
+    title: "Segueix-nos",
+    subtitle:
+      "Els esdeveniments i les novetats els anunciem a Discord i Instagram. No et perdis res!",
+    discord: "El cor de la comunitat, on anunciem esdeveniments i novetats.",
+    instagram: "Anuncis, fotos del servidor i el dia a dia de la comunitat.",
+    twitch: "Directes i esdeveniments.",
+    open: "Obrir",
+  },
+  footer: {
+    about: "Sobre mineuab",
+    tagline: "Servidor de Minecraft nascut a l'Autònoma i obert a tothom.",
+    disclaimerShort: "Projecte no oficial de la UAB (de moment!).",
+    pages: "Pàgines",
+    social: "Xarxes",
+    server: "Servidor",
+    mojang: "No afiliat amb Mojang Studios ni Microsoft.",
+    madeWith: "Fet amb ☕ per la comunitat mineuab.",
+  },
+  common: {
+    backHome: "Tornar a l'inici",
+    notFound: "Pàgina no trobada",
+    notFoundBody:
+      "Sembla que aquest bloc no existeix… o potser l'ha fet explotar un creeper.",
   },
 } as const;
 
-export type Translations = (typeof translations)["ca"];
+export type Translations = Widen<typeof ca>;
+
+const es: Translations = {
+  nav: {
+    home: "Inicio",
+    howToJoin: "Cómo entrar",
+    about: "Sobre nosotros",
+    history: "Nuestra historia",
+    socials: "Redes",
+    gallery: "Galería",
+    rules: "Normas",
+    faq: "FAQ",
+    langLabel: "Idioma",
+    menu: "Menú",
+    skip: "Saltar al contenido",
+  },
+  server: {
+    ipLabel: "Dirección IP",
+    cardTitle: "Entra al servidor",
+    copy: "Copiar dirección IP",
+    copied: "¡Dirección copiada!",
+    online: "En línea",
+    offline: "Fuera de línea",
+    playersOne: "{count} jugador en línea",
+    playersMany: "{count} jugadores en línea",
+    joinOne: "Ahora mismo hay {count} jugador conectado. ¡Únete!",
+    joinMany: "Ahora mismo hay {count} jugadores conectados. ¡Únete!",
+    joinEmpty: "El servidor está en línea. ¡Sé el primero en entrar!",
+    statusOffline:
+      "Ahora mismo el servidor está fuera de línea. Vuelve a probar dentro de un rato.",
+    version: "Versión",
+    access: "Acceso",
+    openToAll: "Abierto a todos",
+  },
+  hero: {
+    title: "El servidor de la Autónoma",
+    subtitle:
+      "Un servidor hecho por estudiantes y abierto a todo el mundo, seas o no de la UAB.",
+    copyIp: "Copia la IP: {address}",
+    ctaDiscord: "Únete al Discord",
+  },
+  disclaimer: {
+    tag: "Aviso importante",
+    body: "mineuab todavía no es un proyecto oficial de la UAB (Universitat Autònoma de Barcelona), pero estamos trabajando para que lo sea.",
+  },
+  howToJoin: {
+    title: "Cómo entrar al servidor",
+    subtitle:
+      "Copia la dirección, abre Minecraft y sigue estos pasos. En un par de minutos ya estás dentro.",
+    steps: [
+      {
+        title: "Abre Minecraft",
+        body: "Necesitas Minecraft Java Edition. Desde el menú principal, ve a Multijugador.",
+      },
+      {
+        title: "Añade el servidor",
+        body: "Haz clic en «Añadir servidor» y pon esta dirección:",
+        code: ["{address}"],
+      },
+      {
+        title: "Regístrate",
+        body: "La primera vez que entres, crea tu cuenta. Las siguientes, solo tienes que iniciar sesión.",
+        code: ["/register <contraseña> <contraseña>", "/login <contraseña>"],
+      },
+      {
+        title: "Únete al Discord",
+        body: "Allí anunciamos los eventos y las novedades, y es donde encontrarás a la comunidad.",
+        cta: "Abrir Discord",
+      },
+    ],
+    passwordTip:
+      "Consejo: usa una contraseña que no utilices en ningún otro sitio.",
+  },
+  about: {
+    title: "Sobre nosotros",
+    subtitle: "Quiénes somos y qué nos mueve.",
+    what: {
+      title: "Qué hacemos",
+      body: "Gestionamos un servidor de Minecraft nacido en la comunidad universitaria: mundo survival, construcciones como la plaza cívica, minijuegos y eventos. Un espacio para jugar, crear y desconectar.",
+    },
+    why: {
+      title: "Por qué lo hacemos",
+      body: "Porque creemos que los videojuegos son una herramienta brutal para crear comunidad. Queremos que cualquier persona encuentre un lugar donde hacer amigos, colaborar y sentirse parte de algo más grande.",
+    },
+    open: {
+      title: "Abierto a todos",
+      body: "No hace falta ser de la UAB para jugar. Nacimos en la Autónoma, pero las puertas están abiertas a cualquiera con ganas de construir y crear comunidad.",
+    },
+    historyCta: "Lee nuestra historia",
+  },
+  history: {
+    title: "Nuestra historia",
+    subtitle: "De un servidor entre amigos a una comunidad abierta a todos.",
+    chapters: [
+      {
+        title: "Todo empezó entre amigos",
+        body: "Queríamos un servidor para jugar unos cuantos amigos y echábamos de menos que en la Autónoma no hubiera nada oficial.",
+      },
+      {
+        title: "Un servidor privado",
+        body: "Así que decidimos montar uno por nuestra cuenta, de momento solo para nosotros.",
+      },
+      {
+        title: "Abrimos las puertas",
+        body: "Pronto nos pareció divertido abrirlo a más gente de la Autónoma, para conocernos y jugar juntos.",
+      },
+      {
+        title: "Una pausa",
+        body: "No acabamos de engancharnos y, durante un tiempo, el proyecto quedó aparcado.",
+      },
+      {
+        title: "La vuelta",
+        body: "Al año siguiente volvimos con ganas de darle más bombo: nos motivamos y empezamos a hacer difusión.",
+      },
+      {
+        title: "¡Y aquí estamos!",
+        body: "Hoy mineuab es un servidor abierto a todo el mundo, seas o no de la UAB, y trabajamos para que algún día sea un proyecto oficial de la universidad.",
+      },
+    ],
+    ctaTitle: "¿Quieres escribir el próximo capítulo con nosotros?",
+    ctaBody: "Entra al servidor y únete a la comunidad.",
+  },
+  gallery: {
+    title: "Galería de construcciones",
+    subtitle: "Rincones de la Autónoma que hemos levantado bloque a bloque en el servidor.",
+    close: "Cerrar",
+    prev: "Imagen anterior",
+    next: "Imagen siguiente",
+    ctaTitle: "¿Has construido algo que quieras enseñar?",
+    ctaBody: "Compártelo en Discord con el resto de la comunidad.",
+    items: {
+      civicSquare: "La plaza cívica",
+      ferrosPlatform: "El andén de Ferros",
+      ferrosEntrance: "La entrada a Ferros",
+      rain: "La plaza cívica, un día de lluvia",
+      trinxera: "La Trinxera",
+    },
+  },
+  rules: {
+    title: "Normas del servidor",
+    subtitle: "Unas pocas normas para que todo el mundo esté a gusto.",
+    draftNote:
+      "Estas son las normas básicas mientras terminamos la versión definitiva. Si tienes cualquier duda, pregunta al staff en Discord.",
+    sections: [
+      {
+        icon: "🤝",
+        title: "Respeto y convivencia",
+        rules: [
+          "Trata a todo el mundo con respeto. No hay lugar para insultos, acoso ni ningún tipo de discriminación.",
+          "Nada de spam, flood en el chat ni publicidad de otros servidores.",
+          "Mantén el contenido apropiado: nombres, skins, carteles y construcciones sin nada ofensivo ni explícito.",
+        ],
+      },
+      {
+        icon: "⚔️",
+        title: "Juego limpio",
+        rules: [
+          "No se permiten hacks, clientes modificados que den ventaja (X-ray, fly, kill aura…) ni aprovechar errores del juego. Si encuentras uno, avisa al staff.",
+          "No destruyas, modifiques ni robes construcciones o cofres que no son tuyos.",
+          "Evita granjas o máquinas que sobrecarguen el servidor.",
+        ],
+      },
+      {
+        icon: "🔐",
+        title: "Tu cuenta",
+        rules: [
+          "La cuenta es personal: no la compartas ni entres con la de otra persona.",
+          "Usa una contraseña propia para el servidor y no se la digas a nadie. El staff nunca te la pedirá.",
+        ],
+      },
+      {
+        icon: "🛡️",
+        title: "Staff",
+        rules: [
+          "Sigue las indicaciones del staff. Si no estás de acuerdo, háblalo con calma por Discord.",
+          "Si ves a alguien saltándose las normas, avisa al staff en lugar de responder por tu cuenta.",
+        ],
+      },
+    ],
+    sanctions:
+      "Saltarse las normas puede suponer un aviso, una expulsión temporal o una expulsión permanente, según la gravedad.",
+    ctaTitle: "¿Tienes dudas o quieres informar de algo?",
+    ctaBody: "Habla con el staff en Discord. Te ayudaremos lo antes posible.",
+  },
+  faq: {
+    title: "Preguntas frecuentes",
+    subtitle: "Todo lo que necesitas saber para empezar a jugar.",
+    items: [
+      {
+        q: "¿Hace falta ser de la UAB para jugar?",
+        a: "No. mineuab nació en la Autónoma, pero el servidor está abierto a todo el mundo, seas o no de la UAB.",
+      },
+      {
+        q: "¿Cómo entro al servidor?",
+        a: "Abre Minecraft Java Edition, ve a Multijugador y añade un servidor con esta dirección:",
+        extra: "address",
+        link: { href: "/#com-entrar", label: "Ver todos los pasos" },
+      },
+      {
+        q: "¿Qué versión de Minecraft necesito?",
+        a: "Minecraft Java Edition, en la misma versión que el servidor:",
+        extra: "version",
+      },
+      {
+        q: "¿Puedo jugar desde Bedrock (móvil, consola o Minecraft para Windows)?",
+        a: "De momento no: el servidor solo acepta Minecraft Java Edition. Si esto cambia, lo anunciaremos en Discord.",
+      },
+      {
+        q: "¿Es gratis?",
+        a: "Sí. Entrar y jugar en el servidor no cuesta nada.",
+      },
+      {
+        q: "¿Cómo me registro?",
+        a: "La primera vez que entres, crea tu cuenta con el primer comando. Las siguientes, inicia sesión con el segundo.",
+        code: ["/register <contraseña> <contraseña>", "/login <contraseña>"],
+      },
+      {
+        q: "He olvidado la contraseña. ¿Qué hago?",
+        a: "Escribe al staff por Discord y te ayudarán a recuperar la cuenta.",
+      },
+      {
+        q: "¿Puedo usar mods, shaders o paquetes de texturas?",
+        a: "Sí a los que solo cambian el aspecto o mejoran el rendimiento, como shaders, paquetes de texturas o Sodium. No a los que dan ventaja sobre el resto, como X-ray o hacks. Si tienes dudas, pregunta al staff.",
+        link: { href: "/normes", label: "Leer las normas" },
+      },
+      {
+        q: "¿Dónde me entero de los eventos?",
+        a: "Los anunciamos en Discord y en Instagram. En Discord también encontrarás al resto de la comunidad.",
+        link: { href: "/#xarxes", label: "Ver las redes" },
+      },
+      {
+        q: "¿Es un proyecto oficial de la UAB?",
+        a: "Todavía no. Es un proyecto hecho por estudiantes y estamos trabajando para que algún día sea oficial.",
+      },
+      {
+        q: "He visto a alguien haciendo trampas. ¿Cómo lo denuncio?",
+        a: "Avisa al staff por Discord y, si puedes, adjunta capturas o un vídeo. No respondas por tu cuenta.",
+        link: { href: "/normes", label: "Leer las normas" },
+      },
+    ],
+    ctaTitle: "¿No encuentras tu pregunta?",
+    ctaBody: "Pregúntalo en Discord y te ayudaremos.",
+  },
+  socials: {
+    title: "Síguenos",
+    subtitle:
+      "Los eventos y las novedades los anunciamos en Discord e Instagram. ¡No te pierdas nada!",
+    discord: "El corazón de la comunidad, donde anunciamos eventos y novedades.",
+    instagram: "Anuncios, fotos del servidor y el día a día de la comunidad.",
+    twitch: "Directos y eventos.",
+    open: "Abrir",
+  },
+  footer: {
+    about: "Sobre mineuab",
+    tagline: "Servidor de Minecraft nacido en la Autónoma y abierto a todos.",
+    disclaimerShort: "Proyecto no oficial de la UAB (¡de momento!).",
+    pages: "Páginas",
+    social: "Redes",
+    server: "Servidor",
+    mojang: "No afiliado con Mojang Studios ni Microsoft.",
+    madeWith: "Hecho con ☕ por la comunidad mineuab.",
+  },
+  common: {
+    backHome: "Volver al inicio",
+    notFound: "Página no encontrada",
+    notFoundBody:
+      "Parece que este bloque no existe… o quizá lo ha hecho explotar un creeper.",
+  },
+};
+
+export const translations: Record<Locale, Translations> = { ca, es };

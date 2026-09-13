@@ -6,16 +6,24 @@
   color-scheme: dark;
 }
 
-html {
-  scroll-behavior: smooth;
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
 body {
-  @apply bg-neutral-950 text-neutral-100 antialiased;
-  background-image:
-    radial-gradient(60rem 60rem at 80% -10%, rgba(10, 138, 63, 0.18), transparent 60%),
-    radial-gradient(50rem 50rem at -10% 20%, rgba(10, 138, 63, 0.1), transparent 55%);
-  background-attachment: fixed;
+  @apply bg-black text-white antialiased;
 }
 
 /* Thin brand-tinted scrollbar */
@@ -24,11 +32,24 @@ body {
   height: 10px;
 }
 ::-webkit-scrollbar-track {
-  background: #0a0a0a;
+  background: #000;
 }
 ::-webkit-scrollbar-thumb {
   background: #087334;
   border-radius: 9999px;
+}
+
+@layer base {
+  /* Visible keyboard focus everywhere (utilities like focus:outline-none still win). */
+  :focus-visible {
+    outline: 2px solid theme("colors.brand.400");
+    outline-offset: 2px;
+  }
+
+  /* Keep anchored sections clear of the fixed navbar. */
+  [id] {
+    scroll-margin-top: 5rem;
+  }
 }
 
 @layer components {
@@ -37,38 +58,29 @@ body {
   }
 
   .section-title {
-    @apply font-pixel text-2xl leading-tight sm:text-3xl md:text-4xl;
+    @apply text-3xl font-bold tracking-tight text-white md:text-4xl;
+  }
+  .section-subtitle {
+    @apply mt-3 text-lg text-zinc-400;
   }
 
   .btn {
-    @apply inline-flex items-center justify-center gap-2 rounded-lg px-5 py-3 text-sm font-semibold transition-transform duration-150 active:scale-95;
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold transition duration-150 active:scale-95;
   }
   .btn-primary {
-    @apply btn bg-brand text-white shadow-pixel hover:bg-brand-600;
+    @apply btn bg-brand-500 text-white hover:bg-brand-600;
   }
   .btn-ghost {
-    @apply btn border border-white/15 bg-white/5 text-neutral-100 hover:bg-white/10;
+    @apply btn border border-zinc-700 bg-black/40 text-zinc-100 backdrop-blur-sm hover:border-zinc-500 hover:bg-zinc-900/70;
   }
 
   .card {
-    @apply rounded-2xl border border-white/10 bg-white/[0.03] p-6 backdrop-blur-sm;
+    @apply rounded-3xl border border-zinc-800 bg-gradient-to-br from-zinc-900/80 to-zinc-950/80 p-8;
   }
+}
 
-  /* Minecraft-style beveled crafting slot */
-  .mc-slot {
-    @apply relative flex items-center justify-center text-center;
-    background: #8b8b8b;
-    border-top: 4px solid #373737;
-    border-left: 4px solid #373737;
-    border-right: 4px solid #ffffff;
-    border-bottom: 4px solid #ffffff;
-  }
-
-  .mc-panel {
-    background: #c6c6c6;
-    border-top: 6px solid #ffffff;
-    border-left: 6px solid #ffffff;
-    border-right: 6px solid #555555;
-    border-bottom: 6px solid #555555;
+@layer utilities {
+  .text-shadow-lg {
+    text-shadow: 0 2px 16px rgb(0 0 0 / 0.65);
   }
 }
