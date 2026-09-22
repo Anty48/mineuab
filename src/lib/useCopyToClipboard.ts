@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 
-/** Copies text and keeps `copied` true for a moment, for button feedback. */
+/** Copia text i deixa `copied` a true una estona, perquè el botó ho mostri. */
 export function useCopyToClipboard(resetAfterMs = 2000) {
   const [copied, setCopied] = useState(false);
   const timer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
@@ -14,7 +14,7 @@ export function useCopyToClipboard(resetAfterMs = 2000) {
       try {
         await navigator.clipboard.writeText(text);
       } catch {
-        return; // clipboard blocked (insecure origin, permissions)
+        return; // porta-retalls bloquejat (origen no segur, permisos)
       }
       setCopied(true);
       clearTimeout(timer.current);

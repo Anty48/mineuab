@@ -2,7 +2,8 @@
 
 import { useLanguage } from "@/i18n/LanguageProvider";
 import { DISCORD_URL, INSTAGRAM_URL, TWITCH_URL } from "@/lib/links";
-import { DiscordIcon, InstagramIcon, TwitchIcon } from "@/components/icons";
+import SectionHeading from "@/components/SectionHeading";
+import { ArrowIcon, DiscordIcon, InstagramIcon, TwitchIcon } from "@/components/icons";
 
 export default function Socials() {
   const { t } = useLanguage();
@@ -13,62 +14,66 @@ export default function Socials() {
       desc: t("socials.discord"),
       href: DISCORD_URL,
       icon: <DiscordIcon />,
-      accent: "bg-indigo-500/15 text-indigo-300",
-      hover: "hover:border-indigo-400/50",
+      accent: "bg-[#5865F2]",
     },
     {
       name: "Instagram",
       desc: t("socials.instagram"),
       href: INSTAGRAM_URL,
       icon: <InstagramIcon />,
-      accent: "bg-pink-500/15 text-pink-300",
-      hover: "hover:border-pink-400/50",
+      accent: "bg-[#D62976]",
     },
     {
       name: "Twitch",
       desc: t("socials.twitch"),
       href: TWITCH_URL,
       icon: <TwitchIcon />,
-      accent: "bg-purple-500/15 text-purple-300",
-      hover: "hover:border-purple-400/50",
+      accent: "bg-[#9146FF]",
     },
   ];
 
   return (
-    <section id="xarxes" className="border-t border-zinc-900 py-24 md:py-32">
+    <section id="xarxes" className="border-t-2 border-ink py-20 md:py-28">
       <div className="container-page">
-        <div className="max-w-2xl">
-          <h2 className="section-title">{t("socials.title")}</h2>
-          <p className="section-subtitle">{t("socials.subtitle")}</p>
-        </div>
+        <SectionHeading
+          number="04"
+          label={t("nav.socials")}
+          title={t("socials.title")}
+          subtitle={t("socials.subtitle")}
+        />
 
-        <div className="mt-12 grid gap-5 md:grid-cols-3">
+        {/* Una fila gran per xarxa; en passar-hi per sobre s'omple de verd. */}
+        <ul className="mt-12 border-t-2 border-ink">
           {socials.map((s) => (
-            <a
-              key={s.name}
-              href={s.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`card group flex flex-col transition duration-200 hover:-translate-y-1 ${s.hover}`}
-            >
-              <span
-                className={`flex h-14 w-14 items-center justify-center rounded-2xl ${s.accent}`}
+            <li key={s.name} className="border-b-2 border-ink">
+              <a
+                href={s.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group grid grid-cols-[auto_1fr_auto] items-center gap-5 px-3 py-6 transition-colors hover:bg-brand-500 hover:text-white md:gap-8 md:px-5 md:py-8"
               >
-                {s.icon}
-              </span>
-              <h3 className="mt-6 text-xl font-semibold text-white group-hover:underline">
-                {s.name}
-              </h3>
-              <p className="mt-2 flex-1 text-zinc-400">{s.desc}</p>
-              <span className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-zinc-300">
-                {t("socials.open")}
-                <span aria-hidden className="transition-transform group-hover:translate-x-1">
-                  →
+                <span
+                  className={`flex h-14 w-14 items-center justify-center border-2 border-ink text-white md:h-16 md:w-16 ${s.accent}`}
+                >
+                  {s.icon}
                 </span>
-              </span>
-            </a>
+                <span>
+                  <span className="block font-display text-3xl font-extrabold md:text-5xl">
+                    {s.name}
+                  </span>
+                  <span className="mt-1 block text-ink-600 group-hover:text-white">{s.desc}</span>
+                </span>
+                <span className="flex items-center gap-2 font-bold">
+                  <span className="hidden sm:inline">{t("socials.open")}</span>
+                  <ArrowIcon
+                    size={24}
+                    className="-rotate-45 transition-transform group-hover:rotate-0"
+                  />
+                </span>
+              </a>
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
     </section>
   );

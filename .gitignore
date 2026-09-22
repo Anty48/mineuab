@@ -1,4 +1,4 @@
-# dependencies
+# dependències
 /node_modules
 /.pnp
 .pnp.js
@@ -7,20 +7,20 @@
 /.next/
 /out/
 
-# production
+# producció
 /build
 
-# misc
+# altres
 .DS_Store
 *.pem
 Thumbs.db
 
-# debug
+# registres de depuració
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# env
+# variables d'entorn
 .env
 .env*.local
 
@@ -31,5 +31,5 @@ next-env.d.ts
 # vercel
 .vercel
 
-# original design assets (kept locally, not shipped)
+# fitxers de disseny originals (es guarden en local, no es publiquen)
 /assets/Logo.rar

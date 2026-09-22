@@ -6,16 +6,16 @@ import placaCivicaPluja from "@/assets/gallery/placa-civica-pluja.jpg";
 import trinxera from "@/assets/gallery/trinxera.jpg";
 
 export interface GalleryItem {
-  /** Key under gallery.items in translations.ts (the caption). */
+  /** Clau dins de gallery.items a translations.ts (el peu de foto). */
   key: string;
   image: StaticImageData;
-  /** Bigger tile in the grid. */
+  /** Casella més gran a la graella. */
   size?: "big" | "wide";
 }
 
-// To add a build: export the screenshot to src/assets/gallery, import it here
-// and add its caption under gallery.items in both languages.
-// The order and sizes below fill the grid with no gaps.
+// Per afegir una construcció: exporta la captura a src/assets/gallery, importa-la
+// aquí i afegeix-ne el peu de foto a gallery.items en tots dos idiomes.
+// L'ordre i les mides d'aquí sota omplen la graella sense forats.
 export const GALLERY: GalleryItem[] = [
   { key: "civicSquare", image: placaCivica, size: "big" },
   { key: "ferrosPlatform", image: andanaFerros },
@@ -23,3 +23,12 @@ export const GALLERY: GalleryItem[] = [
   { key: "rain", image: placaCivicaPluja },
   { key: "trinxera", image: trinxera, size: "wide" },
 ];
+
+/** Foto per a cada capçalera de pàgina, a partir de la galeria. */
+export const PHOTOS = {
+  placaCivica,
+  andanaFerros,
+  entradaFerros,
+  placaCivicaPluja,
+  trinxera,
+};

@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useLanguage } from "@/i18n/LanguageProvider";
 import { useServerStatus } from "@/lib/useServerStatus";
 
-/** Live "N players online" pill. Renders nothing until the status loads. */
+/** Indicador "N jugadors en línia" en directe. No mostra res fins que arriba l'estat. */
 export default function ServerStatusPill({
   className = "inline-flex",
 }: {
@@ -25,17 +25,15 @@ export default function ServerStatusPill({
   return (
     <Link
       href="/#com-entrar"
-      className={`items-center gap-2 whitespace-nowrap rounded-full px-4 py-2 text-sm font-semibold transition-colors ${
+      className={`items-center gap-2 whitespace-nowrap border-2 border-ink px-3 py-1.5 text-sm font-bold transition-colors ${
         status.online
           ? "bg-brand-500 text-white hover:bg-brand-600"
-          : "bg-zinc-800 text-zinc-300 hover:bg-zinc-700"
+          : "bg-paper-200 text-ink-700 hover:bg-paper-300"
       } ${className}`}
     >
       <span
         aria-hidden
-        className={`h-2 w-2 rounded-full ${
-          status.online ? "animate-pulse bg-white" : "bg-zinc-500"
-        }`}
+        className={`h-2 w-2 ${status.online ? "animate-blink bg-white" : "bg-ink-500"}`}
       />
       {label}
     </Link>

@@ -1,11 +1,11 @@
-// Central place for the server address and the community's links.
+// Lloc únic per a l'adreça del servidor i els enllaços de la comunitat.
 
-/** What players type in Minecraft. It's also the website's future domain. */
+/** El que escriuen els jugadors a Minecraft. També és el futur domini de la web. */
 export const SERVER_ADDRESS = "www.mineuab.org";
 export const SITE_URL = "https://www.mineuab.org";
 
 export const DISCORD_URL = "https://discord.gg/CfXau5xy3U";
-// Update these with the real handles when available.
+// Actualitzeu-los amb els comptes reals quan els tinguem.
 export const INSTAGRAM_URL = "https://instagram.com/mineuab";
 export const TWITCH_URL = "https://twitch.tv/mineuab";
 
@@ -15,9 +15,9 @@ export const SOCIAL_LINKS = [
   { name: "Twitch", href: TWITCH_URL },
 ] as const;
 
-// Link keys point into translations.
+// Les claus dels enllaços apunten a translations.ts.
 
-/** Top navigation. */
+/** Navegació superior. */
 export const NAV_LINKS = [
   { href: "/#com-entrar", key: "nav.howToJoin" },
   { href: "/galeria", key: "nav.gallery" },
@@ -26,7 +26,7 @@ export const NAV_LINKS = [
   { href: "/historia", key: "nav.history" },
 ] as const;
 
-/** Every page and home section, listed in the footer. */
+/** Totes les pàgines i seccions de l'inici, llistades al peu de pàgina. */
 export const SITE_LINKS = [
   { href: "/", key: "nav.home" },
   { href: "/#com-entrar", key: "nav.howToJoin" },

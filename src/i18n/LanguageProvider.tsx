@@ -22,11 +22,11 @@ interface LanguageContextValue {
   setLocale: (l: Locale) => void;
   toggle: () => void;
   /**
-   * Translate by dot-path, e.g. t("nav.about"). Returns the key if missing.
-   * `{name}` placeholders are filled from `vars`: t("x", { count: 3 }).
+   * Tradueix per camí amb punts, p. ex. t("nav.about"). Si no existeix, retorna la clau.
+   * Els marcadors `{nom}` s'omplen amb `vars`: t("x", { count: 3 }).
    */
   t: (path: string, vars?: Record<string, string | number>) => string;
-  /** Return a raw (possibly non-string) node from the dictionary, e.g. arrays. */
+  /** Retorna un node del diccionari tal com és (pot no ser text), p. ex. una llista. */
   raw: <T = unknown>(path: string) => T;
 }
 
@@ -46,7 +46,7 @@ function resolvePath(obj: Dict, path: string): unknown {
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
   const [locale, setLocaleState] = useState<Locale>(DEFAULT_LOCALE);
 
-  // Hydrate from localStorage (Catalan stays the default if nothing stored).
+  // Recupera l'idioma desat a localStorage (si no n'hi ha cap, es queda en català).
   useEffect(() => {
     try {
       const stored = window.localStorage.getItem(STORAGE_KEY) as Locale | null;
@@ -54,7 +54,7 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
         setLocaleState(stored);
       }
     } catch {
-      /* storage blocked (private mode, strict cookie settings) */
+      /* emmagatzematge bloquejat (mode privat, galetes restringides) */
     }
   }, []);
 
@@ -63,7 +63,7 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
     try {
       window.localStorage.setItem(STORAGE_KEY, l);
     } catch {
-      /* not persisted, but still switches for this visit */
+      /* no es desa, però canvia igualment durant aquesta visita */
     }
   }, []);
 

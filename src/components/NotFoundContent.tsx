@@ -2,22 +2,26 @@
 
 import Link from "next/link";
 import { useLanguage } from "@/i18n/LanguageProvider";
+import { CreeperIcon } from "./icons";
 
 export default function NotFoundContent() {
   const { t } = useLanguage();
 
   return (
-    <section className="container-page flex min-h-[75vh] flex-col items-center justify-center pb-16 pt-32 text-center">
-      <p className="text-8xl font-bold tracking-tight text-brand-500 md:text-9xl">404</p>
-      <h1 className="mt-6 text-3xl font-semibold text-white">
-        {t("common.notFound")}
-      </h1>
-      <p className="mt-3 max-w-md text-lg text-zinc-400">
-        {t("common.notFoundBody")}
-      </p>
-      <Link href="/" className="btn-primary mt-8">
-        {t("common.backHome")}
-      </Link>
+    <section className="bg-paving">
+      <div className="container-page flex min-h-[70vh] flex-col items-center justify-center py-20 text-center">
+        <CreeperIcon size={96} className="border-2 border-ink shadow-block" />
+        <p className="mt-10 font-pixel text-7xl text-brand-600 md:text-8xl">404</p>
+        <h1 className="mt-4 font-display text-3xl font-extrabold md:text-4xl">
+          {t("common.notFound")}
+        </h1>
+        <p className="mt-3 max-w-md text-pretty text-lg text-ink-600">
+          {t("common.notFoundBody")}
+        </p>
+        <Link href="/" className="btn-primary mt-8">
+          {t("common.backHome")}
+        </Link>
+      </div>
     </section>
   );
 }

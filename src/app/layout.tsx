@@ -1,12 +1,28 @@
 import type { Metadata, Viewport } from "next";
-import { Inter } from "next/font/google";
+import { Bricolage_Grotesque, Inter, Silkscreen } from "next/font/google";
 import "./globals.css";
 import { LanguageProvider } from "@/i18n/LanguageProvider";
 import { SERVER_ADDRESS, SITE_URL } from "@/lib/links";
 
+// Text corrent.
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-sans",
+  display: "swap",
+});
+
+// Títols.
+const bricolage = Bricolage_Grotesque({
+  subsets: ["latin"],
+  variable: "--font-display",
+  display: "swap",
+});
+
+// Etiquetes petites en píxels, com les lletres del logo.
+const silkscreen = Silkscreen({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-pixel",
   display: "swap",
 });
 
@@ -43,8 +59,8 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#000000",
-  colorScheme: "dark",
+  themeColor: "#f4f1ea",
+  colorScheme: "light",
 };
 
 export default function RootLayout({
@@ -53,7 +69,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="ca" className={`${inter.variable} dark`}>
+    <html
+      lang="ca"
+      className={`${inter.variable} ${bricolage.variable} ${silkscreen.variable}`}
+    >
       <body className="font-sans">
         <LanguageProvider>{children}</LanguageProvider>
       </body>

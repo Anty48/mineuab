@@ -1,20 +1,20 @@
 # mineuab
 
-The website for **mineuab**, the Minecraft server born at the [UAB (Universitat Autònoma de Barcelona)](https://www.uab.cat/) and open to everyone, whether or not you study there.
+La web de **mineuab**, el servidor de Minecraft nascut a la [UAB (Universitat Autònoma de Barcelona)](https://www.uab.cat/) i obert a tothom, siguis o no de la universitat.
 
-**Server address:** `www.mineuab.org` · **Discord:** https://discord.gg/CfXau5xy3U
+**Adreça del servidor:** `www.mineuab.org` · **Discord:** https://discord.gg/CfXau5xy3U
 
-> ⚠️ mineuab is **not yet an official UAB project** — but we're working on it!
+> ⚠️ mineuab **encara no és un projecte oficial de la UAB**, però hi estem treballant!
 
-## Stack
+## Tecnologia
 
 - **Next.js 15** (App Router) + **React 19** + **TypeScript**
-- **Tailwind CSS** — black/zinc theme with the brand green `#0A8A3F` as accent, Inter font
-- Custom lightweight **i18n** — default **Catalan (CA)**, full **Spanish (ES)** translation, with a `CAT / ESP` toggle in the navbar. Catalan is the source of truth: TypeScript fails if a key is missing in Spanish.
-- **Live server status** (online, players, version) from the free public [mcsrvstat.us](https://mcsrvstat.us) API, fetched in the browser. If the API is unreachable the status UI simply stays hidden.
-- **ESLint** with the Next.js rules (`next/core-web-vitals` + TypeScript).
+- **Tailwind CSS**, amb el disseny descrit a [Disseny](#disseny).
+- **i18n** propi i lleuger: **català (CA)** per defecte i traducció completa al **castellà (ES)**, amb el selector `CAT / ESP` a la barra de navegació. El català és la font de veritat: TypeScript dona error si falta una clau en castellà.
+- **Estat del servidor en directe** (en línia, jugadors, versió) amb l'API pública i gratuïta de [mcsrvstat.us](https://mcsrvstat.us), consultada des del navegador. Si l'API no respon, els indicadors d'estat simplement no es mostren.
+- **ESLint** amb les regles de Next.js (`next/core-web-vitals` + TypeScript).
 
-## Getting started
+## Com començar
 
 ```bash
 npm install
@@ -22,60 +22,85 @@ npm run dev      # http://localhost:3000
 npm run lint
 ```
 
-Build for production:
+Per a producció:
 
 ```bash
 npm run build
 npm start
 ```
 
-## Pages
+## Pàgines
 
-- `/` — banner with the server address, the "not official" notice, how to join (with live status), about us and socials.
-- `/galeria` — gallery of builds, with a full-screen viewer (arrow keys to move, Esc to close).
-- `/normes` — server rules. **Provisional** until the final rules are written.
-- `/faq` — frequently asked questions.
-- `/historia` — our story.
+- `/`: portada amb l'adreça i l'estat del servidor, una cinta amb el que hi trobaràs, com entrar-hi (amb el carnet de jugador), qui som, un tast de la galeria i les xarxes.
+- `/galeria`: galeria de construccions, amb un visor a pantalla completa (fletxes per moure't, Esc per tancar).
+- `/normes`: normes del servidor, amb un índex al costat. **Provisionals** fins que tinguem les definitives.
+- `/faq`: preguntes freqüents.
+- `/historia`: la nostra història, com una línia del temps.
 
-## Project structure
+L'avís de "projecte no oficial" surt com a franja a dalt de totes les pàgines.
+
+## Disseny
+
+Volem una identitat pròpia, que no s'assembli a la de cap altre servidor:
+
+- **Verd corporatiu `#0A8A3F`** (`brand-500` a Tailwind). És el color de la marca i no s'ha de canviar.
+- **Fons clar de "paviment"** (`paper`), amb una quadrícula suau que recorda les rajoles de la plaça cívica (`bg-paving`).
+- **Blocs**: vores dures de 2 px, cantonades rectes i ombres desplaçades (`shadow-block`), com els blocs de Minecraft. Els botons "s'enfonsen" quan els prems.
+- **Terracota** (`terra`) només per als avisos, com les juntes de maó del paviment.
+- **Tipografies**: Bricolage Grotesque per als títols, Inter per al text i Silkscreen (lletra de píxels, com el logo) per a les etiquetes petites.
+- **Vores de blocs alterns** entre seccions (`edge-top`), com la vora d'herba d'un bloc.
+
+Els colors, les ombres i les tipografies són a [`tailwind.config.ts`](tailwind.config.ts), i els botons i les peces comunes a [`src/app/globals.css`](src/app/globals.css).
+
+## Estructura del projecte
 
 ```
 src/
   app/
-    page.tsx                    # Home
+    page.tsx                    # Inici
     galeria/  normes/  faq/  historia/
     not-found.tsx
-  assets/gallery/               # Gallery photos (imported, so they get blur placeholders)
+  assets/gallery/               # Fotos de la galeria (s'importen, així tenen un difuminat mentre carreguen)
   components/
-    sections/                   # Home sections: Hero, Disclaimer, HowToJoin, About, Socials
-    GalleryContent, RulesContent, FaqContent, HistoryContent
-    PageHeader.tsx              # Banner at the top of inner pages
-    DiscordCta.tsx              # "Join the Discord" block at the end of inner pages
-    ServerCard.tsx              # Server address card with copy button and live status
-    ServerStatusPill.tsx        # "N jugadors en línia" pill in the navbar
+    sections/                   # Seccions de l'inici: Hero, Marquee, HowToJoin, About, GalleryPreview, Socials
+    GalleryContent, RulesContent, FaqContent, HistoryContent, NotFoundContent
+    AnnouncementBar.tsx         # Franja d'avís de dalt de tot
+    PageHeader.tsx              # Capçalera de les pàgines interiors
+    SectionHeading.tsx          # Número, títol i subtítol de cada secció de l'inici
+    DiscordCta.tsx              # Bloc "Uneix-te al Discord" al final de les pàgines interiors
+    ServerCard.tsx              # Carnet de jugador: adreça, botó de copiar i estat en directe
+    ServerStatusPill.tsx        # Indicador "N jugadors en línia" de la barra
     Navbar, Footer, LanguageToggle, icons
   i18n/
-    translations.ts             # All CA + ES text
-    LanguageProvider.tsx        # Locale state + t() helper
+    translations.ts             # Tots els textos en CA i ES
+    LanguageProvider.tsx        # Estat de l'idioma i funció t()
   lib/
-    links.ts                    # Server address, Discord/Instagram/Twitch URLs, nav links
-    gallery.ts                  # Which photos the gallery shows, in what order
+    links.ts                    # Adreça del servidor, enllaços de Discord/Instagram/Twitch i de navegació
+    gallery.ts                  # Quines fotos surten a la galeria i en quin ordre
     useServerStatus.ts
     useCopyToClipboard.ts
 ```
 
-## Editing content
+## Editar el contingut
 
-All text, in Catalan and Spanish, lives in [`src/i18n/translations.ts`](src/i18n/translations.ts): the rules are under `rules.sections`, the FAQ under `faq.items` and the gallery captions under `gallery.items`.
+Tots els textos, en català i en castellà, són a [`src/i18n/translations.ts`](src/i18n/translations.ts): les normes a `rules.sections`, les preguntes freqüents a `faq.items`, els peus de foto de la galeria a `gallery.items` i les paraules de la cinta verda a `marquee`.
 
-To add a build to the gallery, export the screenshot as a JPEG into `src/assets/gallery/`, import it in [`src/lib/gallery.ts`](src/lib/gallery.ts) and add its caption under `gallery.items` in both languages.
+Per afegir una construcció a la galeria, exporta la captura en JPEG a `src/assets/gallery/`, importa-la a [`src/lib/gallery.ts`](src/lib/gallery.ts) i afegeix-ne el peu de foto a `gallery.items` en tots dos idiomes. Les quatre primeres fotos de la llista també surten a l'inici.
 
-The server address, the Discord invite and the social links are in [`src/lib/links.ts`](src/lib/links.ts).
+L'adreça del servidor, la invitació de Discord i els enllaços de les xarxes són a [`src/lib/links.ts`](src/lib/links.ts).
 
-## Assets
+## Imatges
 
-`public/assets/` only holds the files the site uses: the white wordmark and square logos, the page banners and `og.jpg` (the 1200×630 image for link previews). The banners are pre-blurred copies of the server screenshots in `Images/Spawn/` of the shared MineUAB folder, exported with `sharp`, so re-export them if you change a photo. Every logo variant and the SVG sources are kept in [`assets/`](assets/) at the repo root. Favicon: `public/favicon.ico`.
+`public/assets/` només conté els fitxers que fa servir la web: els logos (horitzontal i quadrat, en verd i en blanc) i `og.jpg` (la imatge de 1200×630 per a les previsualitzacions d'enllaços).
 
-## Domain note
+El logo en color (`_col`) s'ha de mostrar sempre sobre fons blanc: la U i la B són l'espai blanc entre els blocs verds i, sobre un altre color, es perden. Per això a la web va dins d'un bloc blanc amb vora fosca.
 
-Minecraft finds the server through an SRV record (`_minecraft._tcp.www.mineuab.org` → `mc.mineuab.org:25567`). When the website goes live on `www.mineuab.org`, point that hostname's `A`/`CNAME` record at the web host and **keep the SRV record**: browsers use the `A`/`CNAME`, Minecraft clients use the SRV, so both keep working on the same address.
+Les captures del servidor són a `src/assets/gallery/`. Totes les variants del logo i els SVG originals es guarden a [`assets/`](assets/), a l'arrel del repositori. Favicon: `public/favicon.ico`.
+
+## Nota sobre el domini
+
+Minecraft troba el servidor gràcies a un registre SRV (`_minecraft._tcp.www.mineuab.org` → `mc.mineuab.org:25567`). Quan la web es publiqui a `www.mineuab.org`, apunteu el registre `A`/`CNAME` d'aquest nom al servidor web i **mantingueu el registre SRV**: els navegadors fan servir l'`A`/`CNAME` i Minecraft l'SRV, així tots dos funcionen amb la mateixa adreça.
+
+## Commits
+
+Escriviu els missatges de commit en català, en imperatiu i curts. Per exemple: `Afegeix la foto de la biblioteca a la galeria`.

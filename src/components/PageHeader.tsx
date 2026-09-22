@@ -1,42 +1,57 @@
-import Image from "next/image";
+import Image, { type StaticImageData } from "next/image";
+import Link from "next/link";
 
-/** Banner for inner pages: a blurred build in the background and the page title on top. */
+/** Capçalera de les pàgines interiors: títol a l'esquerra i una captura del servidor a la dreta. */
 export default function PageHeader({
+  crumb,
   title,
   subtitle,
   image,
-  narrow = false,
+  caption,
 }: {
+  /** Nom curt de la pàgina per a la ruta de dalt ("mineuab / Normes"). */
+  crumb: string;
   title: string;
   subtitle?: string;
-  /** Pre-blurred background from public/assets. */
-  image: string;
-  /** Line the text up with the narrower column used by reading pages. */
-  narrow?: boolean;
+  /** Captura importada de src/assets/gallery. */
+  image: StaticImageData;
+  /** Peu de la captura. */
+  caption?: string;
 }) {
   return (
-    <header className="relative isolate flex min-h-[26rem] items-end overflow-hidden md:min-h-[32rem]">
-      <Image
-        src={image}
-        alt=""
-        fill
-        priority
-        sizes="100vw"
-        className="-z-20 object-cover object-[50%_35%]"
-      />
-      <div
-        aria-hidden
-        className="absolute inset-0 -z-10 bg-gradient-to-t from-black via-black/70 to-black/50"
-      />
-      <div className={`container-page pb-14 pt-32 ${narrow ? "max-w-3xl" : ""}`}>
-        <h1 className="text-shadow-lg text-balance text-4xl font-semibold text-white md:text-6xl">
-          {title}
-        </h1>
-        {subtitle && (
-          <p className="text-shadow-lg mt-4 max-w-2xl text-balance text-lg text-zinc-200 md:text-2xl">
-            {subtitle}
+    <header className="bg-paving border-b-2 border-ink">
+      <div className="container-page grid items-center gap-12 py-12 md:py-16 lg:grid-cols-[1.25fr_1fr] lg:gap-14">
+        <div>
+          <p className="eyebrow">
+            <Link href="/" className="hover:underline">
+              mineuab
+            </Link>
+            <span aria-hidden>/</span>
+            {crumb}
           </p>
-        )}
+          <h1 className="mt-4 text-balance font-display text-5xl font-extrabold leading-[0.95] tracking-tight md:text-7xl">
+            {title}
+          </h1>
+          {subtitle && (
+            <p className="mt-5 max-w-xl text-pretty text-lg text-ink-600 md:text-xl">{subtitle}</p>
+          )}
+        </div>
+
+        <figure className="mx-auto w-full max-w-lg rotate-[1.5deg] border-2 border-ink bg-paper-50 p-2 shadow-block-lg lg:max-w-none">
+          <Image
+            src={image}
+            alt=""
+            placeholder="blur"
+            priority
+            sizes="(min-width: 1024px) 40vw, (min-width: 640px) 512px, 100vw"
+            className="aspect-[16/10] w-full object-cover"
+          />
+          {caption && (
+            <figcaption className="px-1 pt-2 font-pixel text-[11px] uppercase text-ink-600">
+              {caption}
+            </figcaption>
+          )}
+        </figure>
       </div>
     </header>
   );

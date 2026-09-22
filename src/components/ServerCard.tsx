@@ -1,12 +1,13 @@
 "use client";
 
+import Image from "next/image";
 import { useLanguage } from "@/i18n/LanguageProvider";
 import { SERVER_ADDRESS } from "@/lib/links";
 import { useCopyToClipboard } from "@/lib/useCopyToClipboard";
 import { useServerStatus } from "@/lib/useServerStatus";
 import { CheckIcon, CopyIcon } from "./icons";
 
-/** The server address front and centre, with a copy button and live status. */
+/** L'adreça del servidor en forma de carnet de jugador, amb botó de copiar i estat en directe. */
 export default function ServerCard({ className = "" }: { className?: string }) {
   const { t } = useLanguage();
   const status = useServerStatus();
@@ -24,42 +25,69 @@ export default function ServerCard({ className = "" }: { className?: string }) {
   }
 
   return (
-    <div
-      className={`w-full max-w-lg overflow-hidden rounded-3xl border border-brand-500/50 bg-gradient-to-br from-zinc-800/60 to-zinc-900/60 text-center shadow-2xl backdrop-blur-md ${className}`}
-    >
-      <div className="px-6 pb-6 pt-7 sm:px-8">
-        <h3 className="text-xl font-semibold text-white">{t("server.cardTitle")}</h3>
-        <p className="mt-1 min-h-[1.25rem] text-sm text-zinc-300">{statusLine}</p>
-        <p className="mt-5 select-all break-all rounded-xl border border-brand-500 bg-black/70 px-4 py-4 font-mono text-2xl text-brand-300 sm:text-3xl">
-          {SERVER_ADDRESS}
-        </p>
+    <div className={`w-full max-w-md border-2 border-ink bg-paper-50 shadow-block-lg ${className}`}>
+      <div className="flex items-center justify-between gap-4 border-b-2 border-ink bg-brand-500 px-5 py-4 text-white">
+        <div>
+          <p className="font-pixel text-[11px] uppercase text-brand-100">{t("server.cardTag")}</p>
+          <h3 className="mt-1 font-display text-2xl font-extrabold">{t("server.cardTitle")}</h3>
+        </div>
+        {/* L'original fa 1200×1000. */}
+        <Image
+          src="/assets/square_w.png"
+          alt=""
+          width={58}
+          height={48}
+          className="h-12 w-auto"
+        />
       </div>
 
-      <button
-        type="button"
-        onClick={() => copy(SERVER_ADDRESS)}
-        className="flex w-full items-center justify-center gap-2 border-y border-brand-500 bg-brand-500 py-3.5 text-lg font-semibold text-white transition-colors hover:bg-brand-600"
-      >
-        {copied ? <CheckIcon size={20} /> : <CopyIcon size={20} />}
-        <span aria-live="polite">
-          {copied ? t("server.copied") : t("server.copy")}
-        </span>
-      </button>
+      <div className="px-5 pt-5">
+        <p className="font-pixel text-[10px] uppercase text-ink-500">{t("server.ipLabel")}</p>
+        <p className="mt-1 select-all break-all font-mono text-2xl font-bold text-ink sm:text-[1.7rem]">
+          {SERVER_ADDRESS}
+        </p>
+        <p className="mt-2 min-h-[1.25rem] text-sm text-ink-600">{statusLine}</p>
 
-      <dl className="grid grid-cols-2 divide-x divide-zinc-700/60">
-        <div className="flex flex-col-reverse px-4 py-4">
-          <dt className="text-xs text-zinc-400">{t("server.version")}</dt>
-          <dd className="text-lg font-semibold text-white">
-            {status?.version ?? "—"}
-          </dd>
-        </div>
-        <div className="flex flex-col-reverse px-4 py-4">
-          <dt className="text-xs text-zinc-400">{t("server.access")}</dt>
-          <dd className="text-lg font-semibold text-white">
-            {t("server.openToAll")}
-          </dd>
-        </div>
-      </dl>
+        <dl className="mt-4 grid grid-cols-3 border-y-2 border-dashed border-ink/25">
+          <div className="flex flex-col-reverse py-3 pr-2">
+            <dt className="font-pixel text-[10px] uppercase text-ink-500">{t("server.status")}</dt>
+            <dd className="flex items-center gap-1.5 text-sm font-bold">
+              <span
+                aria-hidden
+                className={`h-2 w-2 shrink-0 ${
+                  !status ? "bg-ink/20" : status.online ? "animate-blink bg-brand-500" : "bg-terra-500"
+                }`}
+              />
+              {!status ? "—" : status.online ? t("server.online") : t("server.offline")}
+            </dd>
+          </div>
+          <div className="flex flex-col-reverse border-x-2 border-dashed border-ink/25 px-3 py-3">
+            <dt className="font-pixel text-[10px] uppercase text-ink-500">{t("server.version")}</dt>
+            <dd className="truncate text-sm font-bold">{status?.version ?? "—"}</dd>
+          </div>
+          <div className="flex flex-col-reverse py-3 pl-3">
+            <dt className="font-pixel text-[10px] uppercase text-ink-500">{t("server.access")}</dt>
+            <dd className="text-sm font-bold">{t("server.openToAll")}</dd>
+          </div>
+        </dl>
+      </div>
+
+      <div className="p-5">
+        <button
+          type="button"
+          onClick={() => copy(SERVER_ADDRESS)}
+          className="btn-primary w-full py-3 text-base"
+        >
+          {copied ? <CheckIcon size={20} /> : <CopyIcon size={20} />}
+          <span aria-live="polite">{copied ? t("server.copied") : t("server.copy")}</span>
+        </button>
+      </div>
+
+      {/* Codi de barres decoratiu, com el d'un carnet. */}
+      <div
+        aria-hidden
+        className="mx-5 mb-5 h-6 [background-image:repeating-linear-gradient(90deg,#131a16_0_3px,transparent_3px_5px,#131a16_5px_6px,transparent_6px_10px,#131a16_10px_12px,transparent_12px_13px)]"
+      />
     </div>
   );
 }

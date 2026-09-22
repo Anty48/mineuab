@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  color-scheme: dark;
+  color-scheme: light;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -23,32 +23,35 @@
 }
 
 body {
-  @apply bg-black text-white antialiased;
+  @apply bg-paper text-ink antialiased;
 }
 
-/* Thin brand-tinted scrollbar */
+::selection {
+  @apply bg-brand-500 text-white;
+}
+
+/* Barra de desplaçament prima amb el verd de la marca */
 ::-webkit-scrollbar {
   width: 10px;
   height: 10px;
 }
 ::-webkit-scrollbar-track {
-  background: #000;
+  background: #e9e4d8;
 }
 ::-webkit-scrollbar-thumb {
   background: #087334;
-  border-radius: 9999px;
 }
 
 @layer base {
-  /* Visible keyboard focus everywhere (utilities like focus:outline-none still win). */
+  /* Focus de teclat visible a tot arreu (utilitats com focus:outline-none continuen guanyant). */
   :focus-visible {
-    outline: 2px solid theme("colors.brand.400");
+    outline: 3px solid theme("colors.brand.500");
     outline-offset: 2px;
   }
 
-  /* Keep anchored sections clear of the fixed navbar. */
+  /* Les seccions amb àncora no queden tapades per la barra de navegació. */
   [id] {
-    scroll-margin-top: 5rem;
+    scroll-margin-top: 5.5rem;
   }
 }
 
@@ -57,30 +60,78 @@ body {
     @apply mx-auto w-full max-w-6xl px-5 sm:px-8;
   }
 
-  .section-title {
-    @apply text-3xl font-bold tracking-tight text-white md:text-4xl;
+  /* Etiqueta petita amb lletra pixelada que va damunt dels títols. */
+  .eyebrow {
+    @apply flex items-center gap-2 font-pixel text-xs uppercase tracking-wider text-brand-600;
   }
-  .section-subtitle {
-    @apply mt-3 text-lg text-zinc-400;
+  .eyebrow::before {
+    content: "";
+    @apply h-2.5 w-2.5 shrink-0 bg-current;
   }
 
+  .section-title {
+    @apply text-balance font-display text-4xl font-extrabold leading-[1.05] tracking-tight md:text-5xl;
+  }
+  .section-subtitle {
+    @apply mt-4 max-w-xl text-pretty text-lg text-ink-600;
+  }
+
+  /* Botons: blocs amb ombra que s'enfonsen quan els prems. */
   .btn {
-    @apply inline-flex items-center justify-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold transition duration-150 active:scale-95;
+    @apply inline-flex items-center justify-center gap-2 border-2 border-ink px-5 py-2.5 text-[15px] font-bold shadow-block-sm transition-[transform,box-shadow,background-color] duration-100 hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-block active:translate-x-1 active:translate-y-1 active:shadow-none;
   }
   .btn-primary {
     @apply btn bg-brand-500 text-white hover:bg-brand-600;
   }
-  .btn-ghost {
-    @apply btn border border-zinc-700 bg-black/40 text-zinc-100 backdrop-blur-sm hover:border-zinc-500 hover:bg-zinc-900/70;
+  .btn-secondary {
+    @apply btn bg-paper-50 text-ink hover:bg-white;
+  }
+  /* Botó quadrat només amb icona (menú, tancar, fletxes). */
+  .btn-icon {
+    @apply inline-flex items-center justify-center border-2 border-ink bg-paper-50 p-2 text-ink transition-colors hover:bg-brand-500 hover:text-white;
   }
 
-  .card {
-    @apply rounded-3xl border border-zinc-800 bg-gradient-to-br from-zinc-900/80 to-zinc-950/80 p-8;
+  .block-card {
+    @apply border-2 border-ink bg-paper-50 shadow-block;
+  }
+
+  /* Ordres de Minecraft, com un xat de joc. */
+  .code-line {
+    @apply block break-all border-2 border-ink bg-ink px-3 py-2 font-mono text-sm text-brand-200;
   }
 }
 
 @layer utilities {
-  .text-shadow-lg {
-    text-shadow: 0 2px 16px rgb(0 0 0 / 0.65);
+  /* Quadrícula suau que recorda el paviment de la plaça cívica. */
+  .bg-paving {
+    background-image:
+      linear-gradient(to right, rgb(194 96 58 / 0.08) 2px, transparent 2px),
+      linear-gradient(to bottom, rgb(194 96 58 / 0.08) 2px, transparent 2px);
+    background-size: 56px 56px;
+  }
+
+  /* Vora de blocs alterns entre dues seccions, com l'herba d'un bloc de Minecraft.
+     La secció ha de definir --edge amb el seu color de fons. */
+  .edge-top,
+  .edge-bottom {
+    position: relative;
+  }
+  .edge-top::before,
+  .edge-bottom::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    height: 16px;
+    background: linear-gradient(90deg, var(--edge) 50%, transparent 0) 0 0 / 32px 16px repeat-x;
+    pointer-events: none;
+  }
+  .edge-top::before {
+    top: -16px;
+  }
+  .edge-bottom::after {
+    bottom: -16px;
+    background-position: 16px 0;
   }
 }

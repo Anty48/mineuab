@@ -3,16 +3,16 @@ export type Locale = "ca" | "es";
 export const LOCALES: Locale[] = ["ca", "es"];
 export const DEFAULT_LOCALE: Locale = "ca";
 
-/** The Catalan dictionary's shape with every string literal widened to `string`. */
+/** L'estructura del diccionari català amb cada literal de text ampliat a `string`. */
 type Widen<T> = T extends string
   ? string
   : T extends readonly (infer U)[]
     ? readonly Widen<U>[]
     : { readonly [K in keyof T]: Widen<T[K]> };
 
-// Deeply-nested dictionary. Access with the `t()` helper from useLanguage();
-// `{name}` placeholders are filled from t()'s second argument.
-// Catalan is the source of truth: TypeScript flags any key missing in Spanish.
+// Diccionari niat. S'hi accedeix amb l'ajudant `t()` de useLanguage();
+// els marcadors `{nom}` s'omplen amb el segon argument de t().
+// El català és la font de veritat: TypeScript avisa si falta una clau en castellà.
 const ca = {
   nav: {
     home: "Inici",
@@ -43,19 +43,33 @@ const ca = {
       "Ara mateix el servidor està fora de línia. Torna-ho a provar d'aquí a una estona.",
     version: "Versió",
     access: "Accés",
+    status: "Estat",
     openToAll: "Obert a tothom",
+    cardTag: "Carnet de jugador",
   },
   hero: {
-    title: "El servidor de l'Autònoma",
+    eyebrow: "Servidor de Minecraft · Java Edition",
+    titleLead: "El servidor de",
+    titleAccent: "l'Autònoma",
     subtitle:
       "Un servidor fet per estudiants i obert a tothom, siguis o no de la UAB.",
-    copyIp: "Copia la IP: {address}",
     ctaDiscord: "Uneix-te al Discord",
+    sticker: "Fet per estudiants",
   },
   disclaimer: {
-    tag: "Avís important",
+    tag: "Avís",
     body: "mineuab encara no és un projecte oficial de la UAB (Universitat Autònoma de Barcelona), però hi estem treballant perquè ho sigui.",
+    short: "Encara no som un projecte oficial de la UAB, però hi estem treballant.",
   },
+  marquee: [
+    "Survival",
+    "Construccions",
+    "Esdeveniments",
+    "Minijocs",
+    "Obert a tothom",
+    "Fet per estudiants",
+    "Nascut a l'Autònoma",
+  ],
   howToJoin: {
     title: "Com entrar al servidor",
     subtitle:
@@ -130,8 +144,13 @@ const ca = {
         body: "Avui mineuab és un servidor obert a tothom, siguis o no de la UAB, i treballem perquè algun dia sigui un projecte oficial de la universitat.",
       },
     ],
+    chapter: "Capítol {n}",
     ctaTitle: "Vols escriure el proper capítol amb nosaltres?",
     ctaBody: "Entra al servidor i uneix-te a la comunitat.",
+  },
+  galleryPreview: {
+    title: "Construït bloc a bloc",
+    cta: "Veure tota la galeria",
   },
   gallery: {
     title: "Galeria de construccions",
@@ -149,10 +168,12 @@ const ca = {
       trinxera: "La Trinxera",
     },
   },
-  // Provisional rules, to be replaced with the final ones.
+  // Normes provisionals, fins que tinguem les definitives.
   rules: {
     title: "Normes del servidor",
     subtitle: "Unes quantes normes perquè tothom s'hi senti a gust.",
+    index: "Índex",
+    sanctionsTitle: "Sancions",
     draftNote:
       "Aquestes són les normes bàsiques mentre acabem la versió definitiva. Si tens qualsevol dubte, pregunta a l'staff al Discord.",
     sections: [
@@ -314,19 +335,33 @@ const es: Translations = {
       "Ahora mismo el servidor está fuera de línea. Vuelve a probar dentro de un rato.",
     version: "Versión",
     access: "Acceso",
+    status: "Estado",
     openToAll: "Abierto a todos",
+    cardTag: "Carné de jugador",
   },
   hero: {
-    title: "El servidor de la Autónoma",
+    eyebrow: "Servidor de Minecraft · Java Edition",
+    titleLead: "El servidor de",
+    titleAccent: "la Autónoma",
     subtitle:
       "Un servidor hecho por estudiantes y abierto a todo el mundo, seas o no de la UAB.",
-    copyIp: "Copia la IP: {address}",
     ctaDiscord: "Únete al Discord",
+    sticker: "Hecho por estudiantes",
   },
   disclaimer: {
-    tag: "Aviso importante",
+    tag: "Aviso",
     body: "mineuab todavía no es un proyecto oficial de la UAB (Universitat Autònoma de Barcelona), pero estamos trabajando para que lo sea.",
+    short: "Todavía no somos un proyecto oficial de la UAB, pero estamos en ello.",
   },
+  marquee: [
+    "Survival",
+    "Construcciones",
+    "Eventos",
+    "Minijuegos",
+    "Abierto a todos",
+    "Hecho por estudiantes",
+    "Nacido en la Autónoma",
+  ],
   howToJoin: {
     title: "Cómo entrar al servidor",
     subtitle:
@@ -401,8 +436,13 @@ const es: Translations = {
         body: "Hoy mineuab es un servidor abierto a todo el mundo, seas o no de la UAB, y trabajamos para que algún día sea un proyecto oficial de la universidad.",
       },
     ],
+    chapter: "Capítulo {n}",
     ctaTitle: "¿Quieres escribir el próximo capítulo con nosotros?",
     ctaBody: "Entra al servidor y únete a la comunidad.",
+  },
+  galleryPreview: {
+    title: "Construido bloque a bloque",
+    cta: "Ver toda la galería",
   },
   gallery: {
     title: "Galería de construcciones",
@@ -423,6 +463,8 @@ const es: Translations = {
   rules: {
     title: "Normas del servidor",
     subtitle: "Unas pocas normas para que todo el mundo esté a gusto.",
+    index: "Índice",
+    sanctionsTitle: "Sanciones",
     draftNote:
       "Estas son las normas básicas mientras terminamos la versión definitiva. Si tienes cualquier duda, pregunta al staff en Discord.",
     sections: [

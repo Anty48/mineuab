@@ -1,9 +1,10 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Hero from "@/components/sections/Hero";
-import Disclaimer from "@/components/sections/Disclaimer";
+import Marquee from "@/components/sections/Marquee";
 import HowToJoin from "@/components/sections/HowToJoin";
 import About from "@/components/sections/About";
+import GalleryPreview from "@/components/sections/GalleryPreview";
 import Socials from "@/components/sections/Socials";
 
 export default function HomePage() {
@@ -12,9 +13,10 @@ export default function HomePage() {
       <Navbar />
       <main id="main">
         <Hero />
-        <Disclaimer />
+        <Marquee />
         <HowToJoin />
         <About />
+        <GalleryPreview />
         <Socials />
       </main>
       <Footer />

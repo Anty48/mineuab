@@ -9,11 +9,11 @@ export interface ServerStatus {
   version: string | null;
 }
 
-// Free public status API (it caches each server for a few minutes), called
-// straight from the browser.
+// API pública i gratuïta d'estat (guarda cada servidor en memòria uns minuts),
+// cridada directament des del navegador.
 const STATUS_URL = `https://api.mcsrvstat.us/3/${SERVER_ADDRESS}`;
 
-// One request per page load, shared by every component that asks.
+// Una sola petició per càrrega de pàgina, compartida per tots els components que la demanen.
 let request: Promise<ServerStatus | null> | null = null;
 
 function loadStatus() {
@@ -32,7 +32,7 @@ function loadStatus() {
   return request;
 }
 
-/** Live server status, or null while loading or if the status API is unreachable. */
+/** Estat del servidor en directe, o null mentre carrega o si l'API no respon. */
 export function useServerStatus() {
   const [status, setStatus] = useState<ServerStatus | null>(null);
 

@@ -3,20 +3,21 @@
 import Link from "next/link";
 import { useLanguage } from "@/i18n/LanguageProvider";
 import { SERVER_ADDRESS } from "@/lib/links";
+import { PHOTOS } from "@/lib/gallery";
 import { useCopyToClipboard } from "@/lib/useCopyToClipboard";
 import { useServerStatus } from "@/lib/useServerStatus";
 import PageHeader from "@/components/PageHeader";
 import DiscordCta from "@/components/DiscordCta";
-import { CheckIcon, ChevronIcon, CopyIcon } from "@/components/icons";
+import { ArrowIcon, CheckIcon, CopyIcon, PlusIcon } from "@/components/icons";
 
 interface FaqItem {
   q: string;
   a: string;
-  /** Commands shown under the answer. */
+  /** Ordres que es mostren sota la resposta. */
   code?: readonly string[];
-  /** Live widget shown under the answer. */
+  /** Dada en directe que es mostra sota la resposta. */
   extra?: "address" | "version";
-  /** Link to another part of the site. */
+  /** Enllaç a una altra part de la web. */
   link?: { href: string; label: string };
 }
 
@@ -27,51 +28,61 @@ export default function FaqContent() {
   return (
     <>
       <PageHeader
+        crumb={t("nav.faq")}
         title={t("faq.title")}
         subtitle={t("faq.subtitle")}
-        image="/assets/trinxera-soft.jpg"
-        narrow
+        image={PHOTOS.trinxera}
+        caption={t("gallery.items.trinxera")}
       />
 
-      <section className="py-20 md:py-28">
-        <div className="container-page max-w-3xl space-y-3">
-          {items.map((item) => (
-            <details key={item.q} className="card group !p-0 open:border-zinc-700">
-              <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-6 py-5 text-lg font-semibold text-white [&::-webkit-details-marker]:hidden">
-                {item.q}
-                <ChevronIcon className="shrink-0 text-zinc-400 transition-transform group-open:rotate-180" />
-              </summary>
-              <div className="px-6 pb-6">
-                <p className="leading-relaxed text-zinc-300">{item.a}</p>
-
-                {item.code && (
-                  <div className="mt-4 space-y-2">
-                    {item.code.map((line) => (
-                      <code
-                        key={line}
-                        className="block break-all rounded-lg border border-zinc-800 bg-black px-3 py-2 font-mono text-sm text-brand-300"
-                      >
-                        {line}
-                      </code>
-                    ))}
-                  </div>
-                )}
-
-                {item.extra === "address" && <AddressChip />}
-                {item.extra === "version" && <VersionChip />}
-
-                {item.link && (
-                  <Link
-                    href={item.link.href}
-                    className="mt-4 flex w-fit items-center gap-2 font-semibold text-brand-300 hover:text-brand-200"
+      <section className="py-16 md:py-24">
+        <div className="container-page max-w-4xl">
+          <div className="border-t-2 border-ink">
+            {items.map((item, i) => (
+              <details key={item.q} className="group border-b-2 border-ink">
+                <summary className="flex cursor-pointer list-none items-center gap-4 py-6 transition-colors hover:text-brand-600 sm:gap-6 [&::-webkit-details-marker]:hidden">
+                  <span aria-hidden className="w-8 shrink-0 font-pixel text-sm text-brand-600">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <span className="flex-1 text-balance font-display text-xl font-bold md:text-2xl">
+                    {item.q}
+                  </span>
+                  <span
+                    aria-hidden
+                    className="flex h-9 w-9 shrink-0 items-center justify-center border-2 border-ink text-ink transition-colors group-open:bg-brand-500 group-open:text-white"
                   >
-                    {item.link.label}
-                    <span aria-hidden>→</span>
-                  </Link>
-                )}
-              </div>
-            </details>
-          ))}
+                    <PlusIcon size={18} className="transition-transform group-open:rotate-45" />
+                  </span>
+                </summary>
+                <div className="pb-8 pl-12 pr-2 sm:pl-14 md:pr-16">
+                  <p className="text-lg leading-relaxed text-ink-700">{item.a}</p>
+
+                  {item.code && (
+                    <div className="mt-4 max-w-md space-y-2">
+                      {item.code.map((line) => (
+                        <code key={line} className="code-line">
+                          {line}
+                        </code>
+                      ))}
+                    </div>
+                  )}
+
+                  {item.extra === "address" && <AddressChip />}
+                  {item.extra === "version" && <VersionChip />}
+
+                  {item.link && (
+                    <Link
+                      href={item.link.href}
+                      className="group/link mt-5 flex w-fit items-center gap-2 font-bold text-brand-600 hover:underline"
+                    >
+                      {item.link.label}
+                      <ArrowIcon size={18} className="transition-transform group-hover/link:translate-x-1" />
+                    </Link>
+                  )}
+                </div>
+              </details>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -88,10 +99,14 @@ function AddressChip() {
     <button
       type="button"
       onClick={() => copy(SERVER_ADDRESS)}
-      className="mt-4 flex items-center gap-2 rounded-lg border border-zinc-800 bg-black px-3 py-2 font-mono text-brand-300 transition-colors hover:border-brand-500/60"
+      className="mt-4 flex items-center gap-3 border-2 border-ink bg-paper-50 px-3 py-2 font-mono font-semibold shadow-block-sm transition-colors hover:bg-white"
     >
       {SERVER_ADDRESS}
-      {copied ? <CheckIcon size={16} /> : <CopyIcon size={16} className="opacity-60" />}
+      {copied ? (
+        <CheckIcon size={16} className="text-brand-600" />
+      ) : (
+        <CopyIcon size={16} className="text-ink-500" />
+      )}
       <span aria-live="polite" className="sr-only">
         {copied ? t("server.copied") : t("server.copy")}
       </span>
@@ -104,9 +119,9 @@ function VersionChip() {
   const status = useServerStatus();
 
   return (
-    <p className="mt-4 w-fit rounded-lg border border-zinc-800 bg-black px-3 py-2 text-sm text-zinc-300">
+    <p className="mt-4 w-fit border-2 border-ink bg-paper-50 px-3 py-2 text-sm text-ink-700">
       {t("server.version")}:{" "}
-      <span className="font-mono text-brand-300">{status?.version ?? "…"}</span>
+      <span className="font-mono font-bold text-brand-600">{status?.version ?? "…"}</span>
     </p>
   );
 }

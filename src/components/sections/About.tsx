@@ -3,64 +3,69 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useLanguage } from "@/i18n/LanguageProvider";
+import SectionHeading from "@/components/SectionHeading";
+import { ArrowIcon, GrassBlockIcon, PixelHeartIcon, PixelPeopleIcon } from "@/components/icons";
 
-const CARDS = [
-  { key: "what", icon: "🛠️" },
-  { key: "why", icon: "💚" },
-  { key: "open", icon: "🌍" },
+const POINTS = [
+  { key: "what", Icon: GrassBlockIcon },
+  { key: "why", Icon: PixelHeartIcon },
+  { key: "open", Icon: PixelPeopleIcon },
 ];
 
 export default function About() {
   const { t } = useLanguage();
 
   return (
-    <section id="sobre-nosaltres" className="border-t border-zinc-900 py-24 md:py-32">
-      <div className="container-page">
-        <div className="max-w-2xl">
-          <h2 className="section-title">{t("about.title")}</h2>
-          <p className="section-subtitle">{t("about.subtitle")}</p>
-        </div>
+    <section
+      id="sobre-nosaltres"
+      className="edge-top bg-brand-950 py-20 text-paper [--edge:#022112] md:py-28"
+    >
+      {/* En pantalles amples: títol i història a l'esquerra, els tres punts a la dreta.
+          En mòbil van en ordre: títol, punts i història. */}
+      <div className="container-page grid gap-12 lg:grid-cols-[1fr_1.25fr] lg:gap-x-16 lg:gap-y-12">
+        <SectionHeading
+          number="02"
+          label={t("nav.about")}
+          title={t("about.title")}
+          subtitle={t("about.subtitle")}
+          tone="dark"
+          className="lg:col-start-1 lg:row-start-1"
+        />
 
-        <div className="mt-12 grid gap-5 md:grid-cols-3">
-          {CARDS.map((c) => (
-            <div key={c.key} className="card">
-              <h3 className="flex items-center gap-3 text-xl font-semibold text-white">
-                <span aria-hidden>{c.icon}</span>
-                {t(`about.${c.key}.title`)}
-              </h3>
-              <p className="mt-3 leading-relaxed text-zinc-400">
-                {t(`about.${c.key}.body`)}
-              </p>
-            </div>
+        <ul className="divide-y-2 divide-paper/15 border-y-2 border-paper/15 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:self-start">
+          {POINTS.map(({ key, Icon }) => (
+            <li key={key} className="grid grid-cols-[3.5rem_1fr] gap-5 py-7">
+              <span className="flex h-14 w-14 items-center justify-center border-2 border-paper/80 bg-brand-500 text-white">
+                <Icon size={28} />
+              </span>
+              <div>
+                <h3 className="font-display text-2xl font-bold">{t(`about.${key}.title`)}</h3>
+                <p className="mt-2 leading-relaxed text-paper/75">{t(`about.${key}.body`)}</p>
+              </div>
+            </li>
           ))}
-        </div>
+        </ul>
 
         <Link
           href="/historia"
-          className="group mt-5 flex flex-col gap-8 overflow-hidden rounded-3xl border border-brand-500/30 bg-gradient-to-br from-brand-700/70 via-brand-900/70 to-black p-8 transition-colors hover:border-brand-400/60 md:flex-row md:items-center md:justify-between md:p-12"
+          className="group flex flex-col gap-4 self-start border-2 border-ink bg-paper p-7 text-ink shadow-block-brand transition-transform hover:-translate-y-1 lg:col-start-1 lg:row-start-2"
         >
-          <div>
-            <h3 className="text-3xl font-bold text-white group-hover:underline">
-              {t("history.title")}
-            </h3>
-            <p className="mt-2 max-w-xl text-lg text-zinc-200">
-              {t("history.subtitle")}
-            </p>
-            <span className="mt-6 inline-flex items-center gap-2 font-semibold text-brand-200">
-              {t("about.historyCta")}
-              <span aria-hidden className="transition-transform group-hover:translate-x-1">
-                →
-              </span>
-            </span>
+          <div className="flex items-start justify-between gap-6">
+            <h3 className="font-display text-3xl font-extrabold">{t("history.title")}</h3>
+            {/* Sobre fons blanc i amb vora, com a la barra. L'original fa 1200×1000. */}
+            <Image
+              src="/assets/square_col.png"
+              alt=""
+              width={77}
+              height={64}
+              className="h-16 w-auto shrink-0 -rotate-3 border-2 border-ink bg-white shadow-block-sm"
+            />
           </div>
-          {/* Source is 1200×1000. */}
-          <Image
-            src="/assets/square_w.png"
-            alt=""
-            width={144}
-            height={120}
-            className="h-24 w-auto opacity-90 md:h-28"
-          />
+          <p className="text-lg text-ink-600">{t("history.subtitle")}</p>
+          <span className="inline-flex items-center gap-2 font-bold text-brand-600">
+            {t("about.historyCta")}
+            <ArrowIcon className="transition-transform group-hover:translate-x-1" />
+          </span>
         </Link>
       </div>
     </section>

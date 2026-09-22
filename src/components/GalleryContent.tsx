@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useLanguage } from "@/i18n/LanguageProvider";
-import { GALLERY } from "@/lib/gallery";
+import { GALLERY, PHOTOS } from "@/lib/gallery";
 import PageHeader from "@/components/PageHeader";
 import DiscordCta from "@/components/DiscordCta";
 import { ChevronIcon, CloseIcon } from "@/components/icons";
@@ -18,8 +18,8 @@ export default function GalleryContent() {
   const [open, setOpen] = useState<number | null>(null);
   const dialogRef = useRef<HTMLDialogElement>(null);
 
-  // The native <dialog> traps focus, closes on Escape and hands focus back to
-  // the tile that opened it; state just says which image is showing.
+  // El <dialog> natiu reté el focus, es tanca amb Escape i torna el focus a la
+  // casella que l'ha obert; l'estat només diu quina imatge es mostra.
   useEffect(() => {
     const dialog = dialogRef.current;
     if (!dialog) return;
@@ -44,20 +44,22 @@ export default function GalleryContent() {
   return (
     <>
       <PageHeader
+        crumb={t("nav.gallery")}
         title={t("gallery.title")}
         subtitle={t("gallery.subtitle")}
-        image="/assets/entrada-ferros-soft.jpg"
+        image={PHOTOS.entradaFerros}
+        caption={caption("ferrosEntrance")}
       />
 
-      <section className="py-20 md:py-28">
+      <section className="py-16 md:py-24">
         <div className="container-page">
-          <ul className="grid auto-rows-[15rem] gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <ul className="grid auto-rows-[16rem] gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {GALLERY.map((item, i) => (
               <li key={item.key} className={item.size ? TILE_SIZE[item.size] : undefined}>
                 <button
                   type="button"
                   onClick={() => setOpen(i)}
-                  className="group relative block h-full w-full overflow-hidden rounded-3xl border border-zinc-800 text-left"
+                  className="group relative block h-full w-full overflow-hidden border-2 border-ink bg-ink text-left shadow-block transition-transform hover:-translate-y-1"
                 >
                   <Image
                     src={item.image}
@@ -71,11 +73,11 @@ export default function GalleryContent() {
                     }
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                   />
-                  <span
-                    aria-hidden
-                    className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent"
-                  />
-                  <span className="text-shadow-lg absolute inset-x-0 bottom-0 p-5 text-lg font-semibold text-white">
+                  {/* Etiqueta com la d'un museu. */}
+                  <span className="absolute bottom-3 left-3 flex items-center gap-2 border-2 border-ink bg-paper-50 px-2 py-1 font-pixel text-[11px] uppercase text-ink">
+                    <span aria-hidden className="text-brand-600">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
                     {caption(item.key)}
                   </span>
                 </button>
@@ -93,29 +95,29 @@ export default function GalleryContent() {
         onKeyDown={(e) => {
           if (e.key === "ArrowLeft") step(-1);
           if (e.key === "ArrowRight") step(1);
-          // Close on Escape ourselves too, instead of relying on each browser's dialog handling.
+          // Tanquem amb Escape nosaltres mateixos, sense dependre de com ho gestioni cada navegador.
           if (e.key === "Escape") {
             e.preventDefault();
             setOpen(null);
           }
         }}
         aria-label={current ? caption(current.key) : undefined}
-        className="m-0 h-full max-h-none w-full max-w-none bg-transparent p-0 text-white backdrop:bg-black/90"
+        className="m-0 h-full max-h-none w-full max-w-none bg-transparent p-0 text-paper backdrop:bg-ink/95"
       >
         {current && open !== null && (
-          // Clicking the dark area around the photo closes the viewer.
+          // Clicar la zona fosca del voltant de la foto tanca el visor.
           <div
             className="relative flex h-full flex-col items-center justify-center p-4 sm:p-12"
             onClick={(e) => {
               if (e.target === e.currentTarget) setOpen(null);
             }}
           >
-            {/* First in the DOM so it gets focus when the dialog opens. */}
+            {/* Primer al DOM perquè rebi el focus quan s'obre el diàleg. */}
             <button
               type="button"
               onClick={() => setOpen(null)}
               aria-label={t("gallery.close")}
-              className="btn-ghost absolute right-4 top-4 z-10 !p-3"
+              className="btn-icon absolute right-4 top-4 z-10 p-2.5"
             >
               <CloseIcon />
             </button>
@@ -126,11 +128,11 @@ export default function GalleryContent() {
                 alt={caption(current.key)}
                 placeholder="blur"
                 sizes="100vw"
-                className="max-h-[75vh] w-auto rounded-2xl object-contain"
+                className="max-h-[75vh] w-auto border-2 border-paper object-contain"
               />
-              <figcaption className="mt-4 text-center text-lg">
+              <figcaption className="mt-4 flex items-center gap-3 text-center text-lg font-semibold">
                 {caption(current.key)}
-                <span className="ml-3 text-sm text-zinc-400">
+                <span className="font-pixel text-xs text-brand-300">
                   {open + 1} / {GALLERY.length}
                 </span>
               </figcaption>
@@ -141,7 +143,7 @@ export default function GalleryContent() {
                 type="button"
                 onClick={() => step(-1)}
                 aria-label={t("gallery.prev")}
-                className="btn-ghost !p-3"
+                className="btn-icon p-2.5"
               >
                 <ChevronIcon className="rotate-90" />
               </button>
@@ -149,7 +151,7 @@ export default function GalleryContent() {
                 type="button"
                 onClick={() => step(1)}
                 aria-label={t("gallery.next")}
-                className="btn-ghost !p-3"
+                className="btn-icon p-2.5"
               >
                 <ChevronIcon className="-rotate-90" />
               </button>
