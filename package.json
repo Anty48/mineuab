@@ -11,7 +11,8 @@
   "dependencies": {
     "next": "^15.5.22",
     "react": "19.0.0",
-    "react-dom": "19.0.0"
+    "react-dom": "19.0.0",
+    "skinview3d": "^3.4.2"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.7",

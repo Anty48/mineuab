@@ -17,6 +17,14 @@ export const MAP_URL = "https://rowenta2000.tailb63548.ts.net:10000/";
 export const RANKING_URL = "https://rowenta2000.tailb63548.ts.net:10000/credits/ranking.json";
 
 /**
+ * Perfils dels jugadors: l'API del plugin MineUABPerfil (127.0.0.1:25581 al servidor), pel mateix Funnel.
+ * Hi ha jugadors.json, jugador/<nom>.json i les imatges de les skins. Acaba en barra.
+ * Per provar la web amb un servidor local: NEXT_PUBLIC_PROFILES_URL=http://127.0.0.1:25581/ npm run dev
+ */
+export const PROFILES_URL =
+  process.env.NEXT_PUBLIC_PROFILES_URL ?? "https://rowenta2000.tailb63548.ts.net:10000/perfil/";
+
+/**
  * Whitelist. Quan s'activi al servidor, poseu-ho a `true`: surt el pas per demanar accés
  * a "Com entrar" i a la FAQ, i el carnet passa de "Obert a tothom" a "Amb whitelist".
  */
@@ -42,10 +50,11 @@ export const NAV_LINKS = [
   { href: "/#com-entrar", key: "nav.howToJoin" },
   { href: "/mapa", key: "nav.map" },
   { href: "/ranquing", key: "nav.ranking" },
+  { href: "/jugadors", key: "nav.players" },
   { href: "/galeria", key: "nav.gallery" },
   { href: "/normes", key: "nav.rules" },
   { href: "/faq", key: "nav.faq" },
-  // Nom curt perquè els set enllaços càpiguen a la barra a partir de 1024 px.
+  // Nom curt perquè els vuit enllaços càpiguen a la barra a partir de 1024 px.
   { href: "/historia", key: "nav.historyShort" },
 ] as const;
 
@@ -56,6 +65,7 @@ export const SITE_LINKS = [
   { href: "/#sobre-nosaltres", key: "nav.about" },
   { href: "/mapa", key: "nav.map" },
   { href: "/ranquing", key: "nav.ranking" },
+  { href: "/jugadors", key: "nav.players" },
   { href: "/galeria", key: "nav.gallery" },
   { href: "/normes", key: "nav.rules" },
   { href: "/faq", key: "faq.title" },

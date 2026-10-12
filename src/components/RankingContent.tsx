@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useLanguage } from "@/i18n/LanguageProvider";
 import { PHOTOS } from "@/lib/gallery";
 import { useRanking, type Ranking, type RankingEntry } from "@/lib/useRanking";
@@ -20,6 +21,8 @@ interface CommandHelp {
 }
 
 const MEDALS = ["🥇", "🥈", "🥉"];
+
+const profileHref = (name: string) => `/jugador/${encodeURIComponent(name)}`;
 
 /** "fa 2 minuts", "ara" … a partir de l'hora en què el servidor va calcular el rànquing. */
 function timeAgo(iso: string, locale: string) {
@@ -152,7 +155,12 @@ function Board({ ranking }: { ranking: Ranking }) {
               <span className="w-10 shrink-0 font-pixel text-sm text-ink-500">
                 {String(entry.rank).padStart(2, "0")}
               </span>
-              <span className="min-w-0 flex-1 truncate font-display text-lg font-bold">{entry.name}</span>
+              <Link
+                href={profileHref(entry.name)}
+                className="min-w-0 flex-1 truncate font-display text-lg font-bold hover:text-brand-600 hover:underline"
+              >
+                {entry.name}
+              </Link>
               <span className="shrink-0 font-mono font-bold text-brand-600">{amount(entry.credits)}</span>
             </li>
           ))}
@@ -191,9 +199,14 @@ function PodiumCard({ entry, medal, amount }: { entry: RankingEntry; medal: stri
         </span>
       </div>
       <div className={`px-5 ${first ? "py-10" : "py-6"}`}>
-        <p className={`break-all font-display font-extrabold ${first ? "text-3xl" : "text-2xl"}`}>
+        <Link
+          href={profileHref(entry.name)}
+          className={`block break-all font-display font-extrabold hover:text-brand-600 hover:underline ${
+            first ? "text-3xl" : "text-2xl"
+          }`}
+        >
           {entry.name}
-        </p>
+        </Link>
         <p className="mt-2 font-mono text-lg font-bold text-brand-600">{amount}</p>
       </div>
     </li>
