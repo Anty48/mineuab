@@ -123,7 +123,8 @@ function LiveTag({ ranking }: { ranking: Ranking | null | "loading" }) {
 
 function Board({ ranking }: { ranking: Ranking }) {
   const { t, locale } = useLanguage();
-  const number = new Intl.NumberFormat(locale === "ca" ? "ca-ES" : "es-ES", { maximumFractionDigits: 2 });
+  // Els crèdits són sempre sencers (economy.decimals: false al plugin).
+  const number = new Intl.NumberFormat(locale === "ca" ? "ca-ES" : "es-ES", { maximumFractionDigits: 0 });
   const amount = (n: number) => t("ranking.amount", { amount: number.format(n) });
 
   if (ranking.top.length === 0) {
