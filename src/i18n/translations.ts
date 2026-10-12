@@ -354,6 +354,12 @@ const ca = {
         a: "El primer cop que entris, crea el teu compte amb la primera ordre. Les altres vegades, inicia sessió amb la segona.",
         code: ["/register <contrasenya> <contrasenya>", "/login <contrasenya>"],
       },
+      // "Una setmana" són els dies-entre-canvis de plugins/MineUABCarreres/config.yml al servidor.
+      {
+        q: "Com trio la meva carrera?",
+        a: "Escriu aquesta ordre i tria-la al menú: el tag de la teva carrera sortirà al xat i al tab. Si t'equivoques, la pots tornar a canviar al cap d'una setmana.",
+        code: ["/carrera"],
+      },
       {
         q: "He oblidat la contrasenya. Què faig?",
         a: "Escriu a l'staff pel Discord i t'ajudaran a recuperar el compte.",
@@ -753,6 +759,11 @@ const es: Translations = {
         q: "¿Cómo me registro?",
         a: "La primera vez que entres, crea tu cuenta con el primer comando. Las siguientes, inicia sesión con el segundo.",
         code: ["/register <contraseña> <contraseña>", "/login <contraseña>"],
+      },
+      {
+        q: "¿Cómo elijo mi carrera?",
+        a: "Escribe este comando y elígela en el menú: la etiqueta de tu carrera saldrá en el chat y en el tab. Si te equivocas, puedes volver a cambiarla al cabo de una semana.",
+        code: ["/carrera"],
       },
       {
         q: "He olvidado la contraseña. ¿Qué hago?",
