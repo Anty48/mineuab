@@ -20,6 +20,7 @@ const ca = {
     about: "Sobre nosaltres",
     history: "La nostra història",
     socials: "Xarxes",
+    map: "Mapa",
     gallery: "Galeria",
     rules: "Normes",
     faq: "FAQ",
@@ -45,6 +46,7 @@ const ca = {
     access: "Accés",
     status: "Estat",
     openToAll: "Obert a tothom",
+    whitelist: "Amb whitelist",
     cardTag: "Carnet de jugador",
   },
   hero: {
@@ -95,8 +97,33 @@ const ca = {
         cta: "Obrir Discord",
       },
     ],
+    // Només surt si WHITELIST_ENABLED és true (src/lib/links.ts), com a primer pas.
+    whitelistStep: {
+      title: "Demana accés",
+      body: "El servidor té whitelist: només hi poden entrar els jugadors de la llista. Escriu el teu nom de Minecraft i envia'ns el correu des del teu correu de la UAB. T'afegirem tan aviat com puguem.",
+    },
     passwordTip:
       "Consell: fes servir una contrasenya que no utilitzis a cap altre lloc.",
+  },
+  whitelist: {
+    nameLabel: "El teu nom de Minecraft",
+    nameHint: "Entre 3 i 16 caràcters: lletres, números i _.",
+    send: "Prepara el correu",
+    fromUab: "Envia'l des del teu correu de la UAB (@uab.cat o @autonoma.cat).",
+    orWrite: "Si el botó no t'obre el correu, escriu a:",
+    copyEmail: "Copiar l'adreça de correu",
+    copied: "Correu copiat!",
+    mailSubject: "Whitelist mineuab: {name}",
+    mailBody:
+      "Hola!\n\nVoldria entrar al servidor mineuab. El meu nom de Minecraft és: {name}\n\nGràcies!",
+  },
+  map: {
+    title: "Mapa del món",
+    subtitle:
+      "Passeja pel servidor en directe: les construccions, els camins i on és cada jugador ara mateix.",
+    open: "Obrir a pantalla completa",
+    frameTitle: "Mapa en directe del servidor mineuab",
+    hint: "Arrossega per moure't i fes servir la roda (o pessiga) per apropar-te. Si no es carrega, potser el servidor s'està reiniciant: torna-ho a provar d'aquí a una estona.",
   },
   about: {
     title: "Sobre nosaltres",
@@ -273,6 +300,12 @@ const ca = {
         link: { href: "/normes", label: "Llegir les normes" },
       },
     ],
+    // Només surt si WHITELIST_ENABLED és true, com a segona pregunta.
+    whitelistItem: {
+      q: "Em diu que no soc a la whitelist. Què faig?",
+      a: "Per entrar has de ser a la whitelist. Envia un correu des del teu correu de la UAB amb el teu nom de Minecraft i t'hi afegirem tan aviat com puguem.",
+      link: { href: "/#com-entrar", label: "Demanar accés" },
+    },
     ctaTitle: "No hi trobes la teva pregunta?",
     ctaBody: "Pregunta-ho al Discord i t'hi ajudarem.",
   },
@@ -312,6 +345,7 @@ const es: Translations = {
     about: "Sobre nosotros",
     history: "Nuestra historia",
     socials: "Redes",
+    map: "Mapa",
     gallery: "Galería",
     rules: "Normas",
     faq: "FAQ",
@@ -337,6 +371,7 @@ const es: Translations = {
     access: "Acceso",
     status: "Estado",
     openToAll: "Abierto a todos",
+    whitelist: "Con whitelist",
     cardTag: "Carné de jugador",
   },
   hero: {
@@ -387,8 +422,32 @@ const es: Translations = {
         cta: "Abrir Discord",
       },
     ],
+    whitelistStep: {
+      title: "Pide acceso",
+      body: "El servidor tiene whitelist: solo pueden entrar los jugadores de la lista. Escribe tu nombre de Minecraft y envíanos el correo desde tu correo de la UAB. Te añadiremos lo antes posible.",
+    },
     passwordTip:
       "Consejo: usa una contraseña que no utilices en ningún otro sitio.",
+  },
+  whitelist: {
+    nameLabel: "Tu nombre de Minecraft",
+    nameHint: "Entre 3 y 16 caracteres: letras, números y _.",
+    send: "Preparar el correo",
+    fromUab: "Envíalo desde tu correo de la UAB (@uab.cat o @autonoma.cat).",
+    orWrite: "Si el botón no te abre el correo, escribe a:",
+    copyEmail: "Copiar la dirección de correo",
+    copied: "¡Correo copiado!",
+    mailSubject: "Whitelist mineuab: {name}",
+    mailBody:
+      "¡Hola!\n\nMe gustaría entrar al servidor mineuab. Mi nombre de Minecraft es: {name}\n\n¡Gracias!",
+  },
+  map: {
+    title: "Mapa del mundo",
+    subtitle:
+      "Pasea por el servidor en directo: las construcciones, los caminos y dónde está cada jugador ahora mismo.",
+    open: "Abrir a pantalla completa",
+    frameTitle: "Mapa en directo del servidor mineuab",
+    hint: "Arrastra para moverte y usa la rueda (o pellizca) para acercarte. Si no carga, puede que el servidor se esté reiniciando: vuelve a probarlo dentro de un rato.",
   },
   about: {
     title: "Sobre nosotros",
@@ -564,6 +623,11 @@ const es: Translations = {
         link: { href: "/normes", label: "Leer las normas" },
       },
     ],
+    whitelistItem: {
+      q: "Me dice que no estoy en la whitelist. ¿Qué hago?",
+      a: "Para entrar tienes que estar en la whitelist. Envía un correo desde tu correo de la UAB con tu nombre de Minecraft y te añadiremos lo antes posible.",
+      link: { href: "/#com-entrar", label: "Pedir acceso" },
+    },
     ctaTitle: "¿No encuentras tu pregunta?",
     ctaBody: "Pregúntalo en Discord y te ayudaremos.",
   },

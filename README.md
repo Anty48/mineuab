@@ -32,6 +32,7 @@ npm start
 ## Pàgines
 
 - `/`: portada amb l'adreça i l'estat del servidor, una cinta amb el que hi trobaràs, com entrar-hi (amb el carnet de jugador), qui som, un tast de la galeria i les xarxes.
+- `/mapa`: el mapa en directe del servidor (BlueMap), incrustat a la pàgina.
 - `/galeria`: galeria de construccions, amb un visor a pantalla completa (fletxes per moure't, Esc per tancar).
 - `/normes`: normes del servidor, amb un índex al costat. **Provisionals** fins que tinguem les definitives.
 - `/faq`: preguntes freqüents.
@@ -58,12 +59,13 @@ Els colors, les ombres i les tipografies són a [`tailwind.config.ts`](tailwind.
 src/
   app/
     page.tsx                    # Inici
-    galeria/  normes/  faq/  historia/
+    mapa/  galeria/  normes/  faq/  historia/
     not-found.tsx
   assets/gallery/               # Fotos de la galeria (s'importen, així tenen un difuminat mentre carreguen)
   components/
     sections/                   # Seccions de l'inici: Hero, Marquee, HowToJoin, About, GalleryPreview, Socials
-    GalleryContent, RulesContent, FaqContent, HistoryContent, NotFoundContent
+    MapContent, GalleryContent, RulesContent, FaqContent, HistoryContent, NotFoundContent
+    WhitelistRequest.tsx        # Pas "Demana accés": prepara el correu per entrar a la whitelist
     AnnouncementBar.tsx         # Franja d'avís de dalt de tot
     PageHeader.tsx              # Capçalera de les pàgines interiors
     SectionHeading.tsx          # Número, títol i subtítol de cada secció de l'inici
@@ -75,7 +77,7 @@ src/
     translations.ts             # Tots els textos en CA i ES
     LanguageProvider.tsx        # Estat de l'idioma i funció t()
   lib/
-    links.ts                    # Adreça del servidor, enllaços de Discord/Instagram/Twitch i de navegació
+    links.ts                    # Adreça del servidor, mapa, whitelist (WHITELIST_ENABLED), enllaços de Discord/Instagram/Twitch i de navegació
     gallery.ts                  # Quines fotos surten a la galeria i en quin ordre
     useServerStatus.ts
     useCopyToClipboard.ts

@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useLanguage } from "@/i18n/LanguageProvider";
-import { SERVER_ADDRESS } from "@/lib/links";
+import { SERVER_ADDRESS, WHITELIST_ENABLED } from "@/lib/links";
 import { useCopyToClipboard } from "@/lib/useCopyToClipboard";
 import { useServerStatus } from "@/lib/useServerStatus";
 import { CheckIcon, CopyIcon } from "./icons";
@@ -67,7 +67,9 @@ export default function ServerCard({ className = "" }: { className?: string }) {
           </div>
           <div className="flex flex-col-reverse py-3 pl-3">
             <dt className="font-pixel text-[10px] uppercase text-ink-500">{t("server.access")}</dt>
-            <dd className="text-sm font-bold">{t("server.openToAll")}</dd>
+            <dd className="text-sm font-bold">
+              {t(WHITELIST_ENABLED ? "server.whitelist" : "server.openToAll")}
+            </dd>
           </div>
         </dl>
       </div>

@@ -1,10 +1,11 @@
 "use client";
 
 import { useLanguage } from "@/i18n/LanguageProvider";
-import { DISCORD_URL, SERVER_ADDRESS } from "@/lib/links";
+import { DISCORD_URL, SERVER_ADDRESS, WHITELIST_ENABLED } from "@/lib/links";
 import { DiscordIcon } from "@/components/icons";
 import SectionHeading from "@/components/SectionHeading";
 import ServerCard from "@/components/ServerCard";
+import WhitelistRequest from "@/components/WhitelistRequest";
 
 interface Step {
   title: string;
@@ -13,11 +14,16 @@ interface Step {
   code?: readonly string[];
   /** Text d'un botó de Discord al final del pas. */
   cta?: string;
+  /** El pas de demanar accés, amb el formulari de la whitelist. */
+  whitelist?: boolean;
 }
 
 export default function HowToJoin() {
   const { t, raw } = useLanguage();
-  const steps = raw<Step[]>("howToJoin.steps") ?? [];
+  const baseSteps = raw<Step[]>("howToJoin.steps") ?? [];
+  const steps: Step[] = WHITELIST_ENABLED
+    ? [{ ...raw<Step>("howToJoin.whitelistStep"), whitelist: true }, ...baseSteps]
+    : baseSteps;
 
   return (
     <section id="com-entrar" className="py-20 md:py-28">
@@ -60,6 +66,8 @@ export default function HowToJoin() {
                         ))}
                       </div>
                     )}
+
+                    {step.whitelist && <WhitelistRequest />}
 
                     {step.cta && (
                       <a

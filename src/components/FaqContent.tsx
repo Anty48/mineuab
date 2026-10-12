@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useLanguage } from "@/i18n/LanguageProvider";
-import { SERVER_ADDRESS } from "@/lib/links";
+import { SERVER_ADDRESS, WHITELIST_ENABLED } from "@/lib/links";
 import { PHOTOS } from "@/lib/gallery";
 import { useCopyToClipboard } from "@/lib/useCopyToClipboard";
 import { useServerStatus } from "@/lib/useServerStatus";
@@ -23,7 +23,11 @@ interface FaqItem {
 
 export default function FaqContent() {
   const { t, raw } = useLanguage();
-  const items = raw<FaqItem[]>("faq.items") ?? [];
+  const baseItems = raw<FaqItem[]>("faq.items") ?? [];
+  // Amb whitelist, la pregunta de la whitelist va just després de "Cal ser de la UAB per jugar?".
+  const items = WHITELIST_ENABLED
+    ? [baseItems[0], raw<FaqItem>("faq.whitelistItem"), ...baseItems.slice(1)]
+    : baseItems;
 
   return (
     <>
