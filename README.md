@@ -33,6 +33,7 @@ npm start
 
 - `/`: portada amb l'adreça i l'estat del servidor, una cinta amb el que hi trobaràs, com entrar-hi (amb el carnet de jugador), qui som, un tast de la galeria i les xarxes.
 - `/mapa`: el mapa en directe del servidor (BlueMap), incrustat a la pàgina.
+- `/ranquing`: el quadre d'honor de crèdits en directe (plugin Credits del servidor), com es guanyen i les ordres útils.
 - `/galeria`: galeria de construccions, amb un visor a pantalla completa (fletxes per moure't, Esc per tancar).
 - `/normes`: normes del servidor, amb un índex al costat. **Provisionals** fins que tinguem les definitives.
 - `/faq`: preguntes freqüents.
@@ -59,12 +60,12 @@ Els colors, les ombres i les tipografies són a [`tailwind.config.ts`](tailwind.
 src/
   app/
     page.tsx                    # Inici
-    mapa/  galeria/  normes/  faq/  historia/
+    mapa/  ranquing/  galeria/  normes/  faq/  historia/
     not-found.tsx
   assets/gallery/               # Fotos de la galeria (s'importen, així tenen un difuminat mentre carreguen)
   components/
     sections/                   # Seccions de l'inici: Hero, Marquee, HowToJoin, About, GalleryPreview, Socials
-    MapContent, GalleryContent, RulesContent, FaqContent, HistoryContent, NotFoundContent
+    MapContent, RankingContent, GalleryContent, RulesContent, FaqContent, HistoryContent, NotFoundContent
     WhitelistRequest.tsx        # Pas "Demana accés": prepara el correu per entrar a la whitelist
     AnnouncementBar.tsx         # Franja d'avís de dalt de tot
     PageHeader.tsx              # Capçalera de les pàgines interiors
@@ -80,6 +81,7 @@ src/
     links.ts                    # Adreça del servidor, mapa, whitelist (WHITELIST_ENABLED), enllaços de Discord/Instagram/Twitch i de navegació
     gallery.ts                  # Quines fotos surten a la galeria i en quin ordre
     useServerStatus.ts
+    useRanking.ts               # Rànquing de crèdits, llegit des del navegador (RANKING_URL a links.ts)
     useCopyToClipboard.ts
 ```
 

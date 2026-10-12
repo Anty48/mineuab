@@ -11,6 +11,12 @@ export const SITE_URL = "https://www.mineuab.org";
 export const MAP_URL = "https://rowenta2000.tailb63548.ts.net:10000/";
 
 /**
+ * Rànquing de crèdits en directe: l'API del plugin Credits (127.0.0.1:25580 al servidor),
+ * publicada pel mateix Funnel que el mapa. Es llegeix des del navegador, per això no porta token.
+ */
+export const RANKING_URL = "https://rowenta2000.tailb63548.ts.net:10000/credits/ranking.json";
+
+/**
  * Whitelist. Quan s'activi al servidor, poseu-ho a `true`: surt el pas per demanar accés
  * a "Com entrar" i a la FAQ, i el carnet passa de "Obert a tothom" a "Amb whitelist".
  */
@@ -35,10 +41,12 @@ export const SOCIAL_LINKS = [
 export const NAV_LINKS = [
   { href: "/#com-entrar", key: "nav.howToJoin" },
   { href: "/mapa", key: "nav.map" },
+  { href: "/ranquing", key: "nav.ranking" },
   { href: "/galeria", key: "nav.gallery" },
   { href: "/normes", key: "nav.rules" },
   { href: "/faq", key: "nav.faq" },
-  { href: "/historia", key: "nav.history" },
+  // Nom curt perquè els set enllaços càpiguen a la barra a partir de 1024 px.
+  { href: "/historia", key: "nav.historyShort" },
 ] as const;
 
 /** Totes les pàgines i seccions de l'inici, llistades al peu de pàgina. */
@@ -47,6 +55,7 @@ export const SITE_LINKS = [
   { href: "/#com-entrar", key: "nav.howToJoin" },
   { href: "/#sobre-nosaltres", key: "nav.about" },
   { href: "/mapa", key: "nav.map" },
+  { href: "/ranquing", key: "nav.ranking" },
   { href: "/galeria", key: "nav.gallery" },
   { href: "/normes", key: "nav.rules" },
   { href: "/faq", key: "faq.title" },

@@ -19,8 +19,10 @@ const ca = {
     howToJoin: "Com entrar",
     about: "Sobre nosaltres",
     history: "La nostra història",
+    historyShort: "Història",
     socials: "Xarxes",
     map: "Mapa",
+    ranking: "Rànquing",
     gallery: "Galeria",
     rules: "Normes",
     faq: "FAQ",
@@ -124,6 +126,77 @@ const ca = {
     open: "Obrir a pantalla completa",
     frameTitle: "Mapa en directe del servidor mineuab",
     hint: "Arrossega per moure't i fes servir la roda (o pessiga) per apropar-te. Si no es carrega, potser el servidor s'està reiniciant: torna-ho a provar d'aquí a una estona.",
+  },
+  // Els números (60 crèdits, etc.) són els de plugins/Credits/config.yml al servidor.
+  ranking: {
+    title: "Rànquing",
+    subtitle:
+      "Els crèdits són la moneda de mineuab. Aquí tens qui en té més, en directe des del servidor.",
+    boardTitle: "Quadre d'honor",
+    live: "En directe",
+    updated: "actualitzat {time}",
+    amount: "{amount} crèdits",
+    total: "Crèdits al servidor",
+    players: "Jugadors al rànquing",
+    loading: "Carregant el rànquing…",
+    unavailable:
+      "Ara mateix el rànquing no respon. Potser el servidor s'està reiniciant: torna-ho a provar d'aquí a una estona.",
+    empty: "Encara no hi ha ningú al rànquing. Entra al servidor i sigues el primer!",
+    inGame: "Dins del joc el tens amb /ranking. Compten la cartera i els estalvis del banc.",
+    earn: {
+      title: "Com es guanyen crèdits",
+      subtitle: "Tothom comença amb 60 crèdits, com un curs sencer. A partir d'aquí, tot suma.",
+      items: [
+        {
+          icon: "🎓",
+          title: "La beca",
+          body: "Cobres un sou per cada estona de joc actiu. Si estàs AFK, no compta.",
+        },
+        {
+          icon: "📋",
+          title: "Passar llista",
+          body: "Una recompensa cada dia. Si hi tornes l'endemà, la ratxa puja i cobres més.",
+          command: "/diari",
+        },
+        {
+          icon: "📜",
+          title: "Assignatures aprovades",
+          body: "Cada assoliment (advancement) que aconsegueixes et dona crèdits. Els difícils, molts més.",
+        },
+        {
+          icon: "⚔️",
+          title: "Caça",
+          body: "Matar monstres dona crèdits. Els que surten d'spawners no compten.",
+        },
+        {
+          icon: "🛒",
+          title: "Vendre a la botiga",
+          body: "Ven el que et sobri. Els preus pugen i baixen segons l'oferta i la demanda.",
+          command: "/vendre",
+        },
+        {
+          icon: "🎟️",
+          title: "La Grossa",
+          body: "Compra butlletes i prova sort al sorteig. El pot és per al guanyador.",
+          command: "/loteria",
+        },
+      ],
+    },
+    commands: {
+      title: "Ordres útils",
+      items: [
+        { command: "/credits", body: "El teu saldo. Amb /credits ajuda, totes les ordres." },
+        { command: "/pay <jugador> <import>", body: "Envia crèdits a un altre jugador." },
+        { command: "/botiga", body: "Compra i ven a la botiga del servidor." },
+        { command: "/subhasta", body: "La casa de subhastes: ven a preu fix o amb pujes." },
+        { command: "/intercanvi <jugador>", body: "Intercanvia ítems i crèdits amb seguretat." },
+        { command: "/xec crear <import>", body: "Converteix crèdits en un xec que pots donar o guardar." },
+        { command: "/banc", body: "Estalvia i cobra interessos mentre jugues." },
+        { command: "/ranking", body: "El quadre d'honor, dins del joc." },
+      ],
+    },
+    ctaTitle: "Vols pujar al rànquing?",
+    ctaBody: "Entra al servidor i comença a guanyar crèdits. Al Discord trobaràs la resta de la comunitat.",
   },
   about: {
     title: "Sobre nosaltres",
@@ -272,6 +345,11 @@ const ca = {
         a: "Sí. Entrar i jugar al servidor no costa res.",
       },
       {
+        q: "Què són els crèdits?",
+        a: "La moneda del servidor. Tothom comença amb 60, com un curs sencer, i en guanyes jugant: amb la beca, passant llista cada dia (/diari), amb els assoliments o venent a la botiga. Els pots gastar a la botiga i a les subhastes, o enviar-los a altres jugadors.",
+        link: { href: "/ranquing", label: "Veure el rànquing" },
+      },
+      {
         q: "Com em registro?",
         a: "El primer cop que entris, crea el teu compte amb la primera ordre. Les altres vegades, inicia sessió amb la segona.",
         code: ["/register <contrasenya> <contrasenya>", "/login <contrasenya>"],
@@ -344,8 +422,10 @@ const es: Translations = {
     howToJoin: "Cómo entrar",
     about: "Sobre nosotros",
     history: "Nuestra historia",
+    historyShort: "Historia",
     socials: "Redes",
     map: "Mapa",
+    ranking: "Ranking",
     gallery: "Galería",
     rules: "Normas",
     faq: "FAQ",
@@ -448,6 +528,76 @@ const es: Translations = {
     open: "Abrir a pantalla completa",
     frameTitle: "Mapa en directo del servidor mineuab",
     hint: "Arrastra para moverte y usa la rueda (o pellizca) para acercarte. Si no carga, puede que el servidor se esté reiniciando: vuelve a probarlo dentro de un rato.",
+  },
+  ranking: {
+    title: "Ranking",
+    subtitle:
+      "Los créditos son la moneda de mineuab. Aquí tienes quién tiene más, en directo desde el servidor.",
+    boardTitle: "Cuadro de honor",
+    live: "En directo",
+    updated: "actualizado {time}",
+    amount: "{amount} créditos",
+    total: "Créditos en el servidor",
+    players: "Jugadores en el ranking",
+    loading: "Cargando el ranking…",
+    unavailable:
+      "Ahora mismo el ranking no responde. Puede que el servidor se esté reiniciando: vuelve a probarlo dentro de un rato.",
+    empty: "Todavía no hay nadie en el ranking. ¡Entra al servidor y sé el primero!",
+    inGame: "Dentro del juego lo tienes con /ranking. Cuentan la cartera y los ahorros del banco.",
+    earn: {
+      title: "Cómo se ganan créditos",
+      subtitle: "Todo el mundo empieza con 60 créditos, como un curso entero. A partir de ahí, todo suma.",
+      items: [
+        {
+          icon: "🎓",
+          title: "La beca",
+          body: "Cobras un sueldo por cada rato de juego activo. Si estás AFK, no cuenta.",
+        },
+        {
+          icon: "📋",
+          title: "Pasar lista",
+          body: "Una recompensa cada día. Si vuelves al día siguiente, la racha sube y cobras más.",
+          command: "/diari",
+        },
+        {
+          icon: "📜",
+          title: "Asignaturas aprobadas",
+          body: "Cada logro (advancement) que consigues te da créditos. Los difíciles, muchos más.",
+        },
+        {
+          icon: "⚔️",
+          title: "Caza",
+          body: "Matar monstruos da créditos. Los que salen de spawners no cuentan.",
+        },
+        {
+          icon: "🛒",
+          title: "Vender en la tienda",
+          body: "Vende lo que te sobre. Los precios suben y bajan según la oferta y la demanda.",
+          command: "/vendre",
+        },
+        {
+          icon: "🎟️",
+          title: "La Grossa",
+          body: "Compra boletos y prueba suerte en el sorteo. El bote es para el ganador.",
+          command: "/loteria",
+        },
+      ],
+    },
+    commands: {
+      title: "Comandos útiles",
+      items: [
+        { command: "/credits", body: "Tu saldo. Con /credits ajuda, todos los comandos." },
+        { command: "/pay <jugador> <importe>", body: "Envía créditos a otro jugador." },
+        { command: "/botiga", body: "Compra y vende en la tienda del servidor." },
+        { command: "/subhasta", body: "La casa de subastas: vende a precio fijo o con pujas." },
+        { command: "/intercanvi <jugador>", body: "Intercambia ítems y créditos con seguridad." },
+        { command: "/xec crear <importe>", body: "Convierte créditos en un cheque que puedes dar o guardar." },
+        { command: "/banc", body: "Ahorra y cobra intereses mientras juegas." },
+        { command: "/ranking", body: "El cuadro de honor, dentro del juego." },
+      ],
+    },
+    ctaTitle: "¿Quieres subir en el ranking?",
+    ctaBody: "Entra al servidor y empieza a ganar créditos. En Discord encontrarás al resto de la comunidad.",
   },
   about: {
     title: "Sobre nosotros",
@@ -593,6 +743,11 @@ const es: Translations = {
       {
         q: "¿Es gratis?",
         a: "Sí. Entrar y jugar en el servidor no cuesta nada.",
+      },
+      {
+        q: "¿Qué son los créditos?",
+        a: "La moneda del servidor. Todo el mundo empieza con 60, como un curso entero, y ganas más jugando: con la beca, pasando lista cada día (/diari), con los logros o vendiendo en la tienda. Puedes gastarlos en la tienda y en las subastas, o enviarlos a otros jugadores.",
+        link: { href: "/ranquing", label: "Ver el ranking" },
       },
       {
         q: "¿Cómo me registro?",

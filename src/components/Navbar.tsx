@@ -90,9 +90,7 @@ export default function Navbar() {
               title={t("server.copy")}
               className="hidden items-center gap-2 border-2 border-ink bg-paper-50 px-2.5 py-1.5 transition-colors hover:bg-white xl:inline-flex"
             >
-              <span className="bg-ink px-1 py-0.5 font-pixel text-[10px] leading-none text-paper">
-                IP
-              </span>
+              {/* Sense l'etiqueta "IP": amb set enllaços no hi cabria. El title ja diu què fa. */}
               <span className="font-mono text-sm font-semibold">{SERVER_ADDRESS}</span>
               {copied ? (
                 <CheckIcon size={16} className="text-brand-600" />
