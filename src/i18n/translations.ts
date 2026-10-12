@@ -354,11 +354,21 @@ const ca = {
         a: "El primer cop que entris, crea el teu compte amb la primera ordre. Les altres vegades, inicia sessió amb la segona.",
         code: ["/register <contrasenya> <contrasenya>", "/login <contrasenya>"],
       },
+      {
+        q: "Acabo d'entrar. Per on començo?",
+        a: "Escriu aquesta ordre i et guiarem pels primers passos: triar la carrera, protegir la teva base, passar llista per cobrar crèdits i anar a minar. Si els fas tots, t'emportes un premi en crèdits.",
+        code: ["/tutorial"],
+      },
       // "Una setmana" són els dies-entre-canvis de plugins/MineUABCarreres/config.yml al servidor.
       {
         q: "Com trio la meva carrera?",
         a: "Escriu aquesta ordre i tria-la al menú: el tag de la teva carrera sortirà al xat i al tab. Si t'equivoques, la pots tornar a canviar al cap d'una setmana.",
         code: ["/carrera"],
+      },
+      {
+        q: "On puc minar sense destrossar el món?",
+        a: "Al món de recursos: escriu la primera ordre i hi apareixeràs en un lloc a l'atzar. Mina i explora tant com vulguis, perquè l'1 de cada mes es torna a generar de zero. Per això no hi deixis res: allà no es poden fer homes ni claims. Per tornar, la segona ordre.",
+        code: ["/recursos", "/spawn"],
       },
       {
         q: "He oblidat la contrasenya. Què faig?",
@@ -380,7 +390,8 @@ const ca = {
       },
       {
         q: "He vist algú fent trampes. Com ho denuncio?",
-        a: "Avisa l'staff pel Discord i, si pots, adjunta-hi captures o un vídeo. No responguis pel teu compte.",
+        a: "Dins del joc, escriu aquesta ordre amb el nom del jugador i què ha passat: l'staff ho rep a l'instant amb el lloc exacte. Si tens captures o un vídeo, envia'ls també pel Discord. No responguis pel teu compte.",
+        code: ["/report <jugador> <què ha passat>"],
         link: { href: "/normes", label: "Llegir les normes" },
       },
     ],
@@ -761,9 +772,19 @@ const es: Translations = {
         code: ["/register <contraseña> <contraseña>", "/login <contraseña>"],
       },
       {
+        q: "Acabo de entrar. ¿Por dónde empiezo?",
+        a: "Escribe este comando y te guiaremos por los primeros pasos: elegir la carrera, proteger tu base, pasar lista para cobrar créditos e ir a minar. Si los haces todos, te llevas un premio en créditos.",
+        code: ["/tutorial"],
+      },
+      {
         q: "¿Cómo elijo mi carrera?",
         a: "Escribe este comando y elígela en el menú: la etiqueta de tu carrera saldrá en el chat y en el tab. Si te equivocas, puedes volver a cambiarla al cabo de una semana.",
         code: ["/carrera"],
+      },
+      {
+        q: "¿Dónde puedo minar sin destrozar el mundo?",
+        a: "En el mundo de recursos: escribe el primer comando y aparecerás en un lugar al azar. Mina y explora todo lo que quieras, porque el día 1 de cada mes se vuelve a generar desde cero. Por eso no dejes nada allí: no se pueden hacer homes ni claims. Para volver, el segundo comando.",
+        code: ["/recursos", "/spawn"],
       },
       {
         q: "He olvidado la contraseña. ¿Qué hago?",
@@ -785,7 +806,8 @@ const es: Translations = {
       },
       {
         q: "He visto a alguien haciendo trampas. ¿Cómo lo denuncio?",
-        a: "Avisa al staff por Discord y, si puedes, adjunta capturas o un vídeo. No respondas por tu cuenta.",
+        a: "Dentro del juego, escribe este comando con el nombre del jugador y lo que ha pasado: el staff lo recibe al instante con el lugar exacto. Si tienes capturas o un vídeo, envíalos también por Discord. No respondas por tu cuenta.",
+        code: ["/report <jugador> <lo que ha pasado>"],
         link: { href: "/normes", label: "Leer las normas" },
       },
     ],
