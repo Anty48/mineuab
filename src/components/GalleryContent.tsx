@@ -57,7 +57,7 @@ export default function GalleryContent() {
                 <button
                   type="button"
                   onClick={() => setOpen(i)}
-                  className="group relative block h-full w-full overflow-hidden rounded-2xl bg-ink text-left"
+                  className="group relative block h-full w-full overflow-hidden border-2 border-ink bg-ink text-left transition-transform hover:-translate-y-1"
                 >
                   <Image
                     src={item.image}
@@ -71,7 +71,11 @@ export default function GalleryContent() {
                     }
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                   />
-                  <span className="absolute bottom-3 left-3 rounded-lg bg-paper-50/95 px-2.5 py-1 text-sm font-medium text-ink">
+                  {/* Etiqueta com la d'un museu. */}
+                  <span className="absolute bottom-3 left-3 flex items-center gap-2 border-2 border-ink bg-paper-50 px-2 py-1 font-pixel text-[11px] uppercase text-ink">
+                    <span aria-hidden className="text-brand-600">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
                     {caption(item.key)}
                   </span>
                 </button>
@@ -122,11 +126,11 @@ export default function GalleryContent() {
                 alt={caption(current.key)}
                 placeholder="blur"
                 sizes="100vw"
-                className="max-h-[75vh] w-auto rounded-lg object-contain"
+                className="max-h-[75vh] w-auto border-2 border-paper object-contain"
               />
               <figcaption className="mt-4 flex items-center gap-3 text-center text-lg font-semibold">
                 {caption(current.key)}
-                <span className="text-sm font-normal text-paper/60">
+                <span className="font-pixel text-xs text-brand-300">
                   {open + 1} / {GALLERY.length}
                 </span>
               </figcaption>

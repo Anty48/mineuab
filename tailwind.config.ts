@@ -51,17 +51,18 @@ const config: Config = {
         pixel: ["var(--font-pixel)", "ui-monospace", "monospace"],
       },
       boxShadow: {
-        // Ombra suau per a les peces que han de destacar sobre el paper.
-        soft: "0 1px 2px rgb(19 26 22 / 0.05), 0 12px 32px -16px rgb(19 26 22 / 0.25)",
+        // Ombra dura i desplaçada, com un bloc: als botons i a les peces principals.
+        block: "6px 6px 0 0 #131a16",
+        "block-sm": "4px 4px 0 0 #131a16",
       },
       keyframes: {
         blink: {
           "0%, 100%": { opacity: "1" },
-          "50%": { opacity: "0.35" },
+          "50%": { opacity: "0.25" },
         },
       },
       animation: {
-        blink: "blink 2s ease-in-out infinite",
+        blink: "blink 1.4s steps(2, jump-none) infinite",
       },
     },
   },

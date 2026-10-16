@@ -13,7 +13,7 @@ export default function GalleryPreview() {
   const items = GALLERY.slice(0, 4);
 
   return (
-    <section className="py-20 md:py-28">
+    <section className="edge-top bg-paper py-20 [--edge:#f4f1ea] md:py-28">
       <div className="container-page">
         <div className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
           <SectionHeading
@@ -33,16 +33,16 @@ export default function GalleryPreview() {
               <li key={item.key}>
                 <Link
                   href="/galeria"
-                  className={`group block`}
+                  className={`group block border-2 border-ink bg-paper-50 p-2 transition-colors hover:bg-white`}
                 >
                   <Image
                     src={item.image}
                     alt={caption}
                     placeholder="blur"
                     sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
-                    className="aspect-[4/5] w-full rounded-xl object-cover transition-opacity group-hover:opacity-90"
+                    className="aspect-[4/5] w-full object-cover"
                   />
-                  <span className="block pt-3 text-sm font-medium text-ink-700 group-hover:text-brand-600">{caption}</span>
+                  <span className="block px-1 pt-2 text-sm text-ink-600">{caption}</span>
                 </Link>
               </li>
             );

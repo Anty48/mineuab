@@ -109,7 +109,7 @@ export default function SkinViewer({
     >
       {!ready && (
         <div aria-hidden className="absolute inset-0 grid place-items-center">
-          <span className="h-10 w-10 animate-spin rounded-full border-4 border-ink/15 border-t-brand-500" />
+          <span className="h-10 w-10 animate-spin border-4 border-ink/15 border-t-brand-500" />
         </div>
       )}
     </div>

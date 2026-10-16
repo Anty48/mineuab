@@ -23,7 +23,7 @@ export default function PageHeader({
           </span>
           {crumb}
         </p>
-        <h1 className="mt-3 max-w-3xl text-balance font-display text-5xl font-bold leading-[1.02] tracking-tight md:text-6xl">
+        <h1 className="mt-3 max-w-3xl text-balance font-display text-5xl font-extrabold leading-[0.95] tracking-tight md:text-7xl">
           {title}
         </h1>
         {subtitle && (

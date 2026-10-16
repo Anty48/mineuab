@@ -38,21 +38,24 @@ export default function FaqContent() {
 
       <section className="py-16 md:py-24">
         <div className="container-page">
-          <div className="max-w-4xl border-t border-ink/10">
-            {items.map((item) => (
-              <details key={item.q} className="group border-b border-ink/10">
+          <div className="max-w-4xl border-t-2 border-ink">
+            {items.map((item, i) => (
+              <details key={item.q} className="group border-b-2 border-ink">
                 <summary className="flex cursor-pointer list-none items-center gap-4 py-6 transition-colors hover:text-brand-600 sm:gap-6 [&::-webkit-details-marker]:hidden">
-                  <span className="flex-1 text-balance font-display text-lg font-bold md:text-xl">
+                  <span aria-hidden className="w-8 shrink-0 font-pixel text-sm text-brand-600">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <span className="flex-1 text-balance font-display text-xl font-bold md:text-2xl">
                     {item.q}
                   </span>
                   <span
                     aria-hidden
-                    className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-ink/15 text-ink transition-colors group-open:border-brand-500 group-open:bg-brand-500 group-open:text-white"
+                    className="flex h-9 w-9 shrink-0 items-center justify-center border-2 border-ink text-ink transition-colors group-open:bg-brand-500 group-open:text-white"
                   >
                     <PlusIcon size={18} className="transition-transform group-open:rotate-45" />
                   </span>
                 </summary>
-                <div className="pb-8 pr-2 md:pr-16">
+                <div className="pb-8 pl-12 pr-2 sm:pl-14 md:pr-16">
                   <p className="text-lg leading-relaxed text-ink-700">{item.a}</p>
 
                   {item.code && (
@@ -97,7 +100,7 @@ function AddressChip() {
     <button
       type="button"
       onClick={() => copy(SERVER_ADDRESS)}
-      className="mt-4 flex items-center gap-3 rounded-lg border border-ink/15 bg-white px-3 py-2 font-mono font-semibold transition-colors hover:border-ink/30"
+      className="mt-4 flex items-center gap-3 border-2 border-ink bg-paper-50 px-3 py-2 font-mono font-semibold transition-colors hover:bg-white"
     >
       {SERVER_ADDRESS}
       {copied ? (
@@ -117,7 +120,7 @@ function VersionChip() {
   const status = useServerStatus();
 
   return (
-    <p className="mt-4 w-fit rounded-lg border border-ink/15 bg-white px-3 py-2 text-sm text-ink-700">
+    <p className="mt-4 w-fit border-2 border-ink bg-paper-50 px-3 py-2 text-sm text-ink-700">
       {t("server.version")}:{" "}
       <span className="font-mono font-bold text-brand-600">{status?.version ?? "…"}</span>
     </p>

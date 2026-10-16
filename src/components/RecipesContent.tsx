@@ -70,11 +70,11 @@ export default function RecipesContent() {
 
       <section className="py-16 md:py-24">
         <div className="container-page">
-          <div className="flex flex-wrap items-end justify-between gap-4 border-b border-ink/10 pb-4">
-            <h2 className="font-display text-3xl font-bold md:text-4xl">{t("recipes.listTitle")}</h2>
+          <div className="flex flex-wrap items-end justify-between gap-4 border-b-2 border-ink pb-4">
+            <h2 className="font-display text-3xl font-extrabold md:text-4xl">{t("recipes.listTitle")}</h2>
             {book && book !== "loading" && (
-              <p className="flex items-center gap-2 text-sm font-medium text-ink-600">
-                <span aria-hidden className="h-2 w-2 rounded-full animate-blink bg-brand-500" />
+              <p className="flex items-center gap-2 font-pixel text-[11px] uppercase text-ink-600">
+                <span aria-hidden className="h-2 w-2 animate-blink bg-brand-500" />
                 {t("recipes.live")}
                 {book.updated && (
                   <span className="normal-case text-ink-500">
@@ -88,7 +88,7 @@ export default function RecipesContent() {
 
           {book === "loading" && <RecipesSkeleton />}
           {book === null && (
-            <p className="mt-8 max-w-2xl rounded-xl bg-terra-100 px-4 py-3 text-ink-700">
+            <p className="mt-8 max-w-2xl border-l-4 border-terra-500 bg-terra-100 px-4 py-3 text-ink-700">
               {t("recipes.unavailable")}
             </p>
           )}
@@ -136,7 +136,7 @@ function FilterChip({ active, onClick, children }: { active: boolean; onClick: (
       type="button"
       aria-pressed={active}
       onClick={onClick}
-      className="rounded-full border border-ink/15 bg-white px-3.5 py-1.5 text-sm font-semibold transition-colors hover:border-ink/30 aria-[pressed=true]:border-ink aria-[pressed=true]:bg-ink aria-[pressed=true]:text-paper-50 [&[aria-pressed=true]_span]:text-paper-300"
+      className="border-2 border-ink bg-paper-50 px-3 py-1.5 text-sm font-bold transition-colors hover:bg-white aria-[pressed=true]:bg-ink aria-[pressed=true]:text-paper-50 [&[aria-pressed=true]_span]:text-paper-300"
     >
       {children}
     </button>
@@ -153,10 +153,10 @@ function RecipeCard({ recipe, book, sources }: { recipe: Recipe; book: RecipeBoo
       id={`recepta-${recipe.id}`}
       className="block-card flex h-full flex-col target:outline target:outline-4 target:outline-offset-4 target:outline-brand-500"
     >
-      <header className="flex items-center gap-4 border-b border-ink/10 px-5 py-4">
+      <header className="flex items-center gap-4 border-b-2 border-ink px-5 py-4">
         <ItemIcon item={result} size={48} />
         <div className="min-w-0">
-          <p className="text-sm font-semibold text-brand-600">{t(`recipes.stations.${stationOf(recipe)}`)}</p>
+          <p className="font-pixel text-[11px] uppercase text-brand-600">{t(`recipes.stations.${stationOf(recipe)}`)}</p>
           <h3 className="text-balance font-display text-2xl font-bold leading-tight">{plainName(result, locale)}</h3>
         </div>
       </header>
@@ -258,7 +258,7 @@ function RecipeGui({ recipe, book, sources }: { recipe: Recipe; book: RecipeBook
   }
 
   return (
-    <div className="rounded-xl bg-[#C6C6C6] p-4">
+    <div className="border-2 border-ink bg-[#C6C6C6] p-4">
       <div className="flex items-center justify-center gap-3 sm:gap-5">
         {inputs}
         <ArrowIcon />
@@ -515,7 +515,7 @@ function RecipesSkeleton() {
       <p className="sr-only">{t("recipes.loading")}</p>
       <div aria-hidden className="grid gap-8 lg:grid-cols-2">
         {[0, 1, 2, 3].map((i) => (
-          <div key={i} className="h-72 animate-pulse rounded-2xl bg-paper-200" />
+          <div key={i} className="h-72 animate-pulse border-2 border-ink/20 bg-paper-200" />
         ))}
       </div>
     </div>

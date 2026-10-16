@@ -49,14 +49,14 @@ export default function RankingContent() {
 
       <section className="py-16 md:py-24">
         <div className="container-page">
-          <div className="flex flex-wrap items-end justify-between gap-4 border-b border-ink/10 pb-4">
-            <h2 className="font-display text-3xl font-bold md:text-4xl">{t("ranking.boardTitle")}</h2>
+          <div className="flex flex-wrap items-end justify-between gap-4 border-b-2 border-ink pb-4">
+            <h2 className="font-display text-3xl font-extrabold md:text-4xl">{t("ranking.boardTitle")}</h2>
             <LiveTag ranking={ranking} />
           </div>
 
           {ranking === "loading" && <BoardSkeleton />}
           {ranking === null && (
-            <p className="mt-8 max-w-2xl rounded-xl bg-terra-100 px-4 py-3 text-ink-700">
+            <p className="mt-8 max-w-2xl border-l-4 border-terra-500 bg-terra-100 px-4 py-3 text-ink-700">
               {t("ranking.unavailable")}
             </p>
           )}
@@ -64,7 +64,7 @@ export default function RankingContent() {
         </div>
       </section>
 
-      <section className="border-y border-ink/10 bg-paper-50 py-16 md:py-24">
+      <section className="border-y-2 border-ink bg-paper-50 py-16 md:py-24">
         <div className="container-page">
           <div className="max-w-2xl">
             <h2 className="section-title">{t("ranking.earn.title")}</h2>
@@ -72,7 +72,7 @@ export default function RankingContent() {
           </div>
           <ul className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {earn.map((way) => (
-              <li key={way.title} className="flex flex-col rounded-2xl border border-ink/10 bg-white p-6">
+              <li key={way.title} className="block-card flex flex-col p-6">
                 <h3 className="font-display text-xl font-bold">{way.title}</h3>
                 <p className="mt-2 leading-relaxed text-ink-600">{way.body}</p>
                 {way.command && <code className="code-line mt-auto w-fit pt-2">{way.command}</code>}
@@ -80,7 +80,7 @@ export default function RankingContent() {
             ))}
           </ul>
 
-          <h2 className="mt-16 font-display text-3xl font-bold">{t("ranking.commands.title")}</h2>
+          <h2 className="mt-16 font-display text-3xl font-extrabold">{t("ranking.commands.title")}</h2>
           <dl className="mt-6 grid gap-x-10 gap-y-5 md:grid-cols-2">
             {commands.map((c) => (
               <div key={c.command}>
@@ -104,8 +104,8 @@ function LiveTag({ ranking }: { ranking: Ranking | null | "loading" }) {
   if (!ranking || ranking === "loading") return null;
 
   return (
-    <p className="flex items-center gap-2 text-sm font-medium text-ink-600">
-      <span aria-hidden className="h-2 w-2 rounded-full animate-blink bg-brand-500" />
+    <p className="flex items-center gap-2 font-pixel text-[11px] uppercase text-ink-600">
+      <span aria-hidden className="h-2 w-2 animate-blink bg-brand-500" />
       {t("ranking.live")}
       {ranking.updated && (
         <span className="normal-case text-ink-500">
@@ -138,13 +138,13 @@ function Board({ ranking }: { ranking: Ranking }) {
       </ol>
 
       {rest.length > 0 && (
-        <ol className="mt-10 border-t border-ink/10" start={4}>
+        <ol className="mt-10 border-t-2 border-ink" start={4}>
           {rest.map((entry) => (
             <li
               key={entry.name}
-              className="flex items-center gap-4 border-b border-ink/10 py-4 sm:gap-6"
+              className="flex items-center gap-4 border-b-2 border-ink/15 py-4 sm:gap-6"
             >
-              <span className="w-10 shrink-0 font-mono text-sm text-ink-500">
+              <span className="w-10 shrink-0 font-pixel text-sm text-ink-500">
                 {String(entry.rank).padStart(2, "0")}
               </span>
               <Link
@@ -159,13 +159,13 @@ function Board({ ranking }: { ranking: Ranking }) {
         </ol>
       )}
 
-      <dl className="mt-10 grid max-w-xl grid-cols-2 rounded-2xl border border-ink/10 bg-paper-50">
-        <div className="flex flex-col-reverse border-r border-ink/10 p-4">
-          <dt className="field-label">{t("ranking.total")}</dt>
+      <dl className="mt-10 grid max-w-xl grid-cols-2 border-2 border-ink bg-paper-50">
+        <div className="flex flex-col-reverse border-r-2 border-ink p-4">
+          <dt className="font-pixel text-[10px] uppercase text-ink-500">{t("ranking.total")}</dt>
           <dd className="font-mono text-xl font-bold">{amount(ranking.totalCredits)}</dd>
         </div>
         <div className="flex flex-col-reverse p-4">
-          <dt className="field-label">{t("ranking.players")}</dt>
+          <dt className="font-pixel text-[10px] uppercase text-ink-500">{t("ranking.players")}</dt>
           <dd className="font-mono text-xl font-bold">{number.format(ranking.rankedPlayers)}</dd>
         </div>
       </dl>
@@ -179,18 +179,18 @@ function PodiumCard({ entry, amount }: { entry: RankingEntry; amount: string }) 
   const order = first ? "sm:order-2" : entry.rank === 2 ? "sm:order-1" : "sm:order-3";
 
   return (
-    <li className={`overflow-hidden rounded-2xl border border-ink/10 bg-paper-50 ${order}`}>
+    <li className={`border-2 border-ink bg-paper-50 ${order}`}>
       <div
-        className={`flex items-center justify-between px-5 py-3 ${
+        className={`flex items-center justify-between border-b-2 border-ink px-5 py-3 ${
           first ? "bg-brand-500 text-white" : "bg-paper-200"
         }`}
       >
-        <span className="font-display text-lg font-bold">#{entry.rank}</span>
+        <span className="font-pixel text-sm">#{entry.rank}</span>
       </div>
       <div className={`px-5 ${first ? "py-10" : "py-6"}`}>
         <Link
           href={profileHref(entry.name)}
-          className={`block break-all font-display font-bold hover:text-brand-600 hover:underline ${
+          className={`block break-all font-display font-extrabold hover:text-brand-600 hover:underline ${
             first ? "text-3xl" : "text-2xl"
           }`}
         >
@@ -212,7 +212,7 @@ function BoardSkeleton() {
         {[0, 1, 2].map((i) => (
           <div
             key={i}
-            className={`animate-pulse rounded-2xl bg-paper-200 ${i === 1 ? "h-48" : "h-36"}`}
+            className={`animate-pulse border-2 border-ink/20 bg-paper-200 ${i === 1 ? "h-48" : "h-36"}`}
           />
         ))}
       </div>
