@@ -70,7 +70,7 @@ export default function Navbar() {
           </Link>
 
           {/* Enllaços d'escriptori */}
-          <div className="hidden items-center gap-4 lg:flex">
+          <div className="hidden items-center gap-3 lg:flex xl:gap-4">
             {NAV_LINKS.map((l) => (
               <Link
                 key={l.href}
@@ -102,7 +102,8 @@ export default function Navbar() {
               </span>
             </button>
 
-            <ServerStatusPill className="hidden md:inline-flex" />
+            {/* Entre 1024 i 1279 px no hi cap amb els nou enllaços: hi torna a ser a partir de 1280. */}
+            <ServerStatusPill className="hidden md:inline-flex lg:hidden xl:inline-flex" />
             <LanguageToggle />
 
             {/* Botó del menú mòbil */}

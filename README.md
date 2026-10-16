@@ -34,6 +34,7 @@ npm start
 - `/`: portada amb l'adreça i l'estat del servidor, una cinta amb el que hi trobaràs, com entrar-hi (amb el carnet de jugador), qui som, un tast de la galeria i les xarxes.
 - `/mapa`: el mapa en directe del servidor (BlueMap), incrustat a la pàgina.
 - `/ranquing`: el quadre d'honor de crèdits en directe (plugin Credits del servidor), com es guanyen i les ordres útils.
+- `/receptes`: les receptes pròpies del servidor (Craftorithm), en directe des del plugin MineUABPerfil: cada una amb la seva interfície de Minecraft (taula de treball, forn, altar de pocions...), les icones del texture pack i el nom i la descripció dels ítems com al joc. Quan l'staff n'afegeix una al servidor, surt sola.
 - `/galeria`: galeria de construccions, amb un visor a pantalla completa (fletxes per moure't, Esc per tancar).
 - `/normes`: normes del servidor, amb un índex al costat. **Provisionals** fins que tinguem les definitives.
 - `/faq`: preguntes freqüents.
@@ -60,12 +61,12 @@ Els colors, les ombres i les tipografies són a [`tailwind.config.ts`](tailwind.
 src/
   app/
     page.tsx                    # Inici
-    mapa/  ranquing/  galeria/  normes/  faq/  historia/
+    mapa/  ranquing/  receptes/  galeria/  normes/  faq/  historia/
     not-found.tsx
   assets/gallery/               # Fotos de la galeria (s'importen, així tenen un difuminat mentre carreguen)
   components/
     sections/                   # Seccions de l'inici: Hero, Marquee, HowToJoin, About, GalleryPreview, Socials
-    MapContent, RankingContent, GalleryContent, RulesContent, FaqContent, HistoryContent, NotFoundContent
+    MapContent, RankingContent, RecipesContent, GalleryContent, RulesContent, FaqContent, HistoryContent, NotFoundContent
     WhitelistRequest.tsx        # Pas "Demana accés": prepara el correu per entrar a la whitelist
     AnnouncementBar.tsx         # Franja d'avís de dalt de tot
     PageHeader.tsx              # Capçalera de les pàgines interiors
@@ -82,6 +83,7 @@ src/
     gallery.ts                  # Quines fotos surten a la galeria i en quin ordre
     useServerStatus.ts
     useRanking.ts               # Rànquing de crèdits, llegit des del navegador (RANKING_URL a links.ts)
+    useRecipes.ts               # Receptes del servidor (receptes.json de l'API dels perfils, PROFILES_URL a links.ts)
     useCopyToClipboard.ts
 ```
 

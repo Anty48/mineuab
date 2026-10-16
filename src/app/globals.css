@@ -99,6 +99,33 @@ body {
   .code-line {
     @apply block break-all border-2 border-ink bg-ink px-3 py-2 font-mono text-sm text-brand-200;
   }
+
+  /* La brillantor dels ítems encantats: una llum lila que passa només pels píxels de l'ítem.
+     La icona arriba per la variable --icon (url(...)) i fa de màscara. */
+  .item-glint {
+    background: linear-gradient(115deg, transparent 35%, rgb(200 140 255 / 0.8) 47%, rgb(150 90 255 / 0.55) 53%, transparent 65%)
+      0 0 / 300% 100%;
+    mix-blend-mode: screen;
+    -webkit-mask: var(--icon) center / contain no-repeat;
+    mask: var(--icon) center / contain no-repeat;
+    animation: glint 3.2s linear infinite;
+  }
+}
+
+@keyframes glint {
+  from {
+    background-position: 100% 0;
+  }
+  to {
+    background-position: -50% 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .item-glint {
+    animation: none;
+    background-position: 50% 0;
+  }
 }
 
 @layer utilities {
