@@ -24,21 +24,19 @@ const BADGE_STYLES: Record<string, string> = {
   donor: "bg-[#f2c94c] text-ink",
 };
 
-const HIGHLIGHT_ICONS = { block: "⛏️", mob: "🗡️", nemesis: "💀", crafted: "🛠️" } as const;
-
-const TRIVIA: { key: string; icon: string }[] = [
-  { key: "jumps", icon: "🦘" },
-  { key: "chestsOpened", icon: "📦" },
-  { key: "itemsCrafted", icon: "🛠️" },
-  { key: "villagerTrades", icon: "🤝" },
-  { key: "animalsBred", icon: "🐑" },
-  { key: "fishCaught", icon: "🎣" },
-  { key: "timesSlept", icon: "🛏️" },
-  { key: "cakeSlices", icon: "🍰" },
-  { key: "recordsPlayed", icon: "💿" },
-  { key: "toolsBroken", icon: "🔨" },
-  { key: "playerKills", icon: "⚔️" },
-  { key: "raidsWon", icon: "🛡️" },
+const TRIVIA = [
+  "jumps",
+  "chestsOpened",
+  "itemsCrafted",
+  "villagerTrades",
+  "animalsBred",
+  "fishCaught",
+  "timesSlept",
+  "cakeSlices",
+  "recordsPlayed",
+  "toolsBroken",
+  "playerKills",
+  "raidsWon",
 ];
 
 function numberFormat(locale: Locale, maximumFractionDigits = 0) {
@@ -95,7 +93,7 @@ function ProfileView({ profile }: { profile: Profile }) {
 
   return (
     <>
-      <header className="bg-paving border-b-2 border-ink">
+      <header className="bg-gradient-to-b from-paper-200/80 to-paper">
         <div className="container-page py-10 md:py-14">
           <p className="eyebrow">
             <Link href="/" className="hover:underline">
@@ -118,7 +116,7 @@ function ProfileView({ profile }: { profile: Profile }) {
                 {profile.badges.map((b) => (
                   <span
                     key={b.id}
-                    className={`border-2 border-ink px-3 py-1 font-pixel text-xs uppercase shadow-block-sm ${
+                    className={`rounded-full px-3 py-1 text-xs font-semibold ${
                       BADGE_STYLES[b.id] ?? "bg-paper-50 text-ink"
                     }`}
                   >
@@ -126,7 +124,7 @@ function ProfileView({ profile }: { profile: Profile }) {
                   </span>
                 ))}
               </div>
-              <h1 className="mt-5 break-all font-display text-5xl font-extrabold leading-[0.95] tracking-tight md:text-7xl">
+              <h1 className="mt-5 break-all font-display text-5xl font-bold leading-[0.95] tracking-tight md:text-7xl">
                 {profile.name}
               </h1>
               <Presence profile={profile} />
@@ -140,19 +138,18 @@ function ProfileView({ profile }: { profile: Profile }) {
         <div className="container-page">
           <h2 className="section-title">{t("profile.statsTitle")}</h2>
           <ul className="mt-10 grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-4">
-            <StatTile icon="⏱️" label={t("profile.stats.hours")} value={numberFormat(locale, 1).format(profile.stats.hours)} />
+            <StatTile label={t("profile.stats.hours")} value={numberFormat(locale, 1).format(profile.stats.hours)} />
             <StatTile
-              icon="💰"
               label={t("profile.stats.credits")}
               value={profile.credits ? numberFormat(locale, 2).format(profile.credits.total) : "—"}
               note={profile.credits?.rank ? t("profile.rank", { rank: profile.credits.rank }) : undefined}
               href={profile.credits?.rank ? "/ranquing" : undefined}
             />
-            <StatTile icon="⛏️" label={t("profile.stats.blocksMined")} value={fmt.format(counters.blocksMined ?? 0)} />
-            <StatTile icon="🧭" label={t("profile.stats.km")} value={numberFormat(locale, 1).format(km)} />
-            <StatTile icon="⚔️" label={t("profile.stats.mobKills")} value={fmt.format(counters.mobKills ?? 0)} />
-            <StatTile icon="💎" label={t("profile.stats.diamonds")} value={fmt.format(counters.diamonds ?? 0)} />
-            <StatTile icon="💀" label={t("profile.stats.deaths")} value={fmt.format(counters.deaths ?? 0)} />
+            <StatTile label={t("profile.stats.blocksMined")} value={fmt.format(counters.blocksMined ?? 0)} />
+            <StatTile label={t("profile.stats.km")} value={numberFormat(locale, 1).format(km)} />
+            <StatTile label={t("profile.stats.mobKills")} value={fmt.format(counters.mobKills ?? 0)} />
+            <StatTile label={t("profile.stats.diamonds")} value={fmt.format(counters.diamonds ?? 0)} />
+            <StatTile label={t("profile.stats.deaths")} value={fmt.format(counters.deaths ?? 0)} />
             {profile.advancements && <AdvancementsTile done={profile.advancements.done} total={profile.advancements.total} />}
           </ul>
         </div>
@@ -167,10 +164,10 @@ function ProfileView({ profile }: { profile: Profile }) {
         </div>
       </section>
 
-      <section className="border-t-2 border-ink bg-brand-500 py-10 text-white">
+      <section className="bg-brand-500 py-10 text-white">
         <div className="container-page flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
           <p className="max-w-2xl text-pretty">{t("profile.itsYou")}</p>
-          <p className="shrink-0 font-pixel text-[10px] uppercase text-brand-100">
+          <p className="shrink-0 text-sm text-brand-100">
             {t("profile.updated", { time: timeAgo(profile.updated, locale) })}
           </p>
         </div>
@@ -182,10 +179,10 @@ function ProfileView({ profile }: { profile: Profile }) {
 function Presence({ profile }: { profile: Profile }) {
   const { t, locale } = useLanguage();
   return (
-    <p className="mt-5 flex items-center gap-2 font-pixel text-[11px] uppercase text-ink-600">
+    <p className="mt-5 flex items-center gap-2 text-sm font-medium text-ink-600">
       <span
         aria-hidden
-        className={`h-2.5 w-2.5 shrink-0 ${profile.online ? "animate-blink bg-brand-500" : "bg-ink/30"}`}
+        className={`h-2.5 w-2.5 rounded-full shrink-0 ${profile.online ? "animate-blink bg-brand-500" : "bg-ink/30"}`}
       />
       {profile.online
         ? t("profile.onlineNow")
@@ -207,7 +204,7 @@ function SkinStage({ profile }: { profile: Profile }) {
 
   return (
     <figure className="mx-auto w-full max-w-md lg:max-w-none">
-      <div className="relative aspect-[4/5] overflow-hidden border-2 border-ink shadow-block-lg [background:linear-gradient(#78b4ee,#cfe6f8_70%)]">
+      <div className="relative aspect-[4/5] overflow-hidden rounded-2xl [background:linear-gradient(#78b4ee,#cfe6f8_70%)]">
         {/* Núvols de píxels. */}
         <span aria-hidden className="absolute left-[8%] top-[10%] h-5 w-24 bg-white/85 shadow-[24px_-12px_0_-2px_rgba(255,255,255,0.85)]" />
         <span aria-hidden className="absolute right-[10%] top-[24%] h-4 w-16 bg-white/70 shadow-[-18px_-10px_0_-2px_rgba(255,255,255,0.7)]" />
@@ -229,8 +226,8 @@ function SkinStage({ profile }: { profile: Profile }) {
           ) : (
             <div className="grid h-full place-items-center pb-[16%]">
               <div className="flex flex-col items-center gap-4 text-center">
-                <PlayerHead size={96} className="border-2 border-ink shadow-block-sm" />
-                <p className="max-w-[16rem] font-pixel text-[11px] uppercase text-ink-700">{t("profile.noSkin")}</p>
+                <PlayerHead size={96} className="rounded-lg" />
+                <p className="max-w-[16rem] text-sm font-medium text-ink-700">{t("profile.noSkin")}</p>
               </div>
             </div>
           )}
@@ -239,20 +236,20 @@ function SkinStage({ profile }: { profile: Profile }) {
 
       {skin && !failed && (
         <figcaption className="mt-5 flex flex-wrap items-center gap-x-4 gap-y-3">
-          <div role="group" aria-label={t("profile.poses.label")} className="flex flex-wrap border-2 border-ink bg-paper-50 shadow-block-sm">
+          <div role="group" aria-label={t("profile.poses.label")} className="flex flex-wrap gap-1 rounded-xl border border-ink/10 bg-paper-50 p-1">
             {poses.map((p) => (
               <button
                 key={p}
                 type="button"
                 aria-pressed={pose === p}
                 onClick={() => setPose(p)}
-                className="border-r-2 border-ink px-3 py-1.5 text-sm font-bold last:border-r-0 hover:bg-brand-50 aria-pressed:bg-brand-500 aria-pressed:text-white"
+                className="rounded-lg px-3 py-1.5 text-sm font-semibold hover:bg-brand-50 aria-pressed:bg-brand-500 aria-pressed:text-white"
               >
                 {t(`profile.poses.${p}`)}
               </button>
             ))}
           </div>
-          <span className="font-pixel text-[10px] uppercase text-ink-500">{t("profile.dragHint")}</span>
+          <span className="field-label">{t("profile.dragHint")}</span>
         </figcaption>
       )}
     </figure>
@@ -281,38 +278,32 @@ function PlayerCard({ profile }: { profile: Profile }) {
   ];
 
   return (
-    <div className="mt-8 border-2 border-ink bg-paper-50 shadow-block">
-      <div className="flex items-center justify-between gap-4 border-b-2 border-ink bg-brand-500 px-5 py-3 text-white">
-        <p className="font-pixel text-[11px] uppercase">{t("profile.cardTag")}</p>
-        <p className="font-pixel text-[11px] uppercase text-brand-100">{t("profile.course", { course: course() })}</p>
+    <div className="mt-8 overflow-hidden rounded-2xl border border-ink/10 bg-white shadow-soft">
+      <div className="flex items-center justify-between gap-4 bg-brand-500 px-5 py-3 text-white">
+        <p className="text-sm font-semibold">{t("profile.cardTag")}</p>
+        <p className="text-sm text-brand-100">{t("profile.course", { course: course() })}</p>
       </div>
       <div className="flex items-start gap-5 p-5">
-        <PlayerHead src={profile.head} size={72} className="border-2 border-ink" />
+        <PlayerHead src={profile.head} size={72} className="rounded-lg" />
         <dl className="grid min-w-0 flex-1 grid-cols-1 gap-x-6 gap-y-3 sm:grid-cols-2">
           {rows.map((r) => (
             <div key={r.label} className="flex min-w-0 flex-col-reverse">
-              <dt className="font-pixel text-[10px] uppercase text-ink-500">{r.label}</dt>
+              <dt className="field-label">{r.label}</dt>
               <dd className="truncate text-sm font-bold">{r.value}</dd>
             </div>
           ))}
         </dl>
       </div>
-      <div
-        aria-hidden
-        className="mx-5 mb-5 h-6 [background-image:repeating-linear-gradient(90deg,#131a16_0_3px,transparent_3px_5px,#131a16_5px_6px,transparent_6px_10px,#131a16_10px_12px,transparent_12px_13px)]"
-      />
     </div>
   );
 }
 
 function StatTile({
-  icon,
   label,
   value,
   note,
   href,
 }: {
-  icon: string;
   label: string;
   value: string;
   note?: string;
@@ -320,11 +311,8 @@ function StatTile({
 }) {
   return (
     <li className="block-card flex flex-col p-4 sm:p-5">
-      <span aria-hidden className="text-2xl">
-        {icon}
-      </span>
-      <p className="mt-3 break-all font-display text-2xl font-extrabold tabular-nums tracking-tight sm:text-4xl">{value}</p>
-      <p className="mt-1 font-pixel text-[10px] uppercase text-ink-500">{label}</p>
+      <p className="break-all font-display text-2xl font-bold tabular-nums tracking-tight sm:text-4xl">{value}</p>
+      <p className="mt-1 field-label">{label}</p>
       {note &&
         (href ? (
           <Link href={href} className="mt-3 w-fit font-bold text-brand-600 underline-offset-4 hover:underline">
@@ -345,21 +333,18 @@ function AdvancementsTile({ done, total }: { done: number; total: number }) {
 
   return (
     <li className="block-card flex flex-col p-4 sm:p-5">
-      <span aria-hidden className="text-2xl">
-        🏆
-      </span>
-      <p className="mt-3 font-display text-2xl font-extrabold tabular-nums tracking-tight sm:text-4xl">
+      <p className="font-display text-2xl font-bold tabular-nums tracking-tight sm:text-4xl">
         {done}
         <span className="text-xl text-ink-500">/{total}</span>
       </p>
-      <p className="mt-1 font-pixel text-[10px] uppercase text-ink-500">{t("profile.stats.advancements")}</p>
+      <p className="mt-1 field-label">{t("profile.stats.advancements")}</p>
       <div
         role="meter"
         aria-label={t("profile.stats.advancements")}
         aria-valuemin={0}
         aria-valuemax={total}
         aria-valuenow={done}
-        className="mt-4 flex gap-[2px] border-2 border-ink bg-ink p-[2px]"
+        className="mt-4 flex gap-[2px] rounded-md bg-ink p-[2px]"
       >
         {Array.from({ length: blocks }, (_, i) => (
           <span key={i} className={`h-2.5 flex-1 ${i < filled ? "bg-[#80ff20]" : "bg-ink-700"}`} />
@@ -379,19 +364,16 @@ function Highlights({ profile }: { profile: Profile }) {
   if (items.length === 0) return null;
 
   return (
-    <section className="border-y-2 border-ink bg-paper-50 py-16 md:py-20">
+    <section className="border-y border-ink/10 bg-paper-50 py-16 md:py-20">
       <div className="container-page">
         <h2 className="section-title">{t("profile.highlightsTitle")}</h2>
         <ul className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {items.map((h) => (
-            <li key={h.key} className="flex flex-col border-2 border-ink bg-paper p-5 shadow-block-sm">
-              <p className="font-pixel text-[10px] uppercase text-brand-600">
-                <span aria-hidden className="mr-2 text-base">
-                  {HIGHLIGHT_ICONS[h.key]}
-                </span>
+            <li key={h.key} className="flex flex-col rounded-2xl border border-ink/10 bg-white p-5">
+              <p className="text-sm font-semibold text-brand-600">
                 {t(`profile.highlights.${h.key}.title`)}
               </p>
-              <p className="mt-3 text-balance font-display text-2xl font-extrabold leading-tight">
+              <p className="mt-3 text-balance font-display text-2xl font-bold leading-tight">
                 {minecraftName(h.id, locale)}
               </p>
               <p className="mt-auto pt-3 text-ink-600">
@@ -454,7 +436,7 @@ function Travel({ distances, total }: { distances: Record<string, number>; total
 function Trivia({ counters }: { counters: Record<string, number> }) {
   const { t, locale } = useLanguage();
   const fmt = numberFormat(locale);
-  const items = TRIVIA.filter((i) => (counters[i.key] ?? 0) > 0);
+  const items = TRIVIA.filter((key) => (counters[key] ?? 0) > 0);
 
   return (
     <div>
@@ -463,14 +445,11 @@ function Trivia({ counters }: { counters: Record<string, number> }) {
       {items.length === 0 ? (
         <p className="mt-8 text-ink-600">{t("profile.triviaNone")}</p>
       ) : (
-        <ul className="mt-8 grid grid-cols-1 border-t-2 border-ink sm:grid-cols-2 sm:gap-x-8">
-          {items.map((i) => (
-            <li key={i.key} className="flex items-baseline gap-3 border-b-2 border-ink/15 py-3">
-              <span aria-hidden className="w-6 shrink-0 text-lg">
-                {i.icon}
-              </span>
-              <span className="font-mono text-lg font-bold tabular-nums">{fmt.format(counters[i.key])}</span>
-              <span className="text-ink-600">{t(`profile.trivia.${i.key}`)}</span>
+        <ul className="mt-8 grid grid-cols-1 border-t border-ink/10 sm:grid-cols-2 sm:gap-x-8">
+          {items.map((key) => (
+            <li key={key} className="flex items-baseline gap-3 border-b border-ink/10 py-3">
+              <span className="font-mono text-lg font-bold tabular-nums">{fmt.format(counters[key])}</span>
+              <span className="text-ink-600">{t(`profile.trivia.${key}`)}</span>
             </li>
           ))}
         </ul>
@@ -482,15 +461,15 @@ function Trivia({ counters }: { counters: Record<string, number> }) {
 function ProfileSkeleton({ name }: { name: string }) {
   const { t } = useLanguage();
   return (
-    <header className="bg-paving border-b-2 border-ink" aria-busy="true">
+    <header className="bg-gradient-to-b from-paper-200/80 to-paper" aria-busy="true">
       <p className="sr-only">{t("profile.loading")}</p>
       <div aria-hidden className="container-page grid gap-10 py-10 md:py-14 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:gap-14">
-        <div className="mx-auto aspect-[4/5] w-full max-w-md animate-pulse border-2 border-ink/20 bg-paper-200 lg:max-w-none" />
+        <div className="mx-auto aspect-[4/5] w-full max-w-md animate-pulse rounded-2xl bg-paper-200 lg:max-w-none" />
         <div className="pt-12">
-          <p className="break-all font-display text-5xl font-extrabold leading-[0.95] tracking-tight text-ink/25 md:text-7xl">
+          <p className="break-all font-display text-5xl font-bold leading-[0.95] tracking-tight text-ink/25 md:text-7xl">
             {name}
           </p>
-          <div className="mt-8 h-56 animate-pulse border-2 border-ink/20 bg-paper-200" />
+          <div className="mt-8 h-56 animate-pulse rounded-2xl bg-paper-200" />
         </div>
       </div>
     </header>

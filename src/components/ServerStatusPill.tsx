@@ -25,7 +25,7 @@ export default function ServerStatusPill({
   return (
     <Link
       href="/#com-entrar"
-      className={`items-center gap-2 whitespace-nowrap border-2 border-ink px-3 py-1.5 text-sm font-bold transition-colors ${
+      className={`items-center gap-2 whitespace-nowrap rounded-full px-3 py-1.5 text-sm font-semibold transition-colors ${
         status.online
           ? "bg-brand-500 text-white hover:bg-brand-600"
           : "bg-paper-200 text-ink-700 hover:bg-paper-300"
@@ -33,7 +33,7 @@ export default function ServerStatusPill({
     >
       <span
         aria-hidden
-        className={`h-2 w-2 ${status.online ? "animate-blink bg-white" : "bg-ink-500"}`}
+        className={`h-2 w-2 rounded-full ${status.online ? "animate-blink bg-white" : "bg-ink-500"}`}
       />
       {label}
     </Link>

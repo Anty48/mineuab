@@ -1,0 +1,165 @@
+<!doctype html>
+<!--
+  Banner del canal de YouTube de mineuab (2560×1440, la mida que demana YouTube).
+  Tot el que s'ha de llegir va dins de la zona segura del centre (1546×423): és l'única part
+  que es veu a tots els dispositius. A l'ordinador es veu la franja central de 2560×423 i a la tele, tot.
+
+  Per tornar a generar youtube-banner.png des de l'arrel del projecte:
+    "C:\Program Files\Google\Chrome\Application\chrome.exe" --headless=new --hide-scrollbars
+      --force-device-scale-factor=1 --window-size=2560,1440 --virtual-time-budget=4000
+      --screenshot=brand\youtube-banner\youtube-banner.png brand\youtube-banner\banner.html
+  Afegiu ?guies al final de l'adreça per veure les zones segures mentre es retoca.
+-->
+<html lang="ca">
+  <head>
+    <meta charset="utf-8" />
+    <title>Banner de YouTube</title>
+    <style>
+      @font-face {
+        font-family: "Bricolage Grotesque";
+        src: url("fonts/bricolage-grotesque.woff2") format("woff2");
+        font-weight: 200 800;
+      }
+      @font-face {
+        font-family: "Inter";
+        src: url("fonts/inter.woff2") format("woff2");
+        font-weight: 100 900;
+      }
+
+      :root {
+        --brand-950: 2 33 18;
+        --brand-500: #0a8a3f;
+        --brand-300: #5ec583;
+        --paper: #f4f1ea;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        width: 2560px;
+        height: 1440px;
+        overflow: hidden;
+        background: rgb(var(--brand-950));
+      }
+
+      /* La plaça cívica de fons, una mica desenfocada perquè no es noti que és més petita que el banner. */
+      .photo {
+        position: absolute;
+        inset: -24px;
+        background: url("../../src/assets/gallery/placa-civica.jpg") center 55% / cover;
+        filter: blur(5px) saturate(1.1);
+      }
+
+      /* Vel verd fosc: més fort al centre, on va el text, i més suau als costats. */
+      .veil {
+        position: absolute;
+        inset: 0;
+        background:
+          radial-gradient(ellipse 62% 48% at 50% 50%, rgb(var(--brand-950) / 0.82), rgb(var(--brand-950) / 0.5) 55%, transparent),
+          linear-gradient(rgb(var(--brand-950) / 0.55), rgb(var(--brand-950) / 0.55));
+      }
+
+      .safe {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 1546px;
+        height: 423px;
+        transform: translate(-50%, -50%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 64px;
+      }
+
+      .logo {
+        height: 290px;
+        width: auto;
+        flex-shrink: 0;
+      }
+
+      .text {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 34px;
+      }
+
+      h1 {
+        margin: 0;
+        font-family: "Bricolage Grotesque", sans-serif;
+        font-weight: 700;
+        font-size: 84px;
+        line-height: 1.02;
+        letter-spacing: -0.02em;
+        color: #fff;
+      }
+      h1 span {
+        color: var(--brand-300);
+      }
+
+      .meta {
+        display: flex;
+        align-items: center;
+        gap: 28px;
+        font-family: "Inter", sans-serif;
+        font-size: 44px;
+        color: rgb(244 241 234 / 0.85);
+      }
+      .address {
+        padding: 14px 30px;
+        border-radius: 18px;
+        background: var(--brand-500);
+        color: #fff;
+        font-family: Consolas, "Cascadia Mono", ui-monospace, monospace;
+        font-weight: 700;
+        font-size: 48px;
+      }
+
+      /* Guies de les zones segures (només amb ?guies). */
+      .guides {
+        display: none;
+      }
+      .show-guides .guides {
+        display: block;
+      }
+      .guide {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        outline: 4px dashed;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="photo"></div>
+    <div class="veil"></div>
+
+    <main class="safe">
+      <img class="logo" src="../../public/assets/square_w.png" alt="mineuab" />
+      <div class="text">
+        <h1>El servidor de Minecraft<br />de <span>l'Autònoma</span></h1>
+        <p class="meta" style="margin: 0">
+          <span class="address">www.mineuab.org</span>
+          Obert a tothom
+        </p>
+      </div>
+    </main>
+
+    <div class="guides" aria-hidden="true">
+      <!-- Ordinador (franja visible), tauleta i zona segura per a tots els dispositius. -->
+      <div class="guide" style="width: 2560px; height: 423px; color: #ff0">.</div>
+      <div class="guide" style="width: 1855px; height: 423px; color: #0ff">.</div>
+      <div class="guide" style="width: 1546px; height: 423px; color: #f0f">.</div>
+    </div>
+
+    <script>
+      if (location.search.includes("guies")) document.body.classList.add("show-guides");
+    </script>
+  </body>
+</html>

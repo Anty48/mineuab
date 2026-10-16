@@ -34,12 +34,14 @@ export const WHITELIST_ENABLED = false;
 export const WHITELIST_EMAIL = "mine.uab.suport@gmail.com";
 
 export const DISCORD_URL = "https://discord.gg/CfXau5xy3U";
+export const YOUTUBE_URL = "https://www.youtube.com/@MineUAB";
 // Actualitzeu-los amb els comptes reals quan els tinguem.
 export const INSTAGRAM_URL = "https://instagram.com/mineuab";
 export const TWITCH_URL = "https://twitch.tv/mineuab";
 
 export const SOCIAL_LINKS = [
   { name: "Discord", href: DISCORD_URL },
+  { name: "YouTube", href: YOUTUBE_URL },
   { name: "Instagram", href: INSTAGRAM_URL },
   { name: "Twitch", href: TWITCH_URL },
 ] as const;

@@ -7,7 +7,7 @@ import { SERVER_ADDRESS, SITE_LINKS, SOCIAL_LINKS } from "@/lib/links";
 import { useCopyToClipboard } from "@/lib/useCopyToClipboard";
 import { CheckIcon, CopyIcon } from "./icons";
 
-const headingClass = "mb-4 font-pixel text-[11px] uppercase text-brand-300";
+const headingClass = "mb-4 text-sm font-semibold text-paper";
 const linkClass = "text-sm text-paper/75 transition-colors hover:text-white hover:underline";
 
 export default function Footer() {
@@ -16,8 +16,8 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="edge-top bg-ink text-paper [--edge:#131a16]">
-      <div className="container-page grid gap-10 pb-12 pt-20 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1.3fr]">
+    <footer className="bg-ink text-paper">
+      <div className="container-page grid gap-10 pb-12 pt-16 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1.3fr]">
         <div>
           <h2 className="sr-only">{t("footer.about")}</h2>
           <Link href="/" className="inline-block">
@@ -70,7 +70,7 @@ export default function Footer() {
           <button
             type="button"
             onClick={() => copy(SERVER_ADDRESS)}
-            className="group flex items-center gap-3 border-2 border-brand-500 px-3 py-2 font-mono font-semibold text-brand-200 transition-colors hover:bg-brand-500 hover:text-white"
+            className="group flex items-center gap-3 rounded-lg border border-paper/20 px-3 py-2 font-mono font-semibold text-brand-200 transition-colors hover:border-brand-500 hover:bg-brand-500 hover:text-white"
           >
             {SERVER_ADDRESS}
             {copied ? (
@@ -92,13 +92,6 @@ export default function Footer() {
             © {year} mineuab · {t("footer.mojang")}
           </p>
           <p>{t("footer.madeWith")}</p>
-        </div>
-      </div>
-
-      {/* El logo gegant, retallat pel peu de la pàgina. Només decoratiu. */}
-      <div aria-hidden className="overflow-hidden">
-        <div className="container-page -mb-[4%] select-none opacity-[0.05]">
-          <Image src="/assets/long_w.png" alt="" width={3000} height={650} sizes="1152px" className="w-full" />
         </div>
       </div>
     </footer>

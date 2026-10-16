@@ -25,26 +25,49 @@ export default function Hero() {
   }
 
   return (
-    <section className="bg-paving overflow-hidden">
-      <div className="container-page grid items-center gap-16 py-14 md:py-20 lg:grid-cols-[1.1fr_1fr] lg:gap-12 lg:py-24">
-        <div>
-          <p className="eyebrow">{t("hero.eyebrow")}</p>
-          <h1 className="mt-5 text-balance font-display text-5xl font-extrabold leading-[0.95] tracking-tight sm:text-6xl lg:text-7xl">
+    <section className="relative isolate overflow-hidden">
+      {/* La plaça cívica de fons, amb un vel del color del paper que és més fort al centre, on va
+          el text, i es fon per sota amb la secció següent. La foto es veu igual pels dos costats.
+          En pantalles de més de 1920 px no s'estira més (es veuria pixelada): els costats es fonen. */}
+      <div
+        aria-hidden
+        className="absolute inset-0 -z-10 mx-auto max-w-[1920px] min-[1921px]:[mask-image:linear-gradient(to_right,transparent,black_12%,black_88%,transparent)]"
+      >
+        <Image
+          src={PHOTOS.placaCivica}
+          alt=""
+          fill
+          priority
+          quality={90}
+          placeholder="blur"
+          sizes="(min-width: 1920px) 1920px, 100vw"
+          className="object-cover"
+        />
+      </div>
+      <div
+        aria-hidden
+        className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_65%_60%_at_50%_45%,rgb(244_241_234/0.92)_0%,rgb(244_241_234/0.72)_55%,rgb(244_241_234/0.35)_100%)]"
+      />
+      <div
+        aria-hidden
+        className="absolute inset-x-0 bottom-0 -z-10 h-48 bg-gradient-to-t from-paper via-paper/70 to-transparent"
+      />
+
+      <div className="container-page pb-28 pt-16 md:pb-36 md:pt-24 lg:pb-40 lg:pt-28">
+        <div className="mx-auto flex max-w-2xl flex-col items-center text-center">
+          <p className="eyebrow justify-center">{t("hero.eyebrow")}</p>
+          <h1 className="mt-4 text-balance font-display text-5xl font-bold leading-[1.02] tracking-tight sm:text-6xl lg:text-7xl">
             {t("hero.titleLead")}{" "}
-            <span className="mt-2 inline-block -rotate-1 whitespace-nowrap border-2 border-ink bg-brand-500 px-3 pb-1 text-white shadow-block-sm">
-              {t("hero.titleAccent")}
-            </span>
+            <span className="whitespace-nowrap text-brand-500">{t("hero.titleAccent")}</span>
           </h1>
-          <p className="mt-7 max-w-lg text-pretty text-lg text-ink-600 md:text-xl">
+          <p className="mt-6 max-w-lg text-pretty text-lg text-ink-700 md:text-xl">
             {t("hero.subtitle")}
           </p>
 
           {/* L'adreça del servidor, amb el botó de copiar enganxat. */}
-          <div className="mt-8 flex max-w-lg flex-col border-2 border-ink bg-paper-50 shadow-block sm:flex-row">
+          <div className="mt-8 flex w-full max-w-lg flex-col overflow-hidden rounded-xl border border-ink/10 bg-white text-left shadow-soft sm:flex-row">
             <div className="min-w-0 flex-1 px-4 py-3">
-              <span className="block font-pixel text-[10px] uppercase text-ink-500">
-                {t("server.ipLabel")}
-              </span>
+              <span className="field-label block">{t("server.ipLabel")}</span>
               <span className="block select-all truncate font-mono text-xl font-bold">
                 {SERVER_ADDRESS}
               </span>
@@ -52,14 +75,14 @@ export default function Hero() {
             <button
               type="button"
               onClick={() => copy(SERVER_ADDRESS)}
-              className="flex shrink-0 items-center justify-center gap-2 border-t-2 border-ink bg-brand-500 px-5 py-3 font-bold text-white transition-colors hover:bg-brand-600 active:bg-brand-700 sm:border-l-2 sm:border-t-0"
+              className="m-1.5 flex shrink-0 items-center justify-center gap-2 rounded-lg bg-brand-500 px-5 py-3 font-semibold text-white transition-colors hover:bg-brand-600 active:bg-brand-700"
             >
               {copied ? <CheckIcon size={20} /> : <CopyIcon size={20} />}
               <span aria-live="polite">{copied ? t("server.copied") : t("server.copy")}</span>
             </button>
           </div>
 
-          <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-4">
+          <div className="mt-6 flex flex-wrap items-center justify-center gap-x-6 gap-y-4">
             <a
               href={DISCORD_URL}
               target="_blank"
@@ -73,51 +96,17 @@ export default function Hero() {
               <p className="flex items-center gap-2 text-sm font-semibold text-ink-700">
                 <span
                   aria-hidden
-                  className={`h-2.5 w-2.5 ${status.online ? "animate-blink bg-brand-500" : "bg-terra-500"}`}
+                  className={`h-2.5 w-2.5 rounded-full ${status.online ? "animate-blink bg-brand-500" : "bg-terra-500"}`}
                 />
                 {statusLabel}
                 {status.version && (
-                  <span className="text-ink-500">
+                  <span className="font-normal text-ink-500">
                     · {t("server.version")} {status.version}
                   </span>
                 )}
               </p>
             )}
           </div>
-        </div>
-
-        {/* Collage de captures del servidor, com fotos enganxades en un suro. */}
-        <div className="relative mx-auto mb-6 w-full max-w-xl sm:mb-12 lg:max-w-none">
-          <figure className="rotate-[1.5deg] border-2 border-ink bg-paper-50 p-2 shadow-block-lg">
-            <Image
-              src={PHOTOS.placaCivica}
-              alt={t("gallery.items.civicSquare")}
-              placeholder="blur"
-              priority
-              sizes="(min-width: 1024px) 45vw, (min-width: 640px) 576px, 100vw"
-              className="aspect-[4/3] w-full object-cover"
-            />
-            <figcaption className="px-1 pt-2 font-pixel text-[11px] uppercase text-ink-600">
-              {t("gallery.items.civicSquare")}
-            </figcaption>
-          </figure>
-
-          <figure
-            aria-hidden
-            className="absolute -bottom-14 -right-4 hidden w-[38%] rotate-3 border-2 border-ink bg-paper-50 p-1.5 shadow-block sm:block"
-          >
-            <Image
-              src={PHOTOS.trinxera}
-              alt=""
-              placeholder="blur"
-              sizes="240px"
-              className="aspect-square w-full object-cover"
-            />
-          </figure>
-
-          <span className="absolute -left-2 -top-5 -rotate-6 border-2 border-ink bg-brand-500 px-3 py-2 font-pixel text-xs uppercase text-white shadow-block-sm sm:-left-4">
-            {t("hero.sticker")}
-          </span>
         </div>
       </div>
     </section>

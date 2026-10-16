@@ -51,25 +51,17 @@ const config: Config = {
         pixel: ["var(--font-pixel)", "ui-monospace", "monospace"],
       },
       boxShadow: {
-        // Ombra dura i desplaçada: fa que les peces semblin blocs.
-        block: "6px 6px 0 0 #131a16",
-        "block-sm": "4px 4px 0 0 #131a16",
-        "block-lg": "10px 10px 0 0 #131a16",
-        "block-brand": "6px 6px 0 0 #0A8A3F",
+        // Ombra suau per a les peces que han de destacar sobre el paper.
+        soft: "0 1px 2px rgb(19 26 22 / 0.05), 0 12px 32px -16px rgb(19 26 22 / 0.25)",
       },
       keyframes: {
-        marquee: {
-          "0%": { transform: "translateX(0)" },
-          "100%": { transform: "translateX(-50%)" },
-        },
         blink: {
           "0%, 100%": { opacity: "1" },
-          "50%": { opacity: "0.25" },
+          "50%": { opacity: "0.35" },
         },
       },
       animation: {
-        marquee: "marquee 40s linear infinite",
-        blink: "blink 1.4s steps(2, jump-none) infinite",
+        blink: "blink 2s ease-in-out infinite",
       },
     },
   },

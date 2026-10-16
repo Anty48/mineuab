@@ -60,44 +60,44 @@ body {
     @apply mx-auto w-full max-w-6xl px-5 sm:px-8;
   }
 
-  /* Etiqueta petita amb lletra pixelada que va damunt dels títols. */
+  /* Etiqueta curta que va damunt dels títols. */
   .eyebrow {
-    @apply flex items-center gap-2 font-pixel text-xs uppercase tracking-wider text-brand-600;
-  }
-  .eyebrow::before {
-    content: "";
-    @apply h-2.5 w-2.5 shrink-0 bg-current;
+    @apply flex flex-wrap items-center gap-2 text-sm font-semibold text-brand-600;
   }
 
   .section-title {
-    @apply text-balance font-display text-4xl font-extrabold leading-[1.05] tracking-tight md:text-5xl;
+    @apply text-balance font-display text-3xl font-bold leading-tight tracking-tight md:text-[2.6rem];
   }
   .section-subtitle {
-    @apply mt-4 max-w-xl text-pretty text-lg text-ink-600;
+    @apply mt-3 max-w-xl text-pretty text-lg text-ink-600;
   }
 
-  /* Botons: blocs amb ombra que s'enfonsen quan els prems. */
+  /* Petita etiqueta de dada (adreça IP, versió, filtres…). */
+  .field-label {
+    @apply text-xs font-medium text-ink-500;
+  }
+
   .btn {
-    @apply inline-flex items-center justify-center gap-2 border-2 border-ink px-5 py-2.5 text-[15px] font-bold shadow-block-sm transition-[transform,box-shadow,background-color] duration-100 hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-block active:translate-x-1 active:translate-y-1 active:shadow-none;
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-5 py-2.5 text-[15px] font-semibold transition-colors duration-150;
   }
   .btn-primary {
-    @apply btn bg-brand-500 text-white hover:bg-brand-600;
+    @apply btn bg-brand-500 text-white hover:bg-brand-600 active:bg-brand-700;
   }
   .btn-secondary {
-    @apply btn bg-paper-50 text-ink hover:bg-white;
+    @apply btn border border-ink/15 bg-white text-ink hover:border-ink/30 hover:bg-paper-50;
   }
   /* Botó quadrat només amb icona (menú, tancar, fletxes). */
   .btn-icon {
-    @apply inline-flex items-center justify-center border-2 border-ink bg-paper-50 p-2 text-ink transition-colors hover:bg-brand-500 hover:text-white;
+    @apply inline-flex items-center justify-center rounded-lg border border-ink/15 bg-white p-2 text-ink transition-colors hover:bg-paper-100;
   }
 
   .block-card {
-    @apply border-2 border-ink bg-paper-50 shadow-block;
+    @apply rounded-2xl border border-ink/10 bg-paper-50;
   }
 
   /* Ordres de Minecraft, com un xat de joc. */
   .code-line {
-    @apply block break-all border-2 border-ink bg-ink px-3 py-2 font-mono text-sm text-brand-200;
+    @apply block break-all rounded-lg bg-ink px-3 py-2 font-mono text-sm text-brand-200;
   }
 
   /* La brillantor dels ítems encantats: una llum lila que passa només pels píxels de l'ítem.
@@ -125,40 +125,5 @@ body {
   .item-glint {
     animation: none;
     background-position: 50% 0;
-  }
-}
-
-@layer utilities {
-  /* Quadrícula suau que recorda el paviment de la plaça cívica. */
-  .bg-paving {
-    background-image:
-      linear-gradient(to right, rgb(194 96 58 / 0.08) 2px, transparent 2px),
-      linear-gradient(to bottom, rgb(194 96 58 / 0.08) 2px, transparent 2px);
-    background-size: 56px 56px;
-  }
-
-  /* Vora de blocs alterns entre dues seccions, com l'herba d'un bloc de Minecraft.
-     La secció ha de definir --edge amb el seu color de fons. */
-  .edge-top,
-  .edge-bottom {
-    position: relative;
-  }
-  .edge-top::before,
-  .edge-bottom::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    z-index: 1;
-    height: 16px;
-    background: linear-gradient(90deg, var(--edge) 50%, transparent 0) 0 0 / 32px 16px repeat-x;
-    pointer-events: none;
-  }
-  .edge-top::before {
-    top: -16px;
-  }
-  .edge-bottom::after {
-    bottom: -16px;
-    background-position: 16px 0;
   }
 }

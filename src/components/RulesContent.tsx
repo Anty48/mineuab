@@ -1,12 +1,10 @@
 "use client";
 
 import { useLanguage } from "@/i18n/LanguageProvider";
-import { PHOTOS } from "@/lib/gallery";
 import PageHeader from "@/components/PageHeader";
 import DiscordCta from "@/components/DiscordCta";
 
 interface RuleSection {
-  icon: string;
   title: string;
   rules: readonly string[];
 }
@@ -27,8 +25,6 @@ export default function RulesContent() {
         crumb={t("nav.rules")}
         title={t("rules.title")}
         subtitle={t("rules.subtitle")}
-        image={PHOTOS.andanaFerros}
-        caption={t("gallery.items.ferrosPlatform")}
       />
 
       <section className="py-16 md:py-24">
@@ -37,14 +33,13 @@ export default function RulesContent() {
           <aside className="lg:sticky lg:top-28 lg:self-start">
             <nav aria-label={t("rules.index")}>
               <p className="eyebrow">{t("rules.index")}</p>
-              <ol className="mt-4 border-2 border-ink bg-paper-50 shadow-block-sm">
+              <ol className="mt-4 overflow-hidden rounded-2xl border border-ink/10 bg-paper-50">
                 {sections.map((section, i) => (
-                  <li key={section.title} className="border-b-2 border-ink">
+                  <li key={section.title} className="border-b border-ink/10">
                     <a
                       href={`#normes-${i + 1}`}
                       className="flex items-center gap-3 px-4 py-3 font-semibold transition-colors hover:bg-brand-500 hover:text-white"
                     >
-                      <span aria-hidden>{section.icon}</span>
                       {section.title}
                     </a>
                   </li>
@@ -54,13 +49,12 @@ export default function RulesContent() {
                     href="#sancions"
                     className="flex items-center gap-3 px-4 py-3 font-semibold transition-colors hover:bg-brand-500 hover:text-white"
                   >
-                    <span aria-hidden>⚖️</span>
                     {t("rules.sanctionsTitle")}
                   </a>
                 </li>
               </ol>
             </nav>
-            <p className="mt-6 border-l-4 border-terra-500 bg-terra-100 px-4 py-3 text-sm leading-relaxed text-ink-700">
+            <p className="mt-6 rounded-xl bg-terra-100 px-4 py-3 text-sm leading-relaxed text-ink-700">
               {t("rules.draftNote")}
             </p>
           </aside>
@@ -68,19 +62,16 @@ export default function RulesContent() {
           <div className="space-y-14">
             {sections.map((section, i) => (
               <section key={section.title} id={`normes-${i + 1}`}>
-                <h2 className="flex items-center gap-3 border-b-2 border-ink pb-3 font-display text-3xl font-extrabold">
-                  <span aria-hidden className="text-2xl">
-                    {section.icon}
-                  </span>
+                <h2 className="border-b border-ink/10 pb-3 font-display text-3xl font-bold">
                   {section.title}
                 </h2>
                 <ol start={firstNumber[i]}>
                   {section.rules.map((rule, j) => (
                     <li
                       key={j}
-                      className="grid grid-cols-[3.25rem_1fr] gap-4 border-b-2 border-dashed border-ink/20 py-5"
+                      className="grid grid-cols-[3.25rem_1fr] gap-4 border-b border-ink/10 py-5"
                     >
-                      <span aria-hidden className="pt-1 font-pixel text-xl text-brand-600">
+                      <span aria-hidden className="pt-1 font-mono text-base font-semibold text-brand-600">
                         {String(firstNumber[i] + j).padStart(2, "0")}
                       </span>
                       <p className="text-lg leading-relaxed text-ink-700">{rule}</p>
@@ -92,9 +83,9 @@ export default function RulesContent() {
 
             <section
               id="sancions"
-              className="border-2 border-ink bg-ink p-6 text-paper shadow-block-brand md:p-8"
+              className="rounded-2xl bg-ink p-6 text-paper md:p-8"
             >
-              <h2 className="font-pixel text-sm uppercase text-brand-300">
+              <h2 className="text-sm font-semibold text-brand-300">
                 {t("rules.sanctionsTitle")}
               </h2>
               <p className="mt-3 text-lg leading-relaxed">{t("rules.sanctions")}</p>

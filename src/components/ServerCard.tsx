@@ -25,11 +25,11 @@ export default function ServerCard({ className = "" }: { className?: string }) {
   }
 
   return (
-    <div className={`w-full max-w-md border-2 border-ink bg-paper-50 shadow-block-lg ${className}`}>
-      <div className="flex items-center justify-between gap-4 border-b-2 border-ink bg-brand-500 px-5 py-4 text-white">
+    <div className={`w-full max-w-md overflow-hidden rounded-2xl border border-ink/10 bg-white text-ink shadow-soft ${className}`}>
+      <div className="flex items-center justify-between gap-4 bg-brand-500 px-5 py-4 text-white">
         <div>
-          <p className="font-pixel text-[11px] uppercase text-brand-100">{t("server.cardTag")}</p>
-          <h3 className="mt-1 font-display text-2xl font-extrabold">{t("server.cardTitle")}</h3>
+          <p className="text-sm text-brand-100">{t("server.cardTag")}</p>
+          <h3 className="mt-1 font-display text-2xl font-bold">{t("server.cardTitle")}</h3>
         </div>
         {/* L'original fa 1200×1000. */}
         <Image
@@ -42,31 +42,31 @@ export default function ServerCard({ className = "" }: { className?: string }) {
       </div>
 
       <div className="px-5 pt-5">
-        <p className="font-pixel text-[10px] uppercase text-ink-500">{t("server.ipLabel")}</p>
+        <p className="field-label">{t("server.ipLabel")}</p>
         <p className="mt-1 select-all break-all font-mono text-2xl font-bold text-ink sm:text-[1.7rem]">
           {SERVER_ADDRESS}
         </p>
         <p className="mt-2 min-h-[1.25rem] text-sm text-ink-600">{statusLine}</p>
 
-        <dl className="mt-4 grid grid-cols-3 border-y-2 border-dashed border-ink/25">
+        <dl className="mt-4 grid grid-cols-3 border-y border-ink/10">
           <div className="flex flex-col-reverse py-3 pr-2">
-            <dt className="font-pixel text-[10px] uppercase text-ink-500">{t("server.status")}</dt>
+            <dt className="field-label">{t("server.status")}</dt>
             <dd className="flex items-center gap-1.5 text-sm font-bold">
               <span
                 aria-hidden
-                className={`h-2 w-2 shrink-0 ${
+                className={`h-2 w-2 shrink-0 rounded-full ${
                   !status ? "bg-ink/20" : status.online ? "animate-blink bg-brand-500" : "bg-terra-500"
                 }`}
               />
               {!status ? "—" : status.online ? t("server.online") : t("server.offline")}
             </dd>
           </div>
-          <div className="flex flex-col-reverse border-x-2 border-dashed border-ink/25 px-3 py-3">
-            <dt className="font-pixel text-[10px] uppercase text-ink-500">{t("server.version")}</dt>
+          <div className="flex flex-col-reverse border-x border-ink/10 px-3 py-3">
+            <dt className="field-label">{t("server.version")}</dt>
             <dd className="truncate text-sm font-bold">{status?.version ?? "—"}</dd>
           </div>
           <div className="flex flex-col-reverse py-3 pl-3">
-            <dt className="font-pixel text-[10px] uppercase text-ink-500">{t("server.access")}</dt>
+            <dt className="field-label">{t("server.access")}</dt>
             <dd className="text-sm font-bold">
               {t(WHITELIST_ENABLED ? "server.whitelist" : "server.openToAll")}
             </dd>
@@ -84,12 +84,6 @@ export default function ServerCard({ className = "" }: { className?: string }) {
           <span aria-live="polite">{copied ? t("server.copied") : t("server.copy")}</span>
         </button>
       </div>
-
-      {/* Codi de barres decoratiu, com el d'un carnet. */}
-      <div
-        aria-hidden
-        className="mx-5 mb-5 h-6 [background-image:repeating-linear-gradient(90deg,#131a16_0_3px,transparent_3px_5px,#131a16_5px_6px,transparent_6px_10px,#131a16_10px_12px,transparent_12px_13px)]"
-      />
     </div>
   );
 }

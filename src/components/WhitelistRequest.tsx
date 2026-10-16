@@ -35,7 +35,7 @@ export default function WhitelistRequest() {
     <form onSubmit={onSubmit} noValidate className="mt-4 max-w-md">
       <label
         htmlFor="whitelist-name"
-        className="font-pixel text-[10px] uppercase text-ink-500"
+        className="field-label"
       >
         {t("whitelist.nameLabel")}
       </label>
@@ -53,7 +53,7 @@ export default function WhitelistRequest() {
           spellCheck={false}
           aria-invalid={showError}
           aria-describedby="whitelist-hint"
-          className="min-w-0 flex-1 border-2 border-ink bg-paper-50 px-3 py-2 font-mono font-semibold text-ink outline-none focus:bg-white focus:ring-2 focus:ring-brand-500 aria-[invalid=true]:border-terra-500"
+          className="min-w-0 flex-1 rounded-lg border border-ink/15 bg-white px-3 py-2 font-mono font-semibold text-ink outline-none focus:bg-white focus:ring-2 focus:ring-brand-500 aria-[invalid=true]:border-terra-500"
         />
         <button type="submit" className="btn-primary">
           {t("whitelist.send")}
@@ -70,7 +70,7 @@ export default function WhitelistRequest() {
       <button
         type="button"
         onClick={() => copy(WHITELIST_EMAIL)}
-        className="mt-1 flex items-center gap-3 border-2 border-ink bg-paper-50 px-3 py-2 font-mono text-sm font-semibold shadow-block-sm transition-colors hover:bg-white"
+        className="mt-1 flex items-center gap-3 rounded-lg border border-ink/15 bg-white px-3 py-2 font-mono text-sm font-semibold transition-colors hover:border-ink/30"
       >
         {WHITELIST_EMAIL}
         {copied ? (

@@ -26,11 +26,9 @@ export default function HowToJoin() {
     : baseSteps;
 
   return (
-    <section id="com-entrar" className="py-20 md:py-28">
+    <section id="com-entrar" className="pb-20 pt-4 md:pb-28 md:pt-8">
       <div className="container-page">
         <SectionHeading
-          number="01"
-          label={t("nav.howToJoin")}
           title={t("howToJoin.title")}
           subtitle={t("howToJoin.subtitle")}
         />
@@ -39,22 +37,22 @@ export default function HowToJoin() {
           <div>
             <ol>
               {steps.map((step, i) => (
-                <li key={i} className="relative grid grid-cols-[3.5rem_1fr] gap-5 pb-12 last:pb-0">
-                  {/* Línia puntejada fins al pas següent. */}
+                <li key={i} className="relative grid grid-cols-[2.75rem_1fr] gap-5 pb-12 last:pb-0">
+                  {/* Línia fins al pas següent. */}
                   {i < steps.length - 1 && (
                     <span
                       aria-hidden
-                      className="absolute bottom-0 left-[1.75rem] top-14 w-0.5 -translate-x-1/2 [background-image:linear-gradient(#131a16_50%,transparent_0)] [background-size:2px_10px]"
+                      className="absolute bottom-2 left-[1.375rem] top-14 w-px -translate-x-1/2 bg-ink/15"
                     />
                   )}
                   <span
                     aria-hidden
-                    className="flex h-14 w-14 items-center justify-center border-2 border-ink bg-brand-500 font-pixel text-xl text-white shadow-block-sm"
+                    className="flex h-11 w-11 items-center justify-center rounded-full bg-brand-500 font-display text-lg font-bold text-white"
                   >
-                    {String(i + 1).padStart(2, "0")}
+                    {i + 1}
                   </span>
-                  <div className="pt-2">
-                    <h3 className="font-display text-2xl font-bold">{step.title}</h3>
+                  <div className="pt-1.5">
+                    <h3 className="font-display text-xl font-bold">{step.title}</h3>
                     <p className="mt-2 max-w-lg leading-relaxed text-ink-600">{step.body}</p>
 
                     {step.code && (
@@ -85,7 +83,7 @@ export default function HowToJoin() {
               ))}
             </ol>
 
-            <p className="mt-12 max-w-lg border-l-4 border-terra-500 bg-terra-100 px-4 py-3 text-sm text-ink-700">
+            <p className="mt-12 max-w-lg rounded-xl bg-terra-100 px-4 py-3 text-sm text-ink-700">
               {t("howToJoin.passwordTip")}
             </p>
           </div>

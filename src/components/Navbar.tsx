@@ -42,7 +42,7 @@ export default function Navbar() {
     <>
       <a
         href="#main"
-        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:border-2 focus:border-ink focus:bg-brand-500 focus:px-4 focus:py-2 focus:text-sm focus:font-bold focus:text-white"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-lg focus:bg-brand-500 focus:px-4 focus:py-2 focus:text-sm focus:font-bold focus:text-white"
       >
         {t("nav.skip")}
       </a>
@@ -50,19 +50,16 @@ export default function Navbar() {
       <AnnouncementBar />
 
       {/* Enganxada a dalt: la franja d'avís marxa en fer scroll, la barra es queda. */}
-      <header className="sticky top-0 z-50 border-b-2 border-ink bg-paper/95 backdrop-blur-sm">
+      <header className="sticky top-0 z-50 border-b border-ink/10 bg-paper/90 backdrop-blur-md">
         <nav className="container-page flex h-16 items-center gap-6">
-          {/* El logo necessita el fons blanc (la U i la B són l'espai blanc entre els blocs verds),
-              així que va dins d'un bloc amb vora. */}
-          <Link
-            href="/"
-            className="flex shrink-0 items-center border-2 border-ink bg-white shadow-block-sm transition-transform hover:-translate-x-0.5 hover:-translate-y-0.5"
-          >
-            {/* L'original fa 3000×650; mantenim la proporció perquè res no es mogui en carregar. */}
+          {/* La U i la B del logo són l'espai blanc entre els blocs verds: logo-long.png ja porta
+              el marc verd que les tanca, així es llegeix sobre qualsevol fons. */}
+          <Link href="/" className="flex shrink-0 items-center transition-opacity hover:opacity-85">
+            {/* L'original fa 1634×400; mantenim la proporció perquè res no es mogui en carregar. */}
             <Image
-              src="/assets/long_col.png"
+              src="/assets/logo-long.png"
               alt="mineuab"
-              width={148}
+              width={131}
               height={32}
               priority
               className="h-8 w-auto"
@@ -76,7 +73,7 @@ export default function Navbar() {
                 key={l.href}
                 href={l.href}
                 aria-current={ariaCurrent(l.href)}
-                className="whitespace-nowrap font-display text-[15px] font-semibold text-ink decoration-brand-500 decoration-[3px] underline-offset-[7px] hover:underline aria-[current=page]:text-brand-600 aria-[current=page]:underline"
+                className="whitespace-nowrap text-[15px] font-medium text-ink-700 transition-colors hover:text-ink aria-[current=page]:font-semibold aria-[current=page]:text-brand-600"
               >
                 {t(l.key)}
               </Link>
@@ -88,7 +85,7 @@ export default function Navbar() {
               type="button"
               onClick={() => copy(SERVER_ADDRESS)}
               title={t("server.copy")}
-              className="hidden items-center gap-2 border-2 border-ink bg-paper-50 px-2.5 py-1.5 transition-colors hover:bg-white xl:inline-flex"
+              className="hidden items-center gap-2 rounded-lg border border-ink/15 bg-white px-2.5 py-1.5 transition-colors hover:border-ink/30 xl:inline-flex"
             >
               {/* Sense l'etiqueta "IP": amb set enllaços no hi cabria. El title ja diu què fa. */}
               <span className="font-mono text-sm font-semibold">{SERVER_ADDRESS}</span>
@@ -130,7 +127,7 @@ export default function Navbar() {
         {open && (
           <div
             id="mobile-menu"
-            className="max-h-[calc(100dvh-4rem)] overflow-y-auto border-t-2 border-ink bg-paper lg:hidden"
+            className="max-h-[calc(100dvh-4rem)] overflow-y-auto border-t border-ink/10 bg-paper lg:hidden"
           >
             <div className="container-page flex flex-col py-4">
               {NAV_LINKS.map((l) => (
@@ -139,7 +136,7 @@ export default function Navbar() {
                   href={l.href}
                   aria-current={ariaCurrent(l.href)}
                   onClick={() => setOpen(false)}
-                  className="border-b border-ink/15 py-3 font-display text-lg font-semibold text-ink aria-[current=page]:text-brand-600"
+                  className="border-b border-ink/10 py-3 text-lg font-medium text-ink aria-[current=page]:text-brand-600"
                 >
                   {t(l.key)}
                 </Link>
@@ -150,10 +147,10 @@ export default function Navbar() {
               <button
                 type="button"
                 onClick={() => copy(SERVER_ADDRESS)}
-                className="mt-4 flex items-center justify-between gap-4 border-2 border-ink bg-paper-50 px-4 py-3 text-left"
+                className="mt-4 flex items-center justify-between gap-4 rounded-xl border border-ink/10 bg-white px-4 py-3 text-left"
               >
                 <span>
-                  <span className="block font-pixel text-[10px] uppercase text-ink-500">
+                  <span className="field-label block">
                     {t("server.ipLabel")}
                   </span>
                   <span className="block font-mono font-semibold text-brand-600">

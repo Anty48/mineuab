@@ -30,7 +30,7 @@ export default function MapContent() {
 
           {/* Fons fosc mentre carrega, com el cel del BlueMap. Al mòbil deixem marge
               per sota perquè es pugui fer scroll de la pàgina sense arrossegar el mapa. */}
-          <div className="mt-6 border-2 border-ink bg-ink shadow-block-lg">
+          <div className="mt-6 overflow-hidden rounded-2xl bg-ink">
             <iframe
               src={MAP_URL}
               title={t("map.frameTitle")}

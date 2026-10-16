@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { useLanguage } from "@/i18n/LanguageProvider";
 import { SERVER_ADDRESS, WHITELIST_ENABLED } from "@/lib/links";
-import { PHOTOS } from "@/lib/gallery";
 import { useCopyToClipboard } from "@/lib/useCopyToClipboard";
 import { useServerStatus } from "@/lib/useServerStatus";
 import PageHeader from "@/components/PageHeader";
@@ -35,30 +34,25 @@ export default function FaqContent() {
         crumb={t("nav.faq")}
         title={t("faq.title")}
         subtitle={t("faq.subtitle")}
-        image={PHOTOS.trinxera}
-        caption={t("gallery.items.trinxera")}
       />
 
       <section className="py-16 md:py-24">
-        <div className="container-page max-w-4xl">
-          <div className="border-t-2 border-ink">
-            {items.map((item, i) => (
-              <details key={item.q} className="group border-b-2 border-ink">
+        <div className="container-page">
+          <div className="max-w-4xl border-t border-ink/10">
+            {items.map((item) => (
+              <details key={item.q} className="group border-b border-ink/10">
                 <summary className="flex cursor-pointer list-none items-center gap-4 py-6 transition-colors hover:text-brand-600 sm:gap-6 [&::-webkit-details-marker]:hidden">
-                  <span aria-hidden className="w-8 shrink-0 font-pixel text-sm text-brand-600">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <span className="flex-1 text-balance font-display text-xl font-bold md:text-2xl">
+                  <span className="flex-1 text-balance font-display text-lg font-bold md:text-xl">
                     {item.q}
                   </span>
                   <span
                     aria-hidden
-                    className="flex h-9 w-9 shrink-0 items-center justify-center border-2 border-ink text-ink transition-colors group-open:bg-brand-500 group-open:text-white"
+                    className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-ink/15 text-ink transition-colors group-open:border-brand-500 group-open:bg-brand-500 group-open:text-white"
                   >
                     <PlusIcon size={18} className="transition-transform group-open:rotate-45" />
                   </span>
                 </summary>
-                <div className="pb-8 pl-12 pr-2 sm:pl-14 md:pr-16">
+                <div className="pb-8 pr-2 md:pr-16">
                   <p className="text-lg leading-relaxed text-ink-700">{item.a}</p>
 
                   {item.code && (
@@ -103,7 +97,7 @@ function AddressChip() {
     <button
       type="button"
       onClick={() => copy(SERVER_ADDRESS)}
-      className="mt-4 flex items-center gap-3 border-2 border-ink bg-paper-50 px-3 py-2 font-mono font-semibold shadow-block-sm transition-colors hover:bg-white"
+      className="mt-4 flex items-center gap-3 rounded-lg border border-ink/15 bg-white px-3 py-2 font-mono font-semibold transition-colors hover:border-ink/30"
     >
       {SERVER_ADDRESS}
       {copied ? (
@@ -123,7 +117,7 @@ function VersionChip() {
   const status = useServerStatus();
 
   return (
-    <p className="mt-4 w-fit border-2 border-ink bg-paper-50 px-3 py-2 text-sm text-ink-700">
+    <p className="mt-4 w-fit rounded-lg border border-ink/15 bg-white px-3 py-2 text-sm text-ink-700">
       {t("server.version")}:{" "}
       <span className="font-mono font-bold text-brand-600">{status?.version ?? "…"}</span>
     </p>

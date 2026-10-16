@@ -60,22 +60,12 @@ const ca = {
     subtitle:
       "Un servidor fet per estudiants i obert a tothom, siguis o no de la UAB.",
     ctaDiscord: "Uneix-te al Discord",
-    sticker: "Fet per estudiants",
   },
   disclaimer: {
     tag: "Avís",
     body: "mineuab encara no és un projecte oficial de la UAB (Universitat Autònoma de Barcelona), però hi estem treballant perquè ho sigui.",
     short: "Encara no som un projecte oficial de la UAB, però hi estem treballant.",
   },
-  marquee: [
-    "Survival",
-    "Construccions",
-    "Esdeveniments",
-    "Minijocs",
-    "Obert a tothom",
-    "Fet per estudiants",
-    "Nascut a l'Autònoma",
-  ],
   howToJoin: {
     title: "Com entrar al servidor",
     subtitle:
@@ -150,34 +140,28 @@ const ca = {
       subtitle: "Tothom comença amb 60 crèdits, com un curs sencer. A partir d'aquí, tot suma.",
       items: [
         {
-          icon: "🎓",
           title: "La beca",
           body: "Cobres un sou per cada estona de joc actiu. Si estàs AFK, no compta.",
         },
         {
-          icon: "📋",
           title: "Passar llista",
           body: "Una recompensa cada dia. Si hi tornes l'endemà, la ratxa puja i cobres més.",
           command: "/diari",
         },
         {
-          icon: "📜",
           title: "Assignatures aprovades",
           body: "Cada assoliment (advancement) que aconsegueixes et dona crèdits. Els difícils, molts més.",
         },
         {
-          icon: "⚔️",
           title: "Caça",
           body: "Matar monstres dona crèdits. Els que surten d'spawners no compten.",
         },
         {
-          icon: "🛒",
           title: "Vendre a la botiga",
           body: "Ven el que et sobri. Els preus pugen i baixen segons l'oferta i la demanda.",
           command: "/vendre",
         },
         {
-          icon: "🎟️",
           title: "La Grossa",
           body: "Compra butlletes i prova sort al sorteig. El pot és per al guanyador.",
           command: "/loteria",
@@ -417,7 +401,6 @@ const ca = {
       "Aquestes són les normes bàsiques mentre acabem la versió definitiva. Si tens qualsevol dubte, pregunta a l'staff al Discord.",
     sections: [
       {
-        icon: "🤝",
         title: "Respecte i convivència",
         rules: [
           "Tracta tothom amb respecte. No hi ha lloc per als insults, l'assetjament ni cap mena de discriminació.",
@@ -426,7 +409,6 @@ const ca = {
         ],
       },
       {
-        icon: "⚔️",
         title: "Joc net",
         rules: [
           "No es permeten hacks, clients modificats que donin avantatge (X-ray, fly, kill aura…) ni aprofitar errors del joc. Si en trobes un, avisa l'staff.",
@@ -435,7 +417,6 @@ const ca = {
         ],
       },
       {
-        icon: "🔐",
         title: "El teu compte",
         rules: [
           "El compte és personal: no el comparteixis ni entris amb el d'una altra persona.",
@@ -443,7 +424,6 @@ const ca = {
         ],
       },
       {
-        icon: "🛡️",
         title: "Staff",
         rules: [
           "Segueix les indicacions de l'staff. Si no hi estàs d'acord, parla-ho amb calma pel Discord.",
@@ -560,6 +540,7 @@ const ca = {
     subtitle:
       "Els esdeveniments i les novetats els anunciem a Discord i Instagram. No et perdis res!",
     discord: "El cor de la comunitat, on anunciem esdeveniments i novetats.",
+    youtube: "Vídeos del servidor: construccions, esdeveniments i tutorials.",
     instagram: "Anuncis, fotos del servidor i el dia a dia de la comunitat.",
     twitch: "Directes i esdeveniments.",
     open: "Obrir",
@@ -572,7 +553,7 @@ const ca = {
     social: "Xarxes",
     server: "Servidor",
     mojang: "No afiliat amb Mojang Studios ni Microsoft.",
-    madeWith: "Fet amb ☕ per la comunitat mineuab.",
+    madeWith: "Fet per la comunitat mineuab.",
   },
   common: {
     backHome: "Tornar a l'inici",
@@ -631,22 +612,12 @@ const es: Translations = {
     subtitle:
       "Un servidor hecho por estudiantes y abierto a todo el mundo, seas o no de la UAB.",
     ctaDiscord: "Únete al Discord",
-    sticker: "Hecho por estudiantes",
   },
   disclaimer: {
     tag: "Aviso",
     body: "mineuab todavía no es un proyecto oficial de la UAB (Universitat Autònoma de Barcelona), pero estamos trabajando para que lo sea.",
     short: "Todavía no somos un proyecto oficial de la UAB, pero estamos en ello.",
   },
-  marquee: [
-    "Survival",
-    "Construcciones",
-    "Eventos",
-    "Minijuegos",
-    "Abierto a todos",
-    "Hecho por estudiantes",
-    "Nacido en la Autónoma",
-  ],
   howToJoin: {
     title: "Cómo entrar al servidor",
     subtitle:
@@ -719,34 +690,28 @@ const es: Translations = {
       subtitle: "Todo el mundo empieza con 60 créditos, como un curso entero. A partir de ahí, todo suma.",
       items: [
         {
-          icon: "🎓",
           title: "La beca",
           body: "Cobras un sueldo por cada rato de juego activo. Si estás AFK, no cuenta.",
         },
         {
-          icon: "📋",
           title: "Pasar lista",
           body: "Una recompensa cada día. Si vuelves al día siguiente, la racha sube y cobras más.",
           command: "/diari",
         },
         {
-          icon: "📜",
           title: "Asignaturas aprobadas",
           body: "Cada logro (advancement) que consigues te da créditos. Los difíciles, muchos más.",
         },
         {
-          icon: "⚔️",
           title: "Caza",
           body: "Matar monstruos da créditos. Los que salen de spawners no cuentan.",
         },
         {
-          icon: "🛒",
           title: "Vender en la tienda",
           body: "Vende lo que te sobre. Los precios suben y bajan según la oferta y la demanda.",
           command: "/vendre",
         },
         {
-          icon: "🎟️",
           title: "La Grossa",
           body: "Compra boletos y prueba suerte en el sorteo. El bote es para el ganador.",
           command: "/loteria",
@@ -984,7 +949,6 @@ const es: Translations = {
       "Estas son las normas básicas mientras terminamos la versión definitiva. Si tienes cualquier duda, pregunta al staff en Discord.",
     sections: [
       {
-        icon: "🤝",
         title: "Respeto y convivencia",
         rules: [
           "Trata a todo el mundo con respeto. No hay lugar para insultos, acoso ni ningún tipo de discriminación.",
@@ -993,7 +957,6 @@ const es: Translations = {
         ],
       },
       {
-        icon: "⚔️",
         title: "Juego limpio",
         rules: [
           "No se permiten hacks, clientes modificados que den ventaja (X-ray, fly, kill aura…) ni aprovechar errores del juego. Si encuentras uno, avisa al staff.",
@@ -1002,7 +965,6 @@ const es: Translations = {
         ],
       },
       {
-        icon: "🔐",
         title: "Tu cuenta",
         rules: [
           "La cuenta es personal: no la compartas ni entres con la de otra persona.",
@@ -1010,7 +972,6 @@ const es: Translations = {
         ],
       },
       {
-        icon: "🛡️",
         title: "Staff",
         rules: [
           "Sigue las indicaciones del staff. Si no estás de acuerdo, háblalo con calma por Discord.",
@@ -1124,6 +1085,7 @@ const es: Translations = {
     subtitle:
       "Los eventos y las novedades los anunciamos en Discord e Instagram. ¡No te pierdas nada!",
     discord: "El corazón de la comunidad, donde anunciamos eventos y novedades.",
+    youtube: "Vídeos del servidor: construcciones, eventos y tutoriales.",
     instagram: "Anuncios, fotos del servidor y el día a día de la comunidad.",
     twitch: "Directos y eventos.",
     open: "Abrir",
@@ -1136,7 +1098,7 @@ const es: Translations = {
     social: "Redes",
     server: "Servidor",
     mojang: "No afiliado con Mojang Studios ni Microsoft.",
-    madeWith: "Hecho con ☕ por la comunidad mineuab.",
+    madeWith: "Hecho por la comunidad mineuab.",
   },
   common: {
     backHome: "Volver al inicio",

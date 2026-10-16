@@ -31,7 +31,7 @@ export default function CareerTag({
     return (
       <span
         style={{ backgroundColor: color }}
-        className={`inline-flex items-center border-2 border-ink px-3 py-1 font-pixel text-xs uppercase shadow-block-sm ${
+        className={`inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold ${
           isLight(color) ? "text-ink" : "text-white"
         } ${className}`}
       >
@@ -42,7 +42,7 @@ export default function CareerTag({
 
   return (
     <span className={`inline-flex min-w-0 items-center gap-1.5 text-sm font-semibold text-ink-700 ${className}`}>
-      <span aria-hidden style={{ backgroundColor: color }} className="h-2.5 w-2.5 shrink-0 border border-ink/40" />
+      <span aria-hidden style={{ backgroundColor: color }} className="h-2.5 w-2.5 shrink-0 rounded-full ring-1 ring-ink/20" />
       <span className="truncate">{career.name}</span>
     </span>
   );
