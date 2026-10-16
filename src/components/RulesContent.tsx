@@ -1,17 +1,22 @@
 "use client";
 
+import Link from "next/link";
 import { useLanguage } from "@/i18n/LanguageProvider";
 import PageHeader from "@/components/PageHeader";
 import DiscordCta from "@/components/DiscordCta";
+import { ArrowIcon, PixelStarIcon } from "@/components/icons";
 
 interface RuleSection {
   title: string;
   rules: readonly string[];
+  /** Pàgina que ho explica més a fons, al final de la secció. */
+  link?: { label: string; title: string; href: string };
 }
 
 export default function RulesContent() {
   const { t, raw } = useLanguage();
   const sections = raw<RuleSection[]>("rules.sections") ?? [];
+  const steps = raw<string[]>("rules.sanctionSteps") ?? [];
 
   // La numeració continua entre seccions, així "la norma 5" sempre és la mateixa.
   const firstNumber: number[] = [];
@@ -55,7 +60,7 @@ export default function RulesContent() {
               </ol>
             </nav>
             <p className="mt-6 border-l-4 border-terra-500 bg-terra-100 px-4 py-3 text-sm leading-relaxed text-ink-700">
-              {t("rules.draftNote")}
+              {t("rules.note")}
             </p>
           </aside>
 
@@ -78,6 +83,25 @@ export default function RulesContent() {
                     </li>
                   ))}
                 </ol>
+                {section.link && (
+                  <Link
+                    href={section.link.href}
+                    className="group mt-6 flex items-center gap-4 border-2 border-ink bg-paper-50 p-4 shadow-block-sm transition-[transform,box-shadow] duration-100 hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-block sm:p-5"
+                  >
+                    <span aria-hidden className="flex h-12 w-12 shrink-0 items-center justify-center bg-ink">
+                      <PixelStarIcon size={26} className="text-[#f2c94c]" />
+                    </span>
+                    <span className="flex-1">
+                      <span className="block font-pixel text-[10px] uppercase text-brand-600">
+                        {section.link.label}
+                      </span>
+                      <span className="mt-1 block font-display text-xl font-extrabold">
+                        {section.link.title}
+                      </span>
+                    </span>
+                    <ArrowIcon size={22} className="shrink-0 transition-transform group-hover:translate-x-1" />
+                  </Link>
+                )}
               </section>
             ))}
 
@@ -89,6 +113,24 @@ export default function RulesContent() {
                 {t("rules.sanctionsTitle")}
               </h2>
               <p className="mt-3 text-lg leading-relaxed">{t("rules.sanctions")}</p>
+              {/* L'escala de sancions, de la més lleu a la més greu. */}
+              <ol className="mt-5 grid gap-3 sm:grid-cols-2">
+                {steps.map((step, i) => (
+                  <li key={step} className="flex items-center gap-3 border-2 border-paper/20 px-4 py-3">
+                    <span
+                      aria-hidden
+                      className="flex h-8 w-8 shrink-0 items-center justify-center bg-brand-500 font-pixel text-sm text-white"
+                    >
+                      {i + 1}
+                    </span>
+                    <span className="font-semibold">{step}</span>
+                  </li>
+                ))}
+              </ol>
+              <p className="mt-5 leading-relaxed text-paper/85">{t("rules.sanctionsSevere")}</p>
+              <p className="mt-4 border-t-2 border-paper/15 pt-4 leading-relaxed text-paper/75">
+                {t("rules.appeal")}
+              </p>
             </section>
           </div>
         </div>

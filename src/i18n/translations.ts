@@ -27,6 +27,7 @@ const ca = {
     recipes: "Receptes",
     gallery: "Galeria",
     rules: "Normes",
+    stars: "Pacte de les estrelles",
     faq: "FAQ",
     langLabel: "Idioma",
     menu: "Menú",
@@ -256,6 +257,8 @@ const ca = {
     seenAgo: "Vist {time}",
     offline: "Desconnectat",
     rank: "#{rank} al rànquing",
+    pact: "Pacte de les estrelles",
+    pactStars: "{n} de 5 estrelles",
     skinLabel: "La skin de {name} en 3D",
     noSkin: "Encara no tenim la seva skin",
     dragHint: "Arrossega per girar-lo",
@@ -392,49 +395,234 @@ const ca = {
     },
   },
   // Normes provisionals, fins que tinguem les definitives.
+  // Fetes a partir de les normes de servidors semblants (d'universitats, de supervivència amb
+  // economia i grans com Wynncraft o CubeCraft) i adaptades a mineuab. Les xifres (30 blocs,
+  // 3 mesos) són decisions de l'staff: si canvien, canvieu-les també en castellà.
   rules: {
     title: "Normes del servidor",
     subtitle: "Unes quantes normes perquè tothom s'hi senti a gust.",
     index: "Índex",
     sanctionsTitle: "Sancions",
-    draftNote:
-      "Aquestes són les normes bàsiques mentre acabem la versió definitiva. Si tens qualsevol dubte, pregunta a l'staff al Discord.",
+    note: "Les normes poden canviar a mesura que el servidor creixi. Si canvien, ho avisarem al Discord. Última actualització: octubre de 2026.",
     sections: [
       {
         title: "Respecte i convivència",
         rules: [
-          "Tracta tothom amb respecte. No hi ha lloc per als insults, l'assetjament ni cap mena de discriminació.",
-          "Res de spam, flood al xat ni publicitat d'altres servidors.",
-          "Mantén el contingut apropiat: noms, skins, cartells i construccions sense res ofensiu ni explícit.",
+          "Tracta tothom amb respecte, al joc i al Discord. No hi ha lloc per als insults, l'assetjament, les amenaces ni cap mena de discriminació, sigui per origen, gènere, orientació, religió, discapacitat o qualsevol altre motiu.",
+          "Aquí s'hi parla en català, en castellà o en la llengua que calgui. No facis de menys ningú per la llengua en què escriu.",
+          "Res de spam ni flood al xat, ni missatges tot en majúscules, ni publicitat d'altres servidors o enllaços que no vinguin a tomb.",
+          "Mantén el contingut apropiat: noms, skins, cartells, llibres, noms d'ítems i construccions sense res ofensiu, sexual ni violent. L'staff et pot demanar que ho canviïs o ho pot retirar.",
+          "No comparteixis dades personals d'altres jugadors (nom real, xarxes, NIU, adreça, fotos…) sense el seu permís. Amb les teves, també ves amb compte.",
+          "No et facis passar per l'staff ni per cap altre jugador.",
         ],
       },
       {
         title: "Joc net",
         rules: [
-          "No es permeten hacks, clients modificats que donin avantatge (X-ray, fly, kill aura…) ni aprofitar errors del joc. Si en trobes un, avisa l'staff.",
-          "No destrueixis, modifiquis ni robis construccions o cofres que no són teus.",
-          "Evita granges o màquines que sobrecarreguin el servidor.",
+          "No es permeten hacks ni mods que donin avantatge: X-ray, fly, kill aura, auto-clickers, radars de jugadors o de mobs, mapes de coves, buscadors de llavors… Sí que pots fer servir els que només canvien l'aspecte o milloren el rendiment, com shaders, paquets de textures, Sodium, OptiFine o un minimapa sense coves ni entitats. En cas de dubte, pregunta abans.",
+          "No aprofitis errors del joc ni del servidor (duplicar ítems, entrar en zones protegides, trucs amb l'economia…) ni els expliquis a ningú. Si en trobes un, reporta'l a l'staff: si no l'has fet servir, no tindràs cap problema.",
+          "Els crèdits s'han de guanyar jugant: res de macros, bots ni trucs per cobrar la beca o altres recompenses mentre estàs AFK.",
+          "Les granges automàtiques estan permeses mentre no carreguin massa el servidor. Res de màquines per fer lag; si una granja en provoca, l'staff et pot demanar que la redueixis o la pot desactivar.",
+        ],
+      },
+      {
+        title: "Construccions i bases",
+        rules: [
+          "El que no és teu no es toca: no destrueixis, modifiquis ni robis construccions, cofres, granges, animals ni mascotes d'altres jugadors, encara que no estiguin protegits. L'única excepció és el pacte de les estrelles: dins de les bases, i només entre qui l'ha signat.",
+          "Protegeix la teva base amb un claim (/tutorial t'ensenya com). L'staff no sempre podrà recuperar el que es perdi en una zona sense protegir.",
+          "Deixa espai: no construeixis a menys de 30 blocs de la base d'una altra persona sense el seu permís, ni facis claims per encerclar-la o tallar-li el pas.",
+          "L'spawn i les construccions del campus són de tothom: no les modifiquis ni hi facis bases o granges.",
+          "El món de recursos (/recursos) és per minar i explorar. Es torna a generar l'1 de cada mes i no s'hi poden fer homes ni claims, així que no hi deixis res que vulguis conservar.",
+          "Si una base porta més de 3 mesos sense que el seu propietari entri al servidor, l'staff la pot netejar per fer lloc. Si marxes una temporada, avisa'ns pel Discord.",
+        ],
+      },
+      // El que el pacte permet ho controla el plugin MineUABEstrelles; aquí només hi ha el que el plugin no pot impedir.
+      {
+        title: "PvP i el pacte de les estrelles",
+        rules: [
+          "Lluitar, quedar-se el botí i atacar bases només es pot fer entre jugadors que han signat el pacte de les estrelles (/estrelles), i només fins on arribin les estrelles de tots dos. Entre qui l'ha signat, s'hi val; a qui no l'ha signat, no se li pot fer res.",
+          "No busquis maneres de saltar-te'l: res de trampes, lava, mobs ni caigudes per matar algú que no té pacte amb tu o fer-li perdre les coses.",
+          "Res de comptes secundaris ni de baralles pactades amb amics per fer-vos botí de crèdits.",
+        ],
+        link: { label: "Com funciona", title: "El pacte de les estrelles", href: "/estrelles" },
+      },
+      {
+        title: "Economia i intercanvis",
+        rules: [
+          "Compleix els tractes. Estafar està prohibit: no lliurar el que has promès, enganyar amb el preu o aprofitar-te que algú no sap com funciona alguna cosa. Per anar segur, fes servir /intercanvi.",
+          "Els crèdits, els ítems i els comptes no es compren ni es venen amb diners reals ni a canvi de coses d'altres jocs. Si passa, se sancionen totes dues parts.",
+          "Un compte per persona. Res de fer servir comptes secundaris per cobrar més recompenses (la beca, passar llista, La Grossa…) ni per moure crèdits.",
+          "No organitzis apostes ni sortejos propis amb crèdits sense el permís de l'staff. Per provar sort, ja hi ha La Grossa.",
         ],
       },
       {
         title: "El teu compte",
         rules: [
-          "El compte és personal: no el comparteixis ni entris amb el d'una altra persona.",
-          "Fes servir una contrasenya pròpia per al servidor i no la diguis a ningú. L'staff no te la demanarà mai.",
+          "El compte és personal: no el comparteixis ni entris amb el d'una altra persona. Ets responsable de tot el que es faci des del teu.",
+          "Fes servir una contrasenya que no utilitzis enlloc més i no la diguis a ningú. L'staff no te la demanarà mai.",
         ],
       },
       {
-        title: "Staff",
+        title: "Staff i reports",
         rules: [
-          "Segueix les indicacions de l'staff. Si no hi estàs d'acord, parla-ho amb calma pel Discord.",
-          "Si veus algú saltant-se les normes, avisa l'staff en lloc de respondre pel teu compte.",
+          "Segueix les indicacions de l'staff. Si no hi estàs d'acord, parla-ho amb calma pel Discord, no al xat del joc.",
+          "Si veus algú saltant-se les normes, no responguis pel teu compte: fes servir /report <jugador> <què ha passat> i, si pots, envia captures o un vídeo a l'staff pel Discord. Els reports falsos o de broma també se sancionen.",
+          "Aquestes normes valen al servidor i al Discord. L'staff també pot actuar en situacions que no hi surtin escrites si perjudiquen la comunitat.",
         ],
       },
     ],
-    sanctions:
-      "Saltar-se les normes pot comportar un avís, una expulsió temporal o una expulsió permanent, segons la gravetat.",
+    sanctions: "Les sancions depenen de la gravetat i de si és el primer cop. Normalment van per aquest ordre:",
+    sanctionSteps: [
+      "Un avís.",
+      "Un silenci al xat o una expulsió temporal.",
+      "Una expulsió més llarga.",
+      "L'expulsió permanent.",
+    ],
+    sanctionsSevere:
+      "En els casos greus (hacks, duplicar ítems, vendre per diners reals, assetjament o difondre dades personals) l'staff pot passar directament a l'expulsió. A més, es retira tot el que s'hagi aconseguit amb trampes.",
+    appeal:
+      "Si creus que una sanció és injusta, escriu a l'staff pel Discord i explica-ho amb calma. Fer servir un altre compte per esquivar una sanció comporta l'expulsió permanent de tots dos.",
     ctaTitle: "Tens dubtes o vols informar d'alguna cosa?",
     ctaBody: "Parla amb l'staff al Discord. T'ajudarem tan aviat com puguem.",
+  },
+  // El pacte de les estrelles (plugin MineUABEstrelles). Les xifres (5 h, 24 h, 72 h, 20 s, 15 min, 10 %…) surten
+  // del config.yml del plugin: si canvien allà, canvieu-les aquí i en castellà.
+  stars: {
+    title: "El pacte de les estrelles",
+    subtitle:
+      "A mineuab no et poden atacar, robar ni entrar a la base si no ho has acceptat abans. Si t'agrada el risc, signa el pacte i tria fins on vols arribar.",
+    intro: [
+      "Cada jugador té de 0 a 5 estrelles. Tothom comença amb 0, i amb 0 ningú no et pot fer mal, ni obrir-te els cofres, ni tocar-te la base.",
+      "Cada estrella que signes et deixa fer una cosa més (lluitar, quedar-te el botí, entrar a les bases…), però també vol dir que te la poden fer a tu.",
+    ],
+    commandHint: "Per veure les teves estrelles o signar-ne una:",
+    ruleLabel: "La regla",
+    rule: "Una cosa només es pot fer si tots dos teniu prou estrelles.",
+    ruleBody:
+      "Les teves estrelles són el màxim que pots fer i, alhora, el màxim que et poden fer. Si pots robar als de ★3, els de ★3 també et poden robar a tu. Quan ataques una base, l'altra persona és el propietari.",
+    exampleLabel: "Per exemple",
+    example:
+      "Es troben un ★5 i un ★2. Poden lluitar i quedar-se el botí, perquè el ★2 hi arriba. Però a la base del ★2, el ★5 no hi pot entrar: per això calen ★3 tots dos.",
+    levelsLabel: "Els nivells",
+    levelsTitle: "De civil a senyor de la guerra",
+    levelsSubtitle: "Cada nivell porta tot el dels anteriors i hi afegeix alguna cosa.",
+    level: "Nivell {n}",
+    levels: [
+      {
+        name: "Civil",
+        body: "Ningú no et pot fer res, i tu no pots fer res a ningú. Les teves coses i la teva base estan sempre protegides. És on comença tothom.",
+      },
+      {
+        name: "Combatent",
+        body: "Pots lluitar amb qui tingui ★1 o més, fora de les bases. Si caus, et quedes l'inventari: no hi ha tomba ni botí.",
+      },
+      {
+        name: "Bandoler",
+        body: "Comença el botí. Qui t'abat pot obrir la teva tomba i quedar-se el que portaves, i s'emporta el 10 % de la cartera (200 crèdits com a molt). El que tens al banc no es toca mai.",
+      },
+      {
+        name: "Lladre",
+        body: "Pots entrar a les bases dels de ★3 o més: obrir-ne els cofres i altres contenidors, fer servir portes, palanques, marcs i suports d'armadura, i lluitar-hi a dins.",
+      },
+      {
+        name: "Saquejador",
+        body: "Pots trencar i posar blocs a les bases dels de ★4 o més, i fer mal als seus animals i vehicles.",
+      },
+      {
+        name: "Senyor de la guerra",
+        body: "Guerra oberta: foc, lava i TNT a les bases dels de ★5 o més.",
+      },
+    ],
+    changeLabel: "Pujar i baixar",
+    changeTitle: "Com es canvia d'estrelles",
+    climb: {
+      label: "Pujar",
+      title: "Una estrella cada vegada",
+      body: "Obre el menú amb /estrelles o fes /estrelles pujar per veure el pacte de l'estrella següent. Abans de signar-lo, te'l llegeixes i l'has de confirmar.",
+      facts: [
+        "Cal haver jugat 5 hores al servidor.",
+        "Entre pujada i pujada, 24 hores. La primera estrella no espera.",
+        "Es puja d'una en una: de ★0 a ★5 hi ha com a mínim quatre dies.",
+        "Quan algú signa, el servidor ho anuncia a tothom.",
+      ],
+      code: ["/estrelles", "/estrelles pujar"],
+    },
+    retreat: {
+      label: "Baixar",
+      title: "Una retirada de 72 hores",
+      body: "Amb /estrelles baixar i el nombre d'estrelles que vols tenir, comences una retirada. Durant 72 hores continues amb les estrelles d'ara: així ningú no pot pujar, atacar i desaparèixer abans que li puguin respondre.",
+      facts: [
+        "La pots anul·lar quan vulguis.",
+        "No la pots començar enmig d'un combat.",
+        "Mentre dura, no pots pujar.",
+      ],
+      code: ["/estrelles baixar <estrelles>", "/estrelles baixar anul·la"],
+    },
+    combatLabel: "El combat",
+    combatTitle: "Com es lluita",
+    combatSubtitle:
+      "Només hi ha PvP entre jugadors que tenen ★1 o més tots dos: cops, fletxes, pocions, llops, TNT… Si un dels dos no té el pacte, els cops no fan mal i la barra d'acció explica per què.",
+    combat: [
+      {
+        title: "Marca de combat",
+        body: "Després de cada cop quedes 20 segons en combat (30 si has atacat una base). Mentrestant no et pots teletransportar (/home, /spawn, /tpa, /recursos…) ni fugir per un portal. El compte enrere surt a la barra d'acció.",
+      },
+      {
+        title: "Desconnectar-se no salva",
+        body: "Si surts del servidor amb la marca de combat, caus allà mateix, i compta com si t'hagués abatut l'últim rival, botí inclòs.",
+      },
+      {
+        title: "En reaparèixer",
+        body: "Tens 10 segons en què ningú no et pot fer mal. Si ataques abans, els perds.",
+      },
+      {
+        title: "Morts de rebot",
+        body: "Si mors per una caiguda, per la lava o pel que sigui fins a 10 segons després d'un cop, t'ha abatut qui et va pegar.",
+      },
+      {
+        title: "Lava i foc",
+        body: "No pots buidar lava ni encendre foc a menys de 4 blocs d'algú que no tingui pacte amb tu.",
+      },
+      {
+        title: "Botí de crèdits",
+        body: "La mateixa parella només en dona un cop per hora, i si tots dos jugueu des de la mateixa xarxa (la mateixa IP), no n'hi ha. A la resi us podeu barallar igual, però sense botí de crèdits.",
+      },
+    ],
+    combatNote:
+      "Als minijocs, com el Bingo, el pacte no hi compta: cada joc té les seves regles. I on el servidor no deixa lluitar, el pacte tampoc no hi canvia res.",
+    basesLabel: "Les bases",
+    basesTitle: "Atacar una base",
+    basesSubtitle:
+      "Les bases són els claims de sempre, i el que s'hi pot fer depèn de les estrelles del propietari. Els membres d'una base hi poden fer de tot, com fins ara.",
+    bases: [
+      "Una base només es pot atacar si el propietari està connectat o si fa menys de 15 minuts que ha sortit. Ningú no perd la base mentre dorm, i ningú no se salva d'un atac desconnectant-se.",
+      "Quan algú t'ataca la base, reps un avís amb qui és, quantes estrelles té i on és. Qui ataca queda marcat 30 segons.",
+      "Les zones de l'staff no es poden atacar mai, tinguis les estrelles que tinguis.",
+      "Fora de les bases, el pacte no dona permís per tocar res: una construcció sense claim continua sent del seu propietari.",
+    ],
+    commandsLabel: "Ordres",
+    commandsTitle: "Totes les ordres",
+    commands: [
+      { cmd: "/estrelles", what: "El menú: les teves estrelles, els sis nivells i la retirada." },
+      { cmd: "/estrelles pujar", what: "Ensenya el pacte de l'estrella següent per signar-lo." },
+      {
+        cmd: "/estrelles baixar <estrelles>",
+        what: "Comença la retirada. Amb anul·la en lloc del número, l'atura.",
+      },
+      {
+        cmd: "/estrelles info [jugador]",
+        what: "Quantes estrelles té algú (o tu, si no poses cap nom) i si està en retirada o en combat.",
+      },
+      { cmd: "/estrelles llista", what: "Qui té el pacte ara mateix." },
+    ],
+    commandsNote: "També pots escriure /pacte en lloc de /estrelles.",
+    rulesTitle: "Les normes continuen valent",
+    rulesBody:
+      "Dins del pacte, el que el joc et deixa fer s'hi val. El que no s'hi val és saltar-se'l: comptes secundaris per fer-se botí, trampes per matar qui no té pacte amb tu o errors del joc per entrar on no pots.",
+    rulesLink: "Llegir les normes",
+    ctaTitle: "Tens dubtes sobre el pacte?",
+    ctaBody:
+      "Pregunta-ho al Discord. I si veus que alguna cosa no funciona com explica aquesta pàgina, avisa l'staff.",
   },
   faq: {
     title: "Preguntes freqüents",
@@ -500,6 +688,12 @@ const ca = {
         q: "On puc minar sense destrossar el món?",
         a: "Al món de recursos: escriu la primera ordre i hi apareixeràs en un lloc a l'atzar. Mina i explora tant com vulguis, perquè l'1 de cada mes es torna a generar de zero. Per això no hi deixis res: allà no es poden fer homes ni claims. Per tornar, la segona ordre.",
         code: ["/recursos", "/spawn"],
+      },
+      {
+        q: "Em poden matar o robar?",
+        a: "Només si tu vols. Lluitar, quedar-se el botí i atacar bases només es pot fer entre jugadors que han signat el pacte de les estrelles, i mai més enllà del que permeten les estrelles de tots dos. Si no el signes, ningú no et pot fer res.",
+        code: ["/estrelles"],
+        link: { href: "/estrelles", label: "Com funciona el pacte" },
       },
       {
         q: "He oblidat la contrasenya. Què faig?",
@@ -579,6 +773,7 @@ const es: Translations = {
     recipes: "Recetas",
     gallery: "Galería",
     rules: "Normas",
+    stars: "Pacto de las estrellas",
     faq: "FAQ",
     langLabel: "Idioma",
     menu: "Menú",
@@ -805,6 +1000,8 @@ const es: Translations = {
     seenAgo: "Visto {time}",
     offline: "Desconectado",
     rank: "#{rank} en el ranking",
+    pact: "Pacto de las estrellas",
+    pactStars: "{n} de 5 estrellas",
     skinLabel: "La skin de {name} en 3D",
     noSkin: "Todavía no tenemos su skin",
     dragHint: "Arrastra para girarlo",
@@ -945,44 +1142,224 @@ const es: Translations = {
     subtitle: "Unas pocas normas para que todo el mundo esté a gusto.",
     index: "Índice",
     sanctionsTitle: "Sanciones",
-    draftNote:
-      "Estas son las normas básicas mientras terminamos la versión definitiva. Si tienes cualquier duda, pregunta al staff en Discord.",
+    note: "Las normas pueden cambiar a medida que el servidor crezca. Si cambian, lo avisaremos en Discord. Última actualización: octubre de 2026.",
     sections: [
       {
         title: "Respeto y convivencia",
         rules: [
-          "Trata a todo el mundo con respeto. No hay lugar para insultos, acoso ni ningún tipo de discriminación.",
-          "Nada de spam, flood en el chat ni publicidad de otros servidores.",
-          "Mantén el contenido apropiado: nombres, skins, carteles y construcciones sin nada ofensivo ni explícito.",
+          "Trata a todo el mundo con respeto, en el juego y en Discord. No hay lugar para insultos, acoso, amenazas ni ningún tipo de discriminación, sea por origen, género, orientación, religión, discapacidad o cualquier otro motivo.",
+          "Aquí se habla en catalán, en castellano o en la lengua que haga falta. No menosprecies a nadie por la lengua en la que escribe.",
+          "Nada de spam ni flood en el chat, ni mensajes todo en mayúsculas, ni publicidad de otros servidores o enlaces que no vengan a cuento.",
+          "Mantén el contenido apropiado: nombres, skins, carteles, libros, nombres de ítems y construcciones sin nada ofensivo, sexual ni violento. El staff te puede pedir que lo cambies o lo puede retirar.",
+          "No compartas datos personales de otros jugadores (nombre real, redes, NIU, dirección, fotos…) sin su permiso. Con los tuyos, ten cuidado también.",
+          "No te hagas pasar por el staff ni por ningún otro jugador.",
         ],
       },
       {
         title: "Juego limpio",
         rules: [
-          "No se permiten hacks, clientes modificados que den ventaja (X-ray, fly, kill aura…) ni aprovechar errores del juego. Si encuentras uno, avisa al staff.",
-          "No destruyas, modifiques ni robes construcciones o cofres que no son tuyos.",
-          "Evita granjas o máquinas que sobrecarguen el servidor.",
+          "No se permiten hacks ni mods que den ventaja: X-ray, fly, kill aura, auto-clickers, radares de jugadores o de mobs, mapas de cuevas, buscadores de semillas… Sí puedes usar los que solo cambian el aspecto o mejoran el rendimiento, como shaders, paquetes de texturas, Sodium, OptiFine o un minimapa sin cuevas ni entidades. En caso de duda, pregunta antes.",
+          "No aproveches errores del juego ni del servidor (duplicar ítems, entrar en zonas protegidas, trucos con la economía…) ni se los expliques a nadie. Si encuentras uno, repórtalo al staff: si no lo has usado, no tendrás ningún problema.",
+          "Los créditos se ganan jugando: nada de macros, bots ni trucos para cobrar la beca u otras recompensas mientras estás AFK.",
+          "Las granjas automáticas están permitidas mientras no sobrecarguen el servidor. Nada de máquinas para provocar lag; si una granja lo provoca, el staff te puede pedir que la reduzcas o la puede desactivar.",
+        ],
+      },
+      {
+        title: "Construcciones y bases",
+        rules: [
+          "Lo que no es tuyo no se toca: no destruyas, modifiques ni robes construcciones, cofres, granjas, animales ni mascotas de otros jugadores, aunque no estén protegidos. La única excepción es el pacto de las estrellas: dentro de las bases, y solo entre quienes lo han firmado.",
+          "Protege tu base con un claim (/tutorial te enseña cómo). El staff no siempre podrá recuperar lo que se pierda en una zona sin proteger.",
+          "Deja espacio: no construyas a menos de 30 bloques de la base de otra persona sin su permiso, ni hagas claims para rodearla o cortarle el paso.",
+          "El spawn y las construcciones del campus son de todos: no las modifiques ni hagas en ellas bases o granjas.",
+          "El mundo de recursos (/recursos) es para minar y explorar. Se vuelve a generar el día 1 de cada mes y no se pueden hacer homes ni claims, así que no dejes nada que quieras conservar.",
+          "Si una base lleva más de 3 meses sin que su propietario entre al servidor, el staff la puede limpiar para hacer sitio. Si te vas una temporada, avísanos por Discord.",
+        ],
+      },
+      {
+        title: "PvP y el pacto de las estrellas",
+        rules: [
+          "Luchar, quedarse el botín y atacar bases solo se puede hacer entre jugadores que han firmado el pacto de las estrellas (/estrelles), y solo hasta donde lleguen las estrellas de los dos. Entre quienes lo han firmado, vale; a quien no lo ha firmado, no se le puede hacer nada.",
+          "No busques maneras de saltártelo: nada de trampas, lava, mobs ni caídas para matar a alguien que no tiene pacto contigo o hacerle perder sus cosas.",
+          "Nada de cuentas secundarias ni de peleas pactadas con amigos para haceros botín de créditos.",
+        ],
+        link: { label: "Cómo funciona", title: "El pacto de las estrellas", href: "/estrelles" },
+      },
+      {
+        title: "Economía e intercambios",
+        rules: [
+          "Cumple los tratos. Estafar está prohibido: no entregar lo que has prometido, engañar con el precio o aprovecharte de que alguien no sabe cómo funciona algo. Para ir seguro, usa /intercanvi.",
+          "Los créditos, los ítems y las cuentas no se compran ni se venden con dinero real ni a cambio de cosas de otros juegos. Si pasa, se sanciona a las dos partes.",
+          "Una cuenta por persona. Nada de usar cuentas secundarias para cobrar más recompensas (la beca, pasar lista, La Grossa…) ni para mover créditos.",
+          "No organices apuestas ni sorteos propios con créditos sin el permiso del staff. Para probar suerte, ya está La Grossa.",
         ],
       },
       {
         title: "Tu cuenta",
         rules: [
-          "La cuenta es personal: no la compartas ni entres con la de otra persona.",
-          "Usa una contraseña propia para el servidor y no se la digas a nadie. El staff nunca te la pedirá.",
+          "La cuenta es personal: no la compartas ni entres con la de otra persona. Eres responsable de todo lo que se haga desde la tuya.",
+          "Usa una contraseña que no utilices en ningún otro sitio y no se la digas a nadie. El staff nunca te la pedirá.",
         ],
       },
       {
-        title: "Staff",
+        title: "Staff y reportes",
         rules: [
-          "Sigue las indicaciones del staff. Si no estás de acuerdo, háblalo con calma por Discord.",
-          "Si ves a alguien saltándose las normas, avisa al staff en lugar de responder por tu cuenta.",
+          "Sigue las indicaciones del staff. Si no estás de acuerdo, háblalo con calma por Discord, no en el chat del juego.",
+          "Si ves a alguien saltándose las normas, no respondas por tu cuenta: usa /report <jugador> <qué ha pasado> y, si puedes, envía capturas o un vídeo al staff por Discord. Los reportes falsos o de broma también se sancionan.",
+          "Estas normas valen en el servidor y en Discord. El staff también puede actuar en situaciones que no aparezcan escritas si perjudican a la comunidad.",
         ],
       },
     ],
-    sanctions:
-      "Saltarse las normas puede suponer un aviso, una expulsión temporal o una expulsión permanente, según la gravedad.",
+    sanctions: "Las sanciones dependen de la gravedad y de si es la primera vez. Normalmente van en este orden:",
+    sanctionSteps: [
+      "Un aviso.",
+      "Un silencio en el chat o una expulsión temporal.",
+      "Una expulsión más larga.",
+      "La expulsión permanente.",
+    ],
+    sanctionsSevere:
+      "En los casos graves (hacks, duplicar ítems, vender por dinero real, acoso o difundir datos personales) el staff puede pasar directamente a la expulsión. Además, se retira todo lo que se haya conseguido con trampas.",
+    appeal:
+      "Si crees que una sanción es injusta, escribe al staff por Discord y explícalo con calma. Usar otra cuenta para esquivar una sanción supone la expulsión permanente de ambas.",
     ctaTitle: "¿Tienes dudas o quieres informar de algo?",
     ctaBody: "Habla con el staff en Discord. Te ayudaremos lo antes posible.",
+  },
+  stars: {
+    title: "El pacto de las estrellas",
+    subtitle:
+      "En mineuab no te pueden atacar, robar ni entrar en tu base si no lo has aceptado antes. Si te va el riesgo, firma el pacto y elige hasta dónde quieres llegar.",
+    intro: [
+      "Cada jugador tiene de 0 a 5 estrellas. Todo el mundo empieza con 0, y con 0 nadie te puede hacer daño, ni abrir tus cofres, ni tocar tu base.",
+      "Cada estrella que firmas te deja hacer algo más (luchar, quedarte el botín, entrar en las bases…), pero también significa que te lo pueden hacer a ti.",
+    ],
+    commandHint: "Para ver tus estrellas o firmar una:",
+    ruleLabel: "La regla",
+    rule: "Algo solo se puede hacer si los dos tenéis suficientes estrellas.",
+    ruleBody:
+      "Tus estrellas son lo máximo que puedes hacer y, a la vez, lo máximo que te pueden hacer. Si puedes robar a los de ★3, los de ★3 también te pueden robar a ti. Cuando atacas una base, la otra persona es el propietario.",
+    exampleLabel: "Por ejemplo",
+    example:
+      "Se encuentran un ★5 y un ★2. Pueden luchar y quedarse el botín, porque el ★2 llega. Pero en la base del ★2 el ★5 no puede entrar: para eso hacen falta ★3 los dos.",
+    levelsLabel: "Los niveles",
+    levelsTitle: "De Civil a Senyor de la guerra",
+    levelsSubtitle:
+      "Cada nivel incluye todo lo de los anteriores y añade algo más. Los nombres son los que verás en el juego.",
+    level: "Nivel {n}",
+    levels: [
+      {
+        name: "Civil",
+        body: "Nadie te puede hacer nada, y tú no puedes hacer nada a nadie. Tus cosas y tu base están siempre protegidas. Es donde empieza todo el mundo.",
+      },
+      {
+        name: "Combatent",
+        body: "Puedes luchar con quien tenga ★1 o más, fuera de las bases. Si caes, conservas el inventario: no hay tumba ni botín.",
+      },
+      {
+        name: "Bandoler",
+        body: "Empieza el botín. Quien te abate puede abrir tu tumba y quedarse lo que llevabas, y se lleva el 10 % de la cartera (200 créditos como mucho). Lo que tienes en el banco no se toca nunca.",
+      },
+      {
+        name: "Lladre",
+        body: "Puedes entrar en las bases de los de ★3 o más: abrir sus cofres y otros contenedores, usar puertas, palancas, marcos y soportes para armadura, y luchar dentro.",
+      },
+      {
+        name: "Saquejador",
+        body: "Puedes romper y poner bloques en las bases de los de ★4 o más, y hacer daño a sus animales y vehículos.",
+      },
+      {
+        name: "Senyor de la guerra",
+        body: "Guerra abierta: fuego, lava y TNT en las bases de los de ★5 o más.",
+      },
+    ],
+    changeLabel: "Subir y bajar",
+    changeTitle: "Cómo se cambia de estrellas",
+    climb: {
+      label: "Subir",
+      title: "Una estrella cada vez",
+      body: "Abre el menú con /estrelles o usa /estrelles pujar para ver el pacto de la siguiente estrella. Antes de firmarlo, lo lees y tienes que confirmarlo.",
+      facts: [
+        "Tienes que haber jugado 5 horas en el servidor.",
+        "Entre subida y subida, 24 horas. La primera estrella no espera.",
+        "Se sube de una en una: de ★0 a ★5 hay como mínimo cuatro días.",
+        "Cuando alguien firma, el servidor lo anuncia a todo el mundo.",
+      ],
+      code: ["/estrelles", "/estrelles pujar"],
+    },
+    retreat: {
+      label: "Bajar",
+      title: "Una retirada de 72 horas",
+      body: "Con /estrelles baixar y el número de estrellas que quieres tener, empiezas una retirada. Durante 72 horas sigues con las estrellas de ahora: así nadie puede subir, atacar y desaparecer antes de que le puedan responder.",
+      facts: [
+        "La puedes anular cuando quieras.",
+        "No la puedes empezar en medio de un combate.",
+        "Mientras dura, no puedes subir.",
+      ],
+      code: ["/estrelles baixar <estrellas>", "/estrelles baixar anul·la"],
+    },
+    combatLabel: "El combate",
+    combatTitle: "Cómo se lucha",
+    combatSubtitle:
+      "Solo hay PvP entre jugadores que tienen ★1 o más los dos: golpes, flechas, pociones, lobos, TNT… Si uno de los dos no tiene el pacto, los golpes no hacen daño y la barra de acción explica por qué.",
+    combat: [
+      {
+        title: "Marca de combate",
+        body: "Después de cada golpe te quedas 20 segundos en combate (30 si has atacado una base). Mientras tanto no te puedes teletransportar (/home, /spawn, /tpa, /recursos…) ni huir por un portal. La cuenta atrás sale en la barra de acción.",
+      },
+      {
+        title: "Desconectarse no salva",
+        body: "Si sales del servidor con la marca de combate, caes ahí mismo, y cuenta como si te hubiera abatido tu último rival, botín incluido.",
+      },
+      {
+        title: "Al reaparecer",
+        body: "Tienes 10 segundos en los que nadie te puede hacer daño. Si atacas antes, los pierdes.",
+      },
+      {
+        title: "Muertes de rebote",
+        body: "Si mueres por una caída, por la lava o por lo que sea hasta 10 segundos después de un golpe, te ha abatido quien te golpeó.",
+      },
+      {
+        title: "Lava y fuego",
+        body: "No puedes vaciar lava ni encender fuego a menos de 4 bloques de alguien que no tenga pacto contigo.",
+      },
+      {
+        title: "Botín de créditos",
+        body: "La misma pareja solo da botín una vez por hora, y si los dos jugáis desde la misma red (la misma IP), no hay. En la resi os podéis pelear igual, pero sin botín de créditos.",
+      },
+    ],
+    combatNote:
+      "En los minijuegos, como el Bingo, el pacto no cuenta: cada juego tiene sus reglas. Y donde el servidor no deja luchar, el pacto tampoco cambia nada.",
+    basesLabel: "Las bases",
+    basesTitle: "Atacar una base",
+    basesSubtitle:
+      "Las bases son los claims de siempre, y lo que se puede hacer dentro depende de las estrellas del propietario. Los miembros de una base pueden hacer de todo, como hasta ahora.",
+    bases: [
+      "Una base solo se puede atacar si el propietario está conectado o si hace menos de 15 minutos que ha salido. Nadie pierde su base mientras duerme, y nadie se salva de un ataque desconectándose.",
+      "Cuando alguien ataca tu base, recibes un aviso con quién es, cuántas estrellas tiene y dónde está. Quien ataca queda marcado 30 segundos.",
+      "Las zonas del staff no se pueden atacar nunca, tengas las estrellas que tengas.",
+      "Fuera de las bases, el pacto no da permiso para tocar nada: una construcción sin claim sigue siendo de su propietario.",
+    ],
+    commandsLabel: "Comandos",
+    commandsTitle: "Todos los comandos",
+    commands: [
+      { cmd: "/estrelles", what: "El menú: tus estrellas, los seis niveles y la retirada." },
+      { cmd: "/estrelles pujar", what: "Te enseña el pacto de la siguiente estrella para firmarlo." },
+      {
+        cmd: "/estrelles baixar <estrellas>",
+        what: "Empieza la retirada. Con anul·la en lugar del número, la detiene.",
+      },
+      {
+        cmd: "/estrelles info [jugador]",
+        what: "Cuántas estrellas tiene alguien (o tú, si no pones ningún nombre) y si está en retirada o en combate.",
+      },
+      { cmd: "/estrelles llista", what: "Quién tiene el pacto ahora mismo." },
+    ],
+    commandsNote: "También puedes escribir /estrellas o /pacte en lugar de /estrelles.",
+    rulesTitle: "Las normas siguen valiendo",
+    rulesBody:
+      "Dentro del pacto, lo que el juego te deja hacer vale. Lo que no vale es saltárselo: cuentas secundarias para hacerse botín, trampas para matar a quien no tiene pacto contigo o errores del juego para entrar donde no puedes.",
+    rulesLink: "Leer las normas",
+    ctaTitle: "¿Tienes dudas sobre el pacto?",
+    ctaBody:
+      "Pregúntalo en Discord. Y si ves que algo no funciona como explica esta página, avisa al staff.",
   },
   faq: {
     title: "Preguntas frecuentes",
@@ -1046,6 +1423,12 @@ const es: Translations = {
         q: "¿Dónde puedo minar sin destrozar el mundo?",
         a: "En el mundo de recursos: escribe el primer comando y aparecerás en un lugar al azar. Mina y explora todo lo que quieras, porque el día 1 de cada mes se vuelve a generar desde cero. Por eso no dejes nada allí: no se pueden hacer homes ni claims. Para volver, el segundo comando.",
         code: ["/recursos", "/spawn"],
+      },
+      {
+        q: "¿Me pueden matar o robar?",
+        a: "Solo si tú quieres. Luchar, quedarse el botín y atacar bases solo se puede hacer entre jugadores que han firmado el pacto de las estrellas, y nunca más allá de lo que permiten las estrellas de los dos. Si no lo firmas, nadie te puede hacer nada.",
+        code: ["/estrelles"],
+        link: { href: "/estrelles", label: "Cómo funciona el pacto" },
       },
       {
         q: "He olvidado la contraseña. ¿Qué hago?",

@@ -175,6 +175,18 @@ const PEOPLE = [
   "XXXX.XXXX",
 ];
 
+const STAR = [
+  "....X....",
+  "...XXX...",
+  "...XXX...",
+  "XXXXXXXXX",
+  ".XXXXXXX.",
+  "..XXXXX..",
+  "..XXXXX..",
+  ".XXX.XXX.",
+  ".XX...XX.",
+];
+
 const CREEPER = [
   "gggggggg",
   "g..gg..g",
@@ -198,6 +210,11 @@ export function PixelHeartIcon(props: IconProps) {
 /** Dues persones: la comunitat. */
 export function PixelPeopleIcon(props: IconProps) {
   return <PixelArt rows={PEOPLE} {...props} />;
+}
+
+/** Una estrella del pacte de les estrelles. Pren el color del text. */
+export function PixelStarIcon(props: IconProps) {
+  return <PixelArt rows={STAR} {...props} />;
 }
 
 /** Cara de creeper amb el verd de la marca, per a la pàgina 404. */

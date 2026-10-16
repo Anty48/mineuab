@@ -44,6 +44,8 @@ export interface Profile {
   badges: { id: string; name: string }[];
   /** Crèdits (cartera + banc) i posició al rànquing, si hi surt. */
   credits?: { total: number; rank?: number };
+  /** Estrelles del pacte (0-5). No hi és si el servidor no té el plugin de les estrelles. */
+  stars?: number;
   /** Adreces absolutes de la skin i la capa. */
   skin?: { url: string; slim: boolean; cape?: string };
   head?: string;
@@ -136,6 +138,7 @@ export function useProfile(name: string) {
           next = {
             ...p,
             badges: Array.isArray(p.badges) ? p.badges : [],
+            stars: Number.isInteger(p.stars) ? Math.min(Math.max(p.stars!, 0), 5) : undefined,
             skin: p.skin
               ? { url: absolute(p.skin.url)!, slim: Boolean(p.skin.slim), cape: absolute(p.skin.cape) }
               : undefined,

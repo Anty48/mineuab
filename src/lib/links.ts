@@ -73,6 +73,7 @@ export const SITE_LINKS = [
   { href: "/receptes", key: "nav.recipes" },
   { href: "/galeria", key: "nav.gallery" },
   { href: "/normes", key: "nav.rules" },
+  { href: "/estrelles", key: "nav.stars" },
   { href: "/faq", key: "faq.title" },
   { href: "/historia", key: "nav.history" },
   { href: "/#xarxes", key: "nav.socials" },

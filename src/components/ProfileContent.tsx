@@ -8,6 +8,8 @@ import type { Locale } from "@/i18n/translations";
 import { minecraftName } from "@/lib/minecraftNames";
 import { timeAgo, useProfile, type Profile } from "@/lib/useProfiles";
 import CareerTag from "./CareerTag";
+import { ArrowIcon } from "./icons";
+import PactStars from "./PactStars";
 import PageHeader from "./PageHeader";
 import PlayerHead from "./PlayerHead";
 import type { SkinPose } from "./SkinViewer";
@@ -295,7 +297,31 @@ function PlayerCard({ profile }: { profile: Profile }) {
           ))}
         </dl>
       </div>
+      {profile.stars !== undefined && <PactStrip stars={profile.stars} />}
     </div>
+  );
+}
+
+/** La franja de baix del carnet: les estrelles del pacte i el nom del nivell, amb l'enllaç a /estrelles. */
+function PactStrip({ stars }: { stars: number }) {
+  const { t, raw } = useLanguage();
+  const level = raw<{ name: string }[]>("stars.levels")?.[stars];
+
+  return (
+    <Link
+      href="/estrelles"
+      className="group flex flex-wrap items-center justify-between gap-x-4 gap-y-2 border-t-2 border-ink bg-ink px-5 py-3 text-paper"
+    >
+      <span className="flex items-center gap-3">
+        <PactStars count={stars} size={16} />
+        <span className="sr-only">{t("profile.pactStars", { n: stars })}:</span>
+        <span className="font-display text-lg font-extrabold leading-none">{level?.name}</span>
+      </span>
+      <span className="flex items-center gap-2 font-pixel text-[10px] uppercase text-paper/60 transition-colors group-hover:text-paper">
+        {t("profile.pact")}
+        <ArrowIcon size={14} className="transition-transform group-hover:translate-x-1" />
+      </span>
+    </Link>
   );
 }
 
