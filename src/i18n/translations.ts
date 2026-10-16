@@ -504,6 +504,12 @@ const ca = {
         a: "Escriu aquesta ordre i tria-la al menú: el tag de la teva carrera sortirà al xat i al tab. Si t'equivoques, la pots tornar a canviar al cap d'una setmana.",
         code: ["/carrera"],
       },
+      // El premi és premi.ordres de plugins/MineUABDiscord/config.yml al servidor.
+      {
+        q: "Com vinculo el meu compte de Discord?",
+        a: "Escriu aquesta ordre al joc: et donarà un codi de 4 xifres. Envia'l per missatge privat al bot de MineUAB a Discord i ja estarà. A partir d'aquí, la carrera va a la par entre el joc i Discord, i si a Discord tens el rol de la UAB surts com a UAB (o com a Convidat si ets d'una altra universitat). La primera vegada et regalem 50 crèdits.",
+        code: ["/discord link"],
+      },
       {
         q: "On és el meu perfil de jugador?",
         a: "Cada jugador té un carnet a la web, amb la skin en 3D, la carrera, els crèdits i les estadístiques. Dins del joc, la primera ordre et dona l'enllaç; també el pots buscar a Jugadors. Si no vols sortir a la web, fes servir la segona ordre (i /perfil public per tornar-hi).",
@@ -1063,6 +1069,11 @@ const es: Translations = {
         q: "¿Cómo elijo mi carrera?",
         a: "Escribe este comando y elígela en el menú: la etiqueta de tu carrera saldrá en el chat y en el tab. Si te equivocas, puedes volver a cambiarla al cabo de una semana.",
         code: ["/carrera"],
+      },
+      {
+        q: "¿Cómo vinculo mi cuenta de Discord?",
+        a: "Escribe este comando en el juego: te dará un código de 4 cifras. Envíalo por mensaje privado al bot de MineUAB en Discord y listo. A partir de ahí, la carrera va a la par entre el juego y Discord, y si en Discord tienes el rol de la UAB sales como UAB (o con la etiqueta «Convidat», invitado, si eres de otra universidad). La primera vez te regalamos 50 créditos.",
+        code: ["/discord link"],
       },
       {
         q: "¿Dónde está mi perfil de jugador?",
