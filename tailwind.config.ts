@@ -7,15 +7,15 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Verd corporatiu de mineuab. No el canvieu.
+        // Verd corporatiu de mineuab, el mateix del logo (#088F40). No el canvieu.
         brand: {
-          DEFAULT: "#0A8A3F",
+          DEFAULT: "#088F40",
           50: "#e9f8ee",
           100: "#c9edd4",
           200: "#95dcac",
           300: "#5ec583",
           400: "#2fa95f",
-          500: "#0A8A3F",
+          500: "#088F40",
           600: "#087334",
           700: "#075c2a",
           800: "#064821",

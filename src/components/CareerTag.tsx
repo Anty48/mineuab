@@ -25,7 +25,7 @@ export default function CareerTag({
   variant?: "solid" | "swatch";
   className?: string;
 }) {
-  const color = career.color ?? "#0A8A3F";
+  const color = career.color ?? "#088F40";
 
   if (variant === "solid") {
     return (

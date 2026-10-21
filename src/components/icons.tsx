@@ -222,7 +222,7 @@ export function CreeperIcon(props: IconProps) {
   return (
     <PixelArt
       rows={CREEPER}
-      palette={{ g: { fill: "#0A8A3F" }, ".": { fill: "#131a16" } }}
+      palette={{ g: { fill: "#088F40" }, ".": { fill: "#131a16" } }}
       {...props}
     />
   );

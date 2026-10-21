@@ -46,7 +46,7 @@ L'avís de "projecte no oficial" surt com a franja a dalt de totes les pàgines.
 
 Volem una identitat pròpia, que no s'assembli a la de cap altre servidor:
 
-- **Verd corporatiu `#0A8A3F`** (`brand-500` a Tailwind). És el color de la marca i no s'ha de canviar.
+- **Verd corporatiu `#088F40`** (`brand-500` a Tailwind), el mateix del logo. És el color de la marca i no s'ha de canviar.
 - **Fons clar de "paviment"** (`paper`), amb una quadrícula suau que recorda les rajoles de la plaça cívica (`bg-paving`).
 - **Blocs**: vores dures de 2 px, cantonades rectes i ombres desplaçades (`shadow-block`), com els blocs de Minecraft. Els botons "s'enfonsen" quan els prems.
 - **Terracota** (`terra`) només per als avisos, com les juntes de maó del paviment.
