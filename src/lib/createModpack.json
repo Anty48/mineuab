@@ -1,0 +1,738 @@
+{
+  "minecraft": "1.21.1",
+  "neoforge": "21.1.264",
+  "version": "0.7.0-beta",
+  "mods": [
+    {
+      "slug": "appleskin",
+      "name": "AppleSkin",
+      "group": "utilitats",
+      "optional": false,
+      "serverOnly": false
+    },
+    {
+      "slug": "autochefs-delight",
+      "name": "Autochef's Delight",
+      "group": "menjar",
+      "optional": false,
+      "serverOnly": false
+    },
+    {
+      "slug": "badoptimizations",
+      "name": "BadOptimizations",
+      "group": "rendiment",
+      "optional": false,
+      "serverOnly": false
+    },
+    {
+      "slug": "barbeques-delight-forge",
+      "name": "Barbeque's Delight [Forge/NeoForge]",
+      "group": "menjar",
+      "optional": false,
+      "serverOnly": false
+    },
+    {
+      "slug": "brewin-and-chewin",
+      "name": "Brewin' And Chewin'",
+      "group": "menjar",
+      "optional": false,
+      "serverOnly": false
+    },
+    {
+      "slug": "chat-heads",
+      "name": "Chat Heads",
+      "group": "utilitats",
+      "optional": false,
+      "serverOnly": false
+    },
+    {
+      "slug": "chefs-delight",
+      "name": "Chef's Delight - Farmer's Delight Villagers",
+      "group": "menjar",
+      "optional": false,
+      "serverOnly": false
+    },
+    {
+      "slug": "chemica",
+      "name": "Chemica",
+      "group": "ciencia",
+      "optional": false,
+      "serverOnly": false
+    },
+    {
+      "slug": "chunky",
+      "name": "Chunky",
+      "group": "servidor",
+      "optional": false,
+      "serverOnly": false
+    },
+    {
+      "slug": "clumps",
+      "name": "Clumps",
+      "group": "rendiment",
+      "optional": false,
+      "serverOnly": false
+    },
+    {
+      "slug": "controlling",
+      "name": "Controlling",
+      "group": "utilitats",
+      "optional": false,
+      "serverOnly": false
+    },
+    {
+      "slug": "create",
+      "name": "Create",
+      "group": "base",
+      "optional": false,
+      "serverOnly": false
+    },
+    {
+      "slug": "create-fd-dough",
+      "name": "Create & FD Dough",
+      "group": "menjar",
+      "optional": false,
+      "serverOnly": false
+    },
+    {
+      "slug": "create-aeronautics",
+      "name": "Create Aeronautics",
+      "group": "naus-i-canons",
+      "optional": false,
+      "serverOnly": false
+    },
+    {
+      "slug": "create-big-cannons",
+      "name": "Create Big Cannons",
+      "group": "naus-i-canons",
+      "optional": false,
+      "serverOnly": false
+    },
+    {
+      "slug": "createaddition",
+      "name": "Create Crafts & Additions",
+      "group": "energia-i-industria",
+      "optional": false,
+      "serverOnly": false
+    },
+    {
+      "slug": "create-deco",
+      "name": "Create Deco",
+      "group": "trens-i-decoracio",
+      "optional": false,
+      "serverOnly": false
+    },
+    {
+      "slug": "createnuclear",
+      "name": "Create Nuclear",
+      "group": "ciencia",
+      "optional": false,
+      "serverOnly": false
+    },
+    {
+      "slug": "create-optical",
+      "name": "Create Optical",
+      "group": "ciencia",
+      "optional": false,
+      "serverOnly": false
+    },
+    {
+      "slug": "create-railways-navigator",
+      "name": "Create Railways Navigator",
+      "group": "trens-i-decoracio",
+      "optional": false,
+      "serverOnly": false
+    },
+    {
+      "slug": "slice-and-dice",
+      "name": "Create Slice & Dice",
+      "group": "menjar",
+      "optional": false,
+      "serverOnly": false
+    },
+    {
+      "slug": "bellsandwhistles",
+      "name": "Create: Bells & Whistles",
+      "group": "trens-i-decoracio",
+      "optional": false,
+      "serverOnly": false
+    },
+    {
+      "slug": "create-central-kitchen",
+      "name": "Create: Central Kitchen",
+      "group": "menjar",
+      "optional": false,
+      "serverOnly": false
+    },
+    {
+      "slug": "create-connected",
+      "name": "Create: Connected",
+      "group": "trens-i-decoracio",
+      "optional": false,
+      "serverOnly": false
+    },
+    {
+      "slug": "copycats",
+      "name": "Create: Copycats+",
+      "group": "trens-i-decoracio",
+      "optional": false,
+      "serverOnly": false
+    },
+    {
+      "slug": "create-diesel-generators",
+      "name": "Create: Diesel Generators",
+      "group": "energia-i-industria",
+      "optional": false,
+      "serverOnly": false
+    },
+    {
+      "slug": "create-enchantment-industry",
+      "name": "Create: Enchantment Industry",
+      "group": "energia-i-industria",
+      "optional": false,
+      "serverOnly": false
+    },
+    {
+      "slug": "cgs",
+      "name": "Create: Gunsmithing",
+      "group": "armes",
+      "optional": false,
+      "serverOnly": false
+    },
+    {
+      "slug": "create-metallurgy",
+      "name": "Create: Metallurgy",
+      "group": "ciencia",
+      "optional": false,
+      "serverOnly": false
+    },
+    {
+      "slug": "create-new-age",
+      "name": "Create: New Age",
+      "group": "energia-i-industria",
+      "optional": false,
+      "serverOnly": false
+    },
+    {
+      "slug": "numismatics",
+      "name": "Create: Numismatics",
+      "group": "economia",
+      "optional": false,
+      "serverOnly": false
+    },
+    {
+      "slug": "create-pantographs-and-wires",
+      "name": "Create: Pantographs & Wires",
+      "group": "trens-i-decoracio",
+      "optional": false,
+      "serverOnly": false
+    },
+    {
+      "slug": "power-grid",
+      "name": "Create: Power Grid",
+      "group": "ciencia",
+      "optional": false,
+      "serverOnly": false
+    },
+    {
+      "slug": "tfmg-community-edition",
+      "name": "Create: TFMG Community Edition",
+      "group": "ciencia",
+      "optional": false,
+      "serverOnly": false
+    },
+    {
+      "slug": "create-the-air-war",
+      "name": "Create: The Air War",
+      "group": "armes",
+      "optional": false,
+      "serverOnly": false
+    },
+    {
+      "slug": "createtools-n-weapons",
+      "name": "Create: Tools n Weapons",
+      "group": "armes",
+      "optional": false,
+      "serverOnly": false
+    },
+    {
+      "slug": "createbetterfps",
+      "name": "CreateBetterFps",
+      "group": "rendiment",
+      "optional": false,
+      "serverOnly": false
+    },
+    {
+      "slug": "cuisine-delight",
+      "name": "Cuisine Delight",
+      "group": "menjar",
+      "optional": false,
+      "serverOnly": false
+    },
+    {
+      "slug": "cull-leaves",
+      "name": "Cull Leaves",
+      "group": "rendiment",
+      "optional": false,
+      "serverOnly": false
+    },
+    {
+      "slug": "cultural-delights",
+      "name": "Cultural Delights",
+      "group": "menjar",
+      "optional": false,
+      "serverOnly": false
+    },
+    {
+      "slug": "custom-window-title",
+      "name": "Custom Window Title",
+      "group": "presentacio",
+      "optional": false,
+      "serverOnly": false
+    },
+    {
+      "slug": "default-options",
+      "name": "Default Options",
+      "group": "utilitats",
+      "optional": false,
+      "serverOnly": false
+    },
+    {
+      "slug": "drippy-early-loading-module",
+      "name": "Drippy Early Loading Module",
+      "group": "presentacio",
+      "optional": false,
+      "serverOnly": false
+    },
+    {
+      "slug": "drippy-loading-screen",
+      "name": "Drippy Loading Screen",
+      "group": "presentacio",
+      "optional": false,
+      "serverOnly": false
+    },
+    {
+      "slug": "dynamic-fps",
+      "name": "Dynamic FPS",
+      "group": "rendiment",
+      "optional": false,
+      "serverOnly": false
+    },
+    {
+      "slug": "easylogin",
+      "name": "EasyLogin",
+      "group": "servidor",
+      "optional": false,
+      "serverOnly": true
+    },
+    {
+      "slug": "enchantment-descriptions",
+      "name": "Enchantment Descriptions",
+      "group": "utilitats",
+      "optional": false,
+      "serverOnly": false
+    },
+    {
+      "slug": "ends-delight",
+      "name": "End's Delight",
+      "group": "menjar",
+      "optional": false,
+      "serverOnly": false
+    },
+    {
+      "slug": "enders-delight",
+      "name": "Ender's Delight",
+      "group": "menjar",
+      "optional": false,
+      "serverOnly": false
+    },
+    {
+      "slug": "entityculling",
+      "name": "Entity Culling",
+      "group": "rendiment",
+      "optional": false,
+      "serverOnly": false
+    },
+    {
+      "slug": "fancymenu",
+      "name": "FancyMenu",
+      "group": "presentacio",
+      "optional": false,
+      "serverOnly": false
+    },
+    {
+      "slug": "farmers-delight",
+      "name": "Farmer's Delight",
+      "group": "menjar",
+      "optional": false,
+      "serverOnly": false
+    },
+    {
+      "slug": "farmers-delight-extended",
+      "name": "Farmer's Delight: Extended",
+      "group": "menjar",
+      "optional": false,
+      "serverOnly": false
+    },
+    {
+      "slug": "fastsuite",
+      "name": "FastSuite",
+      "group": "rendiment",
+      "optional": false,
+      "serverOnly": false
+    },
+    {
+      "slug": "ferrite-core",
+      "name": "FerriteCore",
+      "group": "rendiment",
+      "optional": false,
+      "serverOnly": false
+    },
+    {
+      "slug": "fruits-delight",
+      "name": "Fruits Delight",
+      "group": "menjar",
+      "optional": false,
+      "serverOnly": false
+    },
+    {
+      "slug": "geckolib",
+      "name": "Geckolib",
+      "group": "armes",
+      "optional": false,
+      "serverOnly": false
+    },
+    {
+      "slug": "gensokyo-delight-youkais-feasts",
+      "name": "Gensokyo Delight ~ Youkais' Feasts",
+      "group": "menjar",
+      "optional": false,
+      "serverOnly": false
+    },
+    {
+      "slug": "hex-casting",
+      "name": "Hex Casting",
+      "group": "magia",
+      "optional": false,
+      "serverOnly": false
+    },
+    {
+      "slug": "immediatelyfast",
+      "name": "ImmediatelyFast",
+      "group": "rendiment",
+      "optional": false,
+      "serverOnly": false
+    },
+    {
+      "slug": "inventory-profiles-next",
+      "name": "Inventory Profiles Next",
+      "group": "utilitats",
+      "optional": false,
+      "serverOnly": false
+    },
+    {
+      "slug": "jade",
+      "name": "Jade",
+      "group": "utilitats",
+      "optional": false,
+      "serverOnly": false
+    },
+    {
+      "slug": "jade-addons-forge",
+      "name": "Jade Addons (Neo/Forge)",
+      "group": "utilitats",
+      "optional": false,
+      "serverOnly": false
+    },
+    {
+      "slug": "jei",
+      "name": "Just Enough Items (JEI)",
+      "group": "utilitats",
+      "optional": false,
+      "serverOnly": false
+    },
+    {
+      "slug": "modernfix",
+      "name": "ModernFix",
+      "group": "rendiment",
+      "optional": false,
+      "serverOnly": false
+    },
+    {
+      "slug": "moreculling",
+      "name": "More Culling",
+      "group": "rendiment",
+      "optional": false,
+      "serverOnly": false
+    },
+    {
+      "slug": "more-delight",
+      "name": "More Delight (for Farmer's Delight)",
+      "group": "menjar",
+      "optional": false,
+      "serverOnly": false
+    },
+    {
+      "slug": "mouse-tweaks",
+      "name": "Mouse Tweaks",
+      "group": "utilitats",
+      "optional": false,
+      "serverOnly": false
+    },
+    {
+      "slug": "my-nethers-delight",
+      "name": "My Nether's Delight",
+      "group": "menjar",
+      "optional": false,
+      "serverOnly": false
+    },
+    {
+      "slug": "oceans-delight",
+      "name": "Ocean's Delight",
+      "group": "menjar",
+      "optional": false,
+      "serverOnly": false
+    },
+    {
+      "slug": "ok-zoomer",
+      "name": "Ok Zoomer - It's Zoom!",
+      "group": "utilitats",
+      "optional": false,
+      "serverOnly": false
+    },
+    {
+      "slug": "open-parties-and-claims",
+      "name": "Open Parties and Claims",
+      "group": "servidor",
+      "optional": false,
+      "serverOnly": false
+    },
+    {
+      "slug": "ping-wheel",
+      "name": "Ping Wheel",
+      "group": "utilitats",
+      "optional": false,
+      "serverOnly": false
+    },
+    {
+      "slug": "polymorph",
+      "name": "Polymorph",
+      "group": "utilitats",
+      "optional": false,
+      "serverOnly": false
+    },
+    {
+      "slug": "reeses-sodium-options",
+      "name": "Reese's Sodium Options",
+      "group": "rendiment",
+      "optional": false,
+      "serverOnly": false
+    },
+    {
+      "slug": "rodalies-decorations",
+      "name": "Rodalies Decorations",
+      "group": "trens-i-decoracio",
+      "optional": false,
+      "serverOnly": false
+    },
+    {
+      "slug": "rustic-delight",
+      "name": "Rustic Delight",
+      "group": "menjar",
+      "optional": false,
+      "serverOnly": false
+    },
+    {
+      "slug": "shulkerboxtooltip",
+      "name": "Shulker Box Tooltip",
+      "group": "utilitats",
+      "optional": false,
+      "serverOnly": false
+    },
+    {
+      "slug": "simple-voice-chat",
+      "name": "Simple Voice Chat",
+      "group": "utilitats",
+      "optional": false,
+      "serverOnly": false
+    },
+    {
+      "slug": "skinrestorer",
+      "name": "Skin Restorer",
+      "group": "servidor",
+      "optional": false,
+      "serverOnly": true
+    },
+    {
+      "slug": "sodium",
+      "name": "Sodium",
+      "group": "rendiment",
+      "optional": false,
+      "serverOnly": false
+    },
+    {
+      "slug": "sodium-extra",
+      "name": "Sodium Extra",
+      "group": "rendiment",
+      "optional": false,
+      "serverOnly": false
+    },
+    {
+      "slug": "spark",
+      "name": "spark",
+      "group": "rendiment",
+      "optional": false,
+      "serverOnly": false
+    },
+    {
+      "slug": "create-steam-n-rails-1.21.1",
+      "name": "Steam 'n' Rails Neoforge",
+      "group": "trens-i-decoracio",
+      "optional": false,
+      "serverOnly": false
+    },
+    {
+      "slug": "sunflower-delight",
+      "name": "Sunflower Delight",
+      "group": "menjar",
+      "optional": false,
+      "serverOnly": false
+    },
+    {
+      "slug": "tab-was-taken",
+      "name": "TAB",
+      "group": "servidor",
+      "optional": false,
+      "serverOnly": true
+    },
+    {
+      "slug": "trailtales-delight",
+      "name": "Trail&Tales Delight",
+      "group": "menjar",
+      "optional": false,
+      "serverOnly": false
+    },
+    {
+      "slug": "trashslot",
+      "name": "TrashSlot",
+      "group": "utilitats",
+      "optional": false,
+      "serverOnly": false
+    },
+    {
+      "slug": "ubes-delight",
+      "name": "Ube's Delight",
+      "group": "menjar",
+      "optional": false,
+      "serverOnly": false
+    },
+    {
+      "slug": "xaeros-minimap",
+      "name": "Xaero's Minimap",
+      "group": "utilitats",
+      "optional": true,
+      "serverOnly": false
+    },
+    {
+      "slug": "xaeros-world-map",
+      "name": "Xaero's World Map",
+      "group": "utilitats",
+      "optional": true,
+      "serverOnly": false
+    }
+  ],
+  "libraries": [
+    {
+      "slug": "ntgl",
+      "name": "[NTGL] NukaTeam's Gun Lib"
+    },
+    {
+      "slug": "architectury-api",
+      "name": "Architectury API"
+    },
+    {
+      "slug": "balm",
+      "name": "Balm"
+    },
+    {
+      "slug": "bookshelf-lib",
+      "name": "Bookshelf"
+    },
+    {
+      "slug": "caelus",
+      "name": "Caelus API"
+    },
+    {
+      "slug": "cloth-config",
+      "name": "Cloth Config API"
+    },
+    {
+      "slug": "create-dragons-plus",
+      "name": "Create: Dragons Plus"
+    },
+    {
+      "slug": "delight-lib",
+      "name": "Delight Lib"
+    },
+    {
+      "slug": "dragonlib",
+      "name": "DragonLib"
+    },
+    {
+      "slug": "inline",
+      "name": "Inline"
+    },
+    {
+      "slug": "konkrete",
+      "name": "Konkrete"
+    },
+    {
+      "slug": "kotlin-for-forge",
+      "name": "Kotlin for Forge"
+    },
+    {
+      "slug": "libipn",
+      "name": "libIPN"
+    },
+    {
+      "slug": "melody",
+      "name": "Melody"
+    },
+    {
+      "slug": "mezzconfig",
+      "name": "MezzConfig"
+    },
+    {
+      "slug": "midnightlib",
+      "name": "MidnightLib"
+    },
+    {
+      "slug": "patchouli",
+      "name": "Patchouli"
+    },
+    {
+      "slug": "paucal",
+      "name": "PAUCAL"
+    },
+    {
+      "slug": "placebo",
+      "name": "Placebo"
+    },
+    {
+      "slug": "prickle",
+      "name": "Prickle"
+    },
+    {
+      "slug": "rpl",
+      "name": "Ritchie's Projectile Library"
+    },
+    {
+      "slug": "sable",
+      "name": "Sable"
+    },
+    {
+      "slug": "searchables",
+      "name": "Searchables"
+    }
+  ]
+}

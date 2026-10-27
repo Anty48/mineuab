@@ -39,6 +39,7 @@ npm start
 - `/normes`: normes del servidor, amb un índex al costat. **Provisionals** fins que tinguem les definitives.
 - `/faq`: preguntes freqüents.
 - `/historia`: la nostra història, com una línia del temps.
+- `/create`: la beta tancada de **MineUAB Create**, el servidor amb el mod Create: com funciona, com entrar-hi amb el modpack (sense mostrar l'adreça del servidor) i la llista de mods per grups. Només hi posem el que ja està confirmat.
 
 L'avís de "projecte no oficial" surt com a franja a dalt de totes les pàgines.
 
@@ -61,12 +62,12 @@ Els colors, les ombres i les tipografies són a [`tailwind.config.ts`](tailwind.
 src/
   app/
     page.tsx                    # Inici
-    mapa/  ranquing/  receptes/  galeria/  normes/  faq/  historia/
+    mapa/  ranquing/  receptes/  galeria/  normes/  faq/  historia/  create/
     not-found.tsx
   assets/gallery/               # Fotos de la galeria (s'importen, així tenen un difuminat mentre carreguen)
   components/
     sections/                   # Seccions de l'inici: Hero, Marquee, HowToJoin, About, GalleryPreview, Socials
-    MapContent, RankingContent, RecipesContent, GalleryContent, RulesContent, FaqContent, HistoryContent, NotFoundContent
+    MapContent, RankingContent, RecipesContent, GalleryContent, RulesContent, FaqContent, HistoryContent, CreateContent, NotFoundContent
     WhitelistRequest.tsx        # Pas "Demana accés": prepara el correu per entrar a la whitelist
     AnnouncementBar.tsx         # Franja d'avís de dalt de tot
     PageHeader.tsx              # Capçalera de les pàgines interiors
@@ -85,6 +86,7 @@ src/
     useRanking.ts               # Rànquing de crèdits, llegit des del navegador (RANKING_URL a links.ts)
     useRecipes.ts               # Receptes del servidor (receptes.json de l'API dels perfils, PROFILES_URL a links.ts)
     useCopyToClipboard.ts
+    createModpack.json          # Mods i versions del modpack de MineUAB Create (generat, no l'editeu a mà)
 ```
 
 ## Editar el contingut
@@ -94,6 +96,14 @@ Tots els textos, en català i en castellà, són a [`src/i18n/translations.ts`](
 Per afegir una construcció a la galeria, exporta la captura en JPEG a `src/assets/gallery/`, importa-la a [`src/lib/gallery.ts`](src/lib/gallery.ts) i afegeix-ne el peu de foto a `gallery.items` en tots dos idiomes. Les quatre primeres fotos de la llista també surten a l'inici.
 
 L'adreça del servidor, la invitació de Discord i els enllaços de les xarxes són a [`src/lib/links.ts`](src/lib/links.ts).
+
+La llista de mods de `/create` surt de `mods-lock.json` del projecte del modpack. Quan canvieu els mods o publiqueu un modpack nou, regenereu-la (escriu `src/lib/createModpack.json`):
+
+```bash
+python ../MineUAB-Create/scripts/fes_llista_web.py
+```
+
+Els textos de la pàgina i la descripció de cada grup de mods són a `create` dins de `translations.ts`. Si a `mods.py` hi afegiu un grup nou, afegiu-ne també el text en tots dos idiomes (si no, surt al final amb el nom del grup).
 
 ## Imatges
 

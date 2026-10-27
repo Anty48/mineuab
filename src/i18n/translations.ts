@@ -28,6 +28,8 @@ const ca = {
     gallery: "Galeria",
     rules: "Normes",
     stars: "Pacte de les estrelles",
+    create: "MineUAB Create",
+    createShort: "Create",
     faq: "FAQ",
     langLabel: "Idioma",
     menu: "Menú",
@@ -428,8 +430,8 @@ const ca = {
       {
         title: "Construccions i bases",
         rules: [
-          "El que no és teu no es toca: no destrueixis, modifiquis ni robis construccions, cofres, granges, animals ni mascotes d'altres jugadors, encara que no estiguin protegits. L'única excepció és el pacte de les estrelles: dins de les bases, i només entre qui l'ha signat.",
-          "Protegeix la teva base amb un claim (/tutorial t'ensenya com). L'staff no sempre podrà recuperar el que es perdi en una zona sense protegir.",
+          "Dins del claim d'una altra persona no hi toquis res sense el seu permís (i si te l'ha donat, no n'abusis). L'única excepció és el pacte de les estrelles, i només entre qui l'ha signat. Fora dels claims, en canvi, no hi ha res protegit: el que hi deixis ho pot agafar o trencar qualsevol.",
+          "Protegeix la teva base amb un claim com més aviat millor (/tutorial t'ensenya com). L'staff no recupera res del que es perdi fora d'un claim.",
           "Deixa espai: no construeixis a menys de 30 blocs de la base d'una altra persona sense el seu permís, ni facis claims per encerclar-la o tallar-li el pas.",
           "L'spawn i les construccions del campus són de tothom: no les modifiquis ni hi facis bases o granges.",
           "El món de recursos (/recursos) és per minar i explorar. Es torna a generar l'1 de cada mes i no s'hi poden fer homes ni claims, així que no hi deixis res que vulguis conservar.",
@@ -470,6 +472,20 @@ const ca = {
           "Aquestes normes valen al servidor i al Discord. L'staff també pot actuar en situacions que no hi surtin escrites si perjudiquen la comunitat.",
         ],
       },
+      // Al final perquè no canviïn els números de les normes d'abans. El missatge de normes del Discord
+      // (MineUAB_informe/discord-normes.md) en fa un resum: si es canvien aquí, canvieu-lo també.
+      {
+        title: "Discord",
+        rules: [
+          "Fes servir cada canal per al que toca i llegeix-ne la descripció abans d'escriure-hi. Si no saps on va una cosa, pregunta.",
+          "No mencionis l'staff ni facis mencions massives sense motiu. Si necessites ajuda, escriu-ho al canal que toca i espera una mica: et respondrem tan aviat com puguem.",
+          "No enviïs missatges directes que ningú t'ha demanat als altres membres, i encara menys per fer publicitat.",
+          "El teu nom, la foto de perfil, l'estat i el que comparteixis al Discord també han de ser apropiats: res sexual, violent ni ofensiu.",
+          "Res d'enllaços sospitosos, estafes ni regals falsos («Nitro gratis», regals de Steam…). Si te n'arriba un, no l'obris i avisa l'staff.",
+          "Als canals de veu, res de sorolls molestos, música pel micro ni abusar de la soundboard.",
+          "També cal complir les condicions del servei i les normes de la comunitat de Discord.",
+        ],
+      },
     ],
     sanctions: "Les sancions depenen de la gravetat i de si és el primer cop. Normalment van per aquest ordre:",
     sanctionSteps: [
@@ -490,9 +506,9 @@ const ca = {
   stars: {
     title: "El pacte de les estrelles",
     subtitle:
-      "A mineuab no et poden atacar, robar ni entrar a la base si no ho has acceptat abans. Si t'agrada el risc, signa el pacte i tria fins on vols arribar.",
+      "A mineuab no et poden atacar, quedar-se el teu botí ni entrar a la teva base si no ho has acceptat abans. Si t'agrada el risc, signa el pacte i tria fins on vols arribar.",
     intro: [
-      "Cada jugador té de 0 a 5 estrelles. Tothom comença amb 0, i amb 0 ningú no et pot fer mal, ni obrir-te els cofres, ni tocar-te la base.",
+      "Cada jugador té de 0 a 5 estrelles. Tothom comença amb 0, i amb 0 ningú no et pot fer mal ni tocar res de la teva base.",
       "Cada estrella que signes et deixa fer una cosa més (lluitar, quedar-te el botí, entrar a les bases…), però també vol dir que te la poden fer a tu.",
     ],
     commandHint: "Per veure les teves estrelles o signar-ne una:",
@@ -510,7 +526,7 @@ const ca = {
     levels: [
       {
         name: "Civil",
-        body: "Ningú no et pot fer res, i tu no pots fer res a ningú. Les teves coses i la teva base estan sempre protegides. És on comença tothom.",
+        body: "Ningú no et pot fer res, i tu no pots fer res a ningú. La teva base està sempre protegida. És on comença tothom.",
       },
       {
         name: "Combatent",
@@ -598,7 +614,7 @@ const ca = {
       "Una base només es pot atacar si el propietari està connectat o si fa menys de 15 minuts que ha sortit. Ningú no perd la base mentre dorm, i ningú no se salva d'un atac desconnectant-se.",
       "Quan algú t'ataca la base, reps un avís amb qui és, quantes estrelles té i on és. Qui ataca queda marcat 30 segons.",
       "Les zones de l'staff no es poden atacar mai, tinguis les estrelles que tinguis.",
-      "Fora de les bases, el pacte no dona permís per tocar res: una construcció sense claim continua sent del seu propietari.",
+      "El pacte només compta dins de les bases. Fora dels claims no hi ha res protegit, tinguis les estrelles que tinguis: el que hi deixis ho pot agafar o trencar qualsevol.",
     ],
     commandsLabel: "Ordres",
     commandsTitle: "Totes les ordres",
@@ -691,7 +707,7 @@ const ca = {
       },
       {
         q: "Em poden matar o robar?",
-        a: "Només si tu vols. Lluitar, quedar-se el botí i atacar bases només es pot fer entre jugadors que han signat el pacte de les estrelles, i mai més enllà del que permeten les estrelles de tots dos. Si no el signes, ningú no et pot fer res.",
+        a: "Només si tu vols. Lluitar, quedar-se el botí i atacar bases només es pot fer entre jugadors que han signat el pacte de les estrelles, i mai més enllà del que permeten les estrelles de tots dos. Si no el signes, ningú no et pot fer mal ni entrar a la teva base. Això sí, el que deixis fora d'un claim no està protegit.",
         code: ["/estrelles"],
         link: { href: "/estrelles", label: "Com funciona el pacte" },
       },
@@ -728,6 +744,143 @@ const ca = {
     },
     ctaTitle: "No hi trobes la teva pregunta?",
     ctaBody: "Pregunta-ho al Discord i t'hi ajudarem.",
+  },
+  // Pàgina /create: la beta de MineUAB Create. Hi va només el que ja tenim confirmat.
+  // La llista de mods surt de src/lib/createModpack.json; aquí només hi ha el text de cada grup.
+  create: {
+    title: "MineUAB Create",
+    subtitle:
+      "El nou servidor de mineuab amb el mod Create: màquines, trens, ciència i molt més. Ara mateix està en beta tancada.",
+    howTitle: "Com funciona la beta",
+    howSubtitle:
+      "No cal instal·lar res a mà ni saber cap adreça: t'ho donem tot preparat.",
+    points: [
+      {
+        title: "Un modpack amb tot",
+        body: "Tots els mods, la configuració i esquemes d'estacions i trens de Rodalies i Renfe, en un sol fitxer.",
+      },
+      {
+        title: "S'instal·la sol",
+        body: "L'obres amb l'app de Modrinth i ella s'encarrega de tot: Minecraft, NeoForge i tots els mods, a la versió que toca.",
+      },
+      {
+        title: "El servidor ja hi és",
+        body: "Al menú Multijugador ja hi trobaràs MineUAB Create. No cal que en sàpigues l'adreça.",
+      },
+      {
+        title: "Només per als de la beta",
+        body: "No publiquem l'adreça i el servidor té whitelist: només hi entren els jugadors de la beta.",
+      },
+    ],
+    cardTag: "Modpack",
+    status: "Estat",
+    statusValue: "Beta tancada",
+    minecraft: "Minecraft",
+    loader: "NeoForge",
+    modCount: "Mods",
+    version: "Versió",
+    cardNote: "Ja porta el servidor afegit: no cal saber cap adreça.",
+    cardCta: "Demana'l al Discord",
+    joinTitle: "Com entrar-hi",
+    joinSubtitle: "Quatre passos i ja hi ets. Els mods, l'app els descarrega sola.",
+    steps: [
+      {
+        title: "Demana'ns el modpack",
+        body: "Si vols provar la beta, digues-nos-ho al Discord. Et contactarem per passar-te el modpack i afegir el teu nom de Minecraft a la whitelist.",
+        cta: { label: "Obrir Discord", target: "discord" },
+      },
+      {
+        title: "Instal·la l'app de Modrinth",
+        body: "És gratuïta i funciona a Windows, Mac i Linux.",
+        cta: { label: "Descarregar Modrinth App", target: "modrinth" },
+      },
+      {
+        title: "Obre el modpack",
+        body: "Obre amb l'app de Modrinth el fitxer que t'hem passat (acaba en .mrpack). L'app instal·la sola Minecraft, NeoForge i tots els mods: només has d'esperar que acabi.",
+      },
+      {
+        title: "Entra al servidor",
+        body: "Inicia el modpack i ves a Multijugador: MineUAB Create ja és a la llista. El primer cop, crea el teu compte; les altres vegades, només cal iniciar sessió.",
+        code: ["/register <contrasenya> <contrasenya>", "/login <contrasenya>"],
+      },
+    ],
+    optionalTip:
+      "Si l'app et pregunta pels mods opcionals (el minimapa i el mapa del món de Xaero), tria els que vulguis: pots jugar amb ells o sense.",
+    modsTitle: "Els mods",
+    modsSubtitle: "{count} mods. Clica'n un per veure què fa.",
+    optional: "Opcional",
+    serverOnly: "Només al servidor",
+    libraries: "I {count} llibreries que fan servir aquests mods",
+    // L'id és el grup de mods.py sense accents ni espais. L'ordre d'aquí és el de la pàgina.
+    groups: [
+      {
+        id: "base",
+        title: "Create",
+        body: "El mod que ho mou tot: engranatges, cintes transportadores, màquines i trens.",
+      },
+      {
+        id: "trens-i-decoracio",
+        title: "Trens i decoració",
+        body: "Més vies, senyals i trens, catenària i els blocs de Rodalies i Renfe. El modpack porta esquemes de les estacions de Barberà del Vallès, Cerdanyola del Vallès i Fabra i Puig, i de trens de Rodalies i Renfe.",
+      },
+      {
+        id: "ciencia",
+        title: "Ciència",
+        body: "Reactors nuclears, química de veritat, petroli, electricitat amb la llei d'Ohm, òptica i metal·lúrgia.",
+      },
+      {
+        id: "energia-i-industria",
+        title: "Energia i indústria",
+        body: "Electricitat, generadors dièsel i encanteris fets a màquina.",
+      },
+      {
+        id: "naus-i-canons",
+        title: "Naus i canons",
+        body: "Naus que volen i artilleria pesant.",
+      },
+      {
+        id: "armes",
+        title: "Armes",
+        body: "Armes de foc, eines i armes de Create, i combat aeri.",
+      },
+      {
+        id: "menjar",
+        title: "Menjar",
+        body: "La cuina de Farmer's Delight i els seus complements (fermentats, peix i marisc, el Nether i l'End, cuines d'arreu del món), automatitzada amb Create.",
+      },
+      {
+        id: "economia",
+        title: "Economia",
+        body: "Monedes i botigues automàtiques.",
+      },
+      {
+        id: "magia",
+        title: "Màgia",
+        body: "Hex Casting: màgia que es programa dibuixant patrons amb un bastó.",
+      },
+      {
+        id: "utilitats",
+        title: "Utilitats",
+        body: "Per veure les receptes (JEI), saber què estàs mirant (Jade), fer zoom amb la Z, parlar per veu, ordenar l'inventari i molt més.",
+      },
+      {
+        id: "servidor",
+        title: "Servidor",
+        body: "Per protegir les teves construccions i fer grups, iniciar sessió i tenir la teva skin.",
+      },
+      {
+        id: "presentacio",
+        title: "Presentació",
+        body: "El menú principal, la pantalla de càrrega amb fotos del servidor i el títol de la finestra.",
+      },
+      {
+        id: "rendiment",
+        title: "Rendiment",
+        body: "Sodium i companyia, perquè vagi fluid fins i tot en ordinadors modestos.",
+      },
+    ],
+    ctaTitle: "Vols provar MineUAB Create?",
+    ctaBody: "Digues-nos-ho al Discord i et passarem el modpack per entrar a la beta.",
   },
   socials: {
     title: "Segueix-nos",
@@ -774,6 +927,8 @@ const es: Translations = {
     gallery: "Galería",
     rules: "Normas",
     stars: "Pacto de las estrellas",
+    create: "MineUAB Create",
+    createShort: "Create",
     faq: "FAQ",
     langLabel: "Idioma",
     menu: "Menú",
@@ -1167,8 +1322,8 @@ const es: Translations = {
       {
         title: "Construcciones y bases",
         rules: [
-          "Lo que no es tuyo no se toca: no destruyas, modifiques ni robes construcciones, cofres, granjas, animales ni mascotas de otros jugadores, aunque no estén protegidos. La única excepción es el pacto de las estrellas: dentro de las bases, y solo entre quienes lo han firmado.",
-          "Protege tu base con un claim (/tutorial te enseña cómo). El staff no siempre podrá recuperar lo que se pierda en una zona sin proteger.",
+          "Dentro del claim de otra persona no toques nada sin su permiso (y si te lo ha dado, no abuses). La única excepción es el pacto de las estrellas, y solo entre quienes lo han firmado. Fuera de los claims, en cambio, no hay nada protegido: lo que dejes ahí lo puede coger o romper cualquiera.",
+          "Protege tu base con un claim cuanto antes (/tutorial te enseña cómo). El staff no recupera nada de lo que se pierda fuera de un claim.",
           "Deja espacio: no construyas a menos de 30 bloques de la base de otra persona sin su permiso, ni hagas claims para rodearla o cortarle el paso.",
           "El spawn y las construcciones del campus son de todos: no las modifiques ni hagas en ellas bases o granjas.",
           "El mundo de recursos (/recursos) es para minar y explorar. Se vuelve a generar el día 1 de cada mes y no se pueden hacer homes ni claims, así que no dejes nada que quieras conservar.",
@@ -1208,6 +1363,18 @@ const es: Translations = {
           "Estas normas valen en el servidor y en Discord. El staff también puede actuar en situaciones que no aparezcan escritas si perjudican a la comunidad.",
         ],
       },
+      {
+        title: "Discord",
+        rules: [
+          "Usa cada canal para lo que toca y lee su descripción antes de escribir. Si no sabes dónde va algo, pregunta.",
+          "No menciones al staff ni hagas menciones masivas sin motivo. Si necesitas ayuda, escríbelo en el canal que toca y espera un poco: te responderemos lo antes posible.",
+          "No envíes a otros miembros mensajes directos que nadie te ha pedido, y menos aún para hacer publicidad.",
+          "Tu nombre, tu foto de perfil, tu estado y lo que compartas en Discord también tienen que ser apropiados: nada sexual, violento ni ofensivo.",
+          "Nada de enlaces sospechosos, estafas ni regalos falsos («Nitro gratis», regalos de Steam…). Si te llega uno, no lo abras y avisa al staff.",
+          "En los canales de voz, nada de ruidos molestos, música por el micro ni abusar de la soundboard.",
+          "También hay que cumplir las condiciones del servicio y las normas de la comunidad de Discord.",
+        ],
+      },
     ],
     sanctions: "Las sanciones dependen de la gravedad y de si es la primera vez. Normalmente van en este orden:",
     sanctionSteps: [
@@ -1226,9 +1393,9 @@ const es: Translations = {
   stars: {
     title: "El pacto de las estrellas",
     subtitle:
-      "En mineuab no te pueden atacar, robar ni entrar en tu base si no lo has aceptado antes. Si te va el riesgo, firma el pacto y elige hasta dónde quieres llegar.",
+      "En mineuab no te pueden atacar, quedarse tu botín ni entrar en tu base si no lo has aceptado antes. Si te va el riesgo, firma el pacto y elige hasta dónde quieres llegar.",
     intro: [
-      "Cada jugador tiene de 0 a 5 estrellas. Todo el mundo empieza con 0, y con 0 nadie te puede hacer daño, ni abrir tus cofres, ni tocar tu base.",
+      "Cada jugador tiene de 0 a 5 estrellas. Todo el mundo empieza con 0, y con 0 nadie te puede hacer daño ni tocar nada de tu base.",
       "Cada estrella que firmas te deja hacer algo más (luchar, quedarte el botín, entrar en las bases…), pero también significa que te lo pueden hacer a ti.",
     ],
     commandHint: "Para ver tus estrellas o firmar una:",
@@ -1247,7 +1414,7 @@ const es: Translations = {
     levels: [
       {
         name: "Civil",
-        body: "Nadie te puede hacer nada, y tú no puedes hacer nada a nadie. Tus cosas y tu base están siempre protegidas. Es donde empieza todo el mundo.",
+        body: "Nadie te puede hacer nada, y tú no puedes hacer nada a nadie. Tu base está siempre protegida. Es donde empieza todo el mundo.",
       },
       {
         name: "Combatent",
@@ -1335,7 +1502,7 @@ const es: Translations = {
       "Una base solo se puede atacar si el propietario está conectado o si hace menos de 15 minutos que ha salido. Nadie pierde su base mientras duerme, y nadie se salva de un ataque desconectándose.",
       "Cuando alguien ataca tu base, recibes un aviso con quién es, cuántas estrellas tiene y dónde está. Quien ataca queda marcado 30 segundos.",
       "Las zonas del staff no se pueden atacar nunca, tengas las estrellas que tengas.",
-      "Fuera de las bases, el pacto no da permiso para tocar nada: una construcción sin claim sigue siendo de su propietario.",
+      "El pacto solo cuenta dentro de las bases. Fuera de los claims no hay nada protegido, tengas las estrellas que tengas: lo que dejes ahí lo puede coger o romper cualquiera.",
     ],
     commandsLabel: "Comandos",
     commandsTitle: "Todos los comandos",
@@ -1426,7 +1593,7 @@ const es: Translations = {
       },
       {
         q: "¿Me pueden matar o robar?",
-        a: "Solo si tú quieres. Luchar, quedarse el botín y atacar bases solo se puede hacer entre jugadores que han firmado el pacto de las estrellas, y nunca más allá de lo que permiten las estrellas de los dos. Si no lo firmas, nadie te puede hacer nada.",
+        a: "Solo si tú quieres. Luchar, quedarse el botín y atacar bases solo se puede hacer entre jugadores que han firmado el pacto de las estrellas, y nunca más allá de lo que permiten las estrellas de los dos. Si no lo firmas, nadie te puede hacer daño ni entrar en tu base. Eso sí, lo que dejes fuera de un claim no está protegido.",
         code: ["/estrelles"],
         link: { href: "/estrelles", label: "Cómo funciona el pacto" },
       },
@@ -1462,6 +1629,140 @@ const es: Translations = {
     },
     ctaTitle: "¿No encuentras tu pregunta?",
     ctaBody: "Pregúntalo en Discord y te ayudaremos.",
+  },
+  create: {
+    title: "MineUAB Create",
+    subtitle:
+      "El nuevo servidor de mineuab con el mod Create: máquinas, trenes, ciencia y mucho más. Ahora mismo está en beta cerrada.",
+    howTitle: "Cómo funciona la beta",
+    howSubtitle:
+      "No hace falta instalar nada a mano ni saber ninguna dirección: te lo damos todo preparado.",
+    points: [
+      {
+        title: "Un modpack con todo",
+        body: "Todos los mods, la configuración y esquemas de estaciones y trenes de Rodalies y Renfe, en un solo archivo.",
+      },
+      {
+        title: "Se instala solo",
+        body: "Lo abres con la app de Modrinth y ella se encarga de todo: Minecraft, NeoForge y todos los mods, en la versión que toca.",
+      },
+      {
+        title: "El servidor ya está",
+        body: "En el menú Multijugador ya encontrarás MineUAB Create. No hace falta que sepas la dirección.",
+      },
+      {
+        title: "Solo para los de la beta",
+        body: "No publicamos la dirección y el servidor tiene whitelist: solo entran los jugadores de la beta.",
+      },
+    ],
+    cardTag: "Modpack",
+    status: "Estado",
+    statusValue: "Beta cerrada",
+    minecraft: "Minecraft",
+    loader: "NeoForge",
+    modCount: "Mods",
+    version: "Versión",
+    cardNote: "Ya lleva el servidor añadido: no hace falta saber ninguna dirección.",
+    cardCta: "Pídelo en Discord",
+    joinTitle: "Cómo entrar",
+    joinSubtitle: "Cuatro pasos y ya estás dentro. Los mods, la app los descarga sola.",
+    steps: [
+      {
+        title: "Pídenos el modpack",
+        body: "Si quieres probar la beta, dínoslo en Discord. Te contactaremos para pasarte el modpack y añadir tu nombre de Minecraft a la whitelist.",
+        cta: { label: "Abrir Discord", target: "discord" },
+      },
+      {
+        title: "Instala la app de Modrinth",
+        body: "Es gratuita y funciona en Windows, Mac y Linux.",
+        cta: { label: "Descargar Modrinth App", target: "modrinth" },
+      },
+      {
+        title: "Abre el modpack",
+        body: "Abre con la app de Modrinth el archivo que te hemos pasado (acaba en .mrpack). La app instala sola Minecraft, NeoForge y todos los mods: solo tienes que esperar a que termine.",
+      },
+      {
+        title: "Entra en el servidor",
+        body: "Inicia el modpack y ve a Multijugador: MineUAB Create ya está en la lista. La primera vez, crea tu cuenta; las demás, solo tienes que iniciar sesión.",
+        code: ["/register <contraseña> <contraseña>", "/login <contraseña>"],
+      },
+    ],
+    optionalTip:
+      "Si la app te pregunta por los mods opcionales (el minimapa y el mapa del mundo de Xaero), elige los que quieras: puedes jugar con ellos o sin ellos.",
+    modsTitle: "Los mods",
+    modsSubtitle: "{count} mods. Pulsa en uno para ver qué hace.",
+    optional: "Opcional",
+    serverOnly: "Solo en el servidor",
+    libraries: "Y {count} librerías que usan estos mods",
+    groups: [
+      {
+        id: "base",
+        title: "Create",
+        body: "El mod que lo mueve todo: engranajes, cintas transportadoras, máquinas y trenes.",
+      },
+      {
+        id: "trens-i-decoracio",
+        title: "Trenes y decoración",
+        body: "Más vías, señales y trenes, catenaria y los bloques de Rodalies y Renfe. El modpack trae esquemas de las estaciones de Barberà del Vallès, Cerdanyola del Vallès y Fabra i Puig, y de trenes de Rodalies y Renfe.",
+      },
+      {
+        id: "ciencia",
+        title: "Ciencia",
+        body: "Reactores nucleares, química de verdad, petróleo, electricidad con la ley de Ohm, óptica y metalurgia.",
+      },
+      {
+        id: "energia-i-industria",
+        title: "Energía e industria",
+        body: "Electricidad, generadores diésel y encantamientos hechos a máquina.",
+      },
+      {
+        id: "naus-i-canons",
+        title: "Naves y cañones",
+        body: "Naves que vuelan y artillería pesada.",
+      },
+      {
+        id: "armes",
+        title: "Armas",
+        body: "Armas de fuego, herramientas y armas de Create, y combate aéreo.",
+      },
+      {
+        id: "menjar",
+        title: "Comida",
+        body: "La cocina de Farmer's Delight y sus complementos (fermentados, pescado y marisco, el Nether y el End, cocinas de todo el mundo), automatizada con Create.",
+      },
+      {
+        id: "economia",
+        title: "Economía",
+        body: "Monedas y tiendas automáticas.",
+      },
+      {
+        id: "magia",
+        title: "Magia",
+        body: "Hex Casting: magia que se programa dibujando patrones con un bastón.",
+      },
+      {
+        id: "utilitats",
+        title: "Utilidades",
+        body: "Para ver las recetas (JEI), saber qué estás mirando (Jade), hacer zoom con la Z, hablar por voz, ordenar el inventario y mucho más.",
+      },
+      {
+        id: "servidor",
+        title: "Servidor",
+        body: "Para proteger tus construcciones y hacer grupos, iniciar sesión y tener tu skin.",
+      },
+      {
+        id: "presentacio",
+        title: "Presentación",
+        body: "El menú principal, la pantalla de carga con fotos del servidor y el título de la ventana.",
+      },
+      {
+        id: "rendiment",
+        title: "Rendimiento",
+        body: "Sodium y compañía, para que vaya fluido incluso en ordenadores modestos.",
+      },
+    ],
+    ctaTitle: "¿Quieres probar MineUAB Create?",
+    ctaBody: "Dínoslo en Discord y te pasaremos el modpack para entrar en la beta.",
   },
   socials: {
     title: "Síguenos",

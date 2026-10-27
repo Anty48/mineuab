@@ -33,6 +33,9 @@ export const WHITELIST_ENABLED = false;
 /** On s'envien les sol·licituds. És la mateixa adreça del missatge de la whitelist (spigot.yml). */
 export const WHITELIST_EMAIL = "mine.uab.suport@gmail.com";
 
+/** Descàrrega de l'app de Modrinth, amb la qual s'instal·la el modpack de MineUAB Create. */
+export const MODRINTH_APP_URL = "https://modrinth.com/app";
+
 export const DISCORD_URL = "https://discord.gg/CfXau5xy3U";
 export const YOUTUBE_URL = "https://www.youtube.com/@MineUAB";
 // Actualitzeu-los amb els comptes reals quan els tinguem.
@@ -58,8 +61,9 @@ export const NAV_LINKS = [
   { href: "/galeria", key: "nav.gallery" },
   { href: "/normes", key: "nav.rules" },
   { href: "/faq", key: "nav.faq" },
-  // Nom curt perquè els nou enllaços càpiguen a la barra a partir de 1024 px.
+  // Noms curts perquè els deu enllaços càpiguen a la barra a partir de 1024 px.
   { href: "/historia", key: "nav.historyShort" },
+  { href: "/create", key: "nav.createShort" },
 ] as const;
 
 /** Totes les pàgines i seccions de l'inici, llistades al peu de pàgina. */
@@ -76,5 +80,6 @@ export const SITE_LINKS = [
   { href: "/estrelles", key: "nav.stars" },
   { href: "/faq", key: "faq.title" },
   { href: "/historia", key: "nav.history" },
+  { href: "/create", key: "nav.create" },
   { href: "/#xarxes", key: "nav.socials" },
 ] as const;

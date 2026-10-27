@@ -70,7 +70,7 @@ export default function Navbar() {
           </Link>
 
           {/* Enllaços d'escriptori */}
-          <div className="hidden items-center gap-3 lg:flex xl:gap-4">
+          <div className="hidden items-center gap-3 lg:flex">
             {NAV_LINKS.map((l) => (
               <Link
                 key={l.href}
@@ -83,26 +83,10 @@ export default function Navbar() {
             ))}
           </div>
 
+          {/* Amb deu enllaços, a l'escriptori l'adreça del servidor ja no hi cap (és a l'inici, al peu
+              i al menú mòbil). */}
           <div className="ml-auto flex items-center gap-2.5">
-            <button
-              type="button"
-              onClick={() => copy(SERVER_ADDRESS)}
-              title={t("server.copy")}
-              className="hidden items-center gap-2 border-2 border-ink bg-paper-50 px-2.5 py-1.5 transition-colors hover:bg-white xl:inline-flex"
-            >
-              {/* Sense l'etiqueta "IP": amb set enllaços no hi cabria. El title ja diu què fa. */}
-              <span className="font-mono text-sm font-semibold">{SERVER_ADDRESS}</span>
-              {copied ? (
-                <CheckIcon size={16} className="text-brand-600" />
-              ) : (
-                <CopyIcon size={16} className="text-ink-500" />
-              )}
-              <span aria-live="polite" className="sr-only">
-                {copied ? t("server.copied") : ""}
-              </span>
-            </button>
-
-            {/* Entre 1024 i 1279 px no hi cap amb els nou enllaços: hi torna a ser a partir de 1280. */}
+            {/* Entre 1024 i 1279 px tampoc no hi cap l'indicador: hi torna a ser a partir de 1280. */}
             <ServerStatusPill className="hidden md:inline-flex lg:hidden xl:inline-flex" />
             <LanguageToggle />
 
