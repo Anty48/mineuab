@@ -1,0 +1,40 @@
+# Publica la web a Vercel cada cop que es puja res a master, sigui qui sigui
+# l'autor dels commits. Fa servir els secrets VERCEL_TOKEN, VERCEL_ORG_ID i
+# VERCEL_PROJECT_ID del repositori.
+name: Deploy a Vercel
+
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+# Si es fan dos pushos seguits, el segon cancel·la el primer.
+concurrency:
+  group: deploy-production
+  cancel-in-progress: true
+
+env:
+  VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - name: Instal·la la CLI de Vercel
+        run: npm install --global vercel@latest
+
+      - name: Baixa la configuració del projecte
+        run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
+
+      - name: Compila
+        run: vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
+
+      - name: Publica
+        run: vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}
