@@ -901,6 +901,78 @@ const ca = {
     server: "Servidor",
     mojang: "No afiliat amb Mojang Studios ni Microsoft.",
     madeWith: "Fet per la comunitat mineuab.",
+    privacy: "Privacitat",
+    legalNotice: "Avís legal",
+  },
+  // Pàgines /privacitat i /avis-legal. Cada secció: un títol i paràgrafs.
+  legal: {
+    updated: "Última actualització: 29 d'octubre de 2026",
+    privacy: {
+      title: "Privacitat",
+      subtitle: "Quines dades es veuen a la web, d'on surten i què pots fer si no hi vols sortir.",
+      sections: [
+        {
+          title: "Qui en té cura",
+          body: [
+            "Les dades d'aquesta web i del servidor les gestiona l'equip de mineuab, un projecte d'estudiants sense ànim de lucre. Per a qualsevol cosa sobre les teves dades, escriu a mine.uab.suport@gmail.com.",
+          ],
+        },
+        {
+          title: "Si només visites la web",
+          body: [
+            "La web no fa servir galetes ni cap eina d'analítica. L'únic que guarda és l'idioma que tries, al teu navegador, perquè la pròxima vegada s'obri igual.",
+            "La web està allotjada a Vercel, que, com qualsevol allotjament, rep l'adreça IP i les dades tècniques de cada visita per poder servir les pàgines.",
+            "Per saber si el servidor està en línia i quanta gent hi juga, el teu navegador consulta mcsrvstat.us, un servei extern que també rep la teva adreça IP.",
+            "El mapa i les dades dels jugadors es carreguen del nostre servidor. El mapa (BlueMap) desa al teu navegador les opcions de visualització que triïs.",
+          ],
+        },
+        {
+          title: "Si jugues al servidor",
+          body: [
+            "Quan has jugat almenys 5 minuts, surts a la llista de jugadors i tens un perfil públic amb el teu nom de Minecraft, la skin, la carrera que tinguis al joc, les hores jugades, la primera i l'última connexió, els crèdits, les insígnies i les estadístiques de la partida.",
+            "Els mostrem perquè la comunitat es pugui conèixer i comparar, que és l'interès legítim del projecte. Si no hi vols sortir, escriu /perfil privat dins del joc.",
+          ],
+        },
+        {
+          title: "Si ens demanes accés",
+          body: [
+            "Si ens demanes entrar al servidor, per correu o pel Discord, fem servir el teu nom de Minecraft i la manera de contactar-te només per afegir-te a la whitelist i parlar amb tu de l'accés.",
+          ],
+        },
+        {
+          title: "Els teus drets",
+          body: [
+            "Pots demanar-nos quines dades tenim de tu, que les corregim o les esborrem, o oposar-te que les fem servir: escriu a mine.uab.suport@gmail.com. Si creus que no les tractem bé, pots presentar una reclamació a l'Agència Espanyola de Protecció de Dades (aepd.es).",
+          ],
+        },
+      ],
+    },
+    notice: {
+      title: "Avís legal",
+      subtitle: "Qui hi ha darrere de mineuab i què cal saber de la web.",
+      sections: [
+        {
+          title: "Qui som",
+          body: [
+            "mineuab és un projecte d'estudiants sense ànim de lucre: un servidor de Minecraft i aquesta web. El porta l'equip de mineuab, i ens pots escriure a mine.uab.suport@gmail.com.",
+          ],
+        },
+        {
+          title: "No som oficials",
+          body: [
+            "mineuab encara no és un projecte oficial de la Universitat Autònoma de Barcelona.",
+            "Tampoc no és un producte oficial de Minecraft, ni està aprovat per Mojang o Microsoft, ni hi està associat. Minecraft és una marca de Mojang Synergies AB.",
+          ],
+        },
+        {
+          title: "El contingut",
+          body: [
+            "Les construccions i les captures que surten a la web són de la comunitat de mineuab.",
+            "Els enllaços a altres webs (Discord, YouTube, Modrinth…) porten a serveis que no gestionem nosaltres.",
+          ],
+        },
+      ],
+    },
   },
   common: {
     backHome: "Tornar a l'inici",
@@ -1783,6 +1855,77 @@ const es: Translations = {
     server: "Servidor",
     mojang: "No afiliado con Mojang Studios ni Microsoft.",
     madeWith: "Hecho por la comunidad mineuab.",
+    privacy: "Privacidad",
+    legalNotice: "Aviso legal",
+  },
+  legal: {
+    updated: "Última actualización: 29 de octubre de 2026",
+    privacy: {
+      title: "Privacidad",
+      subtitle: "Qué datos se ven en la web, de dónde salen y qué puedes hacer si no quieres aparecer.",
+      sections: [
+        {
+          title: "Quién se ocupa de ellos",
+          body: [
+            "Los datos de esta web y del servidor los gestiona el equipo de mineuab, un proyecto de estudiantes sin ánimo de lucro. Para cualquier cosa sobre tus datos, escribe a mine.uab.suport@gmail.com.",
+          ],
+        },
+        {
+          title: "Si solo visitas la web",
+          body: [
+            "La web no usa cookies ni ninguna herramienta de analítica. Lo único que guarda es el idioma que eliges, en tu navegador, para que la próxima vez se abra igual.",
+            "La web está alojada en Vercel, que, como cualquier alojamiento, recibe la dirección IP y los datos técnicos de cada visita para poder servir las páginas.",
+            "Para saber si el servidor está en línea y cuánta gente juega, tu navegador consulta mcsrvstat.us, un servicio externo que también recibe tu dirección IP.",
+            "El mapa y los datos de los jugadores se cargan de nuestro servidor. El mapa (BlueMap) guarda en tu navegador las opciones de visualización que elijas.",
+          ],
+        },
+        {
+          title: "Si juegas en el servidor",
+          body: [
+            "Cuando has jugado al menos 5 minutos, apareces en la lista de jugadores y tienes un perfil público con tu nombre de Minecraft, la skin, la carrera que tengas en el juego, las horas jugadas, la primera y la última conexión, los créditos, las insignias y las estadísticas de la partida.",
+            "Los mostramos para que la comunidad se pueda conocer y comparar, que es el interés legítimo del proyecto. Si no quieres aparecer, escribe /perfil privat dentro del juego.",
+          ],
+        },
+        {
+          title: "Si nos pides acceso",
+          body: [
+            "Si nos pides entrar en el servidor, por correo o por Discord, usamos tu nombre de Minecraft y la forma de contactarte solo para añadirte a la whitelist y hablar contigo del acceso.",
+          ],
+        },
+        {
+          title: "Tus derechos",
+          body: [
+            "Puedes pedirnos qué datos tenemos de ti, que los corrijamos o los borremos, u oponerte a que los usemos: escribe a mine.uab.suport@gmail.com. Si crees que no los tratamos bien, puedes presentar una reclamación ante la Agencia Española de Protección de Datos (aepd.es).",
+          ],
+        },
+      ],
+    },
+    notice: {
+      title: "Aviso legal",
+      subtitle: "Quién hay detrás de mineuab y qué hay que saber de la web.",
+      sections: [
+        {
+          title: "Quiénes somos",
+          body: [
+            "mineuab es un proyecto de estudiantes sin ánimo de lucro: un servidor de Minecraft y esta web. Lo lleva el equipo de mineuab, y nos puedes escribir a mine.uab.suport@gmail.com.",
+          ],
+        },
+        {
+          title: "No somos oficiales",
+          body: [
+            "mineuab todavía no es un proyecto oficial de la Universitat Autònoma de Barcelona.",
+            "Tampoco es un producto oficial de Minecraft, ni está aprobado por Mojang o Microsoft, ni asociado a ellos. Minecraft es una marca de Mojang Synergies AB.",
+          ],
+        },
+        {
+          title: "El contenido",
+          body: [
+            "Las construcciones y las capturas que salen en la web son de la comunidad de mineuab.",
+            "Los enlaces a otras webs (Discord, YouTube, Modrinth…) llevan a servicios que no gestionamos nosotros.",
+          ],
+        },
+      ],
+    },
   },
   common: {
     backHome: "Volver al inicio",

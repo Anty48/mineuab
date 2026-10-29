@@ -91,7 +91,15 @@ export default function Footer() {
           <p>
             © {year} mineuab · {t("footer.mojang")}
           </p>
-          <p>{t("footer.madeWith")}</p>
+          <p className="flex flex-wrap gap-x-4 gap-y-1">
+            <Link href="/privacitat" className="underline-offset-2 hover:text-white hover:underline">
+              {t("footer.privacy")}
+            </Link>
+            <Link href="/avis-legal" className="underline-offset-2 hover:text-white hover:underline">
+              {t("footer.legalNotice")}
+            </Link>
+            <span>{t("footer.madeWith")}</span>
+          </p>
         </div>
       </div>
     </footer>
