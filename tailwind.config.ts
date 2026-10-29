@@ -44,6 +44,23 @@ const config: Config = {
           500: "#c2603a",
           600: "#a9502e",
         },
+        // Llautó i andesita, els materials del mod Create. Només a la pàgina /create.
+        brass: {
+          100: "#fbf0cc",
+          200: "#f5dc8e",
+          300: "#eec55c",
+          400: "#dfab37",
+          500: "#c08a22",
+          700: "#7d5614",
+        },
+        andesite: {
+          300: "#b9bdb8",
+          400: "#9a9f9a",
+          500: "#7d827d",
+          700: "#4a4e4a",
+          800: "#323532",
+          900: "#232623",
+        },
       },
       fontFamily: {
         sans: ["var(--font-sans)", "Arial", "Helvetica", "sans-serif"],
@@ -60,9 +77,25 @@ const config: Config = {
           "0%, 100%": { opacity: "1" },
           "50%": { opacity: "0.25" },
         },
+        // Dos engranatges iguals que encaixen: el segon comença mitja dent girat i va al revés.
+        cog: {
+          to: { transform: "rotate(360deg)" },
+        },
+        "cog-rev": {
+          from: { transform: "rotate(22.5deg)" },
+          to: { transform: "rotate(-337.5deg)" },
+        },
+        // La cinta transportadora: les ratlles avancen el que fa un tram (24 px).
+        belt: {
+          to: { backgroundPosition: "24px 0" },
+        },
       },
       animation: {
         blink: "blink 1.4s steps(2, jump-none) infinite",
+        cog: "cog 16s linear infinite",
+        "cog-rev": "cog-rev 16s linear infinite",
+        "cog-fast": "cog 3s linear infinite",
+        belt: "belt 0.8s linear infinite",
       },
     },
   },

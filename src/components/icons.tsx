@@ -187,19 +187,65 @@ const STAR = [
   ".XX...XX.",
 ];
 
+// L'engranatge de MineUAB Create, el mateix que MineUAB-Create/scripts/marca.py. És de 16 x 16:
+// a 16, 32 o 48 px cada quadret ocupa píxels sencers i es veu net.
 const COG = [
-  "....XXX....",
-  "..X.XXX.X..",
-  ".XXXXXXXXX.",
-  "..XXXXXXX..",
-  "XXXX...XXXX",
-  "XXXX...XXXX",
-  "XXXX...XXXX",
-  "..XXXXXXX..",
-  ".XXXXXXXXX.",
-  "..X.XXX.X..",
-  "....XXX....",
+  "......XXXX......",
+  "...XX.XXXX.XX...",
+  "..XXX.XXXX.XXX..",
+  ".XXXXXXXXXXXXXX.",
+  ".XXXXXXXXXXXXXX.",
+  "...XXX....XXX...",
+  "XXXXX......XXXXX",
+  "XXXXX......XXXXX",
+  "XXXXX......XXXXX",
+  "XXXXX......XXXXX",
+  "...XXX....XXX...",
+  ".XXXXXXXXXXXXXX.",
+  ".XXXXXXXXXXXXXX.",
+  "..XXX.XXXX.XXX..",
+  "...XX.XXXX.XX...",
+  "......XXXX......",
 ];
+
+// «CREATE»: l'engranatge amb un eix al mig, unit a la dreta, de manera que el forat fa la C; i REATE
+// amb el gruix de les lletres del logo (pals de 3, 10 d'alçada, de la fila 3 a la 12). Com a marca.py.
+const COG_C = [
+  "......XXXX......",
+  "...XX.XXXX.XX...",
+  "..XXX.XXXX.XXX..",
+  ".XXXXXXXXXXXXXX.",
+  ".XXXXX....XXXXX.",
+  "...XX......XX...",
+  "XXXXX..XX..XXXXX",
+  "XXXXX..XXXXXXXXX",
+  "XXXXX..XXXXXXXXX",
+  "XXXXX..XX..XXXXX",
+  "...XX......XX...",
+  ".XXXXX....XXXXX.",
+  ".XXXXXXXXXXXXXX.",
+  "..XXX.XXXX.XXX..",
+  "...XX.XXXX.XX...",
+  "......XXXX......",
+];
+
+const LETTERS: Record<string, string[]> = {
+  R: ["XXXXXXX.", "XXXXXXX.", "XXX..XXX", "XXX..XXX", "XXXXXXX.", "XXXXXXX.", "XXX.XXX.", "XXX.XXX.", "XXX..XXX", "XXX..XXX"],
+  E: ["XXXXXXX", "XXXXXXX", "XXX....", "XXX....", "XXXXXX.", "XXXXXX.", "XXX....", "XXX....", "XXXXXXX", "XXXXXXX"],
+  A: ["XXXXXXXX", "XXXXXXXX", "XXX..XXX", "XXX..XXX", "XXXXXXXX", "XXXXXXXX", "XXX..XXX", "XXX..XXX", "XXX..XXX", "XXX..XXX"],
+  T: ["XXXXXXXXX", "XXXXXXXXX", "...XXX...", "...XXX...", "...XXX...", "...XXX...", "...XXX...", "...XXX...", "...XXX...", "...XXX..."],
+};
+
+/** 16 files x 65 columnes: l'engranatge-C i, a 2 quadrets cadascuna, les lletres de REATE. */
+const CREATE = [..."REATE"].reduce(
+  (rows, ch) =>
+    rows.map((row, y) => {
+      const letter = LETTERS[ch];
+      const body = y >= 3 && y < 13 ? letter[y - 3] : ".".repeat(letter[0].length);
+      return `${row}..${body}`;
+    }),
+  COG_C,
+);
 
 const CREEPER = [
   "gggggggg",
@@ -234,6 +280,11 @@ export function PixelStarIcon(props: IconProps) {
 /** Un engranatge, la peça de Create. Pren el color del text. */
 export function PixelCogIcon(props: IconProps) {
   return <PixelArt rows={COG} {...props} />;
+}
+
+/** El mot «CREATE» amb la C feta engranatge. Pren el color del text; size és l'amplada (65 quadrets). */
+export function CreateWordmark(props: IconProps) {
+  return <PixelArt rows={CREATE} {...props} />;
 }
 
 /** Cara de creeper amb el verd de la marca, per a la pàgina 404. */

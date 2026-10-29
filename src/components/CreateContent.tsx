@@ -1,13 +1,13 @@
 "use client";
 
+import Link from "next/link";
 import { useLanguage } from "@/i18n/LanguageProvider";
 import { DISCORD_URL, MODRINTH_APP_URL } from "@/lib/links";
 // La genera MineUAB-Create/scripts/fes_llista_web.py a partir de mods-lock.json.
 import modpack from "@/lib/createModpack.json";
-import PageHeader from "@/components/PageHeader";
 import SectionHeading from "@/components/SectionHeading";
 import DiscordCta from "@/components/DiscordCta";
-import { DiscordIcon, PixelCogIcon, PlusIcon } from "@/components/icons";
+import { CreateWordmark, DiscordIcon, PixelCogIcon, PlusIcon } from "@/components/icons";
 
 interface Point {
   title: string;
@@ -48,13 +48,10 @@ export default function CreateContent() {
 
   return (
     <>
-      <PageHeader
-        crumb={t("nav.createShort")}
-        title={t("create.title")}
-        subtitle={t("create.subtitle")}
-      />
+      <CreateHero />
+      <div aria-hidden className="belt" />
 
-      <section className="pb-20 pt-6 md:pb-28 md:pt-10">
+      <section className="pb-20 pt-14 md:pb-28 md:pt-20">
         <div className="container-page grid gap-14 lg:grid-cols-[1fr_minmax(0,27rem)]">
           <div>
             <SectionHeading title={t("create.howTitle")} subtitle={t("create.howSubtitle")} />
@@ -63,7 +60,7 @@ export default function CreateContent() {
               {points.map((p) => (
                 <li key={p.title} className="border-2 border-ink bg-paper-50 p-6">
                   <h3 className="flex items-center gap-3 font-display text-xl font-bold">
-                    <span aria-hidden className="h-3 w-3 shrink-0 bg-brand-500" />
+                    <PixelCogIcon size={16} className="shrink-0 text-brand-500" />
                     {p.title}
                   </h3>
                   <p className="mt-2 leading-relaxed text-ink-600">{p.body}</p>
@@ -92,16 +89,17 @@ export default function CreateContent() {
           <ol className="mt-14 max-w-3xl">
             {steps.map((step, i) => (
               <li key={step.title} className="relative grid grid-cols-[3.5rem_1fr] gap-5 pb-12 last:pb-0">
-                {/* Línia puntejada fins al pas següent. */}
+                {/* Un eix d'andesita fins al pas següent, com els que uneixen les peces de Create. */}
                 {i < steps.length - 1 && (
                   <span
                     aria-hidden
-                    className="absolute bottom-0 left-[1.75rem] top-14 w-0.5 -translate-x-1/2 opacity-50 [background-image:linear-gradient(#f4f1ea_50%,transparent_0)] [background-size:2px_10px]"
+                    className="absolute bottom-0 left-[1.75rem] top-14 w-2.5 -translate-x-1/2 border-x-2 border-ink bg-andesite-400 [background-image:repeating-linear-gradient(180deg,transparent_0_10px,rgb(0_0_0/0.3)_10px_12px)]"
                   />
                 )}
+                {/* El número, en una caixa de llautó amb el bisell dels blocs del mod. */}
                 <span
                   aria-hidden
-                  className="flex h-14 w-14 items-center justify-center border-2 border-paper/80 bg-brand-500 font-pixel text-xl text-white"
+                  className="flex h-14 w-14 items-center justify-center border-2 border-ink bg-brass-400 font-pixel text-xl text-ink shadow-[inset_0_4px_0_0_rgb(255_255_255/0.35),inset_0_-4px_0_0_rgb(0_0_0/0.2)]"
                 >
                   {String(i + 1).padStart(2, "0")}
                 </span>
@@ -135,7 +133,7 @@ export default function CreateContent() {
             ))}
           </ol>
 
-          <p className="mt-12 max-w-xl border-l-4 border-brand-300 bg-paper/10 px-4 py-3 text-sm leading-relaxed text-paper/85">
+          <p className="mt-12 max-w-xl border-l-4 border-brass-300 bg-paper/10 px-4 py-3 text-sm leading-relaxed text-paper/85">
             {t("create.optionalTip")}
           </p>
         </div>
@@ -221,6 +219,41 @@ export default function CreateContent() {
   );
 }
 
+/** Capçalera de /create: el mot «CREATE» en píxels sobre andesita, amb dos engranatges que encaixen. */
+function CreateHero() {
+  const { t } = useLanguage();
+
+  return (
+    <header className="relative isolate overflow-hidden bg-andesite-900 text-paper">
+      {/* Dos engranatges iguals de 224 px que giren al revés l'un de l'altre; el segon comença mitja
+          dent girat. Les dents són més amples que els buits i no poden encaixar de debò: a 168 px en
+          diagonal les puntes es creuen sense tocar-se en cap moment de la volta. */}
+      <div aria-hidden className="absolute -right-32 -top-24 -z-10 hidden h-[392px] w-[392px] lg:block xl:-right-12">
+        <PixelCogIcon size={224} className="absolute left-0 top-0 animate-cog text-andesite-700" />
+        <PixelCogIcon size={224} className="absolute left-[168px] top-[168px] animate-cog-rev text-brass-500" />
+      </div>
+
+      <div className="container-page pb-12 pt-12 md:pb-16 md:pt-20">
+        <p className="eyebrow text-brass-300">
+          <Link href="/" className="hover:underline">
+            mineuab
+          </Link>
+          <span aria-hidden className="text-paper/30">
+            /
+          </span>
+          {t("nav.createShort")}
+        </p>
+        {/* 65 quadrets d'ample: a 325, 455 i 585 px cada quadret fa 5, 7 i 9 px. */}
+        <h1 className="mt-6">
+          <span className="sr-only">{t("create.title")}</span>
+          <CreateWordmark size={325} className="h-auto max-w-full text-white md:w-[455px] lg:w-[585px]" />
+        </h1>
+        <p className="mt-6 max-w-2xl text-pretty text-lg text-paper/75 md:text-xl">{t("create.subtitle")}</p>
+      </div>
+    </header>
+  );
+}
+
 /** La fitxa del modpack, com el carnet de jugador de l'inici però sense adreça: el servidor ja ve dins. */
 function ModpackCard({ className = "" }: { className?: string }) {
   const { t } = useLanguage();
@@ -232,13 +265,14 @@ function ModpackCard({ className = "" }: { className?: string }) {
   ];
 
   return (
-    <div className={`w-full max-w-md border-2 border-ink bg-paper-50 text-ink shadow-block ${className}`}>
+    <div className={`group w-full max-w-md border-2 border-ink bg-paper-50 text-ink shadow-block ${className}`}>
       <div className="flex items-center justify-between gap-4 border-b-2 border-ink bg-brand-500 px-5 py-4 text-white">
         <div>
           <p className="font-pixel text-[11px] uppercase text-brand-100">{t("create.cardTag")}</p>
           <h3 className="mt-1 font-display text-2xl font-extrabold">{t("create.title")}</h3>
         </div>
-        <PixelCogIcon size={44} />
+        {/* Gira quan passes el ratolí per la fitxa. */}
+        <PixelCogIcon size={48} className="shrink-0 group-hover:animate-cog-fast" />
       </div>
 
       <div className="px-5 pt-5">
