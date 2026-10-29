@@ -121,7 +121,7 @@ Minecraft troba el servidor gràcies a un registre SRV (`_minecraft._tcp.www.min
 
 ## Publicar la web
 
-La web es publica a Vercel cada cop que es fa push a `master`, sigui de qui sigui el commit. Ho fa l'acció de GitHub [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) amb el token de Vercel de l'Anty (secrets `VERCEL_TOKEN`, `VERCEL_ORG_ID` i `VERCEL_PROJECT_ID`), perquè el pla gratuït de Vercel només publica tot sol els commits del propietari. El desplegament automàtic de Vercel continua actiu: als commits que no són de l'Anty hi posa «Deployment was blocked», però l'acció els publica igualment. Si una publicació falla, es veu a la pestanya **Actions** de GitHub, i des d'allà també es pot tornar a llançar a mà (**Run workflow**).
+La web es publica a Vercel cada cop que es fa push a `master`, sigui de qui sigui el commit. Ho fa l'acció de GitHub [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) amb el token de Vercel de l'Anty (secrets `VERCEL_TOKEN`, `VERCEL_ORG_ID` i `VERCEL_PROJECT_ID`), perquè el pla gratuït de Vercel només publica tot sol els commits del propietari. Per això el desplegament automàtic de Vercel està desactivat a [`vercel.json`](vercel.json): si no, publicaria dues vegades els commits de l'Anty i marcaria els dels altres amb «Deployment was blocked». Si una publicació falla, es veu a la pestanya **Actions** de GitHub, i des d'allà també es pot tornar a llançar a mà (**Run workflow**).
 
 ## Commits
 
