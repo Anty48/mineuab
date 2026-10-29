@@ -11,7 +11,7 @@ export default function DiscordCta({ title, body }: { title: string; body: strin
   return (
     <section className="py-20 md:py-28">
       <div className="container-page">
-        <div className="relative flex flex-col gap-8 border-2 border-ink bg-brand-500 p-8 text-white md:flex-row md:items-center md:justify-between md:p-12">
+        <div className="relative flex flex-col gap-8 border-2 border-ink bg-brand-600 p-8 text-white md:flex-row md:items-center md:justify-between md:p-12">
           <GrassBlockIcon
             size={40}
             className="absolute -top-5 left-8 border-2 border-ink bg-paper-50 p-1.5 text-brand-500"

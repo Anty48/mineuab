@@ -47,7 +47,7 @@ export default function HowToJoin() {
                   )}
                   <span
                     aria-hidden
-                    className="flex h-14 w-14 items-center justify-center border-2 border-ink bg-brand-500 font-pixel text-xl text-white"
+                    className="flex h-14 w-14 items-center justify-center border-2 border-ink bg-brand-600 font-pixel text-xl text-white"
                   >
                     {String(i + 1).padStart(2, "0")}
                   </span>

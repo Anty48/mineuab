@@ -35,7 +35,7 @@ export default function RulesContent() {
       <section className="py-16 md:py-24">
         <div className="container-page grid gap-12 lg:grid-cols-[17rem_1fr] lg:gap-16">
           {/* Índex enganxat al costat mentre llegeixes. */}
-          <aside className="lg:sticky lg:top-28 lg:self-start">
+          <div className="lg:sticky lg:top-28 lg:self-start">
             <nav aria-label={t("rules.index")}>
               <p className="eyebrow">{t("rules.index")}</p>
               <ol className="mt-4 border-2 border-ink bg-paper-50">
@@ -43,7 +43,7 @@ export default function RulesContent() {
                   <li key={section.title} className="border-b-2 border-ink">
                     <a
                       href={`#normes-${i + 1}`}
-                      className="flex items-center gap-3 px-4 py-3 font-semibold transition-colors hover:bg-brand-500 hover:text-white"
+                      className="flex items-center gap-3 px-4 py-3 font-semibold transition-colors hover:bg-brand-600 hover:text-white"
                     >
                       {section.title}
                     </a>
@@ -52,7 +52,7 @@ export default function RulesContent() {
                 <li>
                   <a
                     href="#sancions"
-                    className="flex items-center gap-3 px-4 py-3 font-semibold transition-colors hover:bg-brand-500 hover:text-white"
+                    className="flex items-center gap-3 px-4 py-3 font-semibold transition-colors hover:bg-brand-600 hover:text-white"
                   >
                     {t("rules.sanctionsTitle")}
                   </a>
@@ -62,7 +62,7 @@ export default function RulesContent() {
             <p className="mt-6 border-l-4 border-terra-500 bg-terra-100 px-4 py-3 text-sm leading-relaxed text-ink-700">
               {t("rules.note")}
             </p>
-          </aside>
+          </div>
 
           <div className="space-y-14">
             {sections.map((section, i) => (
@@ -119,7 +119,7 @@ export default function RulesContent() {
                   <li key={step} className="flex items-center gap-3 border-2 border-paper/20 px-4 py-3">
                     <span
                       aria-hidden
-                      className="flex h-8 w-8 shrink-0 items-center justify-center bg-brand-500 font-pixel text-sm text-white"
+                      className="flex h-8 w-8 shrink-0 items-center justify-center bg-brand-600 font-pixel text-sm text-white"
                     >
                       {i + 1}
                     </span>

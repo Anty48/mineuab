@@ -75,7 +75,7 @@ export default function Hero() {
             <button
               type="button"
               onClick={() => copy(SERVER_ADDRESS)}
-              className="flex shrink-0 items-center justify-center gap-2 border-t-2 border-ink bg-brand-500 px-5 py-3 font-bold text-white transition-colors hover:bg-brand-600 active:bg-brand-700 sm:border-l-2 sm:border-t-0"
+              className="flex shrink-0 items-center justify-center gap-2 border-t-2 border-ink bg-brand-600 px-5 py-3 font-bold text-white transition-colors hover:bg-brand-700 active:bg-brand-800 sm:border-l-2 sm:border-t-0"
             >
               {copied ? <CheckIcon size={20} /> : <CopyIcon size={20} />}
               <span aria-live="polite">{copied ? t("server.copied") : t("server.copy")}</span>

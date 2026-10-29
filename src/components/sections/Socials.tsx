@@ -55,7 +55,7 @@ export default function Socials() {
                 href={s.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group grid grid-cols-[auto_1fr_auto] items-center gap-5 px-3 py-6 transition-colors hover:bg-brand-500 hover:text-white md:gap-8 md:px-5 md:py-8"
+                className="group grid grid-cols-[auto_1fr_auto] items-center gap-5 px-3 py-6 transition-colors hover:bg-brand-600 hover:text-white md:gap-8 md:px-5 md:py-8"
               >
                 <span
                   className={`flex h-14 w-14 items-center justify-center border-2 border-ink text-white md:h-16 md:w-16 ${s.accent}`}

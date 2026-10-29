@@ -1,15 +1,26 @@
 import type { Career } from "@/lib/useProfiles";
 
-/** Si sobre aquest color es llegeix millor el text fosc que el blanc. */
-function isLight(hex: string) {
+/** Lluminositat relativa d'un color "#rrggbb" (WCAG), o null si no ho és. */
+function luminance(hex: string) {
   const m = /^#?([0-9a-f]{6})$/i.exec(hex);
-  if (!m) return true;
+  if (!m) return null;
   const n = parseInt(m[1], 16);
   const [r, g, b] = [(n >> 16) & 255, (n >> 8) & 255, n & 255].map((c) => {
     const s = c / 255;
     return s <= 0.03928 ? s / 12.92 : ((s + 0.055) / 1.055) ** 2.4;
   });
-  return 0.2126 * r + 0.7152 * g + 0.0722 * b > 0.3;
+  return 0.2126 * r + 0.7152 * g + 0.0722 * b;
+}
+
+/**
+ * Si sobre aquest color es llegeix millor el text fosc (ink, #131a16) que el blanc: el que doni més contrast.
+ * Amb els colors de Minecraft, com el vermell #FF5555, el blanc no arriba al 4,5:1.
+ */
+function isLight(hex: string) {
+  const l = luminance(hex);
+  if (l === null) return true;
+  const INK = 0.0094; // la lluminositat de #131a16
+  return (l + 0.05) / (INK + 0.05) > 1.05 / (l + 0.05);
 }
 
 /**
@@ -25,7 +36,8 @@ export default function CareerTag({
   variant?: "solid" | "swatch";
   className?: string;
 }) {
-  const color = career.color ?? "#088F40";
+  // Sense color, el verd fosc de la marca: amb el #088F40 no arriba al 4,5:1 ni el blanc ni el fosc.
+  const color = career.color ?? "#087334";
 
   if (variant === "solid") {
     return (

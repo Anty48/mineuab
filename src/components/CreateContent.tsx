@@ -166,7 +166,7 @@ export default function CreateContent() {
                             href={modrinthUrl(m.slug)}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center gap-2 border-2 border-ink bg-white px-2.5 py-1 text-sm font-semibold transition-colors hover:bg-brand-500 hover:text-white"
+                            className="inline-flex items-center gap-2 border-2 border-ink bg-white px-2.5 py-1 text-sm font-semibold transition-colors hover:bg-brand-600 hover:text-white"
                           >
                             {m.name}
                             {(m.optional || m.serverOnly) && (
@@ -266,7 +266,7 @@ function ModpackCard({ className = "" }: { className?: string }) {
 
   return (
     <div className={`group w-full max-w-md border-2 border-ink bg-paper-50 text-ink shadow-block ${className}`}>
-      <div className="flex items-center justify-between gap-4 border-b-2 border-ink bg-brand-500 px-5 py-4 text-white">
+      <div className="flex items-center justify-between gap-4 border-b-2 border-ink bg-brand-600 px-5 py-4 text-white">
         <div>
           <p className="font-pixel text-[11px] uppercase text-brand-100">{t("create.cardTag")}</p>
           <h3 className="mt-1 font-display text-2xl font-extrabold">{t("create.title")}</h3>

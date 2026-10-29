@@ -61,7 +61,7 @@ export default function GalleryContent() {
                 >
                   <Image
                     src={item.image}
-                    alt={caption(item.key)}
+                    alt=""
                     fill
                     placeholder="blur"
                     sizes={
@@ -123,7 +123,7 @@ export default function GalleryContent() {
             <figure className="flex max-w-full flex-col items-center">
               <Image
                 src={current.image}
-                alt={caption(current.key)}
+                alt=""
                 placeholder="blur"
                 sizes="100vw"
                 className="max-h-[75vh] w-auto border-2 border-paper object-contain"

@@ -26,7 +26,7 @@ export default function ServerCard({ className = "" }: { className?: string }) {
 
   return (
     <div className={`w-full max-w-md border-2 border-ink bg-paper-50 text-ink shadow-block ${className}`}>
-      <div className="flex items-center justify-between gap-4 border-b-2 border-ink bg-brand-500 px-5 py-4 text-white">
+      <div className="flex items-center justify-between gap-4 border-b-2 border-ink bg-brand-600 px-5 py-4 text-white">
         <div>
           <p className="font-pixel text-[11px] uppercase text-brand-100">{t("server.cardTag")}</p>
           <h3 className="mt-1 font-display text-2xl font-extrabold">{t("server.cardTitle")}</h3>

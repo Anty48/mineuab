@@ -20,7 +20,7 @@ const SkinViewer = dynamic(() => import("./SkinViewer"), { ssr: false });
 const POSES: SkinPose[] = ["walk", "run", "wave", "fly", "crouch"];
 
 const BADGE_STYLES: Record<string, string> = {
-  admin: "bg-terra-500 text-white",
+  admin: "bg-terra-600 text-white",
   mod: "bg-brand-700 text-white",
   helper: "bg-brand-200 text-ink",
   donor: "bg-[#f2c94c] text-ink",
@@ -167,7 +167,7 @@ function ProfileView({ profile }: { profile: Profile }) {
         </div>
       </section>
 
-      <section className="border-t-2 border-ink bg-brand-500 py-10 text-white">
+      <section className="border-t-2 border-ink bg-brand-600 py-10 text-white">
         <div className="container-page flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
           <p className="max-w-2xl text-pretty">{t("profile.itsYou")}</p>
           <p className="shrink-0 font-pixel text-[10px] uppercase text-brand-100">
@@ -246,7 +246,7 @@ function SkinStage({ profile }: { profile: Profile }) {
                 type="button"
                 aria-pressed={pose === p}
                 onClick={() => setPose(p)}
-                className="border-r-2 border-ink px-3 py-1.5 text-sm font-bold last:border-r-0 hover:bg-brand-50 aria-pressed:bg-brand-500 aria-pressed:text-white"
+                className="border-r-2 border-ink px-3 py-1.5 text-sm font-bold last:border-r-0 hover:bg-brand-50 aria-pressed:bg-brand-600 aria-pressed:text-white"
               >
                 {t(`profile.poses.${p}`)}
               </button>
@@ -282,7 +282,7 @@ function PlayerCard({ profile }: { profile: Profile }) {
 
   return (
     <div className="mt-8 border-2 border-ink bg-paper-50">
-      <div className="flex items-center justify-between gap-4 border-b-2 border-ink bg-brand-500 px-5 py-3 text-white">
+      <div className="flex items-center justify-between gap-4 border-b-2 border-ink bg-brand-600 px-5 py-3 text-white">
         <p className="font-pixel text-[11px] uppercase">{t("profile.cardTag")}</p>
         <p className="font-pixel text-[11px] uppercase text-brand-100">{t("profile.course", { course: course() })}</p>
       </div>

@@ -27,7 +27,7 @@ export default function ServerStatusPill({
       href="/#com-entrar"
       className={`items-center gap-2 whitespace-nowrap border-2 border-ink px-3 py-1.5 text-sm font-bold transition-colors ${
         status.online
-          ? "bg-brand-500 text-white hover:bg-brand-600"
+          ? "bg-brand-600 text-white hover:bg-brand-700"
           : "bg-paper-200 text-ink-700 hover:bg-paper-300"
       } ${className}`}
     >

@@ -33,7 +33,7 @@ export default function About() {
         <ul className="divide-y-2 divide-paper/15 border-y-2 border-paper/15 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:self-start">
           {POINTS.map(({ key, Icon }) => (
             <li key={key} className="grid grid-cols-[3.5rem_1fr] gap-5 py-7">
-              <span className="flex h-14 w-14 items-center justify-center border-2 border-paper/80 bg-brand-500 text-white">
+              <span className="flex h-14 w-14 items-center justify-center border-2 border-paper/80 bg-brand-600 text-white">
                 <Icon size={28} />
               </span>
               <div>

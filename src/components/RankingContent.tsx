@@ -182,7 +182,7 @@ function PodiumCard({ entry, amount }: { entry: RankingEntry; amount: string }) 
     <li className={`border-2 border-ink bg-paper-50 ${order}`}>
       <div
         className={`flex items-center justify-between border-b-2 border-ink px-5 py-3 ${
-          first ? "bg-brand-500 text-white" : "bg-paper-200"
+          first ? "bg-brand-600 text-white" : "bg-paper-200"
         }`}
       >
         <span className="font-pixel text-sm">#{entry.rank}</span>

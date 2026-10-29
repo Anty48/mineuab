@@ -7,7 +7,7 @@ export default function AnnouncementBar() {
   const { t } = useLanguage();
 
   return (
-    <div role="note" className="bg-terra-600 text-white">
+    <aside aria-label={t("disclaimer.tag")} className="bg-terra-600 text-white">
       <div className="container-page flex items-center justify-center gap-3 py-2 text-center text-sm">
         <span className="shrink-0 bg-white px-1.5 py-0.5 font-pixel text-[11px] uppercase leading-none text-terra-600">
           {t("disclaimer.tag")}
@@ -17,6 +17,6 @@ export default function AnnouncementBar() {
           <span className="hidden md:inline">{t("disclaimer.body")}</span>
         </p>
       </div>
-    </div>
+    </aside>
   );
 }
