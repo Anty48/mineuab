@@ -3,11 +3,9 @@
 import { useState } from "react";
 import { useLanguage } from "@/i18n/LanguageProvider";
 import { WHITELIST_EMAIL } from "@/lib/links";
+import { PLAYER_NAME_PATTERN as NAME_PATTERN } from "@/lib/playerName";
 import { useCopyToClipboard } from "@/lib/useCopyToClipboard";
 import { CheckIcon, CopyIcon } from "./icons";
-
-/** Els noms de Minecraft: de 3 a 16 lletres, números o _. */
-const NAME_PATTERN = /^[A-Za-z0-9_]{3,16}$/;
 
 /**
  * Pas "Demana accés": el jugador escriu el seu nom i s'obre el correu ja escrit cap a l'staff,

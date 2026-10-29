@@ -1,0 +1,4 @@
+Contact: mailto:mine.uab.suport@gmail.com
+Expires: 2027-10-31T00:00:00.000Z
+Preferred-Languages: ca, es, en
+Canonical: https://www.mineuab.org/.well-known/security.txt

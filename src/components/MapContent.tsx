@@ -31,10 +31,13 @@ export default function MapContent() {
           {/* Fons fosc mentre carrega, com el cel del BlueMap. Al mòbil deixem marge
               per sota perquè es pugui fer scroll de la pàgina sense arrossegar el mapa. */}
           <div className="mt-6 border-2 border-ink bg-ink">
+            {/* El BlueMap no pot navegar ni obrir finestres des de la pàgina: només fer anar el mapa. */}
             <iframe
               src={MAP_URL}
               title={t("map.frameTitle")}
               allow="fullscreen"
+              sandbox="allow-scripts allow-same-origin allow-pointer-lock"
+              referrerPolicy="no-referrer"
               className="block h-[70vh] min-h-[24rem] w-full"
             />
           </div>
