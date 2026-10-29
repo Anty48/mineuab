@@ -105,6 +105,8 @@ python ../MineUAB-Create/scripts/fes_llista_web.py
 
 Els textos de la pàgina i la descripció de cada grup de mods són a `create` dins de `translations.ts`. Si a `mods.py` hi afegiu un grup nou, afegiu-ne també el text en tots dos idiomes (si no, surt al final amb el nom del grup).
 
+Els avisos que surten al menú del joc de MineUAB Create (a dalt a l'esquerra) són a [`public/avisos/create.md`](public/avisos/create.md): el joc el llegeix de la web cada cop que s'obre, així que n'hi ha prou amb editar-lo i publicar la web. Admet `**negreta**`, colors (`%#eec55c%text%#%`) i salts de línia. No el deixeu buit, i que sigui curt: la columna fa 110 punts d'ample (unes 20 lletres per línia) i hi caben unes 7 línies.
+
 ## Imatges
 
 `public/assets/` només conté els fitxers que fa servir la web: els logos (horitzontal i quadrat, en verd i en blanc) i `og.jpg` (la imatge de 1200×630 per a les previsualitzacions d'enllaços).
@@ -116,6 +118,10 @@ Les captures del servidor són a `src/assets/gallery/`. Totes les variants del l
 ## Nota sobre el domini
 
 Minecraft troba el servidor gràcies a un registre SRV (`_minecraft._tcp.www.mineuab.org` → `mc.mineuab.org:25567`). Quan la web es publiqui a `www.mineuab.org`, apunteu el registre `A`/`CNAME` d'aquest nom al servidor web i **mantingueu el registre SRV**: els navegadors fan servir l'`A`/`CNAME` i Minecraft l'SRV, així tots dos funcionen amb la mateixa adreça.
+
+## Publicar la web
+
+La web es publica a Vercel cada cop que es fa push a `master`, sigui de qui sigui el commit. Ho fa l'acció de GitHub [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) amb el token de Vercel de l'Anty (secrets `VERCEL_TOKEN`, `VERCEL_ORG_ID` i `VERCEL_PROJECT_ID`), perquè el pla gratuït de Vercel només publica tot sol els commits del propietari. El desplegament automàtic de Vercel continua actiu: als commits que no són de l'Anty hi posa «Deployment was blocked», però l'acció els publica igualment. Si una publicació falla, es veu a la pestanya **Actions** de GitHub, i des d'allà també es pot tornar a llançar a mà (**Run workflow**).
 
 ## Commits
 
