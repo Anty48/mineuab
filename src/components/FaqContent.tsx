@@ -7,6 +7,7 @@ import { useCopyToClipboard } from "@/lib/useCopyToClipboard";
 import { useServerStatus } from "@/lib/useServerStatus";
 import PageHeader from "@/components/PageHeader";
 import DiscordCta from "@/components/DiscordCta";
+import JsonLd from "@/components/JsonLd";
 import { ArrowIcon, CheckIcon, CopyIcon, PlusIcon } from "@/components/icons";
 
 interface FaqItem {
@@ -20,6 +21,14 @@ interface FaqItem {
   link?: { href: string; label: string };
 }
 
+/** La resposta en text pla per als cercadors, amb les ordres i l'adreça que a la pàgina van a sota. */
+function plainAnswer({ a, code, extra }: FaqItem) {
+  if (extra === "address") return `${a} ${SERVER_ADDRESS}`;
+  // La versió es llegeix en directe del servidor, i als cercadors no els arriba.
+  if (extra === "version") return a.replace(/:$/, ".");
+  return code ? `${a} ${code.join(", ")}` : a;
+}
+
 export default function FaqContent() {
   const { t, raw } = useLanguage();
   const baseItems = raw<FaqItem[]>("faq.items") ?? [];
@@ -30,6 +39,17 @@ export default function FaqContent() {
 
   return (
     <>
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: items.map((item) => ({
+            "@type": "Question",
+            name: item.q,
+            acceptedAnswer: { "@type": "Answer", text: plainAnswer(item) },
+          })),
+        }}
+      />
       <PageHeader
         crumb={t("nav.faq")}
         title={t("faq.title")}

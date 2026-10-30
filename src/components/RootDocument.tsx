@@ -1,6 +1,8 @@
 import { Bricolage_Grotesque, Inter, Silkscreen } from "next/font/google";
 import "@/app/globals.css";
+import JsonLd from "@/components/JsonLd";
 import { LanguageProvider } from "@/i18n/LanguageProvider";
+import { organizationJsonLd } from "@/i18n/seo";
 import type { Locale } from "@/i18n/translations";
 
 // Text corrent.
@@ -30,6 +32,7 @@ export default function RootDocument({ locale, children }: { locale: Locale; chi
   return (
     <html lang={locale} className={`${inter.variable} ${bricolage.variable} ${silkscreen.variable}`}>
       <body className="font-sans">
+        <JsonLd data={organizationJsonLd(locale)} />
         <LanguageProvider locale={locale}>{children}</LanguageProvider>
       </body>
     </html>

@@ -1,13 +1,16 @@
 import type { Metadata } from "next";
-import { SERVER_ADDRESS, SITE_URL } from "@/lib/links";
+import { INSTAGRAM_URL, SERVER_ADDRESS, SITE_URL, TWITCH_URL, YOUTUBE_URL } from "@/lib/links";
 import { localePath } from "./paths";
 import type { Locale } from "./translations";
 
-const TITLE = "mineuab — Servidor de Minecraft";
+const TITLE: Record<Locale, string> = {
+  ca: "mineuab — Servidor de Minecraft d'estudiants de la UAB",
+  es: "mineuab — Servidor de Minecraft de estudiantes de la UAB",
+};
 
 const DESCRIPTION: Record<Locale, string> = {
-  ca: `Servidor de Minecraft nascut a l'Autònoma i obert a tothom, siguis o no de la UAB. IP: ${SERVER_ADDRESS}`,
-  es: `Servidor de Minecraft nacido en la Autónoma y abierto a todos, seas o no de la UAB. IP: ${SERVER_ADDRESS}`,
+  ca: `Servidor de Minecraft Java fet per estudiants de la Universitat Autònoma de Barcelona, gratuït i obert a tothom. IP: ${SERVER_ADDRESS}`,
+  es: `Servidor de Minecraft Java hecho por estudiantes de la Universidad Autónoma de Barcelona, gratuito y abierto a todos. IP: ${SERVER_ADDRESS}`,
 };
 
 interface PageText {
@@ -169,7 +172,7 @@ export function rootMetadata(locale: Locale): Metadata {
   return {
     metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? SITE_URL),
     title: {
-      default: TITLE,
+      default: TITLE[locale],
       template: "%s · mineuab",
     },
     description: DESCRIPTION[locale],
@@ -181,7 +184,7 @@ export function rootMetadata(locale: Locale): Metadata {
       siteName: "mineuab",
       locale: locale === "ca" ? "ca_ES" : "es_ES",
       alternateLocale: [locale === "ca" ? "es_ES" : "ca_ES"],
-      title: TITLE,
+      title: TITLE[locale],
       description: DESCRIPTION[locale],
       images: [
         {
@@ -194,10 +197,24 @@ export function rootMetadata(locale: Locale): Metadata {
     },
     twitter: {
       card: "summary_large_image",
-      title: TITLE,
+      title: TITLE[locale],
       description: DESCRIPTION[locale],
       images: ["/assets/og.jpg"],
     },
+  };
+}
+
+/** Qui és mineuab per als cercadors. El Discord no hi és perquè l'enllaç és una invitació, no un perfil. */
+export function organizationJsonLd(locale: Locale) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "mineuab",
+    alternateName: "MineUAB",
+    url: SITE_URL,
+    logo: `${SITE_URL}/assets/logo-square.png`,
+    description: DESCRIPTION[locale],
+    sameAs: [YOUTUBE_URL, INSTAGRAM_URL, TWITCH_URL],
   };
 }
 

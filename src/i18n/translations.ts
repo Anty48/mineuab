@@ -62,7 +62,7 @@ const ca = {
     titleLead: "El servidor de",
     titleAccent: "l'Autònoma",
     subtitle:
-      "Un servidor fet per estudiants i obert a tothom, siguis o no de la UAB.",
+      "Un servidor fet per estudiants de la Universitat Autònoma de Barcelona i obert a tothom, siguis o no de la UAB.",
     ctaDiscord: "Uneix-te al Discord",
   },
   disclaimer: {
@@ -1036,7 +1036,7 @@ const es: Translations = {
     titleLead: "El servidor de",
     titleAccent: "la Autónoma",
     subtitle:
-      "Un servidor hecho por estudiantes y abierto a todo el mundo, seas o no de la UAB.",
+      "Un servidor hecho por estudiantes de la Universidad Autónoma de Barcelona y abierto a todo el mundo, seas o no de la UAB.",
     ctaDiscord: "Únete al Discord",
   },
   disclaimer: {
