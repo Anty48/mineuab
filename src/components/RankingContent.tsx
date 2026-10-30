@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import Link from "@/i18n/LocaleLink";
 import { useLanguage } from "@/i18n/LanguageProvider";
 import { useRanking, type Ranking, type RankingEntry } from "@/lib/useRanking";
 import PageHeader from "@/components/PageHeader";

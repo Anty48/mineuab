@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
+import Link from "@/i18n/LocaleLink";
 import { useLanguage } from "@/i18n/LanguageProvider";
 import { SERVER_ADDRESS, SITE_LINKS, SOCIAL_LINKS } from "@/lib/links";
 import { useCopyToClipboard } from "@/lib/useCopyToClipboard";

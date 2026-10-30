@@ -2,7 +2,7 @@
 
 import { useCallback, useState } from "react";
 import dynamic from "next/dynamic";
-import Link from "next/link";
+import Link from "@/i18n/LocaleLink";
 import { useLanguage } from "@/i18n/LanguageProvider";
 import type { Locale } from "@/i18n/translations";
 import { minecraftName } from "@/lib/minecraftNames";

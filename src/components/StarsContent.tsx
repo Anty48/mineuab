@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import Link from "@/i18n/LocaleLink";
 import { useLanguage } from "@/i18n/LanguageProvider";
 import PageHeader from "@/components/PageHeader";
 import DiscordCta from "@/components/DiscordCta";

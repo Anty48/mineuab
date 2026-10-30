@@ -51,20 +51,36 @@ export const SOCIAL_LINKS = [
 
 // Les claus dels enllaços apunten a translations.ts.
 
-/** Navegació superior. */
-export const NAV_LINKS = [
+export interface NavLink {
+  href: string;
+  key: string;
+}
+
+export interface NavGroup {
+  key: string;
+  children: readonly NavLink[];
+}
+
+/** Navegació superior. Un grup és un desplegable a l'escriptori i una llista amb títol al menú mòbil. */
+export const NAV_LINKS: readonly (NavLink | NavGroup)[] = [
   { href: "/#com-entrar", key: "nav.howToJoin" },
   { href: "/mapa", key: "nav.map" },
-  { href: "/ranquing", key: "nav.ranking" },
-  { href: "/jugadors", key: "nav.players" },
-  { href: "/receptes", key: "nav.recipes" },
+  {
+    key: "nav.community",
+    children: [
+      { href: "/ranquing", key: "nav.ranking" },
+      { href: "/jugadors", key: "nav.players" },
+      { href: "/receptes", key: "nav.recipes" },
+      { href: "/estrelles", key: "nav.stars" },
+    ],
+  },
   { href: "/galeria", key: "nav.gallery" },
   { href: "/normes", key: "nav.rules" },
   { href: "/faq", key: "nav.faq" },
-  // Noms curts perquè els deu enllaços càpiguen a la barra a partir de 1024 px.
+  // Noms curts perquè tot càpiga a la barra a partir de 1024 px.
   { href: "/historia", key: "nav.historyShort" },
   { href: "/create", key: "nav.createShort" },
-] as const;
+];
 
 /** Totes les pàgines i seccions de l'inici, llistades al peu de pàgina. */
 export const SITE_LINKS = [

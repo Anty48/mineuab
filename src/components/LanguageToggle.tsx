@@ -1,6 +1,8 @@
 "use client";
 
-import { useLanguage } from "@/i18n/LanguageProvider";
+import { usePathname } from "next/navigation";
+import { rememberLocale, useLanguage } from "@/i18n/LanguageProvider";
+import { localePath, pathWithoutLocale } from "@/i18n/paths";
 import type { Locale } from "@/i18n/translations";
 
 const OPTIONS: { code: Locale; label: string }[] = [
@@ -9,7 +11,8 @@ const OPTIONS: { code: Locale; label: string }[] = [
 ];
 
 export default function LanguageToggle() {
-  const { locale, setLocale, t } = useLanguage();
+  const { locale, t } = useLanguage();
+  const path = pathWithoutLocale(usePathname());
 
   return (
     <div
@@ -20,17 +23,25 @@ export default function LanguageToggle() {
       {OPTIONS.map((opt) => {
         const active = locale === opt.code;
         return (
-          <button
+          // Enllaços de veritat i no botons: així els cercadors troben les dues versions de cada pàgina.
+          // Cada idioma té el seu layout arrel, o sigui que canviar-lo sempre recarrega la pàgina.
+          <a
             key={opt.code}
-            type="button"
-            onClick={() => setLocale(opt.code)}
-            aria-pressed={active}
+            href={localePath(path, opt.code)}
+            hrefLang={opt.code}
+            aria-current={active ? "true" : undefined}
+            onClick={(e) => {
+              rememberLocale(opt.code);
+              // Es queda al mateix lloc de la pàgina.
+              e.currentTarget.search = window.location.search;
+              e.currentTarget.hash = window.location.hash;
+            }}
             className={`px-2.5 py-1.5 transition-colors ${
               active ? "bg-ink text-paper" : "text-ink-600 hover:bg-paper-200 hover:text-ink"
             }`}
           >
             {opt.label}
-          </button>
+          </a>
         );
       })}
     </div>

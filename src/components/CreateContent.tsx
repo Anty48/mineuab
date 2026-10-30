@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import Link from "@/i18n/LocaleLink";
 import { useLanguage } from "@/i18n/LanguageProvider";
 import { DISCORD_URL, MODRINTH_APP_URL } from "@/lib/links";
 // La genera MineUAB-Create/scripts/fes_llista_web.py a partir de mods-lock.json.

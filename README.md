@@ -10,7 +10,7 @@ La web de **mineuab**, el servidor de Minecraft nascut a la [UAB (Universitat Au
 
 - **Next.js 15** (App Router) + **React 19** + **TypeScript**
 - **Tailwind CSS**, amb el disseny descrit a [Disseny](#disseny).
-- **i18n** propi i lleuger: **català (CA)** per defecte i traducció completa al **castellà (ES)**, amb el selector `CAT / ESP` a la barra de navegació. El català és la font de veritat: TypeScript dona error si falta una clau en castellà.
+- **i18n** propi i lleuger: **català (CA)** a l'arrel de la web i **castellà (ES)** sota `/es` (`/create` i `/es/create`), amb el selector `CAT / ESP` a la barra de navegació. Les dues versions surten ja traduïdes al HTML, cada una amb la seva adreça per als cercadors. El català és la font de veritat: TypeScript dona error si falta una clau en castellà.
 - **Estat del servidor en directe** (en línia, jugadors, versió) amb l'API pública i gratuïta de [mcsrvstat.us](https://mcsrvstat.us), consultada des del navegador. Si l'API no respon, els indicadors d'estat simplement no es mostren.
 - **ESLint** amb les regles de Next.js (`next/core-web-vitals` + TypeScript).
 
@@ -61,9 +61,11 @@ Els colors, les ombres i les tipografies són a [`tailwind.config.ts`](tailwind.
 ```
 src/
   app/
-    page.tsx                    # Inici
-    mapa/  ranquing/  receptes/  galeria/  normes/  faq/  historia/  create/
-    not-found.tsx
+    (ca)/                       # Les pàgines, en català: page.tsx, mapa/, ranquing/, create/...
+      layout.tsx                # Layout arrel amb lang="ca"
+      not-found.tsx, [...resta]/  # Les adreces desconegudes
+    (es)/                       # El mateix en castellà: cada es/<pàgina>/page.tsx reaprofita la de (ca)
+    sitemap.ts
   assets/gallery/               # Fotos de la galeria (s'importen, així tenen un difuminat mentre carreguen)
   components/
     sections/                   # Seccions de l'inici: Hero, Marquee, HowToJoin, About, GalleryPreview, Socials
@@ -78,7 +80,10 @@ src/
     Navbar, Footer, LanguageToggle, icons
   i18n/
     translations.ts             # Tots els textos en CA i ES
-    LanguageProvider.tsx        # Estat de l'idioma i funció t()
+    seo.ts                      # Títol i descripció de cada pàgina en CA i ES, i versions per als cercadors
+    paths.ts                    # /create <-> /es/create
+    LocaleLink.tsx              # El Link de Next que es queda a l'idioma de la pàgina: feu-lo servir per als enllaços interns
+    LanguageProvider.tsx        # L'idioma de la pàgina i la funció t()
   lib/
     links.ts                    # Adreça del servidor, mapa, whitelist (WHITELIST_ENABLED), enllaços de Discord/Instagram/Twitch i de navegació
     gallery.ts                  # Quines fotos surten a la galeria i en quin ordre
@@ -90,6 +95,8 @@ src/
 ```
 
 ## Editar el contingut
+
+Per afegir una pàgina, creeu-la a `src/app/(ca)/`, afegiu-ne l'altra versió a `src/app/(es)/es/` i el títol i la descripció a [`src/i18n/seo.ts`](src/i18n/seo.ts) (així també surt al mapa del lloc).
 
 Tots els textos, en català i en castellà, són a [`src/i18n/translations.ts`](src/i18n/translations.ts): les normes a `rules.sections`, les preguntes freqüents a `faq.items`, els peus de foto de la galeria a `gallery.items` i les paraules de la cinta verda a `marquee`.
 

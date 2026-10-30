@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/i18n/LocaleLink";
 
 /** Capçalera de les pàgines interiors: ruta, títol i subtítol, sobre un to que es fon amb la pàgina. */
 export default function PageHeader({

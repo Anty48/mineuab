@@ -6,21 +6,15 @@ import {
   useContext,
   useEffect,
   useMemo,
-  useState,
 } from "react";
-import {
-  DEFAULT_LOCALE,
-  Locale,
-  LOCALES,
-  translations,
-} from "./translations";
+import { usePathname } from "next/navigation";
+import { localePath } from "./paths";
+import { DEFAULT_LOCALE, Locale, translations } from "./translations";
 
 type Dict = Record<string, unknown>;
 
 interface LanguageContextValue {
   locale: Locale;
-  setLocale: (l: Locale) => void;
-  toggle: () => void;
   /**
    * Tradueix per camí amb punts, p. ex. t("nav.about"). Si no existeix, retorna la clau.
    * Els marcadors `{nom}` s'omplen amb `vars`: t("x", { count: 3 }).
@@ -34,6 +28,15 @@ const LanguageContext = createContext<LanguageContextValue | null>(null);
 
 const STORAGE_KEY = "mineuab.locale";
 
+/** Desa l'idioma que ha triat el visitant amb el selector de la barra. */
+export function rememberLocale(locale: Locale) {
+  try {
+    window.localStorage.setItem(STORAGE_KEY, locale);
+  } catch {
+    /* no es desa, però l'enllaç el porta igualment a l'altre idioma */
+  }
+}
+
 function resolvePath(obj: Dict, path: string): unknown {
   return path.split(".").reduce<unknown>((acc, key) => {
     if (acc && typeof acc === "object" && key in (acc as Dict)) {
@@ -43,37 +46,23 @@ function resolvePath(obj: Dict, path: string): unknown {
   }, obj);
 }
 
-export function LanguageProvider({ children }: { children: React.ReactNode }) {
-  const [locale, setLocaleState] = useState<Locale>(DEFAULT_LOCALE);
+/** L'idioma el diu l'adreça: /create és en català i /es/create en castellà. */
+export function LanguageProvider({ locale, children }: { locale: Locale; children: React.ReactNode }) {
+  const pathname = usePathname();
 
-  // Recupera l'idioma desat a localStorage (si no n'hi ha cap, es queda en català).
+  // Qui ha triat el castellà i arriba a una adreça en català (l'arrel, un enllaç compartit) hi torna.
+  // Només qui ho ha triat al selector: els cercadors i els visitants nous es queden a l'adreça que han obert.
   useEffect(() => {
+    if (locale !== DEFAULT_LOCALE) return;
     try {
-      const stored = window.localStorage.getItem(STORAGE_KEY) as Locale | null;
-      if (stored && LOCALES.includes(stored)) {
-        setLocaleState(stored);
+      if (window.localStorage.getItem(STORAGE_KEY) === "es") {
+        const { search, hash } = window.location;
+        window.location.replace(localePath(`${pathname}${search}${hash}`, "es"));
       }
     } catch {
       /* emmagatzematge bloquejat (mode privat, galetes restringides) */
     }
-  }, []);
-
-  const setLocale = useCallback((l: Locale) => {
-    setLocaleState(l);
-    try {
-      window.localStorage.setItem(STORAGE_KEY, l);
-    } catch {
-      /* no es desa, però canvia igualment durant aquesta visita */
-    }
-  }, []);
-
-  const toggle = useCallback(() => {
-    setLocale(locale === "ca" ? "es" : "ca");
-  }, [locale, setLocale]);
-
-  useEffect(() => {
-    document.documentElement.lang = locale;
-  }, [locale]);
+  }, [locale, pathname]);
 
   const t = useCallback(
     (path: string, vars?: Record<string, string | number>) => {
@@ -93,10 +82,7 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
     [locale],
   );
 
-  const value = useMemo(
-    () => ({ locale, setLocale, toggle, t, raw }),
-    [locale, setLocale, toggle, t, raw],
-  );
+  const value = useMemo(() => ({ locale, t, raw }), [locale, t, raw]);
 
   return (
     <LanguageContext.Provider value={value}>

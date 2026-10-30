@@ -1,8 +1,9 @@
 "use client";
 
 import { useDeferredValue, useMemo, useState } from "react";
-import Link from "next/link";
+import Link from "@/i18n/LocaleLink";
 import { useRouter } from "next/navigation";
+import { localePath } from "@/i18n/paths";
 import { useLanguage } from "@/i18n/LanguageProvider";
 import { timeAgo, usePlayers, type PlayerSummary } from "@/lib/useProfiles";
 import CareerTag from "./CareerTag";
@@ -23,7 +24,7 @@ function fold(text: string) {
 }
 
 export default function PlayersContent() {
-  const { t } = useLanguage();
+  const { t, locale } = useLanguage();
   const router = useRouter();
   const list = usePlayers();
   const [query, setQuery] = useState("");
@@ -71,7 +72,7 @@ export default function PlayersContent() {
             role="search"
             onSubmit={(e) => {
               e.preventDefault();
-              if (exact) router.push(`/jugador/${encodeURIComponent(exact.name)}`);
+              if (exact) router.push(localePath(`/jugador/${encodeURIComponent(exact.name)}`, locale));
             }}
             className="grid gap-4 border-2 border-ink bg-paper-50 p-4 sm:grid-cols-[minmax(0,1fr)_auto_auto] sm:items-end"
           >
