@@ -7,7 +7,7 @@ import { DISCORD_URL, MODRINTH_APP_URL } from "@/lib/links";
 import modpack from "@/lib/createModpack.json";
 import SectionHeading from "@/components/SectionHeading";
 import DiscordCta from "@/components/DiscordCta";
-import { CreateWordmark, DiscordIcon, PixelCogIcon, PlusIcon } from "@/components/icons";
+import { CreateWordmark, DiscordIcon, PixelCogIcon, PixelStarIcon, PlusIcon } from "@/components/icons";
 
 interface Point {
   title: string;
@@ -146,6 +146,11 @@ export default function CreateContent() {
             subtitle={t("create.modsSubtitle", { count: modpack.mods.length })}
           />
 
+          <p className="mt-8 flex max-w-2xl items-start gap-3 border-l-4 border-brass-400 bg-brass-100 px-4 py-3 text-sm leading-relaxed">
+            <PixelStarIcon size={18} className="mt-0.5 shrink-0 text-brass-500" />
+            {t("create.ownNote")}
+          </p>
+
           {/* En columnes perquè cada grup té una alçada diferent. */}
           <div className="mt-12 gap-6 md:columns-2">
             {groups.map((g) => {
@@ -166,9 +171,15 @@ export default function CreateContent() {
                             href={modrinthUrl(m.slug)}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center gap-2 border-2 border-ink bg-white px-2.5 py-1 text-sm font-semibold transition-colors hover:bg-brand-600 hover:text-white"
+                            className={`inline-flex items-center gap-2 border-2 border-ink px-2.5 py-1 text-sm font-semibold transition-colors hover:bg-brand-600 hover:text-white ${
+                              m.own ? "bg-brass-100" : "bg-white"
+                            }`}
                           >
+                            {m.own && <PixelStarIcon size={18} className="shrink-0 text-brass-500" />}
                             {m.name}
+                            {m.own && (
+                              <span className="font-pixel text-[9px] uppercase opacity-70">{t("create.ownTag")}</span>
+                            )}
                             {(m.optional || m.serverOnly) && (
                               <span className="font-pixel text-[9px] uppercase opacity-70">
                                 {t(m.optional ? "create.optional" : "create.serverOnly")}
