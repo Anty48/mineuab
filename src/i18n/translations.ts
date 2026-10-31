@@ -839,7 +839,7 @@ const ca = {
       {
         id: "naus-i-canons",
         title: "Naus i canons",
-        body: "Naus que volen i artilleria pesant.",
+        body: "Naus que volen, vaixells i submarins, amb canons, torpedes i radars.",
       },
       {
         id: "armes",
@@ -1796,7 +1796,7 @@ const es: Translations = {
       {
         id: "naus-i-canons",
         title: "Naves y cañones",
-        body: "Naves que vuelan y artillería pesada.",
+        body: "Naves que vuelan, barcos y submarinos, con cañones, torpedos y radares.",
       },
       {
         id: "armes",

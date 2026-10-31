@@ -1,7 +1,7 @@
 {
   "minecraft": "1.21.1",
   "neoforge": "21.1.264",
-  "version": "0.7.0-beta",
+  "version": "0.9.0-beta",
   "mods": [
     {
       "slug": "appleskin",
@@ -39,6 +39,22 @@
       "slug": "brewin-and-chewin",
       "name": "Brewin' And Chewin'",
       "group": "menjar",
+      "optional": false,
+      "serverOnly": false,
+      "own": false
+    },
+    {
+      "slug": "cbc-more-shells",
+      "name": "CBC Military Supplement",
+      "group": "naus-i-canons",
+      "optional": false,
+      "serverOnly": false,
+      "own": false
+    },
+    {
+      "slug": "cbc-compact-mount",
+      "name": "CBC: Compact Mount",
+      "group": "naus-i-canons",
       "optional": false,
       "serverOnly": false,
       "own": false
@@ -124,6 +140,14 @@
       "own": false
     },
     {
+      "slug": "create-big-cannons-equally-opposite",
+      "name": "Create Big Cannons: Equally Opposite",
+      "group": "naus-i-canons",
+      "optional": false,
+      "serverOnly": false,
+      "own": false
+    },
+    {
       "slug": "createaddition",
       "name": "Create Crafts & Additions",
       "group": "energia-i-industria",
@@ -135,6 +159,14 @@
       "slug": "create-deco",
       "name": "Create Deco",
       "group": "trens-i-decoracio",
+      "optional": false,
+      "serverOnly": false,
+      "own": false
+    },
+    {
+      "slug": "create-deep-seas",
+      "name": "Create Deep Seas [BETA]",
+      "group": "naus-i-canons",
       "optional": false,
       "serverOnly": false,
       "own": false
@@ -156,6 +188,14 @@
       "own": false
     },
     {
+      "slug": "create-propulsion-simulated",
+      "name": "Create Propulsion: Simulated",
+      "group": "naus-i-canons",
+      "optional": false,
+      "serverOnly": false,
+      "own": false
+    },
+    {
       "slug": "create-railways-navigator",
       "name": "Create Railways Navigator",
       "group": "trens-i-decoracio",
@@ -167,6 +207,22 @@
       "slug": "slice-and-dice",
       "name": "Create Slice & Dice",
       "group": "menjar",
+      "optional": false,
+      "serverOnly": false,
+      "own": false
+    },
+    {
+      "slug": "create-aeroworks",
+      "name": "Create: Aeroworks",
+      "group": "naus-i-canons",
+      "optional": false,
+      "serverOnly": false,
+      "own": false
+    },
+    {
+      "slug": "create-ballast",
+      "name": "Create: Ballast",
+      "group": "naus-i-canons",
       "optional": false,
       "serverOnly": false,
       "own": false
@@ -228,6 +284,14 @@
       "own": false
     },
     {
+      "slug": "createlazytick",
+      "name": "Create: LazyTick",
+      "group": "rendiment",
+      "optional": false,
+      "serverOnly": false,
+      "own": false
+    },
+    {
       "slug": "create-metallurgy",
       "name": "Create: Metallurgy",
       "group": "ciencia",
@@ -263,6 +327,14 @@
       "slug": "power-grid",
       "name": "Create: Power Grid",
       "group": "ciencia",
+      "optional": false,
+      "serverOnly": false,
+      "own": false
+    },
+    {
+      "slug": "create-radars",
+      "name": "Create: Radars",
+      "group": "naus-i-canons",
       "optional": false,
       "serverOnly": false,
       "own": false
@@ -692,6 +764,14 @@
       "own": false
     },
     {
+      "slug": "terralith",
+      "name": "Terralith",
+      "group": "servidor",
+      "optional": false,
+      "serverOnly": true,
+      "own": false
+    },
+    {
       "slug": "trailtales-delight",
       "name": "Trail&Tales Delight",
       "group": "menjar",
@@ -786,6 +866,10 @@
       "name": "libIPN"
     },
     {
+      "slug": "lithostitched",
+      "name": "Lithostitched"
+    },
+    {
       "slug": "melody",
       "name": "Melody"
     },
@@ -824,6 +908,14 @@
     {
       "slug": "searchables",
       "name": "Searchables"
+    },
+    {
+      "slug": "shaolib",
+      "name": "Shaolib"
+    },
+    {
+      "slug": "shaolib-munitions",
+      "name": "Shaolib Munitions"
     }
   ]
 }
