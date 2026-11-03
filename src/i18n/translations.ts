@@ -829,22 +829,27 @@ const ca = {
       {
         id: "ciencia",
         title: "Ciència",
-        body: "Reactors nuclears, química de veritat, petroli, electricitat amb la llei d'Ohm, òptica i metal·lúrgia.",
+        body: "Reactors nuclears, química de veritat, medicaments, òptica, coets a la Lluna, Mart i Venus, i ordinadors programables.",
       },
       {
         id: "energia-i-industria",
         title: "Energia i indústria",
-        body: "Electricitat, generadors dièsel i encanteris fets a màquina.",
+        body: "Petroli, acer i indústria pesant, electricitat amb la llei d'Ohm amb circuits i xips, i encanteris fets a màquina.",
       },
       {
         id: "naus-i-canons",
         title: "Naus i canons",
-        body: "Naus que volen, vaixells i submarins, amb canons, torpedes i radars.",
+        body: "Naus que volen, vaixells, submarins i tancs, amb canons, míssils, torpedes, radars i blindatge.",
       },
       {
         id: "armes",
         title: "Armes",
-        body: "Armes de foc, eines i armes de Create, i combat aeri.",
+        body: "Armes de foc i granades, i combat aeri amb míssils i drons.",
+      },
+      {
+        id: "paisos",
+        title: "Països",
+        body: "Funda un país, declara la guerra o fes aliances, penja-hi la bandera i sàpigues qui entra al teu territori.",
       },
       {
         id: "menjar",
@@ -864,7 +869,12 @@ const ca = {
       {
         id: "utilitats",
         title: "Utilitats",
-        body: "Per veure les receptes (JEI), saber què estàs mirant (Jade), fer zoom amb la Z, parlar per veu, ordenar l'inventari i molt més.",
+        body: "Per veure les receptes (JEI), saber què estàs mirant (Jade), fer zoom amb la Z, parlar per veu i molt més.",
+      },
+      {
+        id: "animacions",
+        title: "Animacions",
+        body: "Emotes per saludar o ballar, veure qui està escrivint al xat o qui s'ha quedat AFK, i animacions més suaus per als jugadors i els blocs.",
       },
       {
         id: "servidor",
@@ -1786,22 +1796,27 @@ const es: Translations = {
       {
         id: "ciencia",
         title: "Ciencia",
-        body: "Reactores nucleares, química de verdad, petróleo, electricidad con la ley de Ohm, óptica y metalurgia.",
+        body: "Reactores nucleares, química de verdad, medicamentos, óptica, cohetes a la Luna, Marte y Venus, y ordenadores programables.",
       },
       {
         id: "energia-i-industria",
         title: "Energía e industria",
-        body: "Electricidad, generadores diésel y encantamientos hechos a máquina.",
+        body: "Petróleo, acero e industria pesada, electricidad con la ley de Ohm con circuitos y chips, y encantamientos hechos a máquina.",
       },
       {
         id: "naus-i-canons",
         title: "Naves y cañones",
-        body: "Naves que vuelan, barcos y submarinos, con cañones, torpedos y radares.",
+        body: "Naves que vuelan, barcos, submarinos y tanques, con cañones, misiles, torpedos, radares y blindaje.",
       },
       {
         id: "armes",
         title: "Armas",
-        body: "Armas de fuego, herramientas y armas de Create, y combate aéreo.",
+        body: "Armas de fuego y granadas, y combate aéreo con misiles y drones.",
+      },
+      {
+        id: "paisos",
+        title: "Países",
+        body: "Funda un país, declara la guerra o haz alianzas, cuelga tu bandera y entérate de quién entra en tu territorio.",
       },
       {
         id: "menjar",
@@ -1821,7 +1836,12 @@ const es: Translations = {
       {
         id: "utilitats",
         title: "Utilidades",
-        body: "Para ver las recetas (JEI), saber qué estás mirando (Jade), hacer zoom con la Z, hablar por voz, ordenar el inventario y mucho más.",
+        body: "Para ver las recetas (JEI), saber qué estás mirando (Jade), hacer zoom con la Z, hablar por voz y mucho más.",
+      },
+      {
+        id: "animacions",
+        title: "Animaciones",
+        body: "Emotes para saludar o bailar, ver quién está escribiendo en el chat o quién se ha quedado AFK, y animaciones más suaves para los jugadores y los bloques.",
       },
       {
         id: "servidor",

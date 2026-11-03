@@ -1,7 +1,7 @@
 {
   "minecraft": "1.21.1",
   "neoforge": "21.1.264",
-  "version": "0.9.0-beta",
+  "version": "0.17.0-beta",
   "mods": [
     {
       "slug": "appleskin",
@@ -23,6 +23,14 @@
       "slug": "badoptimizations",
       "name": "BadOptimizations",
       "group": "rendiment",
+      "optional": false,
+      "serverOnly": false,
+      "own": false
+    },
+    {
+      "slug": "banner-flags",
+      "name": "Banner Flags",
+      "group": "paisos",
       "optional": false,
       "serverOnly": false,
       "own": false
@@ -52,8 +60,32 @@
       "own": false
     },
     {
-      "slug": "cbc-compact-mount",
-      "name": "CBC: Compact Mount",
+      "slug": "cbc-firepower-components",
+      "name": "CBC: Firepower Components",
+      "group": "naus-i-canons",
+      "optional": false,
+      "serverOnly": false,
+      "own": false
+    },
+    {
+      "slug": "cc-sable",
+      "name": "CC: Sable",
+      "group": "naus-i-canons",
+      "optional": false,
+      "serverOnly": false,
+      "own": false
+    },
+    {
+      "slug": "cc-tweaked",
+      "name": "CC: Tweaked",
+      "group": "ciencia",
+      "optional": false,
+      "serverOnly": false,
+      "own": false
+    },
+    {
+      "slug": "cc-cbc",
+      "name": "CC:CBC",
       "group": "naus-i-canons",
       "optional": false,
       "serverOnly": false,
@@ -92,9 +124,25 @@
       "own": false
     },
     {
+      "slug": "claim-intrusion-alert",
+      "name": "Claim Intrusion Alert: Open Parties and Claims & FTB Chunks",
+      "group": "paisos",
+      "optional": false,
+      "serverOnly": true,
+      "own": false
+    },
+    {
       "slug": "clumps",
       "name": "Clumps",
       "group": "rendiment",
+      "optional": false,
+      "serverOnly": false,
+      "own": false
+    },
+    {
+      "slug": "ly-combat-log",
+      "name": "Combat Log",
+      "group": "servidor",
       "optional": false,
       "serverOnly": false,
       "own": false
@@ -132,8 +180,24 @@
       "own": false
     },
     {
+      "slug": "create-aeronautics-transmission-linkage",
+      "name": "Create Aeronautics: Transmission & Linkage",
+      "group": "naus-i-canons",
+      "optional": false,
+      "serverOnly": false,
+      "own": false
+    },
+    {
       "slug": "create-big-cannons",
       "name": "Create Big Cannons",
+      "group": "naus-i-canons",
+      "optional": false,
+      "serverOnly": false,
+      "own": false
+    },
+    {
+      "slug": "create-big-cannons-advanced-technologies",
+      "name": "Create Big Cannons: Advanced Technologies",
       "group": "naus-i-canons",
       "optional": false,
       "serverOnly": false,
@@ -148,9 +212,9 @@
       "own": false
     },
     {
-      "slug": "createaddition",
-      "name": "Create Crafts & Additions",
-      "group": "energia-i-industria",
+      "slug": "create-big-cannons-going-ballistic",
+      "name": "Create Big Cannons: Going Ballistic",
+      "group": "naus-i-canons",
       "optional": false,
       "serverOnly": false,
       "own": false
@@ -166,6 +230,14 @@
     {
       "slug": "create-deep-seas",
       "name": "Create Deep Seas [BETA]",
+      "group": "naus-i-canons",
+      "optional": false,
+      "serverOnly": false,
+      "own": false
+    },
+    {
+      "slug": "create-missiles",
+      "name": "Create Missiles",
       "group": "naus-i-canons",
       "optional": false,
       "serverOnly": false,
@@ -220,6 +292,22 @@
       "own": false
     },
     {
+      "slug": "create-armored-constructs",
+      "name": "Create: Armored Constructs",
+      "group": "naus-i-canons",
+      "optional": false,
+      "serverOnly": false,
+      "own": false
+    },
+    {
+      "slug": "create-avionics",
+      "name": "Create: Avionics — ComputerCraft for Aeronautics",
+      "group": "naus-i-canons",
+      "optional": false,
+      "serverOnly": false,
+      "own": false
+    },
+    {
       "slug": "create-ballast",
       "name": "Create: Ballast",
       "group": "naus-i-canons",
@@ -231,6 +319,22 @@
       "slug": "bellsandwhistles",
       "name": "Create: Bells & Whistles",
       "group": "trens-i-decoracio",
+      "optional": false,
+      "serverOnly": false,
+      "own": false
+    },
+    {
+      "slug": "create-big-pharma",
+      "name": "Create: Big Pharma",
+      "group": "ciencia",
+      "optional": false,
+      "serverOnly": false,
+      "own": false
+    },
+    {
+      "slug": "bits-n-tracks-ce",
+      "name": "Create: Bits 'n' Tracks Community Edition",
+      "group": "naus-i-canons",
       "optional": false,
       "serverOnly": false,
       "own": false
@@ -260,14 +364,6 @@
       "own": false
     },
     {
-      "slug": "create-diesel-generators",
-      "name": "Create: Diesel Generators",
-      "group": "energia-i-industria",
-      "optional": false,
-      "serverOnly": false,
-      "own": false
-    },
-    {
       "slug": "create-enchantment-industry",
       "name": "Create: Enchantment Industry",
       "group": "energia-i-industria",
@@ -292,17 +388,17 @@
       "own": false
     },
     {
-      "slug": "create-metallurgy",
-      "name": "Create: Metallurgy",
+      "slug": "northstar-redux",
+      "name": "Create: Northstar - Redux",
       "group": "ciencia",
       "optional": false,
       "serverOnly": false,
       "own": false
     },
     {
-      "slug": "create-new-age",
-      "name": "Create: New Age",
-      "group": "energia-i-industria",
+      "slug": "create-northstar-aeronautics-compatibility",
+      "name": "Create: Northstar-Aeronautics Compatibility",
+      "group": "ciencia",
       "optional": false,
       "serverOnly": false,
       "own": false
@@ -324,9 +420,25 @@
       "own": false
     },
     {
+      "slug": "create-power-chip",
+      "name": "Create: Power chip",
+      "group": "energia-i-industria",
+      "optional": false,
+      "serverOnly": false,
+      "own": false
+    },
+    {
+      "slug": "create-power-components",
+      "name": "Create: Power Components",
+      "group": "energia-i-industria",
+      "optional": false,
+      "serverOnly": false,
+      "own": false
+    },
+    {
       "slug": "power-grid",
       "name": "Create: Power Grid",
-      "group": "ciencia",
+      "group": "energia-i-industria",
       "optional": false,
       "serverOnly": false,
       "own": false
@@ -342,7 +454,7 @@
     {
       "slug": "tfmg-community-edition",
       "name": "Create: TFMG Community Edition",
-      "group": "ciencia",
+      "group": "energia-i-industria",
       "optional": false,
       "serverOnly": false,
       "own": false
@@ -356,9 +468,17 @@
       "own": false
     },
     {
-      "slug": "createtools-n-weapons",
-      "name": "Create: Tools n Weapons",
-      "group": "armes",
+      "slug": "create-tweaked-controllers",
+      "name": "Create: Tweaked Controllers",
+      "group": "naus-i-canons",
+      "optional": false,
+      "serverOnly": false,
+      "own": false
+    },
+    {
+      "slug": "createparachute",
+      "name": "Create:Parachute",
+      "group": "naus-i-canons",
       "optional": false,
       "serverOnly": false,
       "own": false
@@ -444,17 +564,17 @@
       "own": false
     },
     {
-      "slug": "enchantment-descriptions",
-      "name": "Enchantment Descriptions",
-      "group": "utilitats",
+      "slug": "emotecraft",
+      "name": "Emotecraft",
+      "group": "animacions",
       "optional": false,
       "serverOnly": false,
       "own": false
     },
     {
-      "slug": "ends-delight",
-      "name": "End's Delight",
-      "group": "menjar",
+      "slug": "enchantment-descriptions",
+      "name": "Enchantment Descriptions",
+      "group": "utilitats",
       "optional": false,
       "serverOnly": false,
       "own": false
@@ -471,6 +591,14 @@
       "slug": "entityculling",
       "name": "Entity Culling",
       "group": "rendiment",
+      "optional": false,
+      "serverOnly": false,
+      "own": false
+    },
+    {
+      "slug": "fwa",
+      "name": "Fancy World Animations [FWA]",
+      "group": "animacions",
       "optional": false,
       "serverOnly": false,
       "own": false
@@ -532,14 +660,6 @@
       "own": false
     },
     {
-      "slug": "gensokyo-delight-youkais-feasts",
-      "name": "Gensokyo Delight ~ Youkais' Feasts",
-      "group": "menjar",
-      "optional": false,
-      "serverOnly": false,
-      "own": false
-    },
-    {
       "slug": "hex-casting",
       "name": "Hex Casting",
       "group": "magia",
@@ -548,17 +668,17 @@
       "own": false
     },
     {
-      "slug": "immediatelyfast",
-      "name": "ImmediatelyFast",
-      "group": "rendiment",
+      "slug": "treechop",
+      "name": "HT's TreeChop",
+      "group": "utilitats",
       "optional": false,
       "serverOnly": false,
       "own": false
     },
     {
-      "slug": "inventory-profiles-next",
-      "name": "Inventory Profiles Next",
-      "group": "utilitats",
+      "slug": "immediatelyfast",
+      "name": "ImmediatelyFast",
+      "group": "rendiment",
       "optional": false,
       "serverOnly": false,
       "own": false
@@ -604,14 +724,6 @@
       "own": false
     },
     {
-      "slug": "more-delight",
-      "name": "More Delight (for Farmer's Delight)",
-      "group": "menjar",
-      "optional": false,
-      "serverOnly": false,
-      "own": false
-    },
-    {
       "slug": "mouse-tweaks",
       "name": "Mouse Tweaks",
       "group": "utilitats",
@@ -623,6 +735,22 @@
       "slug": "my-nethers-delight",
       "name": "My Nether's Delight",
       "group": "menjar",
+      "optional": false,
+      "serverOnly": false,
+      "own": false
+    },
+    {
+      "slug": "nation",
+      "name": "Nation",
+      "group": "paisos",
+      "optional": false,
+      "serverOnly": false,
+      "own": false
+    },
+    {
+      "slug": "not-enough-animations",
+      "name": "Not Enough Animations",
+      "group": "animacions",
       "optional": false,
       "serverOnly": false,
       "own": false
@@ -684,6 +812,14 @@
       "own": true
     },
     {
+      "slug": "rts-building-build-from-above",
+      "name": "RTS building: Build From Above",
+      "group": "utilitats",
+      "optional": false,
+      "serverOnly": false,
+      "own": false
+    },
+    {
       "slug": "rustic-delight",
       "name": "Rustic Delight",
       "group": "menjar",
@@ -692,8 +828,48 @@
       "own": false
     },
     {
+      "slug": "sable-explosions-fix",
+      "name": "Sable Explosions Fix",
+      "group": "naus-i-canons",
+      "optional": false,
+      "serverOnly": false,
+      "own": false
+    },
+    {
+      "slug": "sable-fix-mod",
+      "name": "sable fix mod",
+      "group": "naus-i-canons",
+      "optional": false,
+      "serverOnly": true,
+      "own": false
+    },
+    {
+      "slug": "sable-create-aeronautics-collision-damage",
+      "name": "Sable: Collision damage  (Create Aeronautics)",
+      "group": "naus-i-canons",
+      "optional": false,
+      "serverOnly": false,
+      "own": false
+    },
+    {
+      "slug": "sablecompat",
+      "name": "Sable: Physics Compat",
+      "group": "naus-i-canons",
+      "optional": false,
+      "serverOnly": true,
+      "own": false
+    },
+    {
       "slug": "shulkerboxtooltip",
       "name": "Shulker Box Tooltip",
+      "group": "utilitats",
+      "optional": false,
+      "serverOnly": false,
+      "own": false
+    },
+    {
+      "slug": "simple-radio",
+      "name": "Simple Radio",
       "group": "utilitats",
       "optional": false,
       "serverOnly": false,
@@ -796,10 +972,26 @@
       "own": false
     },
     {
+      "slug": "vestalihy",
+      "name": "vestalihy",
+      "group": "naus-i-canons",
+      "optional": false,
+      "serverOnly": false,
+      "own": false
+    },
+    {
+      "slug": "what-are-they-up-to",
+      "name": "What Are They Up To (Watut)",
+      "group": "animacions",
+      "optional": false,
+      "serverOnly": false,
+      "own": false
+    },
+    {
       "slug": "xaeros-minimap",
       "name": "Xaero's Minimap",
       "group": "utilitats",
-      "optional": true,
+      "optional": false,
       "serverOnly": false,
       "own": false
     },
@@ -807,7 +999,7 @@
       "slug": "xaeros-world-map",
       "name": "Xaero's World Map",
       "group": "utilitats",
-      "optional": true,
+      "optional": false,
       "serverOnly": false,
       "own": false
     }
@@ -820,6 +1012,10 @@
     {
       "slug": "architectury-api",
       "name": "Architectury API"
+    },
+    {
+      "slug": "azimuth-api",
+      "name": "Azimuth API"
     },
     {
       "slug": "balm",
@@ -838,12 +1034,16 @@
       "name": "Cloth Config API"
     },
     {
-      "slug": "create-dragons-plus",
-      "name": "Create: Dragons Plus"
+      "slug": "coroutil",
+      "name": "CoroUtil"
     },
     {
-      "slug": "delight-lib",
-      "name": "Delight Lib"
+      "slug": "create-bits-n-bobs",
+      "name": "Create: Bits 'n' Bobs"
+    },
+    {
+      "slug": "create-dragons-plus",
+      "name": "Create: Dragons Plus"
     },
     {
       "slug": "dragonlib",
@@ -862,8 +1062,8 @@
       "name": "Kotlin for Forge"
     },
     {
-      "slug": "libipn",
-      "name": "libIPN"
+      "slug": "lexiconfig",
+      "name": "Lexiconfig"
     },
     {
       "slug": "lithostitched",
@@ -916,6 +1116,10 @@
     {
       "slug": "shaolib-munitions",
       "name": "Shaolib Munitions"
+    },
+    {
+      "slug": "strut-your-stuff",
+      "name": "Strut Your Stuff (Struts)"
     }
   ]
 }
