@@ -176,8 +176,13 @@ export function rootMetadata(locale: Locale): Metadata {
       template: "%s · mineuab",
     },
     description: DESCRIPTION[locale],
+    // Google treu la icona dels resultats de la portada; li agraden els PNG de mida múltiple de 48 px.
     icons: {
-      icon: "/favicon.ico",
+      icon: [
+        { url: "/favicon.ico", sizes: "any" },
+        { url: "/icon-192.png", type: "image/png", sizes: "192x192" },
+      ],
+      apple: "/apple-touch-icon.png",
     },
     openGraph: {
       type: "website",
