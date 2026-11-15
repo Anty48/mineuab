@@ -827,6 +827,11 @@ const ca = {
         body: "Més vies, senyals i trens, catenària i els blocs de Rodalies i Renfe. El modpack porta esquemes de les estacions de Barberà del Vallès, Cerdanyola del Vallès i Fabra i Puig, i de trens de Rodalies i Renfe.",
       },
       {
+        id: "construccio",
+        title: "Construcció i mobles",
+        body: "Un cisell que converteix la pedra, la fusta i els maons en centenars de variants, també les pedres de Create. Sostres, finestres, ponts, portes, tanques i camins, i mobles, també per als trens i les naus.",
+      },
+      {
         id: "ciencia",
         title: "Ciència",
         body: "Reactors nuclears, química de veritat, medicaments, òptica, coets a la Lluna, Mart i Venus, i ordinadors programables.",
@@ -834,7 +839,7 @@ const ca = {
       {
         id: "energia-i-industria",
         title: "Energia i indústria",
-        body: "Petroli, acer i indústria pesant, electricitat amb la llei d'Ohm amb circuits i xips, i encanteris fets a màquina.",
+        body: "Petroli, acer i indústria pesant, electricitat amb la llei d'Ohm amb circuits i xips, motors elèctrics i acumuladors, encanteris fets a màquina i receptes per fer renovables el tuf, la netherita i més coses.",
       },
       {
         id: "naus-i-canons",
@@ -849,7 +854,7 @@ const ca = {
       {
         id: "paisos",
         title: "Països",
-        body: "Funda un país, declara la guerra o fes aliances, penja-hi la bandera i sàpigues qui entra al teu territori.",
+        body: "Funda un país, declara la guerra o fes aliances i conquesta territori chunk a chunk. Parla només amb els del teu país, penja-hi una bandera amb la imatge que vulguis i sàpigues qui entra al teu territori.",
       },
       {
         id: "menjar",
@@ -869,7 +874,7 @@ const ca = {
       {
         id: "utilitats",
         title: "Utilitats",
-        body: "Per veure les receptes (JEI), saber què estàs mirant (Jade), fer zoom amb la Z, parlar per veu i molt més.",
+        body: "Per veure les receptes (JEI), saber què estàs mirant (Jade), fer zoom amb la Z, parlar per veu, motxilles i molt més.",
       },
       {
         id: "animacions",
@@ -1794,6 +1799,11 @@ const es: Translations = {
         body: "Más vías, señales y trenes, catenaria y los bloques de Rodalies y Renfe. El modpack trae esquemas de las estaciones de Barberà del Vallès, Cerdanyola del Vallès y Fabra i Puig, y de trenes de Rodalies y Renfe.",
       },
       {
+        id: "construccio",
+        title: "Construcción y muebles",
+        body: "Un cincel que convierte la piedra, la madera y los ladrillos en cientos de variantes, también las piedras de Create. Tejados, ventanas, puentes, puertas, vallas y caminos, y muebles, también para los trenes y las naves.",
+      },
+      {
         id: "ciencia",
         title: "Ciencia",
         body: "Reactores nucleares, química de verdad, medicamentos, óptica, cohetes a la Luna, Marte y Venus, y ordenadores programables.",
@@ -1801,7 +1811,7 @@ const es: Translations = {
       {
         id: "energia-i-industria",
         title: "Energía e industria",
-        body: "Petróleo, acero e industria pesada, electricidad con la ley de Ohm con circuitos y chips, y encantamientos hechos a máquina.",
+        body: "Petróleo, acero e industria pesada, electricidad con la ley de Ohm con circuitos y chips, motores eléctricos y acumuladores, encantamientos hechos a máquina y recetas para hacer renovables la toba, la netherita y más cosas.",
       },
       {
         id: "naus-i-canons",
@@ -1816,7 +1826,7 @@ const es: Translations = {
       {
         id: "paisos",
         title: "Países",
-        body: "Funda un país, declara la guerra o haz alianzas, cuelga tu bandera y entérate de quién entra en tu territorio.",
+        body: "Funda un país, declara la guerra o haz alianzas y conquista territorio chunk a chunk. Habla solo con los de tu país, cuelga una bandera con la imagen que quieras y entérate de quién entra en tu territorio.",
       },
       {
         id: "menjar",
@@ -1836,7 +1846,7 @@ const es: Translations = {
       {
         id: "utilitats",
         title: "Utilidades",
-        body: "Para ver las recetas (JEI), saber qué estás mirando (Jade), hacer zoom con la Z, hablar por voz y mucho más.",
+        body: "Para ver las recetas (JEI), saber qué estás mirando (Jade), hacer zoom con la Z, hablar por voz, mochilas y mucho más.",
       },
       {
         id: "animacions",

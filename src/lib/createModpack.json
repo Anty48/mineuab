@@ -1,8 +1,16 @@
 {
   "minecraft": "1.21.1",
   "neoforge": "21.1.264",
-  "version": "0.16.0-beta",
+  "version": "0.17.0-beta",
   "mods": [
+    {
+      "slug": "another-furniture",
+      "name": "Another Furniture",
+      "group": "construccio",
+      "optional": false,
+      "serverOnly": false,
+      "own": false
+    },
     {
       "slug": "appleskin",
       "name": "AppleSkin",
@@ -220,6 +228,14 @@
       "own": false
     },
     {
+      "slug": "createaddition",
+      "name": "Create Crafts & Additions",
+      "group": "energia-i-industria",
+      "optional": false,
+      "serverOnly": false,
+      "own": false
+    },
+    {
       "slug": "create-deco",
       "name": "Create Deco",
       "group": "trens-i-decoracio",
@@ -263,6 +279,14 @@
       "slug": "create-propulsion-simulated",
       "name": "Create Propulsion: Simulated",
       "group": "naus-i-canons",
+      "optional": false,
+      "serverOnly": false,
+      "own": false
+    },
+    {
+      "slug": "create-propulsion-simulated-and-chemica-fuels-compatibility",
+      "name": "Create Propulsion: Simulated and Chemica Fuels Compatibility",
+      "group": "ciencia",
       "optional": false,
       "serverOnly": false,
       "own": false
@@ -380,6 +404,14 @@
       "own": false
     },
     {
+      "slug": "interiors",
+      "name": "Create: Interiors",
+      "group": "construccio",
+      "optional": false,
+      "serverOnly": false,
+      "own": false
+    },
+    {
       "slug": "createlazytick",
       "name": "Create: LazyTick",
       "group": "rendiment",
@@ -471,6 +503,14 @@
       "slug": "create-tweaked-controllers",
       "name": "Create: Tweaked Controllers",
       "group": "naus-i-canons",
+      "optional": false,
+      "serverOnly": false,
+      "own": false
+    },
+    {
+      "slug": "create-ultimate-factory",
+      "name": "Create: Ultimate Factory",
+      "group": "energia-i-industria",
       "optional": false,
       "serverOnly": false,
       "own": false
@@ -660,6 +700,22 @@
       "own": false
     },
     {
+      "slug": "gravestone-and-sable-compatibility-patch",
+      "name": "Gravestone and Sable Compatibility Patch",
+      "group": "utilitats",
+      "optional": false,
+      "serverOnly": false,
+      "own": false
+    },
+    {
+      "slug": "gravestone-mod",
+      "name": "GraveStone Mod",
+      "group": "utilitats",
+      "optional": false,
+      "serverOnly": false,
+      "own": false
+    },
+    {
       "slug": "hex-casting",
       "name": "Hex Casting",
       "group": "magia",
@@ -703,6 +759,78 @@
       "slug": "jei",
       "name": "Just Enough Items (JEI)",
       "group": "utilitats",
+      "optional": false,
+      "serverOnly": false,
+      "own": false
+    },
+    {
+      "slug": "lithium",
+      "name": "Lithium",
+      "group": "rendiment",
+      "optional": false,
+      "serverOnly": false,
+      "own": false
+    },
+    {
+      "slug": "macaws-bridges",
+      "name": "Macaw's Bridges",
+      "group": "construccio",
+      "optional": false,
+      "serverOnly": false,
+      "own": false
+    },
+    {
+      "slug": "macaws-doors",
+      "name": "Macaw's Doors",
+      "group": "construccio",
+      "optional": false,
+      "serverOnly": false,
+      "own": false
+    },
+    {
+      "slug": "macaws-fences-and-walls",
+      "name": "Macaw's Fences and Walls",
+      "group": "construccio",
+      "optional": false,
+      "serverOnly": false,
+      "own": false
+    },
+    {
+      "slug": "macaws-furniture",
+      "name": "Macaw's Furniture",
+      "group": "construccio",
+      "optional": false,
+      "serverOnly": false,
+      "own": false
+    },
+    {
+      "slug": "macaws-paths-and-pavings",
+      "name": "Macaw's Paths and Pavings",
+      "group": "construccio",
+      "optional": false,
+      "serverOnly": false,
+      "own": false
+    },
+    {
+      "slug": "macaws-roofs",
+      "name": "Macaw's Roofs",
+      "group": "construccio",
+      "optional": false,
+      "serverOnly": false,
+      "own": false
+    },
+    {
+      "slug": "macaws-stairs",
+      "name": "Macaw's Stairs",
+      "group": "construccio",
+      "optional": false,
+      "serverOnly": false,
+      "own": false
+    },
+    {
+      "slug": "macaws-windows",
+      "name": "Macaw's Windows",
+      "group": "construccio",
       "optional": false,
       "serverOnly": false,
       "own": false
@@ -780,6 +908,22 @@
       "own": false
     },
     {
+      "slug": "opac-essentials",
+      "name": "Open Parties and Claims - Essentials",
+      "group": "paisos",
+      "optional": false,
+      "serverOnly": false,
+      "own": false
+    },
+    {
+      "slug": "open-parties-and-claims-warfare",
+      "name": "Open Parties and Claims: Warfare",
+      "group": "paisos",
+      "optional": false,
+      "serverOnly": false,
+      "own": false
+    },
+    {
       "slug": "ping-wheel",
       "name": "Ping Wheel",
       "group": "utilitats",
@@ -796,9 +940,33 @@
       "own": false
     },
     {
+      "slug": "rechiseled",
+      "name": "Rechiseled",
+      "group": "construccio",
+      "optional": false,
+      "serverOnly": false,
+      "own": false
+    },
+    {
+      "slug": "rechiseled-create",
+      "name": "Rechiseled: Create",
+      "group": "construccio",
+      "optional": false,
+      "serverOnly": false,
+      "own": false
+    },
+    {
       "slug": "reeses-sodium-options",
       "name": "Reese's Sodium Options",
       "group": "rendiment",
+      "optional": false,
+      "serverOnly": false,
+      "own": false
+    },
+    {
+      "slug": "betsy-ross",
+      "name": "Ritchie's Betsy Ross",
+      "group": "paisos",
       "optional": false,
       "serverOnly": false,
       "own": false
@@ -903,6 +1071,22 @@
       "slug": "sodium-extra",
       "name": "Sodium Extra",
       "group": "rendiment",
+      "optional": false,
+      "serverOnly": false,
+      "own": false
+    },
+    {
+      "slug": "sophisticated-backpacks",
+      "name": "Sophisticated Backpacks",
+      "group": "utilitats",
+      "optional": false,
+      "serverOnly": false,
+      "own": false
+    },
+    {
+      "slug": "sophisticated-backpacks-create-integration",
+      "name": "Sophisticated Backpacks Create Integration",
+      "group": "utilitats",
       "optional": false,
       "serverOnly": false,
       "own": false
@@ -1038,6 +1222,10 @@
       "name": "CoroUtil"
     },
     {
+      "slug": "create-aeronautics-ultimatefactory-recipe-fix",
+      "name": "Create: Aeronautics/Ultimate Factory Recipe Fix"
+    },
+    {
       "slug": "create-bits-n-bobs",
       "name": "Create: Bits 'n' Bobs"
     },
@@ -1048,6 +1236,18 @@
     {
       "slug": "dragonlib",
       "name": "DragonLib"
+    },
+    {
+      "slug": "fusion-connected-textures",
+      "name": "Fusion (Connected Textures)"
+    },
+    {
+      "slug": "fzzy-config",
+      "name": "Fzzy Config"
+    },
+    {
+      "slug": "immersive-paintings",
+      "name": "Immersive Paintings"
     },
     {
       "slug": "inline",
@@ -1118,8 +1318,20 @@
       "name": "Shaolib Munitions"
     },
     {
+      "slug": "sophisticated-core",
+      "name": "Sophisticated Core"
+    },
+    {
       "slug": "strut-your-stuff",
       "name": "Strut Your Stuff (Struts)"
+    },
+    {
+      "slug": "supermartijn642s-config-lib",
+      "name": "SuperMartijn642's Config Lib"
+    },
+    {
+      "slug": "supermartijn642s-core-lib",
+      "name": "SuperMartijn642's Core Lib"
     }
   ]
 }
