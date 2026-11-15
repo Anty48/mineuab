@@ -6,24 +6,25 @@ export const SITE_URL = "https://www.mineuab.org";
 
 /**
  * Mapa en directe (BlueMap). Ha de ser https perquè el navegador deixi incrustar-lo a la web:
- * és el port 8080 del servidor, publicat amb Tailscale Funnel. Si es fa map.mineuab.org, canvieu-ho aquí.
+ * és el port 8080 del servidor, publicat amb el túnel de Cloudflare «mineuab-mapa» (des del 15/11).
+ * Si canvien aquestes adreces, canvieu també la CSP a next.config.mjs.
  */
-export const MAP_URL = "https://rowenta2000.tailb63548.ts.net:10000/";
+export const MAP_URL = "https://map.mineuab.org/";
 
 /**
  * Rànquing de crèdits en directe: l'API del plugin Credits (127.0.0.1:25580 al servidor),
- * publicada pel mateix Funnel que el mapa. Es llegeix des del navegador, per això no porta token.
+ * publicada pel mateix túnel. Es llegeix des del navegador, per això no porta token.
  */
-export const RANKING_URL = "https://rowenta2000.tailb63548.ts.net:10000/credits/ranking.json";
+export const RANKING_URL = "https://credits.mineuab.org/ranking.json";
 
 /**
- * Perfils dels jugadors: l'API del plugin MineUABPerfil (127.0.0.1:25581 al servidor), pel mateix Funnel.
+ * Perfils dels jugadors: l'API del plugin MineUABPerfil (127.0.0.1:25581 al servidor), pel mateix túnel.
  * Hi ha jugadors.json, jugador/<nom>.json i les imatges de les skins, i les receptes de Craftorithm
  * (receptes.json i les icones dels ítems). Acaba en barra.
  * Per provar la web amb un servidor local: NEXT_PUBLIC_PROFILES_URL=http://127.0.0.1:25581/ npm run dev
  */
 export const PROFILES_URL =
-  process.env.NEXT_PUBLIC_PROFILES_URL ?? "https://rowenta2000.tailb63548.ts.net:10000/perfil/";
+  process.env.NEXT_PUBLIC_PROFILES_URL ?? "https://perfil.mineuab.org/";
 
 /**
  * Whitelist. Quan s'activi al servidor, poseu-ho a `true`: surt el pas per demanar accés

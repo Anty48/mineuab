@@ -1,6 +1,8 @@
-// El servidor de Minecraft (BlueMap, rànquing i perfils), publicat amb Tailscale Funnel. Ha de ser el mateix
-// origen que MAP_URL, RANKING_URL i PROFILES_URL de src/lib/links.ts: si canvia allà, canvieu-lo aquí.
-const SERVIDOR = "https://rowenta2000.tailb63548.ts.net:10000";
+// El servidor de Minecraft, publicat amb el túnel de Cloudflare: BlueMap, rànquing (Credits) i perfils.
+// Han de ser els orígens de MAP_URL, RANKING_URL i PROFILES_URL de src/lib/links.ts: si canvien allà, canvieu-los aquí.
+const MAPA = "https://map.mineuab.org";
+const CREDITS = "https://credits.mineuab.org";
+const PERFIL = "https://perfil.mineuab.org";
 // Per provar amb els perfils en local (NEXT_PUBLIC_PROFILES_URL a links.ts), també cal deixar-los passar.
 const PERFILS = process.env.NEXT_PUBLIC_PROFILES_URL ? new URL(process.env.NEXT_PUBLIC_PROFILES_URL).origin : "";
 
@@ -11,12 +13,12 @@ const CSP = [
   "style-src 'self' 'unsafe-inline'",
   // Les cares i les skins dels jugadors i les icones de les receptes venen del servidor; blob: i data: per a
   // les textures del visor de skins en 3D.
-  `img-src 'self' data: blob: ${SERVIDOR} ${PERFILS}`,
+  `img-src 'self' data: blob: ${PERFIL} ${PERFILS}`,
   "font-src 'self'",
-  // L'estat del servidor (mcsrvstat.us) i les dades del servidor.
-  `connect-src 'self' https://api.mcsrvstat.us ${SERVIDOR} ${PERFILS}`,
+  // L'estat del servidor (mcsrvstat.us) i les dades del servidor (rànquing i perfils).
+  `connect-src 'self' https://api.mcsrvstat.us ${CREDITS} ${PERFIL} ${PERFILS}`,
   // El BlueMap de /mapa.
-  `frame-src ${SERVIDOR}`,
+  `frame-src ${MAPA}`,
   // Ningú pot posar la web dins d'un iframe (contra el clickjacking).
   "frame-ancestors 'none'",
   "object-src 'none'",
